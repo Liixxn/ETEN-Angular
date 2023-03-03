@@ -1,0 +1,87 @@
+@import 'bootstrap/scss/bootstrap';
+
+* {
+  margin: 0;
+  padding: 0;
+  color: white;
+  box-sizing: border-box;
+
+}
+
+body {
+  background-color: white;
+
+}
+
+
+.navbar-toggler {
+  background-color: #F05A21;
+}
+
+
+
+/***********************************/
+
+.navbar-brand img {
+  float: left;
+  width: 100px;
+  height: 80px;
+  padding: 5px 10px;
+}
+
+
+.navbar {
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-nav {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+
+.nav-item a {
+  color: white;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+
+.nav-item:hover > a{
+  color: #F05A21;
+  border-bottom: 1px solid #F05A21;
+}
+
+
+
+/*SUBMENU*/
+
+.dropdown-menu {
+  background-color: black;
+}
+
+.dropdown-menu li {
+  margin: 0 10px;
+}
+
+.dropdown-menu:hover .dropdown-item {
+  background-color: black;
+}
+
+.dropdown-menu li:hover a {
+  color: #F05A21;
+  border-bottom: 1px solid #F05A21;
+}
+
+.nav-link {
+  font-size: 18px;
+}
+
+.dropdown-item {
+  font-size: 18px;
+}

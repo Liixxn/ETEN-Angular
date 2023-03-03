@@ -1,0 +1,170 @@
+html {
+  background-color: #E9DFCB;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+
+
+
+/**********************************************/
+
+#home-video {
+  position:relative;
+}
+
+
+
+#video-banner {
+  position:relative;
+  z-index:0;
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
+
+h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:120px;
+  letter-spacing:0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-shadow:
+    8px 8px #F05A21,
+    20px 20px #000000;
+}
+
+
+
+
+
+
+
+
+
+/* SECCION CATEGORIAS */
+
+#section-categorias {
+  border: 2px solid blue;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 200px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.carne-tipo img {
+  width:30px;
+  height:30px;
+}
+
+.card {
+  position:relative;
+  margin: 20px 0;
+
+}
+
+.card:hover .carne-tipo {
+  visibility: visible;
+}
+
+
+.multi-button {
+  position:absolute;
+  top:1.25rem;
+  left:1.25rem;
+  border-radius: 80%;
+  width: 0rem;
+  height: 0rem;
+  transform: translate(-50%, -50%);
+  transition: cubic-bezier(0.25, 0, 0, 1);
+  z-index: 0;
+  border: 2px solid blue;
+}
+
+.carne-tipo {
+  display: grid;
+
+  place-items: center;
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+
+  border-radius:100%;
+  background-color: #ffffff;
+  border: 1px solid #F05A21;
+  cursor: pointer;
+  transition: cubic-bezier(0.25, 0, 0, 1);
+  box-shadow: 0 0 0rem -0.25rem #ffffff;
+  visibility: hidden;
+
+}
+
+
+
+
+
+.carne-tipo:hover {
+  background: white;
+  color: #F05A21;
+  border: 2px solid red;
+  box-shadow: 0 0 1rem -0.25rem #F05A21;
+
+
+}
+
+.card:hover .multi-button, :focus-within {
+  width: 10rem;
+  height: 10rem;
+
+
+
+
+}
+
+#carne-tipo1 {
+  top: -20px;
+  left: 30%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SECCION AJUSTE DE PANTALLA */
+
+@media (max-width: 990px) {
+  #video-banner {
+    height: 400px;
+  }
+
+  h1 {
+    font-size: 8rem;
+  }
+}
+

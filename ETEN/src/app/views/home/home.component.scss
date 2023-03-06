@@ -102,7 +102,7 @@ h1 {
 }
 
 #contendor-imagnenes img {
-  height: 400px;
+  height: 500px;
 }
 
 
@@ -113,6 +113,7 @@ h1 {
 #contenido-presentacion {
   width: 100%;
   height: 650px;
+  padding-top: 50px;
 }
 
 
@@ -401,8 +402,7 @@ h1 {
   }
 
   #seccion-presentation {
-    height: 400px;
-    width: 100%;
+    height: 100%;
   }
 
   #contendor-imagnenes {
@@ -411,14 +411,20 @@ h1 {
   }
 
   .contenido {
-    margin-top: 100px;
+    width: inherit;
+    height: inherit;
+    border: 2px solid red;
+
+  }
+
+  #titulo-presentacion {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   #contenido-presentacion {
     height: 300px;
-    display: flex;
-    flex-wrap: wrap;
-    border: 2px solid red;
+    padding-top: 0;
   }
 }
 

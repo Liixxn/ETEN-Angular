@@ -24,14 +24,15 @@ html {
   background-color: $color-crema;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
   margin: 0;
+  padding: 0;
 }
 
 
@@ -41,6 +42,7 @@ body {
 
 #home-video {
   position:relative;
+  margin: 0;
 }
 
 
@@ -50,6 +52,7 @@ body {
   z-index:0;
   width: 100%;
   height: 750px;
+  margin: 0;
   object-fit: cover;
 }
 
@@ -66,55 +69,82 @@ h1 {
   -webkit-text-stroke-color: white;
   text-shadow:
     8px 8px $logo-ETEN-naranja,
-    20px 20px #000000;
+    20px 20px black;
 }
 
 
 /* SECCION PRESENTACION */
 
-#seccion-presentation {
-  background-image: url('https://images.pexels.com/photos/3847496/pexels-photo-3847496.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-  background-repeat: no-repeat;
+
+.abouts{
+  background: url('https://images.pexels.com/photos/1101122/pexels-photo-1101122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center top scroll;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: 650px;
+  width: 100%;
+  overflow: hidden;
+}
+.abouts_content{
+  padding:120px 0px;
   display: flex;
 }
-
-.presentacion {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 100%;
-}
-
-
-.contenido {
-  z-index: 1;
-  margin-top: 250px;
-  margin-right: 20px;
-  height: inherit;
-
-}
-
-#contendor-imagnenes {
-  display: flex;
-
-}
-
-#contendor-imagnenes img {
-  height: 500px;
-}
-
-
-#titulo-presentacion h3 {
+.single_abouts_text h4{
+  color:#000000;
   font-family: 'Pacifico', cursive;
 }
 
-#contenido-presentacion {
+
+.single_abouts_text img {
   width: 100%;
-  height: 650px;
-  padding-top: 50px;
+  height: 400px;
 }
+
+
+
+
+
+
+/* SECCION FUNCIONALIDADES */
+
+.funcionalidades {
+}
+
+
+.col-md-3 {
+  margin-top: 50px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.span-icon {
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  border: 4px solid black;
+}
+
+.icon-funcionalidad {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  border: 2px solid red;
+}
+
+#icon-descuento, #icon-fav {
+  padding-left: 5px;
+
+}
+
+
+
+
+
 
 
 
@@ -132,6 +162,9 @@ h1 {
 
 #section-categorias {
   margin-top: 200px;
+  background-image: url('/assets/imgs/marmol.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main {
@@ -401,31 +434,28 @@ h1 {
     font-size: 8rem;
   }
 
-  #seccion-presentation {
-    height: 100%;
+
+
+}
+
+@media all and (max-width: 770px) {
+
+  .abouts {
+    display: inline-block;
   }
 
-  #contendor-imagnenes {
-    visibility: hidden;
-    overflow: hidden;
-  }
 
-  .contenido {
-    width: inherit;
-    height: inherit;
-    border: 2px solid red;
 
-  }
-
-  #titulo-presentacion {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  #contenido-presentacion {
-    height: 300px;
-    padding-top: 0;
+  .abouts_content {
+    display: inline-block;
+    /*flex-direction: column;*/
+    padding: 20px 20px;
+    .col-6 {
+      width: inherit;
+    }
   }
 }
+
+
 
 

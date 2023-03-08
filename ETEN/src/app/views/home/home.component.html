@@ -1,31 +1,4 @@
 
-<!-- Carrosel hecho con mdb que son tools designs usando bootstrap-->
-<!--
-<mdb-carousel [controls]="true" [indicators]="true">
-  <mdb-carousel-item>
-    <img
-      src="/assets/imgs/paella.jpg"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="/assets/imgs/pollo.jpeg"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="/assets/imgs/totitas.jpg"
-      class="d-block w-100"
-      alt="..."
-    />
-  </mdb-carousel-item>
-</mdb-carousel>
--->
-
 <section id="section-video">
   <div id="home-video">
     <video loop muted autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" id="video-banner">
@@ -38,8 +11,77 @@
 </section>
 
 
-<section id="section-categorias">
+<section id="abouts" class="abouts">
+  <div class="container">
+    <div class="row">
+      <div class="abouts_content">
+        <div class="col-md-6">
+          <div class="single_abouts_text text-center" data-wow-duration="1s">
+            <img src="assets/imgs/ETEN-tarjetas.png" alt="" />
+          </div>
+        </div>
 
+        <div class="col-md-6">
+          <div class="single_abouts_text" data-wow-duration="1s">
+            <h4>ETEN para tu sartén</h4>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan</p>
+            <p>dard dummy text ever since the 1500s,when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesettingdard dummy text ever since the 1500s,when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="seccion-funcionalidades" class="funcionalidades">
+  <div class="container">
+
+    <div class="tab-class">
+      <ul class="sub-navbar">
+        <li class="nav-item">
+          <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-1">
+            <span>
+              <img class="icon-funcionalidad" src="assets/imgs/comida-categorias.png" alt="" />
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-2">
+            <span>
+              <img class="icon-funcionalidad" src="assets/imgs/ingredientes.png" alt="" />
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">
+            <span>
+              <img class="icon-funcionalidad" src="assets/imgs/descuento.png" alt="" />
+            </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" data-bs-toggle="pill" href="#tab-3">
+            <span>
+              <img class="icon-funcionalidad" src="assets/imgs/favoritas.png" alt="" />
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<section id="section-categorias">
 
 
     <div class="main">
@@ -54,13 +96,13 @@
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Arroz</h2>
+                    <h2 style="color:#F1F1D2;">Arroz</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#F1F1D2;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(255, 255, 223, 0.62), rgba(241, 241, 210, 0.73)), url('https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -89,13 +131,13 @@
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Carne</h2>
+                    <h2 style="color:#980634;">Carne</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#980634;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(190, 43, 59, 0.62), rgba(152, 6, 52, 0.73)), url('https://images.pexels.com/photos/3535383/pexels-photo-3535383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -120,13 +162,13 @@
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Pasta</h2>
+                    <h2 style="color:#E4DC42;">Pasta</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#e5cd58;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(238, 235, 22, 0.62), rgba(228, 220, 66, 0.73)), url('https://images.pexels.com/photos/803963/pexels-photo-803963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -151,13 +193,13 @@
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Pescado</h2>
+                    <h2 style="color:#0AD6E9;">Pescado</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#e5cd58;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(5, 204, 255, 0.62), rgba(10, 214, 233, 0.73)), url('https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -169,6 +211,13 @@
             </div>
           </div>
         </li>
+
+
+        <li class="cards_item">
+          <img src="assets/imgs/categorias.png" height="400" width="500">
+        </li>
+
+
 
         <li class="cards_item">
           <div class="flip-box">
@@ -180,13 +229,13 @@
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Vegetales</h2>
+                    <h2 style="color:#00B84A;">Vegetales</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#e5cd58;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(7, 147, 56, 0.62), rgba(0, 184, 74, 0.73)), url('https://images.pexels.com/photos/11213759/pexels-photo-11213759.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -205,18 +254,51 @@
             <div class="flip-box-front text-center">
               <div class="card">
                 <div class="card_image">
-                  <img src="https://images.pexels.com/photos/803963/pexels-photo-803963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                        alt="mixed vegetable salad in a mason jar."/>
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Bebida</h2>
+                    <h2 style="color:#F880CE;">Dulce</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#e5cd58;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(245, 118, 224, 0.62), rgba(248, 128, 206, 0.73)), url('https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
+              <div class="inner color-white">
+                <div class="card_content">
+                  <div class="card_text">
+                    <p>Mostochely is a desktop application that manages a pizzeria, allowing users to
+                      order pizzas and manage the delivery.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+
+
+
+        <li class="cards_item">
+          <div class="flip-box">
+            <div class="flip-box-front text-center">
+              <div class="card">
+                <div class="card_image">
+                  <img src="https://images.pexels.com/photos/1441122/pexels-photo-1441122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                       alt="mixed vegetable salad in a mason jar."/>
+                </div>
+                <div class="card_content">
+                  <div class="card_text">
+                    <h2 style="color:#0057BA;">Bebida</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(75, 105, 236, 0.62), rgba(0, 87, 186, 0.73)), url('https://images.pexels.com/photos/1441122/pexels-photo-1441122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -235,18 +317,18 @@
             <div class="flip-box-front text-center">
               <div class="card">
                 <div class="card_image">
-                  <img src="https://images.pexels.com/photos/803963/pexels-photo-803963.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  <img src="https://images.pexels.com/photos/6399995/pexels-photo-6399995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                        alt="mixed vegetable salad in a mason jar."/>
                 </div>
                 <div class="card_content">
                   <div class="card_text">
-                    <h2>Pasta</h2>
+                    <h2 style="color:#9747DD;">Variado</h2>
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="flip-box-back text-center" style="background-color:#e5cd58;">
+            <div class="flip-box-back text-center" style="background: linear-gradient(to top, rgba(124, 108, 196, 0.62), rgba(151, 71, 221, 0.73)), url('https://images.pexels.com/photos/6399995/pexels-photo-6399995.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;">
               <div class="inner color-white">
                 <div class="card_content">
                   <div class="card_text">
@@ -258,18 +340,35 @@
             </div>
           </div>
         </li>
-
-
-
-
-
-
-
-
-
-
 
       </ul>
     </div>
 
 </section>
+
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fa-solid fa-envelope"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-google"></i></a>
+
+
+    </section>
+  </div>
+</footer>
+

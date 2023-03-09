@@ -1,3 +1,10 @@
+html, body {
+  margin:0;
+  padding:0;
+}
+
+
+
 .gradient-custom-2 {
 
 
@@ -7,7 +14,7 @@
   background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 100%) {
   .gradient-form {
     height: 105vh !important;
   }
@@ -19,6 +26,17 @@
     border-bottom-right-radius: .3rem;
   }
 }
+@media (max-width: 1200px){
+  .card.rounded-3 {
+    margin-top:5%;
+  }
+  @media (max-width: 800px){
+    .card.rounded-3 {
+      margin-top:12%;
+    }
+  }
+}
+
 
 .gradient-form {
   position: relative;
@@ -43,5 +61,7 @@ h4 {
 }
 
 .py-5-custom {
-  padding-top: 8%;
+  padding-top: 10%;
+  padding-bottom: 5%;
+  
 }

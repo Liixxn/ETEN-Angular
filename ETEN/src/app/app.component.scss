@@ -58,7 +58,17 @@ body {
 
 
 .nav-item:hover > a{
+  border-bottom: 1px solid #F05A21;
+
+}
+
+.nav-item:active,
+  .nav-item:focus{
   color: #F05A21;
+  border-bottom: 1px solid #F05A21;
+}
+
+.nav-link.active {
   border-bottom: 1px solid #F05A21;
 }
 
@@ -79,7 +89,6 @@ body {
 }
 
 .dropdown-menu li:hover a {
-  color: #F05A21;
   border-bottom: 1px solid #F05A21;
 }
 
@@ -89,4 +98,8 @@ body {
 
 .dropdown-item {
   font-size: 18px;
+}
+
+.active {
+  background-color: #F05A21;
 }

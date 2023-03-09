@@ -92,6 +92,7 @@ h1 {
 .single_abouts_text h4{
   color:#000000;
   font-family: 'Pacifico', cursive;
+  margin-bottom: 20px;
 }
 
 
@@ -105,32 +106,76 @@ h1 {
 
 
 
+
+
+
 /* SECCION FUNCIONALIDADES */
 
 
-.nav.nav-pills {
-  background-color: black;
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 300px;
+  width: 100%;
+  border: 3px solid red;
 }
 
-.icon-funcionalidad {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
+
+
+.tabs label {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin-right: 0.2rem;
+  cursor: pointer;
+  background-color: $color-crema;
+  font-weight: bold;
+  transition: background ease 0.3s;
+  border: 2px solid blue;
+}
+
+.tabs .tab {
+  order: 9;
+  flex-grow: 1;
+  width: 100%;
+  height: 100%;
+  display: none;
+  padding: 1rem;
+  background: #fff;
+  padding: 20px;
+  box-shadow: -10px 10px 0px 0px black;
+}
+
+.tab {
+  border: 2px solid red;
+}
+
+.tabs input[type="radio"] {
+  display: none;
+}
+
+.tabs input[type="radio"]:checked + label {
+  background: $azul-claro;
+}
+
+.tabs input[type="radio"]:checked + label + .tab {
   display: block;
 }
 
-.nav-link:hover {
-  background-color: $naranja-claro;
-}
+@media (max-width: 770px) {
+  .tabs .tab,
+  .tabs label {
+    order: initial;
+  }
 
-.nav-link:active {
-  background-color: $naranja-claro;
+  .tabs label {
+    width: 100%;
+    margin-left: 50px;
+  }
 }
-
-.nav-link:focus {
-  background-color: $naranja-claro;
-}
-
 
 
 
@@ -188,7 +233,9 @@ h1 {
 
 }
 
-
+.card_text p {
+  padding: 5px 15px;
+}
 
 
 .flip-box-front {
@@ -350,13 +397,8 @@ h1 {
   width: 100%;
 }
 
-#plato1-footer {
-
-  width: 200px;
-  height: inherit !important;
-}
-
-#plato2-footer {
+#plato1-footer,
+  #plato2-footer{
 
   width: 200px;
   height: inherit !important;

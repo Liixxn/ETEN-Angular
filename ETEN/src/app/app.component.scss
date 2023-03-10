@@ -1,5 +1,11 @@
 @import 'bootstrap/scss/bootstrap';
 
+
+$logo-ETEN-naranja: #F05A21;
+
+
+
+
 html {
   margin: 0;
   padding: 0;
@@ -20,7 +26,7 @@ body {
 
 
 .navbar-toggler {
-  background-color: #F05A21;
+  background-color: $logo-ETEN-naranja;
 }
 
 
@@ -58,18 +64,18 @@ body {
 
 
 .nav-item:hover > a{
-  border-bottom: 1px solid #F05A21;
+  border-bottom: 1px solid $logo-ETEN-naranja;
 
 }
 
 .nav-item:active,
   .nav-item:focus{
-  color: #F05A21;
-  border-bottom: 1px solid #F05A21;
+  color: $logo-ETEN-naranja;
+  border-bottom: 1px solid $logo-ETEN-naranja;
 }
 
 .nav-link.active {
-  border-bottom: 1px solid #F05A21;
+  border-bottom: 1px solid $logo-ETEN-naranja;
 }
 
 
@@ -89,7 +95,7 @@ body {
 }
 
 .dropdown-menu li:hover a {
-  border-bottom: 1px solid #F05A21;
+  border-bottom: 1px solid $logo-ETEN-naranja;
 }
 
 .nav-link {
@@ -101,5 +107,5 @@ body {
 }
 
 .active {
-  background-color: #F05A21;
+  background-color: $logo-ETEN-naranja;
 }

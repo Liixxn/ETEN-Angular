@@ -1,0 +1,141 @@
+.fondo_img {
+    background-image: url("/assets/imgs/fondo_img_info_receta2.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 1000px;
+
+}
+
+.fondo_img img {
+    border-radius: 20px;
+    box-shadow: 18px 12px 25px black;
+}
+
+@media (max-width: 701px) {
+    .fondo_img {
+        min-height: 900px;
+        /* ajusta este valor según tus necesidades */
+    }
+}
+
+@media (max-width: 576px) {
+    .fondo_img {
+        min-height: 750px;
+        /* ajusta este valor según tus necesidades */
+    }
+}
+
+@media (max-width: 425px) {
+    .fondo_img {
+        min-height: 600px;
+        /* ajusta este valor según tus necesidades */
+    }
+}
+
+/*
+.fondo_img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 80%;
+}
+*/
+
+
+
+
+.titulo_centrado {
+    padding-top: 3%;
+    padding-bottom: 4%;
+    text-align: center;
+}
+
+.lista_ingredientes {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.fondo_titulo {
+    //background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
+    background-image: url('https://img.freepik.com/foto-gratis/fondo-acuarela-pintada-mano_24972-1199.jpg?w=740&t=st=1679917777~exp=1679918377~hmac=eb04e3f69ea60ff9b7714cd963ebccf915fde8d801fd5ba6a0b985e3341537ab');
+    //background-repeat: repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.elaboracion_box {
+    padding-left: 7%;
+    padding-right: 7%;
+}
+
+.fin_pagina {
+    //background-image: url('https://img.freepik.com/foto-gratis/diseno-texturizado-suelos-madera_53876-94847.jpg?w=740&t=st=1679917408~exp=1679918008~hmac=ca2056537524361d2ee55ce548479f26536b7f293b94471c2fa1cd4f3283603d');
+    background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.texto_final {
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    padding: 5%;
+    box-shadow:
+        inset #ffa07a 0 0 0 5px,
+        inset #ffb347 0 0 0 1px,
+        inset #ffc04c 0 0 0 10px,
+        inset #ffd699 0 0 0 11px,
+        inset #ffe5b4 0 0 0 16px,
+        inset #ffdab9 0 0 0 17px,
+        inset #fff8dc 0 0 0 21px,
+        inset #ffefd5 0 0 0 22px;
+
+    text-shadow: 3px 3px 1px #ffd699;
+}
+
+.fin_pagina {
+    padding-bottom: 5%;
+}
+
+
+ul {
+    list-style: none;
+}
+
+.background_ingrediente {
+    background-image: url("/assets/imgs/blocnotas_info_receta.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 3%;
+
+}
+
+.background_elaboracion {
+    background-image: url("https://img.freepik.com/foto-gratis/marco-dorado-sobre-pintura-marmol-violeta-pastel_53876-104402.jpg?w=740&t=st=1679910742~exp=1679911342~hmac=a0ec3bc2ef8c761cf637044c4b54e4c69578b80b163c0b3ba136014939c01f7d");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parametros_info {
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 1%;
+}

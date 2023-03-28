@@ -14,36 +14,28 @@
 
 .iconos-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+    margin-left: auto;
+    padding-right: 5%;
+    padding-bottom: 2%;
 }
 
 .cross {
     font-size: 50px;
     color: white;
     font-weight: bold;
-
-    margin-left: auto;
-    padding-right: 5%;
+    box-sizing: border-box;
 }
 
-.arrow {
-    font-size: 90px;
-    color: white;
-    font-weight: bold;
-
-    margin-right: auto;
-    padding-left: 5%;
-}
-
-.cross:hover,
-.arrow:hover {
-    opacity: 0.8;
+.cross:hover {
+    //opacity: 0.8;
     cursor: pointer;
     //cursor: hand;
+    color: black;
+    border: #b4b4b4 solid;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #b4b4b4;
 }
-
 
 .fondo_img img {
     border-radius: 20px;
@@ -85,9 +77,10 @@
 
 .titulo_centrado {
     padding-top: 3%;
-    padding-bottom: 4%;
+    padding-bottom: 3%;
     text-align: center;
 }
+
 
 .lista_ingredientes {
     align-items: center;
@@ -100,7 +93,7 @@
 
 .fondo_titulo {
     //background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
-    background-image: url('https://img.freepik.com/foto-gratis/fondo-acuarela-pintada-mano_24972-1199.jpg?w=740&t=st=1679917777~exp=1679918377~hmac=eb04e3f69ea60ff9b7714cd963ebccf915fde8d801fd5ba6a0b985e3341537ab');
+    //->background-image: url('https://img.freepik.com/foto-gratis/fondo-acuarela-pintada-mano_24972-1199.jpg?w=740&t=st=1679917777~exp=1679918377~hmac=eb04e3f69ea60ff9b7714cd963ebccf915fde8d801fd5ba6a0b985e3341537ab');
     //background-repeat: repeat;
     background-position: center;
     background-repeat: no-repeat;
@@ -112,12 +105,35 @@
     padding-right: 7%;
 }
 
+/*
 .fin_pagina {
     //background-image: url('https://img.freepik.com/foto-gratis/diseno-texturizado-suelos-madera_53876-94847.jpg?w=740&t=st=1679917408~exp=1679918008~hmac=ca2056537524361d2ee55ce548479f26536b7f293b94471c2fa1cd4f3283603d');
     background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+*/
+.fin_pagina {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0)),
+        url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.borde_cajas {
+    padding: 1%;
+    border: #6c757d solid;
+    border-radius: 10px;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 2%;
 }
 
 .texto_final {

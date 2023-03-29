@@ -19,8 +19,15 @@
     padding-bottom: 2%;
 }
 
+.iconos-container a {
+    text-decoration: none;
+}
+
+
 .cross {
+    margin-top: 2%;
     font-size: 50px;
+    padding: 0 15px;
     color: white;
     font-weight: bold;
     box-sizing: border-box;
@@ -31,8 +38,8 @@
     cursor: pointer;
     //cursor: hand;
     color: black;
-    border: #b4b4b4 solid;
-    padding: 15px;
+    //border: #b4b4b4 solid;
+    //padding: 15px;
     border-radius: 20px;
     background-color: #b4b4b4;
 }

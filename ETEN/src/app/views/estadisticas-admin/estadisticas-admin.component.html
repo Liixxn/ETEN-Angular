@@ -1,0 +1,693 @@
+<section id="tabs">
+
+
+    <div class="col-xs-12 ">
+        <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-categorias-tab" data-toggle="tab" href="#nav-categorias"
+                    role="tab" aria-controls="nav-categorias" aria-selected="true"><span><img
+                            src="assets/imgs/comida-categorias.png" width="60" height="60"></span></a>
+                <a class="nav-item nav-link" id="nav-ingredientes-tab" data-toggle="tab" href="#nav-ingredientes"
+                    role="tab" aria-controls="nav-ingredientes" aria-selected="false"><span><img
+                            src="assets/imgs/ingredientes.png" width="60" height="60"></span></a>
+                <a class="nav-item nav-link" id="nav-ofertas-tab" data-toggle="tab" href="#nav-oferta" role="tab"
+                    aria-controls="nav-oferta" aria-selected="false"><span><img src="assets/imgs/descuento.png"
+                            width="60" height="60"></span></a>
+            </div>
+        </nav>
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-categorias" role="tabpanel"
+                aria-labelledby="nav-categorias-tab">
+                <p>ETEN trabaja con diferentes categorías de alimentos, para que puedas encontrar lo que
+                    necesitas de una forma más rápida y sencilla.</p>
+                <p>Declaramos que la categoría de alimentos es la base de nuestra aplicación, ya que es la que
+                    nos permite ofrecer una gran variedad de recetas,
+                    ya que se obtienen de diferentes sitios web, clasificándolas gracias a un modelo previamente
+                    entrenado y evaluado.</p>
+
+            </div>
+            <div class="tab-pane fade" id="nav-ingredientes" role="tabpanel" aria-labelledby="nav-ingredientes-tab">
+                <div class="form-row align-items-center justify-content-between buscador_div">
+                    <div class="col-sm-3 my-1">
+                        
+                        <!--Buscar por Nombre-->
+                        <input placeholder="Buscar por Nombre" [(ngModel)]="nombreSeleccionado"
+                            (keyup)="filtrarPorNombre()" (change)="onClickNombre()" class="form-control"
+                            list="listaNombres" />
+                        <datalist id="listaNombres">
+                            <option *ngFor="let nombre of todosNombres" [value]="nombre"></option>
+                        </datalist>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <!--Buscar por Categoria-->
+                        <select class="form-select">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                        </select>
+                    </div>
+                    <div class="col-auto my-1">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="checkbox">Checkbox</label>
+                        </div>
+                    </div>
+                    <div class="col-auto my-1">
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Encabezado 1</th>
+                            <th>Encabezado 2</th>
+                            <th>Encabezado 3</th>
+                            <th>Encabezado 4</th>
+                            <th>Encabezado 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane fade" id="nav-oferta" role="tabpanel" aria-labelledby="nav-ofertas-tab">
+
+
+                <div class="form-row align-items-center justify-content-between buscador_div">
+                    <div class="col-sm-3 my-1">
+                        <!--
+                        <select class="form-select" contenteditable="true">
+                            <option selected>Selecciona una opción</option>
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                        </select>
+
+                        <select id="cb_nombre" class="form-control">
+                            <option value="">Selecciona una opción</option>
+                            <option value="1">Opción 1</option>
+                            <option value="2">Opción 2</option>
+                            <option value="3">Opción 3</option>
+                            <option value="4">Opción 4</option>
+                            <option value="5">Opción 5</option>
+                        </select>
+                        
+                        <input type="text" [(ngModel)]="selectedValue" class="form-control" (keyup)="filter()">
+                        <select class="form-control">
+                            <option *ngFor="let item of filteredData" [value]="item">{{ item }}</option>
+                        </select>
+                        
+                        <select class="form-control" [(ngModel)]="selectedValue" (keyup)="filter()">
+                            <option *ngFor="let option of filteredData" [value]="option">{{ option }}</option>
+                        </select>
+-->
+                        <!--Buscar por Nombre-->
+                        <input placeholder="Buscar por Nombre" [(ngModel)]="nombreSeleccionado"
+                            (keyup)="filtrarPorNombre()" (change)="onClickNombre()" class="form-control"
+                            list="listaNombres" />
+                        <datalist id="listaNombres">
+                            <option *ngFor="let nombre of todosNombres" [value]="nombre"></option>
+                        </datalist>
+                    </div>
+                    <div class="col-sm-3 my-1">
+                        <!--Buscar por Categoria-->
+                        <select class="form-select">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="opcion1">Opción 1</option>
+                            <option value="opcion2">Opción 2</option>
+                            <option value="opcion3">Opción 3</option>
+                        </select>
+                    </div>
+                    <div class="col-auto my-1">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox">
+                            <label class="form-check-label" for="checkbox">Checkbox</label>
+                        </div>
+                    </div>
+                    <div class="col-auto my-1">
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Encabezado 1</th>
+                            <th>Encabezado 2</th>
+                            <th>Encabezado 3</th>
+                            <th>Encabezado 4</th>
+                            <th>Encabezado 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                        <tr>
+                            <td>Celda 1</td>
+                            <td>Celda 2</td>
+                            <td>Celda 3</td>
+                            <td>Celda 4</td>
+                            <td>Celda 5</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+</section>

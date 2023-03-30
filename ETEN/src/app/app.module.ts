@@ -9,6 +9,8 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './views/about-us/about-us.component';
+import { EstadisticasAdminComponent } from './views/estadisticas-admin/estadisticas-admin.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
     LoginComponent,
     SignUpComponent,
     AboutUsComponent,
+    EstadisticasAdminComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MdbCarouselModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -494,13 +494,29 @@ h1 {
     width: 100%;
   }
 
-  h1 {
-    font-size: 8rem;
-  }
+
 
 
 
 }
+
+
+//Ajuste de Titulos para ser responsive en dispositivos pequeños
+@media (max-width: 371px) {
+  h1 {
+      font-size: 90px;
+  }
+}
+@media (max-width: 266px) {
+  h1 {
+      font-size: 55px;
+  }
+  h6{
+    font-size: 20px;
+  }
+}
+
+
 
 @media all and (max-width: 770px) {
 
@@ -520,7 +536,7 @@ h1 {
   }
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1190px) {
 
   .card {
     width: 100%;
@@ -553,7 +569,7 @@ h1 {
 
 
 
-@media (min-width: 1180px) {
+@media (min-width: 1190px) {
   .cards_item {
     width: 33.3333%;
   }

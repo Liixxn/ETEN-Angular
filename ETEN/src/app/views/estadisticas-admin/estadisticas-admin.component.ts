@@ -7,23 +7,22 @@ import { Component } from '@angular/core';
 })
 export class EstadisticasAdminComponent {
 
+
+  /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
   data = ['opcion 1', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba'];
   todosNombresRecetas = this.data;
   nombreRecetaSeleccionado: string = '';
   opcionNombreRecetaSeleccionada: boolean = true;
-
 
   data2 = ['aaa', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba'];
   todosNombresUsers = this.data2;
   nombreUserSeleccionado: string = '';
   opcionNombreUserSeleccionada: boolean = true;
 
-
   data3 = ['aaa@gmail.com', 'prueba_3@gmail.com', 'prueba_2@gmail.com', 'prueba_1@gmail.com', 'prueba_1@gmail.com', 'xxxx@gmail.com', 'aaaccccc@gmail.com', 'aaabbbbbb@gmail.com'];
   todosEmailsUsers = this.data3;
   emailUserSeleccionado: string = '';
   opcionEmailUserSeleccionada: boolean = true;
-
 
   filtrarPorNombreReceta() {
     if (this.opcionNombreRecetaSeleccionada) {
@@ -60,5 +59,5 @@ export class EstadisticasAdminComponent {
     this.opcionEmailUserSeleccionada = false;
     this.todosEmailsUsers = this.data3;
   }
-
+  /* ---------- FIN AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
 }

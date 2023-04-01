@@ -19,12 +19,32 @@
         <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-categorias" role="tabpanel"
                 aria-labelledby="nav-categorias-tab">
-                <p>ETEN trabaja con diferentes categorías de alimentos, para que puedas encontrar lo que
-                    necesitas de una forma más rápida y sencilla.</p>
-                <p>Declaramos que la categoría de alimentos es la base de nuestra aplicación, ya que es la que
-                    nos permite ofrecer una gran variedad de recetas,
-                    ya que se obtienen de diferentes sitios web, clasificándolas gracias a un modelo previamente
-                    entrenado y evaluado.</p>
+
+
+                <!--
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                        [legend]="lineChartLegend" [plugins]="lineChartPlugins"></canvas>
+                    <button class="btn btn-outline-primary" (click)="shuffleData()">Shuffle</button>
+                </div>
+                -->
+                <div class="flex">
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                </div>
 
             </div>
             <!--FIN GRAFICAS Y ESTADISTICAS-->

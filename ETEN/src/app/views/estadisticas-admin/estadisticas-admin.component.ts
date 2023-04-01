@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 
+//graficas
+
+
+//import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
+import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
+//import { Color } from 'chart.js/dist/types/color';
+//import 'chartjs-plugin-datalabels';
+
 @Component({
   selector: 'app-estadisticas-admin',
   templateUrl: './estadisticas-admin.component.html',
@@ -60,4 +68,81 @@ export class EstadisticasAdminComponent {
     this.todosEmailsUsers = this.data3;
   }
   /* ---------- FIN AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
+  lineChartData: ChartDataset[] = [
+    { data: [12, 72, 78, 75, 17, 75], label: 'Oil Price' },
+    { data: [85, 12, 4, 5, 6, 7], label: 'Another' }
+  ];
+
+  lineChartLabels: string[] = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  lineChartOptions = {
+    responsive: true
+  };
+
+  lineChartLegend = true;
+  lineChartPlugins = [];
+  lineChartType = 'line';
+
+  shuffleData(): void {
+    this.lineChartData = [
+      { data: this.generateRandomData(), label: 'Oil Price' },
+      { data: this.generateRandomData(), label: 'Another' }
+    ];
+  }
+
+  private generateRandomData(): number[] {
+    return Array.from({ length: 6 }, () => Math.floor(Math.random() * 100));
+  }
+
+
+
+
+
+
+
+
+
+
+
+  //public doughnutChartLabels: string[] = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
+  public doughnutChartData: ChartData = {
+    labels: ['Pescado', 'Carne', 'Pasta', 'Verdura'],
+    datasets: [
+      {
+        data: [12, 19, 3, 5],
+        backgroundColor: [
+          'Blue',
+          'Red',
+          'Orange',
+          'Green'
+        ]
+      }
+    ]
+  };
+  /* Formas de las graficas:
+    public doughnutChartType: ChartType = 'line';
+    public doughnutChartType: ChartType = 'bar';
+    public doughnutChartType: ChartType = 'radar';
+    public doughnutChartType: ChartType = 'doughnut';
+    public doughnutChartType: ChartType = 'polarArea';
+      */
+  public doughnutChartType: ChartType = 'doughnut';
+
+
+  public doughnutChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+
+  };
+
+
+  constructor() { }
+
+  public doughnutChartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public doughnutChartHovered(e: any): void {
+    console.log(e);
+  }
 }

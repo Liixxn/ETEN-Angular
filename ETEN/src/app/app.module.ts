@@ -12,6 +12,8 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
 import { EstadisticasAdminComponent } from './views/estadisticas-admin/estadisticas-admin.component';
 import { FormsModule } from '@angular/forms';
 
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     MdbCarouselModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,10 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './views/about-us/about-us.component';
-import { BuscarCategoriaComponent } from './views/buscar-categoria/buscar-categoria.component';
+
+
+import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +21,8 @@ import { BuscarCategoriaComponent } from './views/buscar-categoria/buscar-catego
     LoginComponent,
     SignUpComponent,
     AboutUsComponent,
-    BuscarCategoriaComponent,
+
+      BuscadorCategoriaComponent,
 
   ],
   imports: [

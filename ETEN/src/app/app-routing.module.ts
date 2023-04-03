@@ -4,7 +4,10 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { SignUpComponent } from './views/sign-up/sign-up.component';
-import { BuscarCategoriaComponent } from './views/buscar-categoria/buscar-categoria.component';
+
+
+import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -12,7 +15,8 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'sign-up', component:SignUpComponent},
   {path: 'about-us', component:AboutUsComponent},
-  {path: 'buscar-categoria', component:BuscarCategoriaComponent}];
+  {path: 'buscador-categoria', component:BuscadorCategoriaComponent }];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

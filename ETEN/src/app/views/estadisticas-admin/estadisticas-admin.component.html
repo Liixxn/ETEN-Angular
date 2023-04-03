@@ -1,0 +1,728 @@
+<section id="tabs">
+
+
+    <div class="col-xs-12 ">
+        <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-categorias-tab" data-toggle="tab" href="#nav-categorias"
+                    role="tab" aria-controls="nav-categorias" aria-selected="true"><span><img
+                            src="assets/imgs/comida-categorias.png" width="60" height="60"></span></a>
+                <a class="nav-item nav-link" id="nav-ingredientes-tab" data-toggle="tab" href="#nav-ingredientes"
+                    role="tab" aria-controls="nav-ingredientes" aria-selected="false"><span><img
+                            src="assets/imgs/ingredientes.png" width="60" height="60"></span></a>
+                <a class="nav-item nav-link" id="nav-ofertas-tab" data-toggle="tab" href="#nav-oferta" role="tab"
+                    aria-controls="nav-oferta" aria-selected="false"><span><img src="assets/imgs/descuento.png"
+                            width="60" height="60"></span></a>
+            </div>
+        </nav>
+        <!--GRAFICAS Y ESTADISTICAS-->
+        <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-categorias" role="tabpanel"
+                aria-labelledby="nav-categorias-tab">
+
+
+                <!--
+                <div class="chart-wrapper">
+                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+                        [legend]="lineChartLegend" [plugins]="lineChartPlugins"></canvas>
+                    <button class="btn btn-outline-primary" (click)="shuffleData()">Shuffle</button>
+                </div>
+                -->
+                <div class="flex">
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                    <div style="display: block">
+                        <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
+                            [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
+                            (chartHover)="doughnutChartHovered($event)"></canvas>
+                    </div>
+                </div>
+
+            </div>
+            <!--FIN GRAFICAS Y ESTADISTICAS-->
+            <!--TABLA DE USERS-->
+            <div class="tab-pane hacer_scroll fade" id="nav-ingredientes" role="tabpanel"
+                aria-labelledby="nav-ingredientes-tab">
+                <div class="form-row align-items-center justify-content-between buscador_div">
+
+                    <!--Buscar por Nombre-->
+                    <div class="col-sm-3 my-1">
+                        <input placeholder="Buscar por Nombre de Usuario" [(ngModel)]="nombreUserSeleccionado"
+                            (keyup)="filtrarPorNombreUser()" (change)="onClickNombreUser()" class="form-control"
+                            list="listaNombresUser" />
+                        <datalist id="listaNombresUser">
+                            <option *ngFor="let nombre of todosNombresUsers" [value]="nombre"></option>
+                        </datalist>
+                    </div>
+                    <!--Buscar por email-->
+                    <div class="col-sm-3 my-1">
+                        <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
+                            (keyup)="filtrarPorEmailUser()" (change)="onClickEmailUser()" class="form-control"
+                            list="listaEmailUser" />
+                        <datalist id="listaEmailUser">
+                            <option *ngFor="let nombre of todosEmailsUsers" [value]="nombre"></option>
+                        </datalist>
+                    </div>
+                    <!--CheckBox Subscripcion-->
+                    <div class="col-auto my-1">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox_subscripcion">
+                            <label class="form-check-label" for="checkbox">Subscripción</label>
+                        </div>
+                    </div>
+                    <!--CheckBox User Activo-->
+                    <div class="col-auto my-1">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox_usuario_activo">
+                            <label class="form-check-label" for="checkbox">Usuario Activo</label>
+                        </div>
+                    </div>
+                    <!--Boton Buscar-->
+                    <div class="col-auto my-1">
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+
+                <table class="table table-striped ajustar_tabla_users">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre Usuario</th>
+                            <th>Email</th>
+                            <th>Nº recetas en favorito</th>
+                            <th>Subscrito</th>
+                            <th>Activo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                        <tr>
+                            <td>id</td>
+                            <td>Mario Gonzalez Espinosa</td>
+                            <td>pruebaEmail@gmail.com</td>
+                            <td>16</td>
+                            <td>Si</td>
+                            <td>Si</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+            <!--FIN TABLA DE USERS-->
+            <!--TABLA DE RECETAS-->
+            <div class="tab-pane hacer_scroll fade" id="nav-oferta" role="tabpanel" aria-labelledby="nav-ofertas-tab">
+
+
+                <div class="form-row align-items-center justify-content-between buscador_div">
+                    <div class="col-sm-3 my-1">
+
+                        <!--Buscar por Nombre-->
+                        <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
+                            (keyup)="filtrarPorNombreReceta()" (change)="onClickNombreReceta()" class="form-control"
+                            list="listaNombresReceta" />
+                        <datalist id="listaNombresReceta">
+                            <option *ngFor="let nombre of todosNombresRecetas" [value]="nombre"></option>
+                        </datalist>
+                    </div>
+                    <!--Buscar por Categoria-->
+                    <div class="col-sm-3 my-1">
+                        <select class="form-select">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="opcion1">Arroz</option>
+                            <option value="opcion2">Bbeida</option>
+                            <option value="opcion3">Carne</option>
+                            <option value="opcion4">Dulce</option>
+                            <option value="opcion5">Pasta</option>
+                            <option value="opcion6">Pescado</option>
+                            <option value="opcion7">Variado</option>
+                            <option value="opcion8">Vegetales</option>
+                        </select>
+                    </div>
+                    <!--CheckBox Receta Activa-->
+                    <div class="col-auto my-1">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                            <label class="form-check-label" for="checkbox">Receta Activa</label>
+                        </div>
+                    </div>
+                    <!--Boton Buscar-->
+                    <div class="col-auto my-1">
+                        <button type="button" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+
+                <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre Receta</th>
+                            <th>Categoria</th>
+                            <th>Numero de Comentarios</th>
+                            <th>Activo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>img</td>
+                            <td>Receta de Redondo de ternera, receta de la abuela</td>
+                            <td>Carne</td>
+                            <td>245</td>
+                            <td>
+                                <!--CheckBox Receta Activa-->
+                                <div class="col-auto my-1">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="footer_boton">
+                    <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                </div>
+
+
+
+
+            </div>
+            <!--FIN TABLA DE RECETAS-->
+        </div>
+
+
+
+    </div>
+
+
+
+
+</section>

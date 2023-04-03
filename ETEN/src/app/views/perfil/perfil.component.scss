@@ -26,7 +26,7 @@ html {
     width: 100%;
     display: flex;
     justify-content: center;
-    background: linear-gradient(#752222, transparent);
+    background: linear-gradient(#dd591c, transparent);
     margin-bottom: 1.25rem;
 }
 
@@ -163,15 +163,36 @@ h4 {
     box-shadow: 0 0 12px rgba(0, 0, 0, .2);
     background: linear-gradient(#d37414, transparent);
     
-    border-radius: 67px;
-    width: 300%;
+    //border-radius: 67px; //redondel de las esquinas
+    width: 121%;
     left: 300px;
     margin-top: 1.25rem;
-    max-width: 500px;
-    margin-bottom: 100px;
+    //max-width: 500px;
+    margin-bottom: auto;
     padding-bottom: 30%;
+    max-width: auto;
+
     
+    
+     
 }
+
+.contenedor{
+max-height: 250px;
+//overflow-y: auto;
+max-width: auto;
+
+  padding: 0px;
+  
+  
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+
+
+
 .seccion-perfil-usuario .perfil-usuario-bio {
     display: flex;
     flex-wrap: wrap;
@@ -195,7 +216,7 @@ h4 {
 .formulario{
   margin: 0;
   position: absolute;
-  top: 25%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -214,42 +235,30 @@ h3{
   letter-spacing: 15px;
 }
 
-.seccion-perfil-usuario .lista-datos {
-    width: 50%;
-    list-style: none;
-}
-
-.seccion-perfil-usuario .lista-datos li {
-    padding: 5px 0;
-}
-
-.seccion-perfil-usuario .lista-datos li>.icono {
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    vertical-align: middle;
-}
-
-
-.seccion-perfil-usuario .redes-sociales {
-    position: absolute;
-    right: calc(0px - 50px - 1rem);
-    top: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-/* adactacion a dispositivos */
-@media (max-width: 750px) {
-    .seccion-perfil-usuario .lista-datos {
-        width: 100%;
-    }
-
+/*
+//adactacion a dispositivos 
+@media (max-width: 1000px) {
     .seccion-perfil-usuario .perfil-usuario-portada,
-    .seccion-perfil-usuario .perfil-usuario-body {
-        width: 95%;
+    .seccion-perfil-usuario .perfil-usuario-body,
+    .seccion-perfil-usuario .perfil-usuario-footer {
+        width: 138%;
+        
     }
 
 }
+*/
+.gradient-custom-2 {
+   
+    
+    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #aa3c66, #81b443);
+    
+   
+    background: linear-gradient(to right, #ee7724, #d8363a, #ce2c2c, #d07819);
+
+    margin-bottom: 15px;
+    }
+
+
 
 
 

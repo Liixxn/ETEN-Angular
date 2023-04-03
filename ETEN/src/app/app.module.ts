@@ -18,7 +18,7 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
-
+import { OfertasComponent } from './views/ofertas/ofertas.component';
 
 
 
@@ -35,7 +35,8 @@ import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo
     PerfilComponent,
     BuscadorCategoriaComponent,
     BuscadorIngredienteComponent,
-    BuscadorTituloComponent
+    BuscadorTituloComponent,
+    OfertasComponent
 
   ],
   imports: [

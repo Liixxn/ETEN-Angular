@@ -10,6 +10,7 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
+import { OfertasComponent } from "./views/ofertas/ofertas.component";
 
 
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'perfil', component:PerfilComponent},
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
   {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
-  {path: 'buscador-titulo', component:BuscadorTituloComponent}];
+  {path: 'buscador-titulo', component:BuscadorTituloComponent},
+  {path: 'ofertas', component:OfertasComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

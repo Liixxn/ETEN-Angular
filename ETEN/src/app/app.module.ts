@@ -12,6 +12,8 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
 import { InfoRecetaComponent } from './views/info-receta/info-receta.component';
 import { EstadisticasAdminComponent } from './views/estadisticas-admin/estadisticas-admin.component';
 import { PerfilComponent } from './views/perfil/perfil.component';
+import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { FormsModule } from '@angular/forms';
 
 import { NgChartsModule } from 'ng2-charts';
@@ -25,7 +27,9 @@ import { NgChartsModule } from 'ng2-charts';
     AboutUsComponent,
     InfoRecetaComponent,
     EstadisticasAdminComponent,
-    PerfilComponent
+    PerfilComponent,
+    BuscadorCategoriaComponent,
+    BuscadorIngredienteComponent
 
   ],
   imports: [

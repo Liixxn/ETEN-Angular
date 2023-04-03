@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import { NgChartsModule } from 'ng2-charts';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,12 +18,9 @@ import { PerfilComponent } from './views/perfil/perfil.component';
 import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
-import { FormsModule } from '@angular/forms';
-
-import { NgChartsModule } from 'ng2-charts';
 
 
-import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+
 
 
 @NgModule({
@@ -37,8 +36,6 @@ import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-
     BuscadorCategoriaComponent,
     BuscadorIngredienteComponent,
     BuscadorTituloComponent
-
-      BuscadorCategoriaComponent,
 
   ],
   imports: [

@@ -1,0 +1,75 @@
+<section id="buscador-bar">
+    <div class="sidebar">
+      <form>
+        <input type="text" #nombreReceta />
+        <button type="button" (click)="agregarTarjeta()">Añadir</button>
+        <div #contenedorTarjetas>
+          <div class="tarjeta-aniadida" *ngFor="let ingrediente of ingredientes; let i = index">
+            <span>{{ ingrediente }}</span>
+            <span class="borrar" (click)="eliminarIngrediente(i)">x</span>
+          </div>
+        </div>
+      </form>
+      <div class="icon-sidebar">
+        <img src="assets/imgs/recipe-book.png" width="150" height="150">
+      </div>
+    </div>
+    <div class="right-container">
+      
+      <div class="scroll-content">
+        <div class="card">
+          <a href="#"><img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap"></a>
+          <div class="card-body">
+            <a href="#"><h5 class="card-title">Card title</h5></a>
+          </div>
+        </div>
+        <a href="#"><div class="card">
+          <img class="card-img-top" src="assets/imgs/pasta.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        </a>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+  
+  
+      </div>
+    </div>
+  
+  </section>
+  

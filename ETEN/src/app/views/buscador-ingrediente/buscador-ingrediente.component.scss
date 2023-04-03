@@ -1,0 +1,141 @@
+/* VARIABLES */
+
+$logo-ETEN-naranja: #F05A21;
+$naranja-intermedio: #EC6433;
+$naranja-claro: #F37A44;
+$azul-oscuro: #155386;
+$azul-claro: #0086AA;
+$color-crema: #E9DFCB;
+
+
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  height: 100%;
+  background-color: $color-crema;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+#buscador-bar {
+  margin-top:100px;
+
+}
+
+.sidebar {
+  position: fixed;
+  height: 100%;
+  left: 0;
+  width: 300px;
+  background-color: rgb(255, 92, 0);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0);
+
+}
+
+.icon-sidebar {
+  margin-top: auto;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.search-titulo {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-buscar {
+  border-radius: 5px;
+  width: 100%;
+
+}
+
+.right-container {
+  margin-left: 300px;
+  height: 100%;
+
+}
+
+.right-container h3 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+.scroll-content {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: scroll;
+
+}
+
+.card {
+  width: 300px;
+  margin: 20px 20px;
+  height: 300px;
+}
+
+.card:hover {
+  box-shadow: 2px 2px 2px rgba(0, 0, 0);
+
+}
+
+.card img {
+  width:300px;
+  height:200px;
+  background-size: cover;
+}
+
+.card-body a {
+  text-decoration: none;
+}
+
+.card-title {
+  text-align: center;
+
+}
+
+.tarjeta-aniadida {
+  background-color: #fff;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-top: 10px;   
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  max-width: 300px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 270px;
+}
+
+.borrar {
+  color: red;
+  margin-left: 5px;;
+  cursor: pointer;
+}
+
+  

@@ -11,6 +11,10 @@ import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
 
+
+import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+
+
 const routes: Routes = [
   {path: '', component:HomeComponent},
   {path: 'index', component:HomeComponent},
@@ -22,7 +26,8 @@ const routes: Routes = [
   {path: 'perfil', component:PerfilComponent},
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
   {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
-  {path: 'buscador-titulo', component:BuscadorTituloComponent}];
+  {path: 'buscador-titulo', component:BuscadorTituloComponent},
+  {path: 'buscador-categoria', component:BuscadorCategoriaComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -20,6 +20,10 @@ import { FormsModule } from '@angular/forms';
 
 import { NgChartsModule } from 'ng2-charts';
 
+
+import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +37,8 @@ import { NgChartsModule } from 'ng2-charts';
     BuscadorCategoriaComponent,
     BuscadorIngredienteComponent,
     BuscadorTituloComponent
+
+      BuscadorCategoriaComponent,
 
   ],
   imports: [

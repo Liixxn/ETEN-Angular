@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './views/about-us/about-us.component';
 import { InfoRecetaComponent } from './views/info-receta/info-receta.component';
 import { EstadisticasAdminComponent } from './views/estadisticas-admin/estadisticas-admin.component';
+import { PerfilComponent } from './views/perfil/perfil.component';
 import { FormsModule } from '@angular/forms';
 
 import { NgChartsModule } from 'ng2-charts';
@@ -23,7 +24,8 @@ import { NgChartsModule } from 'ng2-charts';
     SignUpComponent,
     AboutUsComponent,
     InfoRecetaComponent,
-    EstadisticasAdminComponent
+    EstadisticasAdminComponent,
+    PerfilComponent
 
   ],
   imports: [

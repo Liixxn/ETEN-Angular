@@ -9,6 +9,7 @@ import { SignUpComponent } from './views/sign-up/sign-up.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './views/about-us/about-us.component';
+import { InfoRecetaComponent } from './views/info-receta/info-receta.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AboutUsComponent } from './views/about-us/about-us.component';
     LoginComponent,
     SignUpComponent,
     AboutUsComponent,
+    InfoRecetaComponent,
 
   ],
   imports: [

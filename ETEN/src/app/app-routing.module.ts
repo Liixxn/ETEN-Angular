@@ -9,6 +9,7 @@ import { EstadisticasAdminComponent } from './views/estadisticas-admin/estadisti
 import { PerfilComponent } from './views/perfil/perfil.component';
 import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-categoria.component';
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
+import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'estadisticas', component: EstadisticasAdminComponent},
   {path: 'perfil', component:PerfilComponent},
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
-  {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent}];
+  {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
+  {path: 'buscador-titulo', component:BuscadorTituloComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

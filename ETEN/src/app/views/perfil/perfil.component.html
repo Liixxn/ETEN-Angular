@@ -1,50 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<section class="seccion-perfil-usuario">
+    <div class="perfil-usuario-header">
 
-<div class="container">
-</div>
 
-<body>
 
-    <section class="seccion-perfil-usuario">
-        <div class="perfil-usuario-header">
-            <div class="perfil-usuario-portada">
-                <div class="perfil-usuario-avatar">
-                    <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="img-avatar">
-                    <div class="datos-perfil">
-                        <h4 class="titulo-usuario">Sofía Ferreiro</h4>
+        <div class="perfil-usuario-portada">
+
+            <div class="row">
+                <div class="d-flex flex-column align-items-center">
+                    <button type="button" class="btn btn-primary align-self-end btn_ajustes"><i
+                            class="fas fa-wrench"></i></button>
+                    <div class="text-center position-relative">
+                        <button type="button" (click)="seleccionarImagen()" class="btn btn-secondary btn_cambio_img">
+                            <i class="far fa-image"></i>
+                        </button>
+                        <div class="img-container">
+                            <img [src]="imagenSeleccionada" alt="img-avatar"
+                                class="img-fluid img_user">
+                            <h1 class="nombre_user">Lian Zi Salmeron Lopez</h1>
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <button type="button" class="boton-avatar">
+        </div>
+
+
+
+
+
+        <!--
+            <div class="perfil-usuario-portada">
+
+              
+
+                <div class="d-flex flex-wrap flex-column align-items-left justify-content-left">
+                    <div class="flex-grow-1 d-flex align-items-center gap-2 perfil-usuario-avatar">
+                      <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="img-avatar">
+                      <div class="datos-perfil">
+                        <h4 class="titulo-usuario">Sofía Ferreiro</h4>
+                      </div>
+                      <button type="button" class="btn boton-avatar">
                         <i class="far fa-image"></i>
-                    </button>
+                      </button>
+                    </div>
+                  </div>
+
+               
+            </div>
+            -->
+    </div>
+
+    <div class="perfil-usuario-body">
+        <div class="perfil-usuario-bio">
+            <form class="formulario">
+                <p>Nombre de usuario</p>
+                <div class="form-outline mb-3">
+                    <input type="text" id="form2Example11" class="form-control" placeholder="nombre" />
                 </div>
 
-                <button type="button" class="boton-portada">
-                    <button type=""><i class="fas fa-wrench"></i></button>
-                </button>
-            </div>
+                <p>Correo electronico</p>
+                <div class="form-outline mb-4">
+                    <input type="email" id="form2Example22" class="form-control" placeholder="correo" />
+                </div>
+
+                <p>Contraseña</p>
+                <div class="form-outline mb-4">
+                    <input type="password" id="form2Example22" class="form-control" placeholder="contraseña" />
+                </div>
+            </form>
         </div>
-        
-        <div class="perfil-usuario-body">
-            <div class="perfil-usuario-bio">
-                <form class="formulario">
-                    <p>Nombre de usuario</p>
-                    <div class="form-outline mb-3">
-                        <input type="text" id="form2Example11" class="form-control" placeholder="nombre" />
-                    </div>
-
-                    <p>Correo electronico</p>
-                    <div class="form-outline mb-4">
-                        <input type="email" id="form2Example22" class="form-control" placeholder="correo" />
-                    </div>
-
-                    <p>Contraseña</p>
-                    <div class="form-outline mb-4">
-                        <input type="password" id="form2Example22" class="form-control" placeholder="contraseña" />
-                    </div>
-                </form>
-            </div>
 
 
 
@@ -52,9 +76,9 @@
 
 
 
-        </div>
-    </section>
-
+    </div>
+</section>
+<section>
     <!--
     <div class = "contenedor">
 
@@ -73,8 +97,29 @@
         <p>2.</p> <br>
         <p>3.</p> <br>
     </div>
+</section>
 
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
 
-</body>
+        <section class="mb-4">
 
-</html>
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fa-solid fa-envelope"></i></a>
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-instagram"></i></a>
+
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+        </section>
+
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="http://localhost:4200/">Eten.com</a>
+    </div>
+
+</footer>

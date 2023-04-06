@@ -1,17 +1,11 @@
+
+
 .container {
     margin-top: 105px;
     //border: 2px solid red;
 }
 
-body {
-    color: #404040;
-    font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
-}
 
-html {
-    text-size-adjust: 100%;
-    line-height: 1.4;
-}
 
 //Centrar todos los componentes de la pagina
 .seccion-perfil-usuario {
@@ -250,9 +244,38 @@ html {
 
 /* LISTA DE FAVORITOS*/
 
-.gradient-custom-2 {
+#seccion-favoritas h3 {
+  text-align: center;
+}
 
-    background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #aa3c66, #81b443);
-    background: linear-gradient(to right, #ee7724, #d8363a, #ce2c2c, #d07819);
-    //margin-bottom: 15px;
+.div-contenido-recetas {
+  height: 100vh;
+  overflow-y: scroll;
+  border-radius: 5px;
+  box-shadow: 0 0 12px rgb(0, 0, 0);
+  margin: 0 20px;
+}
+
+.scroll-contenido {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+
+}
+
+.card {
+  width: 300px;
+  margin: 20px 20px;
+  height: 300px;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  text-align: center;
 }

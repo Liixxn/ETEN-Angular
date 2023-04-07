@@ -27,6 +27,42 @@ body {
   margin-top:100px;
 
 }
+.top-bar form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar input[type="text"] {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #555;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.top-bar input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.top-bar button[type="button"] {
+  background-color: #f05a21;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.top-bar button[type="button"]:hover {
+  background-color: #ec6433;
+}
 
 .sidebar {
   position: fixed;
@@ -78,21 +114,22 @@ body {
 }
 
 
+
+.card {
+  width: 300px;
+  margin: 20px auto; /* centrar horizontalmente */
+  height: 300px;
+}
+
 .scroll-content {
   height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   overflow-y: scroll;
-
 }
 
-.card {
-  width: 300px;
-  margin: 20px 20px;
-  height: 300px;
-}
 
 .card:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0);
@@ -138,4 +175,35 @@ body {
   cursor: pointer;
 }
 
+.top-bar {
+  flex: 1;
   
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  flex-direction: column;
+  height: 200px !important;
+  
+}
+
+.top-bar form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tarjetas {
+  display: flex;
+  justify-content: center;
+}
+
+.tarjetas-container {
+  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+ 
+}

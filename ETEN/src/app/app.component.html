@@ -16,14 +16,17 @@
             Buscador
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Por Título</a></li>
-            <li><a class="dropdown-item" href="#">Por Categoría</a></li>
+            <li><a class="dropdown-item" [routerLink]="['buscador-titulo']">Por Título</a></li>
+            <li><a class="dropdown-item" [routerLink]="['buscador-categoria']">Por Categoría</a></li>
             <!--<li><hr class="dropdown-divider"></li>-->
-            <li><a class="dropdown-item" href="#">Por Ingredientes</a></li>
+            <li><a class="dropdown-item" [routerLink]="['buscador-ingrediente']">Por Ingredientes</a></li>
           </ul>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" href="#">Ofertas</a>
+          <a class="nav-link" aria-current="page"  [routerLink]="['ofertas']">Ofertas</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" aria-current="page" [routerLink]="['estadisticas']" >Estadisticas</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" aria-current="page"  [routerLink]="['about-us']">Acerca de</a>

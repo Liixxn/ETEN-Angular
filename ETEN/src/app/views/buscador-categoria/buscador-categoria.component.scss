@@ -172,5 +172,35 @@ body {
     margin: 5px;
     font-size: 16px;
   }
-
 }
+  
+@media screen and (max-width: 350px) {
+  .top-bar {
+    flex: 1;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    flex-direction: column;
+    height: 300px !important;
+    
+  }
+  .top-bar .buttons-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .top-bar .buttons-container button {
+    width: 100px;
+    height: 40px;
+    margin: 5px;
+    font-size: 16px;
+  }
+  .top-bar .buttons-container button:nth-child(even) {
+    margin-left: 5px;
+  }
+}
+
+

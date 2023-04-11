@@ -20,6 +20,14 @@
       <section class="featured">
         
         <div class="grid">
+          <div class="card" *ngFor="let product of paginatedProducts">
+            <img [src]="product.image" alt="Producto">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.description }}</p>
+            <span class="price">{{ product.price }}</span>
+            <a href="#" class="btn-primary">Comprar</a>
+          </div>
+          <!--
           <div class="card">
             <img src="https://via.placeholder.com/300x300" alt="Producto">
             <h3>Producto 1</h3>
@@ -159,13 +167,13 @@
             <p>Descripción del producto 20.</p>
             <span class="price">2.66</span>
             <a href="#" class="btn-primary">Comprar</a>
-          </div>
+          </div>-->
         </div>
       </section>
   
       <div class="pagination">
-        <a href="#" class="prev">Anterior</a>
-        <a href="#" class="page active">1</a>
+        <a href="#" (click)="previousPage()" class="prev">&laquo;Anterior</a>
+        <!--<a href="#" class="page active">1</a>
         <a href="#" class="page">2</a>
         <a href="#" class="page">3</a>
         <a href="#" class="page">4</a>
@@ -174,8 +182,11 @@
         <a href="#" class="page">7</a>
         <a href="#" class="page">8</a>
         <a href="#" class="page">9</a>
-        <a href="#" class="page">10</a>
-        <a href="#" class="next">Siguiente</a>
+        <a href="#" class="page">10</a>-->
+        <a href="#" *ngFor="let page of [].constructor(totalPages); 
+          let i = index" (click)="setPage(i + 1)" class="page" 
+          [ngClass]="{ 'active': currentPage === i + 1 }">{{ i + 1 }}</a>
+        <a href="#" (click)="nextPage()" class="next">Siguiente&raquo;</a>
       </div>
     </main>
   

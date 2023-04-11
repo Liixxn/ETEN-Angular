@@ -16,13 +16,19 @@ export class BuscadorIngredienteComponent {
     const nombreReceta = this.inputNombreReceta.nativeElement.value.trim();
     const nombreRecetaRecortado = nombreReceta.slice(0, 20) + (nombreReceta.length > 28 ? "..." + nombreReceta[nombreReceta.length - 1] : "");
     
-    if (nombreRecetaRecortado && this.ingredientes.length < this.MAX_TARJETAS) {
+    if (!nombreRecetaRecortado) {
+      alert("El campo de añadir ingrediente está vacío.");
+    } else if (this.ingredientes.length >= this.MAX_TARJETAS) {
+      alert("Ya no puedes añadir más ingredientes.");
+    } else {
       this.ingredientes.push(nombreRecetaRecortado);
       this.inputNombreReceta.nativeElement.value = "";
+      console.log(this.ingredientes);
     }
   }
 
   eliminarIngrediente(index: number) {
     this.ingredientes.splice(index, 1);
+    console.log(this.ingredientes);
   }
 }

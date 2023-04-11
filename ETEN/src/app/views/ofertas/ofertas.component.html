@@ -172,8 +172,8 @@
       </section>
   
       <div class="pagination">
-        <a href="#" (click)="previousPage()" class="prev">&laquo;Anterior</a>
-        <!--<a href="#" class="page active">1</a>
+        <!--<a href="#" (click)="previousPage()" class="prev">&laquo;Anterior</a>
+        <a href="#" class="page active">1</a>
         <a href="#" class="page">2</a>
         <a href="#" class="page">3</a>
         <a href="#" class="page">4</a>
@@ -183,10 +183,15 @@
         <a href="#" class="page">8</a>
         <a href="#" class="page">9</a>
         <a href="#" class="page">10</a>-->
-        <a href="#" *ngFor="let page of [].constructor(totalPages); 
-          let i = index" (click)="setPage(i + 1)" class="page" 
-          [ngClass]="{ 'active': currentPage === i + 1 }">{{ i + 1 }}</a>
-        <a href="#" (click)="nextPage()" class="next">Siguiente&raquo;</a>
+        <a href="javascript:void(0)" (click)="previousPage()" class="prev">&laquo;Anterior</a>
+        <ng-container *ngFor="let page of pages">
+          <a href="javascript:void(0)" *ngIf="page === currentPage; else otherPage" 
+            class="page active">{{ page }}</a>
+          <ng-template #otherPage>
+            <a href="javascript:void(0)" (click)="setPage(page)" class="page">{{ page }}</a>
+          </ng-template>
+        </ng-container>
+        <a href="javascript:void(0)" (click)="nextPage()" class="next">Siguiente&raquo;</a>
       </div>
     </main>
   

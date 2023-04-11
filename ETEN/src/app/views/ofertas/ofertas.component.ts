@@ -18,6 +18,7 @@ export class OfertasComponent implements OnInit {
   itemsPerPage: number = 20;
   currentPage: number = 1;
   totalPages: number;
+  pages: number[] = [];
 
   constructor() {
     this.totalPages = 0;
@@ -27,6 +28,7 @@ export class OfertasComponent implements OnInit {
     this.products = this.generateProducts();
     this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
     this.setPage(this.currentPage);
+    this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
 
   generateProducts(): Product[] {
@@ -34,8 +36,8 @@ export class OfertasComponent implements OnInit {
     for (let i = 1; i <= 120; i++) {
       const product: Product = {
         image: `https://via.placeholder.com/300x300?text=Product+${i}`,
-        title: `Product ${i}`,
-        description: `Description of product ${i}.`,
+        title: `Producto ${i}`,
+        description: `Descripción del producto ${i}.`,
         price: +(Math.random() * (10 - 1) + 1).toFixed(2)
       };
       products.push(product);

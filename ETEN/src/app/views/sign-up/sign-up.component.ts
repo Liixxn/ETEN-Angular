@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,6 +18,22 @@ export class SignUpComponent {
     emailConfirm:string = '';
     contraseniaUsuario:string = '';
     contraseniaConfirm:string = '';
+
+    usuarios:Usuario[] = [];
+
+
+    constructor(private usuarioService:UsuarioService) {
+
+    }
+    ngOnInit() {
+      this.cargarUsuarios();
+    }
+    private cargarUsuarios() {
+      this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
+        this.usuarios = data;
+
+      })
+    }
 
     // funcion que recoge la informacion del registro, comprueba que no haya campos vacios y que los emails y
     // contraseñas coincidan y que el formato del email sea correcto para poder registrarse
@@ -46,10 +64,8 @@ export class SignUpComponent {
             }
 
           }
-
-
-
         }
 
     }
+
 }

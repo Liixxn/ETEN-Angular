@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
+import {HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -45,7 +46,8 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     MdbCarouselModule,
     NgbModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

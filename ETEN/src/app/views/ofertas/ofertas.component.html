@@ -11,14 +11,20 @@
     <main>
       <nav class="button-menu">
         <ul>
-          <li><a href="#" class="btn-primary">Productos Frescos</a></li>
-          <li><a href="#" class="btn-primary">Despensa</a></li>
-          <li><a href="#" class="btn-primary">Bebidas</a></li>
+          <li>
+            <a href="#" class="btn-primary" [class.active]="selectedCategory === ''" (click)="selectCategory(''); $event.preventDefault()">
+              Todos los productos
+            </a>
+          </li>
+          <li *ngFor = "let category of categories">
+            <a href="#" class="btn-primary" [class.active]="selectedCategory === category" (click)="selectCategory(category); $event.preventDefault()">
+              {{ category }}
+            </a>
+          </li>
         </ul>
       </nav>
   
       <section class="featured">
-        
         <div class="grid">
           <div class="card" *ngFor="let product of paginatedProducts">
             <img [src]="product.image" alt="Producto">
@@ -27,162 +33,10 @@
             <span class="price">{{ product.price }}</span>
             <a href="#" class="btn-primary">Comprar</a>
           </div>
-          <!--
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 1</h3>
-            <p>Descripción del producto 1.</p>
-            <span class="price">8.99</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 2</h3>
-            <p>Descripción del producto 2.</p>
-            <span class="price">5.99</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 3</h3>
-            <p>Descripción del producto 3.</p>
-            <span class="price">7.99</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 4</h3>
-            <p>Descripción del producto 4.</p>
-            <span class="price">5.49</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 5</h3>
-            <p>Descripción del producto 5.</p>
-            <span class="price">2.99</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 6</h3>
-            <p>Descripción del producto 6.</p>
-            <span class="price">7.66</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 7</h3>
-            <p>Descripción del producto 7.</p>
-            <span class="price">4.39</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 8</h3>
-            <p>Descripción del producto 8.</p>
-            <span class="price">7.29</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 9</h3>
-            <p>Descripción del producto 9.</p>
-            <span class="price">5.99</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 10</h3>
-            <p>Descripción del producto 10.</p>
-            <span class="price">9.34</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 11</h3>
-            <p>Descripción del producto 11.</p>
-            <span class="price">5.87</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 12</h3>
-            <p>Descripción del producto 12.</p>
-            <span class="price">1.49</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 13</h3>
-            <p>Descripción del producto 13.</p>
-            <span class="price">7.79</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 14</h3>
-            <p>Descripción del producto 14.</p>
-            <span class="price">2.39</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 15</h3>
-            <p>Descripción del producto 15.</p>
-            <span class="price">5.27</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 16</h3>
-            <p>Descripción del producto 16.</p>
-            <span class="price">3.88</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 17</h3>
-            <p>Descripción del producto 17.</p>
-            <span class="price">2.32</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 18</h3>
-            <p>Descripción del producto 18.</p>
-            <span class="price">0.66</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 19</h3>
-            <p>Descripción del producto 19.</p>
-            <span class="price">9.45</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-          <div class="card">
-            <img src="https://via.placeholder.com/300x300" alt="Producto">
-            <h3>Producto 20</h3>
-            <p>Descripción del producto 20.</p>
-            <span class="price">2.66</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>-->
         </div>
       </section>
   
       <div class="pagination">
-        <!--<a href="#" (click)="previousPage()" class="prev">&laquo;Anterior</a>
-        <a href="#" class="page active">1</a>
-        <a href="#" class="page">2</a>
-        <a href="#" class="page">3</a>
-        <a href="#" class="page">4</a>
-        <a href="#" class="page">5</a>
-        <a href="#" class="page">6</a>
-        <a href="#" class="page">7</a>
-        <a href="#" class="page">8</a>
-        <a href="#" class="page">9</a>
-        <a href="#" class="page">10</a>-->
         <a href="javascript:void(0)" (click)="previousPage()" class="prev">&laquo;Anterior</a>
         <ng-container *ngFor="let page of pages">
           <a href="javascript:void(0)" *ngIf="page === currentPage; else otherPage" 

@@ -24,74 +24,69 @@ body {
 }
 
 #buscador-bar {
-  margin-top:100px;
+  margin-top: 100px;
 
 }
-.top-bar form {
+
+.top-bar {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(30, 30, 30, 0.73)), url('https://images.pexels.com/photos/1956974/pexels-photo-1956974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;
+  background-size: cover;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-top: 2%;
+  height: 200px !important;
+
+}
+
+
+.top-bar .buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
+
 }
 
-.top-bar .buttons-container:first-of-type {
-  margin-bottom: 10px;
-}
-
-.top-bar .buttons-container:nth-of-type(2) {
-  margin-top: 10px;
-}
-
-.top-bar .button {
-  margin: 5px;
-  
-  padding: 10px 20px;
-  background-color: #f05a21;
+.buttons-container button {
+  width: 10%;
+  height: 50px;
+  background-color: #F05A21;
   color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
-  transition: all 0.2s ease-in-out;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  margin: 10px;
 }
 
-.top-bar .button:hover {
-  background-color: #ec6433;
+.buttons-container button:hover {
+  background-color: black;
   cursor: pointer;
 }
 
 
 
-
-.right-container {
-  margin-left: 300px;
-  height: 100%;
-
+.scroll-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: scroll;
 }
 
-.right-container h3 {
-  text-align: center;
-  padding-top: 20px;
-}
 
 
 
 .card {
   width: 300px;
-  margin: 20px auto; /* centrar horizontalmente */
+  margin: 20px 20px;
   height: 300px;
-  margin-left: 20px;
-  margin-right: 20px;
 }
-
-.scroll-content {
-  max-height: 400px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow-y: auto;
-}
-
 
 .card:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0);
@@ -99,10 +94,8 @@ body {
 }
 
 .card img {
-  width:300px;
-  height:200px;
-  max-width: 100%;
-  background-size: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-body a {
@@ -116,57 +109,7 @@ body {
 
 
 
-.borrar {
-  color: red;
-  margin-left: 5px;;
-  cursor: pointer;
-}
 
-.top-bar {
-  flex: 1;
-  background-color: orange;
-  display: flex;
-  justify-content: center;
-  margin-top: 5%;
-  flex-direction: column;
-  height: 200px !important;
-  
-}
-
-.top-bar form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.top-bar .buttons-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  text-align: center;
-  flex: 1;
-  padding: 10px;
-}
-.top-bar .buttons-container:nth-of-type(2) {
-  margin-top: -40px;
-}
-
-.top-bar .buttons-container button {
-  width: 120px;
-  height: 50px;
-  margin: 10px;
-  border: none;
-  background-color: #F05A21;
-  color: white;
-  font-size: 18px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
 @media (max-width: 768px) {
   .top-bar .buttons-container button {
@@ -176,17 +119,15 @@ body {
     font-size: 16px;
   }
 }
-  
+
 @media screen and (max-width: 350px) {
   .top-bar {
-    flex: 1;
-    background-color: orange;
     display: flex;
     justify-content: center;
     margin-top: 5%;
     flex-direction: column;
     height: 300px !important;
-    
+
   }
   .top-bar .buttons-container {
     display: flex;
@@ -201,9 +142,7 @@ body {
     margin: 5px;
     font-size: 16px;
   }
-  .top-bar .buttons-container button:nth-child(even) {
-    margin-left: 5px;
-  }
+
 }
 
 

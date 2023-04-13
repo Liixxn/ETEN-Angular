@@ -1,98 +1,137 @@
-<section id="buscador-bar" >
-    <div class="top-bar">
-      <form>
-        <input type="text" #nombreReceta placeholder="Introduzca un ingrediente" />
-      </form>
-      <form >
-      <button type="button" #botonReceta (click)="agregarTarjeta()">Añadir</button>
-     </form>
-     </div>
-        <div class="tarjetas">
-          <div #contenedorTarjetas  class="tarjetas-container">
-            <div class="tarjeta-aniadida" *ngFor="let ingrediente of ingredientes; let i = index">
-              <span>{{ ingrediente }}</span>
-              <span class="borrar" (click)="eliminarIngrediente(i)">x</span>
-            </div>
-          </div>
-          
-
-
+<section id="buscador-bar">
+  <div class="top-bar">
+    <form>
+      <input type="text" id="nombreReceta" placeholder="Introduzca un ingrediente"/>
+    </form>
+    <form>
+      <button type="button" id="botonReceta" (click)="agregarTarjeta()">Añadir</button>
+    </form>
+  </div>
+  <div class="tarjetas">
+    <div id="contenedorTarjetas" class="tarjetas-container">
+      <div class="tarjeta-aniadida" *ngFor="let ingrediente of ingredientes; let i = index">
+        <span>{{ ingrediente }}</span>
+        <span class="borrar" (click)="eliminarIngrediente(i)">x</span>
+      </div>
     </div>
+  </div>
+
+
+  <div class="scroll-content">
+    <div class="card">
+      <img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap">
+      <div class="card-body">
+        <a href="#"><h5 class="card-title stretched-link">Card title</h5></a>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="assets/imgs/pasta.png" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+    <div class="card">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+      </div>
+    </div>
+  </div>
 </section>
 
-      <div class="scroll-content">
-        <div class="card">
-          <a href="#"><img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap"></a>
-          <div class="card-body">
-            <a href="#"><h5 class="card-title">Card title</h5></a>
-          </div>
-        </div>
-        <a href="#"><div class="card">
-          <img class="card-img-top" src="assets/imgs/pasta.png" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        </a>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-          </div>
-        </div>
-        
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
 
+    <section class="mb-4">
 
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fa-solid fa-envelope"></i></a>
 
-      </div>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-instagram"></i></a>
 
-  
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-google"></i></a>
+    </section>
 
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="http://localhost:4200/">Eten.com</a>
+  </div>
+
+</footer>

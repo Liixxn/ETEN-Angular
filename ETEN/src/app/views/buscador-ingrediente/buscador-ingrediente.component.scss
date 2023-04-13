@@ -27,6 +27,19 @@ body {
   margin-top:100px;
 
 }
+
+.top-bar {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(30, 30, 30, 0.73)), url('https://images.pexels.com/photos/1956974/pexels-photo-1956974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2%;
+  height: 200px !important;
+
+}
+
+
 .top-bar form {
   display: flex;
   justify-content: center;
@@ -66,39 +79,23 @@ body {
 }
 
 
-
-
-.right-container {
-  margin-left: 300px;
-  height: 100%;
-
-}
-
-.right-container h3 {
-  text-align: center;
-  padding-top: 20px;
+.scroll-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: scroll;
 }
 
 
 
 .card {
   width: 300px;
-  margin: 20px auto; /* centrar horizontalmente */
+  margin: 20px 20px;
   height: 300px;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-  }
-
-
-.scroll-content {
-  max-height: 400px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow-y: auto;
 }
+
 
 
 .card:hover {
@@ -107,10 +104,8 @@ body {
 }
 
 .card img {
-  width:300px;
-  height:200px;
-  max-width: 100%;
-  background-size: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-body a {
@@ -122,60 +117,27 @@ body {
 
 }
 
+.tarjetas {
+  display: flex;
+  justify-content: center;
+}
+
+
 .tarjeta-aniadida {
   background-color: #fff;
   display: inline-flex;
   align-items: center;
   padding: 5px 10px;
-  margin-top: 10px;   
-  margin-right: 10px;
-  margin-bottom: 10px;
+  text-align: center;
+  margin: 10px 10px;
   border-radius: 5px;
   max-width: 300px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
-  margin-bottom: 10px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 270px;
 }
 
 .borrar {
   color: red;
   margin-left: 5px;;
   cursor: pointer;
-}
-
-.top-bar {
-  flex: 1;
-  
-  background-color: orange;
-  display: flex;
-  justify-content: center;
-  margin-top: 2%;
-  flex-direction: column;
-  height: 200px !important;
-  
-}
-
-.top-bar form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tarjetas {
-  
-  display: flex;
-  justify-content: center;
-}
-
-.tarjetas-container {
-  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 800px;
- 
 }

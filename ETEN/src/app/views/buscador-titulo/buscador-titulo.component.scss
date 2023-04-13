@@ -27,6 +27,20 @@ body {
   margin-top:100px;
 
 }
+
+
+.top-bar {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(30, 30, 30, 0.73)), url('https://images.pexels.com/photos/1956974/pexels-photo-1956974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  flex-direction: column;
+  height: 200px !important;
+
+}
+
+
 .top-bar form {
   display: flex;
   justify-content: center;
@@ -50,7 +64,7 @@ body {
 }
 
 .top-bar button[type="submit"] {
-  background-color: #f05a21;
+  background-color: $logo-ETEN-naranja;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -67,35 +81,32 @@ body {
 
 
 
-
-.right-container {
-  margin-left: 300px;
+.recetas {
   height: 100%;
-
+  border: 2px solid purple;
 }
 
-.right-container h3 {
+.recetas h3 {
   text-align: center;
   padding-top: 20px;
+}
+
+.scroll-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: scroll;
 }
 
 
 
 .card {
   width: 300px;
-  margin: 20px auto; /* centrar horizontalmente */
+  margin: 20px 20px;
   height: 300px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
 
-.scroll-content {
-  max-height: 400px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow-y: auto;
 }
 
 
@@ -105,10 +116,8 @@ body {
 }
 
 .card img {
-  width:300px;
-  height:200px;
-  max-width: 100%;
-  background-size: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-body a {
@@ -118,40 +127,4 @@ body {
 .card-title {
   text-align: center;
 
-}
-
-
-
-.top-bar {
-  flex: 1;
-  
-  background-color: orange;
-  display: flex;
-  justify-content: center;
-  margin-top: 2%;
-  flex-direction: column;
-  height: 200px !important;
-  
-}
-
-.top-bar form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.tarjetas {
-  
-  display: flex;
-  justify-content: center;
-}
-
-.tarjetas-container {
-  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  max-width: 800px;
- 
 }

@@ -1,34 +1,33 @@
 <section class="seccion-perfil-usuario">
-    <div class="perfil-usuario-header">
+  <div class="perfil-usuario-header">
 
 
 
-        <div class="perfil-usuario-portada">
+    <div class="perfil-usuario-portada">
 
-            <div class="row">
-                <div class="d-flex flex-column align-items-center">
-                    <button type="button" class="btn btn-primary align-self-end btn_ajustes"><i
-                            class="fas fa-wrench"></i></button>
-                    <div class="text-center position-relative">
-                        <button type="button" (click)="seleccionarImagen()" class="btn btn-secondary btn_cambio_img">
-                            <i class="far fa-image"></i>
-                        </button>
-                        <div class="img-container">
-                            <img [src]="imagenSeleccionada" alt="img-avatar"
-                                class="img-fluid img_user">
-                            <h1 class="nombre_user">Lian Zi Salmeron Lopez</h1>
-                        </div>
-                    </div>
-                </div>
+      <div class="row">
+        <div class="d-flex flex-column align-items-center">
+          <button type="button" (click)="modificarDatos()" class="btn btn-primary align-self-end btn_ajustes"><i
+              class="fas fa-wrench"></i></button>
+          <div class="text-center position-relative">
+            <button type="button" (click)="seleccionarImagen()" class="btn btn-secondary btn_cambio_img">
+              <i class="far fa-image"></i>
+            </button>
+            <div class="img-container">
+              <img [src]="imagenSeleccionada" alt="img-avatar" class="img-fluid img_user">
+              <h1 class="nombre_user">Lian Zi Salmeron Lopez</h1>
             </div>
-
+          </div>
         </div>
+      </div>
+
+    </div>
 
 
 
 
 
-        <!--
+    <!--
             <div class="perfil-usuario-portada">
 
 
@@ -48,44 +47,64 @@
 
             </div>
             -->
-    </div>
+  </div>
 
-    <div class="perfil-usuario-body">
-        <div class="perfil-usuario-bio">
-            <form class="formulario">
-                <p>Nombre de usuario</p>
-                <div class="form-outline mb-3">
-                    <input type="text" id="form2Example11" class="form-control" placeholder="nombre" />
-                </div>
+  <div class="perfil-usuario-body">
+    <div class="perfil-usuario-bio">
+      <form class="formulario">
 
-                <p>Correo electronico</p>
-                <div class="form-outline mb-4">
-                    <input type="email" id="form2Example22" class="form-control" placeholder="correo" />
-                </div>
+        <button class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-2" type="submit">Subscribirse</button>
+        <button class="btn btn-secondary btn-block eliminar_subscripcion mb-2" type="submit">Eliminar
+          Subscripcion</button>
 
-                <p>Contraseña</p>
-                <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" placeholder="contraseña" />
-                </div>
-            </form>
+        <p>Nombre de usuario</p>
+        <div class="form-outline mb-4">
+          <input type="text" id="form2Example11" class="form-control" placeholder="nombre" />
+        </div>
+        <p>Correo electronico</p>
+        <div class="form-outline mb-4">
+          <input type="email" id="form2Example22" class="form-control" placeholder="correo" />
         </div>
 
+        <div *ngIf="(btnModificarDatosSeleccionado)">
+          <p>Contraseña Actual</p>
+          <div class="form-outline mb-4">
+            <input type="password" id="passwordActual" class="form-control" placeholder="password actual" />
+          </div>
+          <p>Contraseña Nueva</p>
+          <div class="form-outline mb-4">
+            <input type="password" id="passwordNueva" class="form-control" placeholder="password nueva" />
+          </div>
 
+          <button class="btn btn-secondary btn-block fa-lg mb-2" (click)="modificarDatos()" type="button">Cancelar
+            Cambios</button>
+          <button class="btn btn-primary btn-block fa-lg mb-2" (click)="guardarCambios()" type="submit">Guardar
+            Cambios</button>
+        </div>
 
-
-
-
-
+      </form>
     </div>
+
+
+
+
+
+
+
+  </div>
 </section>
 <section id="seccion-favoritas">
   <h3>Tus recetas favoritas</h3>
   <div class="div-contenido-recetas">
     <div class="scroll-contenido">
       <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
+        <img class="card-img-top"
+          src="https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Card image cap">
         <div class="card-body">
-          <a href="#"><h5 class="card-title stretched-link">Card title</h5></a>
+          <a href="#">
+            <h5 class="card-title stretched-link">Card title</h5>
+          </a>
         </div>
       </div>
       <div class="card">
@@ -101,7 +120,9 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
+        <img class="card-img-top"
+          src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
@@ -185,25 +206,25 @@
 
 <!-- Footer -->
 <footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
 
-        <section class="mb-4">
+    <section class="mb-4">
 
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fa-solid fa-envelope"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fa-solid fa-envelope"></i></a>
 
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fab fa-instagram"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-instagram"></i></a>
 
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-        </section>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+    </section>
 
-    </div>
+  </div>
 
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2023 Copyright:
-        <a class="text-white" href="http://localhost:4200/">Eten.com</a>
-    </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="http://localhost:4200/">Eten.com</a>
+  </div>
 
 </footer>

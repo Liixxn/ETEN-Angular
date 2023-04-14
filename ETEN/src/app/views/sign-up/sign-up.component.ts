@@ -22,11 +22,12 @@ export class SignUpComponent {
     usuarios:Usuario[] = [];
 
 
+
     constructor(private usuarioService:UsuarioService) {
 
     }
     ngOnInit() {
-      this.cargarUsuarios();
+
     }
     private cargarUsuarios() {
       this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
@@ -34,6 +35,21 @@ export class SignUpComponent {
 
       })
     }
+
+    // funcion que registra a un usuario comprobando si ya existe el email o no
+    private registrarUsuario(nombre:string, email:string, contrasenia:string) {
+      let usuario: Usuario = new Usuario(nombre, email, contrasenia, 0, '', 0);
+      this.usuarioService.Registro(usuario).subscribe((data:Usuario) => {
+        if (data.email == "Email existente") {
+          alert("El email introducido ya se encuentra en uso.");
+        }
+        else {
+          alert("Se ha registrado correctamente");
+        }
+      })
+    }
+
+
 
     // funcion que recoge la informacion del registro, comprueba que no haya campos vacios y que los emails y
     // contraseñas coincidan y que el formato del email sea correcto para poder registrarse
@@ -59,7 +75,7 @@ export class SignUpComponent {
                 alert("El formato del correo eléctronico no es válido.");
               }
               else {
-                alert("Se ha registrado correctamente.");
+                this.registrarUsuario(this.nombreUsuario, this.emailUsuario, this.contraseniaUsuario);
               }
             }
 

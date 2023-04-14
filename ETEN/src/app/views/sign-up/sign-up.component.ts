@@ -40,7 +40,7 @@ export class SignUpComponent {
     private registrarUsuario(nombre:string, email:string, contrasenia:string) {
       let usuario: Usuario = new Usuario(nombre, email, contrasenia, 0, '', 0);
       this.usuarioService.Registro(usuario).subscribe((data:Usuario) => {
-        if (data.email == "Email existente") {
+        if (data.email == "Existente") {
           alert("El email introducido ya se encuentra en uso.");
         }
         else {

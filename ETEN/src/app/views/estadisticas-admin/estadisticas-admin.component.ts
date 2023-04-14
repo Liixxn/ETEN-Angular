@@ -15,6 +15,7 @@ import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
 })
 export class EstadisticasAdminComponent {
 
+  constructor() { }
 
   /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
   data = ['opcion 1', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba'];
@@ -68,6 +69,9 @@ export class EstadisticasAdminComponent {
     this.todosEmailsUsers = this.data3;
   }
   /* ---------- FIN AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
+
+
+  /*
   lineChartData: ChartDataset[] = [
     { data: [12, 72, 78, 75, 17, 75], label: 'Oil Price' },
     { data: [85, 12, 4, 5, 6, 7], label: 'Another' }
@@ -94,10 +98,7 @@ export class EstadisticasAdminComponent {
     return Array.from({ length: 6 }, () => Math.floor(Math.random() * 100));
   }
 
-
-
-
-
+*/
 
 
 
@@ -119,6 +120,21 @@ export class EstadisticasAdminComponent {
       }
     ]
   };
+
+  public doughnutChartData2: ChartData = {
+    labels: ['p', 'c', 'pa', 'v'],
+    datasets: [
+      {
+        data: [33, 5, 41, 98],
+        backgroundColor: [
+          'Blue',
+          'Red',
+          'Orange',
+          'Green'
+        ]
+      }
+    ]
+  };
   /* Formas de las graficas:
     public doughnutChartType: ChartType = 'line';
     public doughnutChartType: ChartType = 'bar';
@@ -131,12 +147,9 @@ export class EstadisticasAdminComponent {
 
   public doughnutChartOptions: ChartOptions = {
     responsive: true,
-    maintainAspectRatio: false,
+    maintainAspectRatio: false
 
   };
-
-
-  constructor() { }
 
   public doughnutChartClicked(e: any): void {
     console.log(e);

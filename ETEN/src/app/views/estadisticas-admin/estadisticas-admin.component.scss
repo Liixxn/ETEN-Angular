@@ -24,11 +24,11 @@ $color-crema: #E9DFCB;
 
 
 #tabs {
-    background-color: $azul-oscuro;
+    background-color: $color-crema;
     background-repeat: no-repeat;
     background-size: cover;
     color: #000000;
-    padding-top: 20%;
+    padding-top: 10%;
 }
 
 #tabs .container {
@@ -69,9 +69,14 @@ $color-crema: #E9DFCB;
 
 .tab-content {
     margin-top: 10px;
-    background-image: url('/assets/imgs/footer-ETEN.png');
+    //background-image: url('/assets/imgs/footer-ETEN.png');
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    //background-color: $naranja-claro;
+    background-image: url('/assets/imgs/fondo_img_info_receta2.png');
     background-repeat: no-repeat;
     background-size: cover;
+    
 
 }
 
@@ -82,6 +87,22 @@ $color-crema: #E9DFCB;
 
     height: 600px;
 
+}
+
+.tab-pane-graficas {
+    height: 100%;
+    min-height: 600px;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    //display: flex;
+    //justify-content: space-between;
+    //vertical-align: middle;
+
+}
+
+.separacion_graficas{
+    padding-right: 3%;
+    padding-left: 3%;
 }
 
 .hacer_scroll {
@@ -137,6 +158,35 @@ $color-crema: #E9DFCB;
     padding-bottom: 10px;
     width: 100%;
 }
+
+
+//ventana general
+@media (max-width: 1020px) {
+    #tabs {
+        padding-top: 20%;
+    }
+}
+@media (max-width: 540px) {
+    #tabs {
+        padding-top: 30%;
+    }
+}
+@media (max-width: 350px) {
+    #tabs {
+        padding-top: 50%;
+    }
+}
+@media (max-width: 230px) {
+    #tabs {
+        padding-top: 80%;
+    }
+}
+@media (max-width: 190px) {
+    #tabs {
+        padding-top: 100%;
+    }
+}
+
 
 
 //Media para la ventana de las categorias

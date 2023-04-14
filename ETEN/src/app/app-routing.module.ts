@@ -16,7 +16,7 @@ import { OfertasComponent } from "./views/ofertas/ofertas.component";
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path: 'index', component:HomeComponent},
+  {path: 'eten', component:HomeComponent},
   {path: 'login', component:LoginComponent},
   {path: 'sign-up', component:SignUpComponent},
   {path: 'about-us', component:AboutUsComponent},

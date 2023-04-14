@@ -1,35 +1,35 @@
-
 <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="favicon.ico"></a>
+    <a class="navbar-brand" href="eten"><img src="favicon.ico"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
-            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-md-xs-sm-0 navbar-nav-scroll" style="--bs-scroll-height: 200px;">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page" [routerLink]="['']" >Inicio</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['eten']">Inicio</a>
         </li>
         <li class="nav-item dropdown" routerLinkActive="active">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Buscador
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" [routerLink]="['buscador-titulo']">Por Título</a></li>
-            <li><a class="dropdown-item" [routerLink]="['buscador-categoria']">Por Categoría</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['buscador-titulo']">Por Título</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['buscador-categoria']">Por Categoría</a></li>
             <!--<li><hr class="dropdown-divider"></li>-->
-            <li><a class="dropdown-item" [routerLink]="['buscador-ingrediente']">Por Ingredientes</a></li>
+            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['buscador-ingrediente']">Por Ingredientes</a></li>
           </ul>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page"  [routerLink]="['ofertas']">Ofertas</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['ofertas']">Ofertas</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page" [routerLink]="['estadisticas']" >Estadisticas</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['estadisticas']">Estadisticas</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" aria-current="page"  [routerLink]="['about-us']">Acerca de</a>
+          <a class="nav-link" aria-current="page" [routerLink]="['about-us']">Acerca de</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" [routerLink]="['login']"><i class="fa-solid fa-user"></i></a>

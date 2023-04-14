@@ -28,65 +28,67 @@ body {
 
 }
 
-.sidebar {
-  position: fixed;
-  height: 100%;
-  left: 0;
-  width: 300px;
-  background-color: rgb(255, 92, 0);
-  padding: 20px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0);
-
-}
-
-.icon-sidebar {
-  margin-top: auto;
-  margin-bottom: 100px;
+.top-bar {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.62), rgba(30, 30, 30, 0.73)), url('https://images.pexels.com/photos/1956974/pexels-photo-1956974.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat top center;
+  background-size: cover;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  margin-top: 2%;
+  height: 200px !important;
+
 }
 
 
-.search-titulo {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+.top-bar form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-bar input[type="text"] {
   border: none;
   border-radius: 5px;
+  padding: 10px;
+  width: 500px;
+  font-size: 16px;
+  color: #555;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
 }
 
-.btn-buscar {
+.top-bar input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.top-bar button[type="button"] {
+  background-color: #f05a21;
+  color: #fff;
+  border: none;
   border-radius: 5px;
-  width: 100%;
-
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.right-container {
-  margin-left: 300px;
-  height: 100%;
-
-}
-
-.right-container h3 {
-  text-align: center;
-  padding-top: 20px;
+.top-bar button[type="button"]:hover {
+  background-color: #ec6433;
 }
 
 
 .scroll-content {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow-y: scroll;
-
 }
+
+
 
 .card {
   width: 300px;
@@ -94,15 +96,16 @@ body {
   height: 300px;
 }
 
+
+
 .card:hover {
   box-shadow: 2px 2px 2px rgba(0, 0, 0);
 
 }
 
 .card img {
-  width:300px;
-  height:200px;
-  background-size: cover;
+  height: 200px;
+  object-fit: cover;
 }
 
 .card-body a {
@@ -114,22 +117,23 @@ body {
 
 }
 
+.tarjetas {
+  display: flex;
+  justify-content: center;
+}
+
+
 .tarjeta-aniadida {
   background-color: #fff;
   display: inline-flex;
   align-items: center;
   padding: 5px 10px;
-  margin-top: 10px;   
-  margin-right: 10px;
-  margin-bottom: 10px;
+  text-align: center;
+  margin: 10px 10px;
   border-radius: 5px;
   max-width: 300px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 270px;
 }
 
 .borrar {
@@ -137,5 +141,3 @@ body {
   margin-left: 5px;;
   cursor: pointer;
 }
-
-  

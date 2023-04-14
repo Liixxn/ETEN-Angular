@@ -20,7 +20,7 @@ export class OfertasComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number;
   pages: number[] = [];
-  categories: string[] = ['Frescos', 'Despensa', 'Bebidas'];
+  categories: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
   selectedCategory: string = '';
   filteredProducts: Product[] = [];
 

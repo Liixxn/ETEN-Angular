@@ -76,30 +76,40 @@ main {
   }
 }
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+@media screen and (max-width: 294px) {
+  .button-menu li .btn-primary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 80px;
+    max-width: 120px;
   }
+}
 
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn-primary {
+  background-color: #F05A21;
+  color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: black;
+    color: #F05A21;
   }
-
-  .btn-primary {
-    background-color: #F05A21;
-    color: black;
-    padding: 0.5rem 2rem;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    transition: all 0.3s ease;
-
-    &:hover {
-      background-color: black;
-      color: #F05A21;
-    }
-  }
+}
 
 
 .featured {

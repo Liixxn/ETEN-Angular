@@ -13,7 +13,7 @@
         <ul>
           <li>
             <a href="#" class="btn-primary" [class.active]="selectedCategory === ''" (click)="selectCategory(''); $event.preventDefault()">
-              Todos los productos
+              Todos
             </a>
           </li>
           <li *ngFor = "let category of categories">

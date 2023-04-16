@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
+import { LoginComponent } from './views/login/login.component';
 
 
 @Component({
@@ -13,13 +14,12 @@ export class AppComponent {
   navbarOpen = false;
   esAdmin: boolean = false;
 
-  ngOnInit() {
-    /*
-      if (data.es_administrador) {
-        this.esAdmin = true;
-      }
-      */
-    this.esAdmin = true;
+  ngOnInit() { }
+
+
+
+  public modificarAdmin(adminBoolean: boolean) {
+    this.esAdmin = adminBoolean;
   }
 
 

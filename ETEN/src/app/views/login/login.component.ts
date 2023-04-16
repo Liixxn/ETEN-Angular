@@ -12,41 +12,33 @@ export class LoginComponent {
   emailUsuario:string = '';
   contraseniaUsuario:string = '';
 
-  usuarios:Usuario[] = [];
-  expresionEmail: any;
+  expresionEmail: RegExp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
   constructor(private usuarioService:UsuarioService) {
 }
 
   ngOnInit() {
-    this.cargarUsuarios();
   }
 
-  private cargarUsuarios() {
-    this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => { 
-      this.usuarios = data;
-    })
-  }
 
-  
   private comprobarUsuario(email:string, contrasenia:string) {
 
-    let usuario: Usuario = new Usuario('', email, contrasenia, 0, '', 0);
+    let usuario: Usuario = new Usuario('vacio', email, contrasenia, 0, '', 0);
     this.usuarioService.login(usuario).subscribe((data:Usuario) => {
 
-      if (data.email == "Email no encontrado") {
-        alert("El email introducido no se encuentra registrado");
+      if (data.nombre == "Usuario no encontrado") {
+        alert("El usuario no existe.");
       }
-      else if (data.email == "Contraseña incorrecta") {
-        alert("La contraseña introducida es incorrecta.");
+      else if (data.nombre == "Contrasenia incorrecta") {
+        alert("Error al inicar sesión.");
       }
       else {
-        alert("Se ha logueado correctamente");
+        alert("Se ha iniciado sesión correctamente.");
       }
     })
   }
 
-  
+
   public obtenerDatosLogin() {
 
     this.emailUsuario = (<HTMLInputElement>document.getElementById('email_user')).value;

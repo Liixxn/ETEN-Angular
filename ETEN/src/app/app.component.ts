@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +11,17 @@ export class AppComponent {
   title = 'PruebasAngular';
 
   navbarOpen = false;
+  esAdmin: boolean = false;
+
+  ngOnInit() {
+    /*
+      if (data.es_administrador) {
+        this.esAdmin = true;
+      }
+      */
+    this.esAdmin = true;
+  }
+
 
   toggleNavbar() {
     this.navbarOpen = !this.navbarOpen;

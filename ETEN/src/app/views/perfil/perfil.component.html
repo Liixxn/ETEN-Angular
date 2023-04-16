@@ -61,11 +61,11 @@
 
         <p>Nombre de usuario</p>
         <div class="form-outline mb-4">
-          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" readonly/>
+          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" readonly />
         </div>
         <p>Correo electronico</p>
         <div class="form-outline mb-4">
-          <input type="email" id="form_email" class="form-control" placeholder="correo" readonly/>
+          <input type="email" id="form_email" class="form-control" placeholder="correo" readonly />
         </div>
 
         <div *ngIf="(btnModificarDatosSeleccionado)">
@@ -96,9 +96,7 @@
     </div>
 
     <!--button-->
-    <a
-      class="close-btn"
-      (click)="modificarDatos()">
+    <a class="close-btn" (click)="modificarDatos()">
       <small>
         Dismiss
       </small>
@@ -106,6 +104,11 @@
   </div>
 </div>
 
+<section id="section_cerrar_sesion">
+  <div class="div_btn_cerrar_sesion">
+    <button class="btn btn-secondary btn-block eliminar_subscripcion fa-lg" (click)="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+</section>
 
 
 

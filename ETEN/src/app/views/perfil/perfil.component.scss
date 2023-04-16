@@ -245,11 +245,28 @@
 }
 
 
+/* Boton Cerrar Ssesion*/
+
+#section_cerrar_sesion{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    text-align: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+.div_btn_cerrar_sesion{
+    width: 50%;
+}
 
 /* LISTA DE FAVORITOS*/
 
 #seccion-favoritas h3 {
     text-align: center;
+    padding-top: 3%;
+    padding-bottom: 1%;
 }
 
 .div-contenido-recetas {

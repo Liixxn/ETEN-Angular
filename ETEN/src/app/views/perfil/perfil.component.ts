@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -16,6 +17,8 @@ export class PerfilComponent {
   public btnModificarDatosSeleccionado: boolean = false;
   public btnSubscripcionSeleccionada: boolean = false;
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
+
+  constructor(private route: Router) { }
 
   public seleccionarImagen(): void {
     const input = document.createElement('input');
@@ -63,6 +66,11 @@ export class PerfilComponent {
     var email = document.getElementById("form_email") as HTMLInputElement;
     nombre.readOnly = !nombre.readOnly;
     email.readOnly = !email.readOnly;
+  }
+
+  public cerrarSesion() {
+    alert('Se ha cerrado sesion')
+    this.route.navigate(['eten']);
   }
 
 }

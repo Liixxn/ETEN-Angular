@@ -283,3 +283,57 @@
 .card-title {
     text-align: center;
 }
+
+
+.notificacion {
+  display: flex;
+  justify-content: flex-end;
+  position: sticky;
+  z-index: 1;
+  right: 20px;
+  bottom: 20px;
+}
+
+
+
+
+.toast-class {
+
+  z-index: 1;
+  position: sticky;
+  right: 10px;
+  bottom: 10px;
+
+  display: inline-flex;
+  min-width: 260px;
+  min-height: 70px;
+  max-height: 70px;
+  box-shadow: 6px 6px 12px #00000040;
+
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  border-left: 6px solid black;
+  padding: 1.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background-color: white;
+  border-left: 6px solid #0086AA;
+}
+
+.close-btn:hover {
+  cursor: pointer;
+}
+
+.close-btn:hover small{
+  color: #0086AA;
+}
+
+
+
+
+
+
+
+
+

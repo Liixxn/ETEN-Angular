@@ -84,15 +84,29 @@
 
       </form>
     </div>
-
-
-
-
-
-
-
   </div>
 </section>
+
+<div class="notificacion">
+  <div *ngIf="showsToast" class="toast-class">
+    <div style="max-width: 160px;">
+      {{ toastMessage }}
+    </div>
+
+    <!--button-->
+    <a
+      class="close-btn"
+      (click)="modificarDatos()">
+      <small>
+        Dismiss
+      </small>
+    </a>
+  </div>
+</div>
+
+
+
+
 <section id="seccion-favoritas">
   <h3>Tus recetas favoritas</h3>
   <div class="div-contenido-recetas">

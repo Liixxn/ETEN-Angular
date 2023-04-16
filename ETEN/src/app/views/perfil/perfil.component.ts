@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class PerfilComponent {
 
+  toastMessage = 'This is a toast'; // This is the string the template is already bound to
+  showsToast = false;
+
+
+
 
   public btnModificarDatosSeleccionado: boolean = false;
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
@@ -40,6 +45,13 @@ export class PerfilComponent {
 
   public modificarDatos(): void {
     this.btnModificarDatosSeleccionado = !this.btnModificarDatosSeleccionado;
+    this.showsToast = !this.showsToast;
+
+
+    setTimeout(() => {
+      this.showsToast = false;
+    }, 2500);
+
   }
 
 }

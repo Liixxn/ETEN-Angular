@@ -9,81 +9,18 @@
 
   </div>
   <div class="recetas">
-    <h3>{{nombreRecetaBuscar}}</h3>
+    <h3>{{ nombreRecetaBuscar }}</h3>
     <div class="scroll-content">
-      <div class="card">
-        <a href="#"><img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap"></a>
-        <div class="card-body">
-          <a href="#"><h5 class="card-title">Card title</h5></a>
+        @foreach($recetas as $receta)
+        <div class="card">
+            <a href="#"><img class="card-img-top" src="{{ $receta->img }}" alt="{{ $receta->titulo }}"></a>
+            <div class="card-body">
+                <a href="#"><h5 class="card-title">{{ $receta->titulo }}</h5></a>
+            </div>
         </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="assets/imgs/pasta.png" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
+        @endforeach
     </div>
-
-
-
-  </div>
-
-</section>
+</div>
 
 
 <footer class="bg-dark text-center text-white">

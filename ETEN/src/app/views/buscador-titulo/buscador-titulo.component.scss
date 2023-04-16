@@ -20,7 +20,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-
+  overflow-x: hidden;
 }
 
 #buscador-bar {
@@ -81,10 +81,7 @@ body {
 
 
 
-.recetas {
-  height: 100%;
-  border: 2px solid purple;
-}
+
 
 .recetas h3 {
   text-align: center;
@@ -92,7 +89,7 @@ body {
 }
 
 .scroll-content {
-  height: 100vh;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -127,4 +124,30 @@ body {
 .card-title {
   text-align: center;
 
+}
+
+
+.card-container .card {
+  margin-bottom: 10px;
+}
+.recetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: scroll;
+  height: 400px;
+}
+.recetas-container {
+  overflow: scroll;
+  max-height: 400px;
+}
+
+.recetas .card {
+  margin: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .recetas {
+    height: auto;
+  }
 }

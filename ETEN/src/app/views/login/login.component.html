@@ -16,19 +16,19 @@
                     <p>Introduzca su correo electronico</p>
 
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example11" class="form-control" placeholder="Correo electronico" />
+                      <input type="email" id="email_user" class="form-control" placeholder="Correo electronico" />
 
                     </div>
 
                     <p>Introduzca su contraseña</p>
 
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example22" class="form-control" placeholder="Contraseña" />
+                      <input type="password" id="contasenia_user" class="form-control" placeholder="Contraseña" />
                     </div>
 
 
                     <div class="text-center pt-1 mb-4 pb-1">
-                      <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-6" type="button">Iniciar
+                      <button (click)="obtenerDatosLogin()"  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-6" type="button">Iniciar
                         Sesión
                       </button>
                     </div>

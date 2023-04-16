@@ -14,6 +14,7 @@ export class PerfilComponent {
 
 
   public btnModificarDatosSeleccionado: boolean = false;
+  public btnSubscripcionSeleccionada: boolean = false;
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
 
   public seleccionarImagen(): void {
@@ -37,6 +38,10 @@ export class PerfilComponent {
     input.click();
   }
 
+  public subscripcion() {
+    this.btnSubscripcionSeleccionada = !this.btnSubscripcionSeleccionada;
+  }
+
   public guardarCambios(): void {
     //Cambios al guardar los datos
     alert('guardar cambios por hacer')
@@ -45,13 +50,19 @@ export class PerfilComponent {
 
   public modificarDatos(): void {
     this.btnModificarDatosSeleccionado = !this.btnModificarDatosSeleccionado;
+    this.hacerInputEditableyNoEditable();
+
     this.showsToast = !this.showsToast;
-
-
     setTimeout(() => {
       this.showsToast = false;
     }, 2500);
+  }
 
+  public hacerInputEditableyNoEditable() {
+    var nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
+    var email = document.getElementById("form_email") as HTMLInputElement;
+    nombre.readOnly = !nombre.readOnly;
+    email.readOnly = !email.readOnly;
   }
 
 }

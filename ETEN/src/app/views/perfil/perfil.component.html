@@ -53,27 +53,29 @@
     <div class="perfil-usuario-bio">
       <form class="formulario">
 
-        <button class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-2" type="submit">Subscribirse</button>
-        <button class="btn btn-secondary btn-block eliminar_subscripcion mb-2" type="submit">Eliminar
+        <button *ngIf="(!btnSubscripcionSeleccionada)" (click)="subscripcion()"
+          class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-4" type="submit">Subscribirse</button>
+        <button *ngIf="(btnSubscripcionSeleccionada)" (click)="subscripcion()"
+          class="btn btn-secondary btn-block eliminar_subscripcion mt-2 mb-4" type="submit">Eliminar
           Subscripcion</button>
 
         <p>Nombre de usuario</p>
         <div class="form-outline mb-4">
-          <input type="text" id="form2Example11" class="form-control" placeholder="nombre" />
+          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" readonly/>
         </div>
         <p>Correo electronico</p>
         <div class="form-outline mb-4">
-          <input type="email" id="form2Example22" class="form-control" placeholder="correo" />
+          <input type="email" id="form_email" class="form-control" placeholder="correo" readonly/>
         </div>
 
         <div *ngIf="(btnModificarDatosSeleccionado)">
           <p>Contraseña Actual</p>
           <div class="form-outline mb-4">
-            <input type="password" id="passwordActual" class="form-control" placeholder="password actual" />
+            <input type="password" id="form_password_actual" class="form-control" placeholder="password actual" />
           </div>
           <p>Contraseña Nueva</p>
           <div class="form-outline mb-4">
-            <input type="password" id="passwordNueva" class="form-control" placeholder="password nueva" />
+            <input type="password" id="form_password_nueva" class="form-control" placeholder="password nueva" />
           </div>
 
           <button class="btn btn-secondary btn-block fa-lg mb-2" (click)="modificarDatos()" type="button">Cancelar

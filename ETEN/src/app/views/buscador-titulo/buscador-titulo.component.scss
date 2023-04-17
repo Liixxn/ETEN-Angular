@@ -80,67 +80,45 @@ body {
 }
 
 
-
-
+.recetas {
+  height: 100%;
+  border: 2px solid purple;
+}
 
 .recetas h3 {
   text-align: center;
   padding-top: 20px;
 }
 
-
+.scroll-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  overflow-y: scroll;
+}
 
 .card {
-  width: 300px;
-  margin: 20px 20px;
+  margin: 10px;
   height: 300px;
 
 }
 
-
-.card:hover {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0);
-
-}
-
-.card img {
+.card-img-top {
   height: 200px;
   object-fit: cover;
-}
 
-.card-body a {
-  text-decoration: none;
 }
 
 .card-title {
   text-align: center;
-
 }
 
 
-.card-container .card {
-  margin-bottom: 10px;
-}
-.recetas {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  overflow-y: scroll;
-  height: 400px;
+@media (max-width: 750px) {
+  .card-img-top {
+
   }
-.scroll-content {
-  overflow: scroll;
-  max-height: 400px;
-  overflow-x: hidden;
-  margin-left: 10%;
-}
 
-.recetas .card {
-  margin: 10px;
-}
-
-@media only screen and (min-width: 768px) {
-  .recetas {
-    height: auto;
-  }
 }

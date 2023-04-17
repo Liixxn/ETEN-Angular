@@ -9,17 +9,15 @@
       <button (click)="obtenerTituloReceta()" type="submit">Buscar</button>
     </form>
   </div>
-  <h3>{{ nombreRecetaBuscar }}</h3>
-  <div class="scroll-content">
-    <div class="recetas row card-deck">
-     
+  <div class="recetas">
+    <h3>{{ nombreRecetaBuscar }}</h3>
+    <div class="scroll-content">
       <div *ngFor="let receta of recetas" class="col-md-4">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
             <a href="{{receta.img}}" target="_blank">
-              <h5 class="card-title">{{ receta.titulo }}</h5>
-            </a>
+              <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>
           </div>
         </div>
       </div>
@@ -41,5 +39,5 @@
     </div>
   </footer>
 </section>
-  
+
 </body>

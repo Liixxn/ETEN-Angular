@@ -1,4 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Receta } from 'src/app/models/receta';
+import { RecetaService } from 'src/app/services/receta.service';
 
 @Component({
   selector: 'app-buscador-ingrediente',
@@ -11,7 +13,20 @@ export class BuscadorIngredienteComponent {
 
   @ViewChild('nombreReceta', { static: true }) inputNombreReceta!: ElementRef<HTMLInputElement>;
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
+  recetas: Receta[] = [];
 
+  constructor(private recetaService: RecetaService) {
+  }
+
+  ngOnInit() {
+    this.cargarRecetas();
+  }
+
+  private cargarRecetas() {
+    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
+      this.recetas = data;
+    })
+  }
   agregarTarjeta() {
     const nombreReceta = (<HTMLInputElement>document.getElementById("nombreReceta")).value.trim();
     const nombreRecetaRecortado = nombreReceta.slice(0, 20) + (nombreReceta.length > 28 ? "..." + nombreReceta[nombreReceta.length - 1] : "");

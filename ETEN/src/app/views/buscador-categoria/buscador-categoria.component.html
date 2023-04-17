@@ -13,69 +13,21 @@
   </div>
 
   <div class="scroll-content">
-    <div class="card">
-      <img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap">
-      <div class="card-body">
-        <a href="#"><h5 class="card-title stretched-link">Card title</h5></a>
+    <div class="recetas row card-deck">
+     
+      <div *ngFor="let receta of recetas" class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
+          <div class="card-body">
+            <a href="{{receta.img}}" target="_blank">
+              <h5 class="card-title">{{ receta.titulo }}</h5>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card">
-      <img class="card-img-top" src="assets/imgs/pasta.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-      </div>
-    </div>
-
-
   </div>
+
 </section>
 
 <footer class="bg-dark text-center text-white">

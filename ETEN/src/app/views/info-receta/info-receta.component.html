@@ -35,7 +35,6 @@
             <div class="borde_cajas d-flex">
                 <h4 class="card-subtitle text-muted"><i class="fa-solid fa-signal"></i> Dificultad: </h4>
                 <p class="ms-2 mt-3">{{recetaSeleccionada.dificultad}}</p>
-                <p class="ms-2 mt-3">{{recetaSeleccionada.dificultad}}</p>
             </div>
         </div>
     </div>
@@ -43,22 +42,10 @@
     <div class="background_ingrediente">
         <h4 class="card-subtitle text-muted titulo_centrado">Ingredientes</h4>
         <div class="lista_ingredientes">
-            <div class="col-6 col-sm-4 lista_ingredientes">
-                <ul>
-                    <li>Ingrediente 1</li>
-                    <li>3 cucharadas soperas de vinagre blanco</li>
-                    <li>Ingrediente 3</li>
-                </ul>
-            </div>
-            <div class="col-6 col-sm-4 lista_ingredientes">
-                <ul>
-                    <li>Ingrediente 4</li>
-                    <li>Ingrediente 5</li>
-                    <li>Ingrediente 6</li>
-                    <li>Ingrediente 6</li>
-                    <li>Ingrediente 6</li>
-                    <li>Ingrediente 6</li>
-                </ul>
+            <div *ngFor="let ingrediente of todosIngredientes">
+
+                <p>{{ingrediente.nombre_ingrediente}}</p>
+
             </div>
         </div>
     </div>
@@ -66,8 +53,8 @@
     <div class="fin_pagina">
         <h4 class="card-subtitle text-muted titulo_centrado">Elaboración</h4>
         <div class="elaboracion_box">
-            <p class="texto_final">
-                {{recetaSeleccionada.descripcion}}
+            <p *ngFor="let pasos of pasosReceta; let i = index;" class="texto_final">
+                <span>{{i+1}}</span> {{pasos}}
             </p>
         </div>
     </div>

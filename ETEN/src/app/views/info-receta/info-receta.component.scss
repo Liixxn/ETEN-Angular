@@ -1,3 +1,14 @@
+
+
+/* VARIABLES */
+
+$logo-ETEN-naranja: #F05A21;
+$naranja-intermedio: #EC6433;
+$naranja-claro: #F37A44;
+$azul-oscuro: #155386;
+$azul-claro: #0086AA;
+$color-crema: #E9DFCB;
+
 .fondo_img {
     background-image: url("/assets/imgs/fondo_img_info_receta2.png");
     background-position: center;
@@ -89,14 +100,12 @@
 }
 
 
-.lista_ingredientes {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 
-}
+
+.lista_ingredientes {
+    text-align: center;
+    display: block;
+  }
 
 .fondo_titulo {
     //background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
@@ -143,6 +152,15 @@
     margin: 2%;
 }
 
+@media (max-width: 278px) {
+    .borde_cajas {
+        font-size: 12px;
+    }
+    h4{
+        font-size: 16px;
+    }
+}
+
 .texto_final {
     text-align: justify;
     background-color: rgba(255, 255, 255, 0.3);
@@ -159,6 +177,10 @@
         inset #ffefd5 0 0 0 22px;
 
     text-shadow: 3px 3px 1px #ffd699;
+}
+.texto_final span{
+color: red;
+font-size: 50px;
 }
 
 .fin_pagina {

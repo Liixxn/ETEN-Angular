@@ -79,6 +79,10 @@ body {
 }
 
 
+.recetas {
+  height: 100%;
+}
+
 .scroll-content {
   height: 100vh;
   display: flex;
@@ -88,33 +92,25 @@ body {
   overflow-y: scroll;
 }
 
-
-
 .card {
-  width: 300px;
-  margin: 20px 20px;
+  margin: 10px;
   height: 300px;
-}
-
-
-
-.card:hover {
-  box-shadow: 2px 2px 2px rgba(0, 0, 0);
 
 }
 
-.card img {
+.card-img-top {
   height: 200px;
   object-fit: cover;
-}
 
-.card-body a {
-  text-decoration: none;
 }
 
 .card-title {
   text-align: center;
+}
 
+
+.card:hover {
+  box-shadow: 2px 2px black;
 }
 
 .tarjetas {

@@ -116,9 +116,6 @@ body {
 }
 
 
-@media (max-width: 750px) {
-  .card-img-top {
-
-  }
-
+.card:hover {
+  box-shadow: 2px 2px black;
 }

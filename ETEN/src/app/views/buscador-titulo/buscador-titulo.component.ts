@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscador-titulo',
@@ -12,9 +13,9 @@ export class BuscadorTituloComponent {
   nombreRecetaBuscar: string = '';
   nombre: string = '';
   recetas: Receta[] = [];
+  
 
-  constructor(private recetaService: RecetaService) {
-  }
+  constructor(private recetaService: RecetaService, private route: Router) { }
 
   ngOnInit() {
     this.cargarRecetas();
@@ -38,6 +39,12 @@ export class BuscadorTituloComponent {
     }
   }
 
+  public abrirInfoReceta(recetaSeleccionada: Receta) {
+    alert('Receta Cargada ' + recetaSeleccionada.titulo)
+    //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
 
+    this.recetaService.recetaSeleccionada = recetaSeleccionada;
+    this.route.navigate(['info-receta']);
+  }
 
 }

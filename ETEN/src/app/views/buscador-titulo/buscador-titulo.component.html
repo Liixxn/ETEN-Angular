@@ -1,43 +1,45 @@
 <body>
 
-<section id="buscador-bar">
-  <div class="top-bar">
-    <form>
-      <input id="nombreReceta" class="search-titulo" type="text" placeholder="Nombre de la receta" [(ngModel)]="nombreRecetaBuscar">
-    </form>
-    <form>
-      <button (click)="obtenerTituloReceta()" type="submit">Buscar</button>
-    </form>
-  </div>
-  <div class="recetas">
-    <h3>{{ nombreRecetaBuscar }}</h3>
-    <div class="scroll-content">
-      <div *ngFor="let receta of recetas" class="col-md-4">
-        <div class="card">
-          <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
-          <div class="card-body">
-            <a href="{{receta.img}}" target="_blank">
-              <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>
+  <section id="buscador-bar">
+    <div class="top-bar">
+      <form>
+        <input id="nombreReceta" class="search-titulo" type="text" placeholder="Nombre de la receta"
+          [(ngModel)]="nombreRecetaBuscar">
+      </form>
+      <form>
+        <button (click)="obtenerTituloReceta()" type="submit">Buscar</button>
+      </form>
+    </div>
+    <div class="recetas">
+      <h3>{{ nombreRecetaBuscar }}</h3>
+      <div class="scroll-content">
+        <div *ngFor="let receta of recetas" class="col-md-4">
+          <div class="card">
+            <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
+            <div class="card-body">
+              <a (click)="abrirInfoReceta(receta)">
+                <h5 class="card-title stretched-link">{{ receta.titulo }}</h5>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <section class="mb-4">
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <i class="fa-solid fa-envelope"></i></a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <i class="fab fa-instagram"></i></a>
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
-      </section>
-    </div>
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2023 Eten.com
-    </div>
-  </footer>
-</section>
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <section class="mb-4">
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            <i class="fa-solid fa-envelope"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            <i class="fab fa-instagram"></i></a>
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
+        </section>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Eten.com
+      </div>
+    </footer>
+  </section>
 
 </body>

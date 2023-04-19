@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
 
 //import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
+import {UsuarioService} from "../../services/usuario.service";
+import {Usuario} from "../../models/usuario";
 //import { Color } from 'chart.js/dist/types/color';
 //import 'chartjs-plugin-datalabels';
 
@@ -15,7 +17,18 @@ import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
 })
 export class EstadisticasAdminComponent {
 
-  constructor() { }
+  constructor(private usuarioService: UsuarioService) { }
+  todosUsuarios:Usuario[] = [];
+
+  ngOnInit() {
+    this.cargarUsuarios();
+  }
+
+  public cargarUsuarios() {
+    this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
+      this.todosUsuarios = data
+    });
+  }
 
   /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
   data = ['opcion 1', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba'];

@@ -61,6 +61,10 @@ export class PerfilComponent {
     }, 2500);
   }
 
+  public cerrarToast() {
+    this.showsToast = !this.showsToast;
+  }
+
   public hacerInputEditableyNoEditable() {
     var nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
     var email = document.getElementById("form_email") as HTMLInputElement;

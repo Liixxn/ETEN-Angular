@@ -1,5 +1,3 @@
-
-
 /* VARIABLES */
 
 $logo-ETEN-naranja: #F05A21;
@@ -21,6 +19,13 @@ $color-crema: #E9DFCB;
     justify-content: center;
 
     min-height: 1000px;
+   
+}
+
+.fondo_img img {
+    max-width: 1000px;
+    width: 90vw;
+    height: auto;
 }
 
 .iconos-container {
@@ -105,7 +110,7 @@ $color-crema: #E9DFCB;
 .lista_ingredientes {
     text-align: center;
     display: block;
-  }
+}
 
 .fondo_titulo {
     //background-image: url('https://img.freepik.com/foto-gratis/texturas-madera-fondo_74190-6225.jpg?w=740&t=st=1679917539~exp=1679918139~hmac=2b930db33c13d1c3287bbfa4f9a24b62333e558124edc7d6be1a44a4e85aa4f0');
@@ -156,7 +161,8 @@ $color-crema: #E9DFCB;
     .borde_cajas {
         font-size: 12px;
     }
-    h4{
+
+    h4 {
         font-size: 16px;
     }
 }
@@ -178,9 +184,10 @@ $color-crema: #E9DFCB;
 
     text-shadow: 3px 3px 1px #ffd699;
 }
-.texto_final span{
-color: red;
-font-size: 50px;
+
+.texto_final span {
+    color: red;
+    font-size: 50px;
 }
 
 .fin_pagina {

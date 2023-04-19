@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Ingrediente } from '../models/ingrediente';
+import { Receta } from '../models/receta';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class IngredienteService {
   public getRecetaPorIngrediente(ingrediente:Ingrediente) {
     return this.httpClient.post<Ingrediente[]>("http://localhost:8000/api/recetas/ObtenerRecetaIngrediente", ingrediente);
 
+  }
+
+  public obtenerIngredientes(receta:Receta) {
+    return this.httpClient.post<Ingrediente[]>("http://localhost:8000/api/receta/ingredientes", receta);
   }
 
 

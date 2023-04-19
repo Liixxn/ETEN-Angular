@@ -24,6 +24,8 @@ const routes: Routes = [
   {path: 'about-us', component:AboutUsComponent},
 
   {path: 'info-receta', component:InfoRecetaComponent},
+  {path: 'info-receta/:id', component:InfoRecetaComponent},
+  
   {path: 'estadisticas', component: EstadisticasAdminComponent},
   {path: 'perfil', component:PerfilComponent},
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},

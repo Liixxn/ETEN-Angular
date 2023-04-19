@@ -6,7 +6,7 @@ import { Receta } from '../models/receta';
   providedIn: 'root'
 })
 export class RecetaService {
-
+  recetaSeleccionada: any;
   constructor(private httpClient: HttpClient) { }
 
   public ObtenerTodasRecetas() {
@@ -16,6 +16,9 @@ export class RecetaService {
   public obtenerRecetaPorId(id_receta:number) {
     return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerReceta/"+id_receta);
 
+  }
+  public ObtenerUnaRecetas(idReceta: number) {
+    return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerUnaReceta/" + idReceta);
   }
 
 }

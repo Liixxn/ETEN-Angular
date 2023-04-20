@@ -22,4 +22,8 @@ export class UsuarioService {
     return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/login", usuario);
   }
 
+  public getUser (id_usuario:Usuario) {
+    return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/ObtenerUnUsuario", id_usuario);
+  }
+
 }

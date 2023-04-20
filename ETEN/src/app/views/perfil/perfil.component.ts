@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-perfil',
@@ -12,13 +14,33 @@ export class PerfilComponent {
   showsToast = false;
 
 
-
+  public usuarioLogueado: Usuario = new Usuario('nombre', 'email', 'pass', 0, 'img', 0);
 
   public btnModificarDatosSeleccionado: boolean = false;
   public btnSubscripcionSeleccionada: boolean = false;
+
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private usuarioService: UsuarioService) { }
+
+  ngOnInit() {
+    //let id_usuario = 1;
+    let usuario: Usuario = new Usuario('vacio', 'vacio', 'vacio', 0, 'vacio', 0);
+    usuario.id = 2;
+    this.usuarioService.getUser(usuario).subscribe((data: Usuario) => {
+      this.usuarioLogueado = data;
+      this.comprobarImgInicio();
+    })
+  }
+
+  public comprobarImgInicio(){
+    if (this.usuarioLogueado.img == 'img' || this.usuarioLogueado.img == '' || this.usuarioLogueado.img == null) {
+      this.imagenSeleccionada = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
+      alert('imgseeeeleeeccionada')
+    }else{
+      this.imagenSeleccionada = this.usuarioLogueado.img;
+    }
+  }
 
   public seleccionarImagen(): void {
     const input = document.createElement('input');

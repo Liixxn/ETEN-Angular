@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class PerfilComponent {
 
-  toastMessage = 'This is a toast'; // This is the string the template is already bound to
+  toastMessage = 'This is a toast'; // mensaje toast
   showsToast = false;
 
 
@@ -24,21 +24,33 @@ export class PerfilComponent {
   constructor(private route: Router, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    //let id_usuario = 1;
+    this.cargarUsuario();
+
+  }
+
+  public cargarUsuario() {
     let usuario: Usuario = new Usuario('vacio', 'vacio', 'vacio', 0, 'vacio', 0);
-    usuario.id = 2;
+    usuario.id = 1;
     this.usuarioService.getUser(usuario).subscribe((data: Usuario) => {
       this.usuarioLogueado = data;
-      this.comprobarImgInicio();
+      this.comprobarImgAlInicio();
+      this.comprobarSubscripcionAlInicio();
     })
   }
 
-  public comprobarImgInicio(){
+  public comprobarImgAlInicio() {
     if (this.usuarioLogueado.img == 'img' || this.usuarioLogueado.img == '' || this.usuarioLogueado.img == null) {
       this.imagenSeleccionada = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
-      alert('imgseeeeleeeccionada')
-    }else{
+    } else {
       this.imagenSeleccionada = this.usuarioLogueado.img;
+    }
+  }
+
+  public comprobarSubscripcionAlInicio() {
+    if (this.usuarioLogueado.subscripcion == 1) {
+      this.btnSubscripcionSeleccionada = true;
+    } else {
+      this.btnSubscripcionSeleccionada = false;
     }
   }
 
@@ -69,30 +81,80 @@ export class PerfilComponent {
 
   public guardarCambios(): void {
     //Cambios al guardar los datos
-    alert('guardar cambios por hacer')
-    this.modificarDatos();
+
+
+    let nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
+    let email = document.getElementById("form_email") as HTMLInputElement;
+    let passwordActual = document.getElementById("form_password_actual") as HTMLInputElement;
+    let passwordNueva = document.getElementById("form_password_nueva") as HTMLInputElement;
+    //comprobamos si la contraseña actual es correcta
+    this.usuarioService.comprobarContrasena(this.usuarioLogueado.id!, passwordActual.value).subscribe((data: string) => {
+      alert(data + ' data')
+      if (data == this.usuarioLogueado.password) {
+
+        //passwordNueva = sha1(passwordNueva.value);
+        let subscription = 0;
+        if (this.btnSubscripcionSeleccionada) {
+          subscription = 1;
+        } else {
+          subscription = 0;
+        }
+        //alert('guardar cambios (por hacer) ' + nombre.value)
+        let usuarioNuevo: Usuario = new Usuario(nombre.value, email.value, passwordNueva.value, subscription, this.imagenSeleccionada, 0);
+        usuarioNuevo.id = this.usuarioLogueado.id;
+
+        this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: Usuario) => {
+          alert(data.nombre)
+          this.cargarUsuario();
+        })
+
+        this.modificarDatos();
+        this.lanzarToast('Se han GUARDADO los cambios');
+
+      } else {
+        alert('La contraseña actual no es correcta')
+      }
+    })
+
+
   }
 
+
+  public cancelarCambios() {
+    alert('Se han cancelado los cambios')
+    this.modificarDatos();
+    this.lanzarToast('Se han CANCELADO los cambios');
+  }
+
+
   public modificarDatos(): void {
+    if (!this.btnModificarDatosSeleccionado) {
+      this.lanzarToast('Puedes modificar la informacion de tu perfil');
+    }
     this.btnModificarDatosSeleccionado = !this.btnModificarDatosSeleccionado;
     this.hacerInputEditableyNoEditable();
+  }
 
+  public lanzarToast(mensaje: string) {
     this.showsToast = !this.showsToast;
+    this.toastMessage = mensaje;
     setTimeout(() => {
       this.showsToast = false;
     }, 2500);
   }
-
   public cerrarToast() {
     this.showsToast = !this.showsToast;
   }
 
   public hacerInputEditableyNoEditable() {
-    var nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
-    var email = document.getElementById("form_email") as HTMLInputElement;
+    let nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
+    let email = document.getElementById("form_email") as HTMLInputElement;
+    nombre.value = this.usuarioLogueado.nombre;
+    email.value = this.usuarioLogueado.email;
     nombre.readOnly = !nombre.readOnly;
     email.readOnly = !email.readOnly;
   }
+
 
   public cerrarSesion() {
     alert('Se ha cerrado sesion')

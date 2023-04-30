@@ -19,7 +19,7 @@ export class UsuarioService {
 
 
   public login (usuario:Usuario) {
-    return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/login", usuario);
+    return this.httpClient.post<any>("http://localhost:8000/api/usuarios/login", usuario);
   }
 
 }

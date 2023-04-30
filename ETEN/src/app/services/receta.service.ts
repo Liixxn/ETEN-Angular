@@ -17,4 +17,8 @@ export class RecetaService {
     return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerUnaReceta/" + idReceta);
   }
 
+  public ObtenerRecetasPorId(listaIdRecetas: number[]) {
+    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorId", {"ids":listaIdRecetas});
+  }
+
 }

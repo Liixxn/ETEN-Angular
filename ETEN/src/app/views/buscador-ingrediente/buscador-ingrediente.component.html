@@ -6,10 +6,14 @@
     <form>
       <button type="button" id="botonReceta" (click)="agregarTarjeta()">Añadir</button>
     </form>
+    <form>
+      <button type="button" id="btnBuscar" (click)="buscarRecetasPorIngrediente()">Buscar</button>
+    </form>
+
   </div>
   <div class="tarjetas">
     <div id="contenedorTarjetas" class="tarjetas-container">
-      <div class="tarjeta-aniadida" *ngFor="let ingrediente of ingredientes; let i = index">
+      <div class="tarjeta-aniadida" *ngFor="let ingrediente of ingredientesTarjetas; let i = index">
         <span>{{ ingrediente }}</span>
         <span class="borrar" (click)="eliminarIngrediente(i)">x</span>
       </div>

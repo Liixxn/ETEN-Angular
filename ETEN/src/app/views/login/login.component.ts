@@ -27,9 +27,11 @@ export class LoginComponent {
   private comprobarUsuario(email: string, contrasenia: string) {
 
     let usuario: Usuario = new Usuario('vacio', email, contrasenia, 0, '', 0);
-    this.usuarioService.login(usuario).subscribe((data: Usuario) => {
+    this.usuarioService.login(usuario).subscribe((data: any) => {
 
-      if (data.nombre == "Usuario no encontrado") {
+      alert(data.access_token);
+
+      /*if (data.nombre == "Usuario no encontrado") {
         alert("El usuario no existe.");
       }
       else if (data.nombre == "Contrasenia incorrecta") {
@@ -44,7 +46,7 @@ export class LoginComponent {
           alert('no admin')
           this.appComponent.modificarAdmin(false);
         }
-      }
+      }*/
     })
   }
 

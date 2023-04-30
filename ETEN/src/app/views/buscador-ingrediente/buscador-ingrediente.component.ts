@@ -12,7 +12,8 @@ import {Ingrediente} from "../../models/ingrediente";
 export class BuscadorIngredienteComponent {
   MAX_TARJETAS = 5;
   ingredientes: string[] = [];
-  ingredientesEncontrados: Ingrediente[] = [];
+  ingredientesTarjetas: string[] = [];
+  recetasEncontrados: Ingrediente[] = [];
   listaIdsRecetas: number[] = [];
 
   @ViewChild('nombreReceta', { static: true }) inputNombreReceta!: ElementRef<HTMLInputElement>;
@@ -35,13 +36,55 @@ export class BuscadorIngredienteComponent {
 
   public buscarRecetasPorIngrediente() {
 
-    let ingredientesABuscar = this.ingredientes[(this.ingredientes.length)-1];
-    let i = new Ingrediente(0, ingredientesABuscar);
+    //let ingredientesABuscar = this.ingredientes[(this.ingredientes.length)-1];
+    //let i = new Ingrediente(0, ingredientesABuscar);
+
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Ingrediente[]) => {
+      this.recetasEncontrados = data;
+      alert(this.recetasEncontrados.length);
+
+      if (this.recetasEncontrados.length > 0) {
+
+        alert(this.recetasEncontrados.length);
+
+        for (let i = 0; i < this.recetasEncontrados.length; i++) {
+          console.log(this.recetasEncontrados[i].id_receta);
+        }
 
 
-    this.ingredienteService.getRecetaPorIngrediente(i).subscribe((data:Ingrediente[]) => {
-      this.ingredientesEncontrados = data;
-      alert(this.ingredientesEncontrados.length);
+      }
+
+        /*for (let i = 0; i < this.recetasEncontrados.length; i++) {
+          if (this.listaIdsRecetas.includes(this.recetasEncontrados[i].id_receta)) {
+            this.recetasEncontrados.slice(i, 1);
+            console.log("Ya esta" + this.recetasEncontrados[i].id_receta + " en la lista");
+          }
+          else {
+            this.listaIdsRecetas.push(this.recetasEncontrados[i].id_receta);
+          }
+        }
+        alert(this.listaIdsRecetas.length);
+        console.log(this.listaIdsRecetas);*/
+
+        /*
+        alert(this.listaIdsRecetas.length);
+        if (this.listaIdsRecetas.length > 0) {
+          console.log(this.listaIdsRecetas);
+          this.recetaService.ObtenerRecetasPorId(this.listaIdsRecetas).subscribe((data: Receta[]) => {
+            //this.recetas = data;
+            console.log(data.length + "recetas");
+            alert(data.length);
+
+          });
+        }
+        else {
+          alert("esta vacia");
+        }*/
+
+      else {
+        this.cargarRecetas();
+        alert("esta vacia");
+      }
 
     });
 
@@ -59,17 +102,20 @@ export class BuscadorIngredienteComponent {
       alert("Ya no puedes añadir más ingredientes.");
     } else {
       this.ingredientes.push(nombreReceta);
+      this.ingredientesTarjetas.push(nombreRecetaRecortado);
       //this.inputNombreReceta.nativeElement.value = "";
-      this.buscarRecetasPorIngrediente();
       console.log(this.ingredientes);
 
     }
   }
 
   public eliminarIngrediente(index: number) {
+    this.ingredientesTarjetas.splice(index, 1);
     this.ingredientes.splice(index, 1);
     console.log(this.ingredientes);
+    console.log(this.ingredientesTarjetas);
   }
+
 
 
 

@@ -22,7 +22,12 @@
 
   <div class="recetas">
     <div class="scroll-content">
-      <div *ngFor="let receta of recetas" class="col-md-4">
+      <div class="col-md-4" *ngFor="let receta of recetas | paginate : {
+    itemsPerPage: 12,
+    currentPage: page,
+    totalItems: recetas.length
+           }; let i = index" [class.active]="i == currentIndex">
+           <!--(click)="setActiveTutorial(tutorial, i)"-->
         <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
@@ -34,6 +39,16 @@
     </div>
   </div>
 </section>
+
+<div class="paginacion">
+  <pagination-controls
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    (pageChange)="handlePageChange($event)"
+  ></pagination-controls>
+</div>
+
+
 
 <footer class="bg-dark text-center text-white">
 

@@ -16,6 +16,12 @@ export class BuscadorIngredienteComponent {
   recetasEncontrados: Ingrediente[] = [];
   listaIdsRecetas: number[] = [];
 
+
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
+
   @ViewChild('nombreReceta', { static: true }) inputNombreReceta!: ElementRef<HTMLInputElement>;
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
   recetas: Receta[] = [];
@@ -116,11 +122,10 @@ export class BuscadorIngredienteComponent {
     console.log(this.ingredientesTarjetas);
   }
 
-
-
-
-
-
+  public handlePageChange(event: number) {
+    this.page = event;
+    //this.contenedorTarjetas.nativeElement.scrollTop = 0;
+  }
 
 
 }

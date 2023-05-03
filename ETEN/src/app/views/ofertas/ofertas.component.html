@@ -1,55 +1,61 @@
-<head>
-    <meta charset="UTF-8">
-    <title>Ofertas</title>
-    <link rel="stylesheet" href="ofertas.component.scss">
-  </head>
-  <body>
-    <header>
-      <h1>Ofertas</h1>
-    </header>
-  
-    <main>
-      <nav class="button-menu">
-        <ul>
-          <li>
-            <a href="#" class="btn-primary" [class.active]="selectedCategory === ''" (click)="selectCategory(''); $event.preventDefault()">
-              Todos los productos
-            </a>
-          </li>
-          <li *ngFor = "let category of categories">
-            <a href="#" class="btn-primary" [class.active]="selectedCategory === category" (click)="selectCategory(category); $event.preventDefault()">
-              {{ category }}
-            </a>
-          </li>
-        </ul>
-      </nav>
-  
-      <section class="featured">
-        <div class="grid">
-          <div class="card" *ngFor="let product of paginatedProducts">
-            <img [src]="product.image" alt="Producto">
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
-            <span class="price">{{ product.price }}</span>
-            <a href="#" class="btn-primary">Comprar</a>
-          </div>
-        </div>
-      </section>
-  
-      <div class="pagination">
-        <a href="javascript:void(0)" (click)="previousPage()" class="prev">&laquo;Anterior</a>
-        <ng-container *ngFor="let page of pages">
-          <a href="javascript:void(0)" *ngIf="page === currentPage; else otherPage" 
-            class="page active">{{ page }}</a>
-          <ng-template #otherPage>
-            <a href="javascript:void(0)" (click)="setPage(page)" class="page">{{ page }}</a>
-          </ng-template>
-        </ng-container>
-        <a href="javascript:void(0)" (click)="nextPage()" class="next">Siguiente&raquo;</a>
-      </div>
-    </main>
-  
-    <footer>
-      <p>&copy; 2023 Eten</p>
-    </footer>
-  </body>
+<section class="seccionNavegacion">
+  <div class="button-menu">
+    <button class="btnOferta">Todos los productos</button>
+    <button class="btnOferta">Productos Frescos</button>
+    <button class="btnOferta">Despensa</button>
+    <button class="btnOferta">Bebidas</button>
+  </div>
+</section>
+
+<section class="seccion-cards">
+  <div class="grid">
+    <div class="card" *ngFor="let product of ofertas | paginate : {
+    itemsPerPage: 15,
+    currentPage: page,
+    totalItems: ofertas.length };
+    let i = index" [class.active]="i == currentIndex">
+      <img [src]="product" alt="Producsto">
+      <h3>{{ product }}</h3>
+      <p>{{ product }}</p>
+      <span class="price">{{ product }}</span>
+      <a href="#" class="btn-primary">Comprar</a>
+    </div>
+  </div>
+</section>
+
+
+<div class="paginacion">
+  <pagination-controls
+    previousLabel="Anterior"
+    nextLabel="Siguiente"
+    (pageChange)="handlePageChange($event)"
+  ></pagination-controls>
+</div>
+
+
+
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+
+    <section class="mb-4">
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fa-solid fa-envelope"></i></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+        <i class="fab fa-instagram"></i></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+      ><i class="fab fa-google"></i></a>
+    </section>
+
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright:
+    <a class="text-white" href="eten">Eten.com</a>
+  </div>
+
+</footer>

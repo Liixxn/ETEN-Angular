@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { RecetaService } from 'src/app/services/receta.service';
-import {Ingrediente} from "../../models/ingrediente";
 
 @Component({
   selector: 'app-buscador-ingrediente',
@@ -12,8 +11,15 @@ import {Ingrediente} from "../../models/ingrediente";
 export class BuscadorIngredienteComponent {
   MAX_TARJETAS = 5;
   ingredientes: string[] = [];
-  ingredientesEncontrados: Ingrediente[] = [];
+  ingredientesTarjetas: string[] = [];
+  recetasEncontrados: Receta[] = [];
   listaIdsRecetas: number[] = [];
+
+
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
 
   @ViewChild('nombreReceta', { static: true }) inputNombreReceta!: ElementRef<HTMLInputElement>;
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
@@ -35,14 +41,15 @@ export class BuscadorIngredienteComponent {
 
   public buscarRecetasPorIngrediente() {
 
-    let ingredientesABuscar = this.ingredientes[(this.ingredientes.length)-1];
-    let i = new Ingrediente(0, ingredientesABuscar);
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Receta[]) => {
+      this.recetasEncontrados = data;
 
-
-    this.ingredienteService.getRecetaPorIngrediente(i).subscribe((data:Ingrediente[]) => {
-      this.ingredientesEncontrados = data;
-      alert(this.ingredientesEncontrados.length);
-
+      if (this.recetasEncontrados.length > 0) {
+        this.recetas = this.recetasEncontrados;
+      }
+      else {
+        this.cargarRecetas();
+      }
     });
 
   }
@@ -50,6 +57,7 @@ export class BuscadorIngredienteComponent {
 
 
   public agregarTarjeta() {
+    let inputIngredientes = (<HTMLInputElement>document.getElementById("nombreReceta"));
     const nombreReceta = (<HTMLInputElement>document.getElementById("nombreReceta")).value.trim();
     const nombreRecetaRecortado = nombreReceta.slice(0, 20) + (nombreReceta.length > 28 ? "..." + nombreReceta[nombreReceta.length - 1] : "");
 
@@ -59,22 +67,27 @@ export class BuscadorIngredienteComponent {
       alert("Ya no puedes añadir más ingredientes.");
     } else {
       this.ingredientes.push(nombreReceta);
-      //this.inputNombreReceta.nativeElement.value = "";
-      this.buscarRecetasPorIngrediente();
-      console.log(this.ingredientes);
+      this.ingredientesTarjetas.push(nombreRecetaRecortado);
+      inputIngredientes.value = "";
 
     }
   }
 
   public eliminarIngrediente(index: number) {
+    this.ingredientesTarjetas.splice(index, 1);
     this.ingredientes.splice(index, 1);
     console.log(this.ingredientes);
+    console.log(this.ingredientesTarjetas);
   }
 
+  public handlePageChange(event: number) {
 
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
 
-
-
+    this.page = event;
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
+  }
 
 
 }

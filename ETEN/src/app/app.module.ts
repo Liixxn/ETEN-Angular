@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import {HttpClientModule } from '@angular/common/http';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,7 +47,8 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     NgbModule,
     FormsModule,
     NgChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,6 +11,12 @@ import { RecetaService } from 'src/app/services/receta.service';
 export class BuscadorCategoriaComponent {
   recetas: Receta[] = [];
 
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
+
+
   constructor(private recetaService: RecetaService, private route: Router) {
   }
 
@@ -32,7 +38,7 @@ export class BuscadorCategoriaComponent {
   }
 
   public buscarPorCategoria(categoria: string) {
-    alert(categoria);
+
     switch (categoria) {
       case 'arroz': {
         this.recetaService.ObtenerRecetasPorCategoria(1).subscribe((data: Receta[]) => {
@@ -84,5 +90,16 @@ export class BuscadorCategoriaComponent {
       }
     }
   }
+
+  public handlePageChange(event: number) {
+
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+
+    this.page = event;
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
+  }
+
+
 }
 

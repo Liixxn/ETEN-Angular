@@ -13,7 +13,7 @@ export class BuscadorTituloComponent {
   nombreRecetaBuscar: string = '';
   nombre: string = '';
   recetas: Receta[] = [];
-  
+
 
   constructor(private recetaService: RecetaService, private route: Router) { }
 
@@ -31,10 +31,9 @@ export class BuscadorTituloComponent {
   public obtenerTituloReceta() {
     this.nombre = (<HTMLInputElement>document.getElementById('nombreReceta')).value;
 
-    this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => { 
-      
+    this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => {
       this.recetas = data;
-	   })
+    })
 
     if (this.nombre == '') {
       this.nombreRecetaBuscar = 'No hay recetas que mostrar';

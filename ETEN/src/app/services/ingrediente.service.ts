@@ -11,7 +11,7 @@ export class IngredienteService {
   constructor(private httpClient: HttpClient) { }
 
   public getRecetaPorIngrediente(ingrediente: string[]) {
-    return this.httpClient.post<Ingrediente[]>("http://localhost:8000/api/recetas/ObtenerRecetaIngrediente", {"ingredientes": ingrediente});
+    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetaIngrediente", {"ingredientes": ingrediente});
 
   }
 

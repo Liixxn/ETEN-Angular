@@ -2,7 +2,6 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { RecetaService } from 'src/app/services/receta.service';
-import {Ingrediente} from "../../models/ingrediente";
 
 @Component({
   selector: 'app-buscador-ingrediente',
@@ -13,7 +12,7 @@ export class BuscadorIngredienteComponent {
   MAX_TARJETAS = 5;
   ingredientes: string[] = [];
   ingredientesTarjetas: string[] = [];
-  recetasEncontrados: Ingrediente[] = [];
+  recetasEncontrados: Receta[] = [];
   listaIdsRecetas: number[] = [];
 
 
@@ -42,56 +41,15 @@ export class BuscadorIngredienteComponent {
 
   public buscarRecetasPorIngrediente() {
 
-    //let ingredientesABuscar = this.ingredientes[(this.ingredientes.length)-1];
-    //let i = new Ingrediente(0, ingredientesABuscar);
-
-    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Ingrediente[]) => {
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Receta[]) => {
       this.recetasEncontrados = data;
-      alert(this.recetasEncontrados.length);
 
       if (this.recetasEncontrados.length > 0) {
-
-        alert(this.recetasEncontrados.length);
-
-        for (let i = 0; i < this.recetasEncontrados.length; i++) {
-          console.log(this.recetasEncontrados[i].id_receta);
-        }
-
-
+        this.recetas = this.recetasEncontrados;
       }
-
-        /*for (let i = 0; i < this.recetasEncontrados.length; i++) {
-          if (this.listaIdsRecetas.includes(this.recetasEncontrados[i].id_receta)) {
-            this.recetasEncontrados.slice(i, 1);
-            console.log("Ya esta" + this.recetasEncontrados[i].id_receta + " en la lista");
-          }
-          else {
-            this.listaIdsRecetas.push(this.recetasEncontrados[i].id_receta);
-          }
-        }
-        alert(this.listaIdsRecetas.length);
-        console.log(this.listaIdsRecetas);*/
-
-        /*
-        alert(this.listaIdsRecetas.length);
-        if (this.listaIdsRecetas.length > 0) {
-          console.log(this.listaIdsRecetas);
-          this.recetaService.ObtenerRecetasPorId(this.listaIdsRecetas).subscribe((data: Receta[]) => {
-            //this.recetas = data;
-            console.log(data.length + "recetas");
-            alert(data.length);
-
-          });
-        }
-        else {
-          alert("esta vacia");
-        }*/
-
       else {
         this.cargarRecetas();
-        alert("esta vacia");
       }
-
     });
 
   }
@@ -99,6 +57,7 @@ export class BuscadorIngredienteComponent {
 
 
   public agregarTarjeta() {
+    let inputIngredientes = (<HTMLInputElement>document.getElementById("nombreReceta"));
     const nombreReceta = (<HTMLInputElement>document.getElementById("nombreReceta")).value.trim();
     const nombreRecetaRecortado = nombreReceta.slice(0, 20) + (nombreReceta.length > 28 ? "..." + nombreReceta[nombreReceta.length - 1] : "");
 
@@ -109,8 +68,7 @@ export class BuscadorIngredienteComponent {
     } else {
       this.ingredientes.push(nombreReceta);
       this.ingredientesTarjetas.push(nombreRecetaRecortado);
-      //this.inputNombreReceta.nativeElement.value = "";
-      console.log(this.ingredientes);
+      inputIngredientes.value = "";
 
     }
   }
@@ -123,8 +81,12 @@ export class BuscadorIngredienteComponent {
   }
 
   public handlePageChange(event: number) {
+
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+
     this.page = event;
-    //this.contenedorTarjetas.nativeElement.scrollTop = 0;
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
   }
 
 

@@ -21,13 +21,12 @@
   </div>
 
   <div class="recetas">
-    <div class="scroll-content">
+    <div class="scroll-content" id="contenedor-scroll">
       <div class="col-md-4" *ngFor="let receta of recetas | paginate : {
     itemsPerPage: 12,
     currentPage: page,
     totalItems: recetas.length
            }; let i = index" [class.active]="i == currentIndex">
-           <!--(click)="setActiveTutorial(tutorial, i)"-->
         <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
@@ -70,7 +69,7 @@
 
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2023 Copyright:
-    <a class="text-white" href="http://localhost:4200/">Eten.com</a>
+    <a class="text-white" [routerLink]="['eten']" >Eten.com</a>
   </div>
 
 </footer>

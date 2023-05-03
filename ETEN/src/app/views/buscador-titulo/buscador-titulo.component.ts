@@ -14,6 +14,11 @@ export class BuscadorTituloComponent {
   nombre: string = '';
   recetas: Receta[] = [];
 
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
+
 
   constructor(private recetaService: RecetaService, private route: Router) { }
 
@@ -48,6 +53,15 @@ export class BuscadorTituloComponent {
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
     this.route.navigate(['/info-receta',recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;
+  }
+
+  public handlePageChange(event: number) {
+
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+
+    this.page = event;
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
   }
 
 }

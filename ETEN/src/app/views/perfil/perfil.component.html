@@ -15,7 +15,7 @@
             </button>
             <div class="img-container">
               <img [src]="imagenSeleccionada" alt="img-avatar" class="img-fluid img_user">
-              <h1 class="nombre_user">Lian Zi Salmeron Lopez</h1>
+              <h1 class="nombre_user">{{usuarioLogueado.nombre}}</h1>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
 
   <div class="perfil-usuario-body">
     <div class="perfil-usuario-bio">
-      <form class="formulario">
+      <form id="formularioPerfilUser" class="formulario">
 
         <button *ngIf="(!btnSubscripcionSeleccionada)" (click)="subscripcion()"
           class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-4" type="submit">Subscribirse</button>
@@ -61,11 +61,11 @@
 
         <p>Nombre de usuario</p>
         <div class="form-outline mb-4">
-          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" readonly />
+          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" value="{{usuarioLogueado.nombre}}" readonly>
         </div>
         <p>Correo electronico</p>
         <div class="form-outline mb-4">
-          <input type="email" id="form_email" class="form-control" placeholder="correo" readonly />
+          <input type="email" id="form_email" class="form-control" placeholder="email" value="{{usuarioLogueado.email}}" readonly />
         </div>
 
         <div *ngIf="(btnModificarDatosSeleccionado)">
@@ -78,7 +78,7 @@
             <input type="password" id="form_password_nueva" class="form-control" placeholder="password nueva" />
           </div>
 
-          <button class="btn btn-secondary btn-block fa-lg mb-2" (click)="modificarDatos()" type="button">Cancelar
+          <button class="btn btn-secondary btn-block fa-lg mb-2" (click)="cancelarCambios()" type="button">Cancelar
             Cambios</button>
           <button class="btn btn-primary btn-block fa-lg mb-2" (click)="guardarCambios()" type="submit">Guardar
             Cambios</button>
@@ -147,77 +147,72 @@
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
       <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
         </div>
       </div>
-      <div class="card">
-        <img class="card-img-top" src="..." alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
+     
     </div>
 
   </div>

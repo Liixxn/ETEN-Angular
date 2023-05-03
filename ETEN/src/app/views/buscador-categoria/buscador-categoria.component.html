@@ -1,14 +1,14 @@
 <section id="buscador-bar" >
   <div class="top-bar">
     <div class="buttons-container">
-      <button class="button">Carne</button>
-      <button class="button">Pescado</button>
-      <button class="button">Arroces</button>
-      <button class="button">Vegetal</button>
-      <button class="button">Pasta</button>
-      <button class="button">Dulce</button>
-      <button class="button">Bebidas</button>
-      <button class="button">Variado</button>
+      <button class="button" (click)="buscarPorCategoria('carne')">Carne</button>
+      <button class="button" (click)="buscarPorCategoria('pescado')">Pescado</button>
+      <button class="button" (click)="buscarPorCategoria('arroz')">Arroces</button>
+      <button class="button" (click)="buscarPorCategoria('vegetal')">Vegetal</button>
+      <button class="button" (click)="buscarPorCategoria('pasta')">Pasta</button>
+      <button class="button" (click)="buscarPorCategoria('dulce')">Dulce</button>
+      <button class="button" (click)="buscarPorCategoria('bebidas')">Bebidas</button>
+      <button class="button" (click)="buscarPorCategoria('variado')">Variado</button>
     </div>
   </div>
 
@@ -18,7 +18,7 @@
         <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
-            <a href="{{receta.img}}" target="_blank">
+            <a (click)="abrirInfoReceta(receta)">
               <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>
           </div>
         </div>

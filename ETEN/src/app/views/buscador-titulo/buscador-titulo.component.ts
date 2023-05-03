@@ -44,7 +44,6 @@ export class BuscadorTituloComponent {
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
     this.route.navigate(['/info-receta',recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;
-    
   }
 
 }

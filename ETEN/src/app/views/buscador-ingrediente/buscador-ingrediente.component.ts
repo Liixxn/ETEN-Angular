@@ -45,9 +45,11 @@ export class BuscadorIngredienteComponent {
       this.recetasEncontrados = data;
 
       if (this.recetasEncontrados.length > 0) {
+        alert("Se han encontrado " + this.recetasEncontrados.length + " recetas con los ingredientes seleccionados.")
         this.recetas = this.recetasEncontrados;
       }
       else {
+        alert("No se han encontrado recetas con los ingredientes seleccionados.")
         this.cargarRecetas();
       }
     });

@@ -19,7 +19,7 @@ $color-crema: #E9DFCB;
     justify-content: center;
 
     min-height: 1000px;
-   
+
 }
 
 .fondo_img img {
@@ -104,7 +104,10 @@ $color-crema: #E9DFCB;
     text-align: center;
 }
 
-
+.ajustarBtnGuardarReceta {
+    border: 0;
+    background-color: white;
+}
 
 
 .lista_ingredientes {

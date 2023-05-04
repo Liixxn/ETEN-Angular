@@ -63,11 +63,21 @@ body {
   margin: 10px;
 }
 
-.buttons-container button:hover {
+.buttons-container button:hover  {
   background-color: black;
   cursor: pointer;
 }
 
+
+.buttons-container button:focus{
+  background-color: black;
+  cursor: pointer;
+}
+
+.buttons-container button.button_selected {
+  background-color: black;
+  cursor: pointer;
+}
 
 .recetas {
   height: 100%;

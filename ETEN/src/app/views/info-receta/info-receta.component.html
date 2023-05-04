@@ -15,9 +15,9 @@
     <div class="fondo_titulo">
         <div class="titulo_centrado">
             <h1 class="card-title">{{recetaSeleccionada.titulo}}
-                <button class="ajustarBtnGuardarReceta" *ngIf="(recetaGuardada)" (click)="modificarRecetaGuardada()"><i
-                        class="fa-regular fa-bookmark fa-lg" style="color: #000000;"></i></button>
                 <button class="ajustarBtnGuardarReceta" *ngIf="(!recetaGuardada)" (click)="modificarRecetaGuardada()"><i
+                        class="fa-regular fa-bookmark fa-lg" style="color: #000000;"></i></button>
+                <button class="ajustarBtnGuardarReceta" *ngIf="(recetaGuardada)" (click)="modificarRecetaGuardada()"><i
                         class="fa-solid fa-bookmark fa-lg" style="color: #000000;"></i></button>
             </h1>
         </div>

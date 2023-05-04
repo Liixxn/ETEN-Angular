@@ -13,11 +13,6 @@ export class RecetaService {
     return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetas", null);
   }
 
-  public ObtenerRecetasPorTitulo(titulo: string) {
-    return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta/" + titulo);
-
-  }
-
   public ObtenerUnaRecetas(idReceta: number) {
     return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerUnaReceta/" + idReceta);
   }
@@ -28,10 +23,20 @@ export class RecetaService {
   }
 
   public ObtenerRecetasPorId(listaIdRecetas: number[]) {
-    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorId", {"ids":listaIdRecetas});
+    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorId", { "ids": listaIdRecetas });
   }
   public ObtenerRecetasPorTitulo(titulo: string) {
     return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta/" + titulo);
+  }
 
+  public GuardarRecetaFavoritos(id_user: number, id_receta: number) {
+    return this.httpClient.post<string>("http://localhost:8000/api/recetas/GuardarRecetaFavoritos", { id_user, id_receta });
+  }
+  public EliminarRecetaFavoritos(id_user: number, id_receta: number) {
+    return this.httpClient.post<string>("http://localhost:8000/api/recetas/EliminarRecetaFavoritos", { id_user, id_receta });
+  }
+
+  public ObtenerIdRecetasFavoritas(id_user: number) {
+    return this.httpClient.post<number[]>("http://localhost:8000/api/recetas/ObtenerIdRecetasFavoritas", { id_user });
   }
 }

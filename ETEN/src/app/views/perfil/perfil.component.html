@@ -61,11 +61,13 @@
 
         <p>Nombre de usuario</p>
         <div class="form-outline mb-4">
-          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre" value="{{usuarioLogueado.nombre}}" readonly>
+          <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre"
+            value="{{usuarioLogueado.nombre}}" readonly>
         </div>
         <p>Correo electronico</p>
         <div class="form-outline mb-4">
-          <input type="email" id="form_email" class="form-control" placeholder="email" value="{{usuarioLogueado.email}}" readonly />
+          <input type="email" id="form_email" class="form-control" placeholder="email" value="{{usuarioLogueado.email}}"
+            readonly />
         </div>
 
         <div *ngIf="(btnModificarDatosSeleccionado)">
@@ -106,7 +108,8 @@
 
 <section id="section_cerrar_sesion">
   <div class="div_btn_cerrar_sesion">
-    <button class="btn btn-secondary btn-block eliminar_subscripcion fa-lg" (click)="cerrarSesion()">Cerrar Sesión</button>
+    <button class="btn btn-secondary btn-block eliminar_subscripcion fa-lg" (click)="cerrarSesion()">Cerrar
+      Sesión</button>
   </div>
 </section>
 
@@ -116,103 +119,23 @@
   <h3>Tus recetas favoritas</h3>
   <div class="div-contenido-recetas">
     <div class="scroll-contenido">
-      <div class="card">
-        <img class="card-img-top"
-          src="https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Card image cap">
+
+
+
+
+      <div *ngFor="let receta of recetas" class="card">
+        <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
         <div class="card-body">
-          <a href="#">
-            <h5 class="card-title stretched-link">Card title</h5>
+          <a (click)="abrirInfoReceta(receta)">
+            <h5 class="card-title stretched-link">{{ receta.titulo }}</h5>
           </a>
         </div>
       </div>
-      <div class="card">
-        <img class="card-img-top" src="assets/imgs/pollo.jpeg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="assets/imgs/paella.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top"
-          src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card-img-top" src="https://images.pexels.com/photos/2097090/pexels-photo-2097090.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-        </div>
-      </div>
-     
+
+
+
+
+
     </div>
 
   </div>

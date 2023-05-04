@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Receta } from 'src/app/models/receta';
 import { Usuario } from 'src/app/models/usuario';
+import { RecetaService } from 'src/app/services/receta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -13,6 +15,7 @@ export class PerfilComponent {
   toastMessage = 'This is a toast'; // mensaje toast
   showsToast = false;
 
+  recetas: Receta[] = [];
 
   public usuarioLogueado: Usuario = new Usuario('nombre', 'email', 'pass', 0, 'img', 0);
 
@@ -21,7 +24,7 @@ export class PerfilComponent {
 
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
 
-  constructor(private route: Router, private usuarioService: UsuarioService) { }
+  constructor(private route: Router, private usuarioService: UsuarioService, private recetaService: RecetaService) { }
 
   ngOnInit() {
     this.cargarUsuario();
@@ -30,11 +33,20 @@ export class PerfilComponent {
 
   public cargarUsuario() {
     let usuario: Usuario = new Usuario('vacio', 'vacio', 'vacio', 0, 'vacio', 0);
-    usuario.id = 1;
+    usuario.id = 2;
     this.usuarioService.getUser(usuario).subscribe((data: Usuario) => {
       this.usuarioLogueado = data;
       this.comprobarImgAlInicio();
       this.comprobarSubscripcionAlInicio();
+      this.cargarRecetasFavoritas();
+    })
+  }
+
+  public cargarRecetasFavoritas() {
+    this.recetaService.ObtenerIdRecetasFavoritas(this.usuarioLogueado.id!).subscribe((data: number[]) => {
+      this.recetaService.ObtenerRecetasPorId(data).subscribe((data_recetas: Receta[]) => {
+        this.recetas = data_recetas;
+      })
     })
   }
 
@@ -160,5 +172,13 @@ export class PerfilComponent {
     alert('Se ha cerrado sesion')
     this.route.navigate(['eten']);
   }
+
+  public abrirInfoReceta(recetaSeleccionada: Receta) {
+    alert('Receta Cargada ' + recetaSeleccionada.titulo)
+    //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
+    this.route.navigate(['/info-receta', recetaSeleccionada.id]);
+    //this.recetaService.recetaSeleccionada = recetaSeleccionada;
+  }
+
 
 }

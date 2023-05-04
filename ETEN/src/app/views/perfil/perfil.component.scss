@@ -302,6 +302,9 @@
     text-align: center;
 }
 
+.card:hover {
+    box-shadow: 2px 2px black;
+  }
 
 .notificacion {
   display: flex;
@@ -311,9 +314,6 @@
   right: 20px;
   bottom: 20px;
 }
-
-
-
 
 .toast-class {
 

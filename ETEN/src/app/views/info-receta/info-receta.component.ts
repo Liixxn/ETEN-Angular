@@ -28,11 +28,25 @@ export class InfoRecetaComponent {
   ngOnInit() {
     //this.recetaSeleccionada = this.recetaService.recetaSeleccionada;
     this.cargarReceta();
-    
+
   }
 
   public modificarRecetaGuardada() {
     this.recetaGuardada = !this.recetaGuardada;
+    //Hay que ver como recogemos el user
+    let id_user = 2;
+
+    if (this.recetaGuardada) {
+      this.recetaService.GuardarRecetaFavoritos(id_user, this.recetaSeleccionada.id!).subscribe((data: string) => {
+        alert(data);
+      })
+    } else {
+      this.recetaService.EliminarRecetaFavoritos(id_user, this.recetaSeleccionada.id!).subscribe((data: string) => {
+        alert(data);
+      })
+    }
+
+
   }
 
 

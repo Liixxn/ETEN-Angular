@@ -36,22 +36,37 @@ export class BuscadorTituloComponent {
   public obtenerTituloReceta() {
     this.nombre = (<HTMLInputElement>document.getElementById('nombreReceta')).value;
 
-    this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => {
-      this.recetas = data;
-    })
-
     if (this.nombre == '') {
-      this.nombreRecetaBuscar = 'No hay recetas que mostrar';
+      alert('El campo a buscar esta en blanco');
+      this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
+        this.recetas = data;
+        this.nombreRecetaBuscar = "Todos los resultados";
+      })
     }
     else {
-      this.nombreRecetaBuscar = "Resultados para: " + this.nombre;
+      this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => {
+        this.recetas = data;
+        if (this.recetas.length == 0) {
+          alert('No hay recetas que mostrar para ' + this.nombre);
+          this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
+            this.recetas = data;
+            this.nombreRecetaBuscar = "Todos los resultados";
+          })
+        } else {
+          this.nombreRecetaBuscar = "Resultados para: " + this.nombre;
+        }
+      })
     }
+    (<HTMLInputElement>document.getElementById('nombreReceta')).value = '';
   }
+
+
+
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {
     alert('Receta Cargada ' + recetaSeleccionada.titulo)
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
-    this.route.navigate(['/info-receta',recetaSeleccionada.id]);
+    this.route.navigate(['/info-receta', recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;
   }
 

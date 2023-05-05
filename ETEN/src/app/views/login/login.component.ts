@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AppComponent } from 'src/app/app.component';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   expresionEmail: RegExp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 
-  constructor(private usuarioService: UsuarioService, private appComponent: AppComponent) {
+  constructor(private usuarioService: UsuarioService,private autenticacionService: AutenticacionService, private appComponent: AppComponent) {
   }
 
   ngOnInit() {
@@ -28,8 +29,9 @@ export class LoginComponent {
 
     let usuario: Usuario = new Usuario('vacio', email, contrasenia, 0, '', 0);
     this.usuarioService.login(usuario).subscribe((data: any) => {
-
-      alert(data.access_token);
+      //alert(data.access_token);
+      this.autenticacionService.guardarToken(data.access_token);
+      alert('Se ha iniciado sesión correctamente.')
 
       /*if (data.nombre == "Usuario no encontrado") {
         alert("El usuario no existe.");

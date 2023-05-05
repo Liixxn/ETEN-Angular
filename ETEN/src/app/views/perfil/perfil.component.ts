@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Receta } from 'src/app/models/receta';
 import { Usuario } from 'src/app/models/usuario';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { RecetaService } from 'src/app/services/receta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -22,19 +23,20 @@ export class PerfilComponent {
   public btnModificarDatosSeleccionado: boolean = false;
   public btnSubscripcionSeleccionada: boolean = false;
 
+
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
 
-  constructor(private route: Router, private usuarioService: UsuarioService, private recetaService: RecetaService) { }
+  constructor(private route: Router, private autenticacionService: AutenticacionService, private usuarioService: UsuarioService, private recetaService: RecetaService) { }
 
   ngOnInit() {
+    this.usuarioLogueado = this.autenticacionService.obtenerToken();
     this.cargarUsuario();
+
 
   }
 
   public cargarUsuario() {
-    let usuario: Usuario = new Usuario('vacio', 'vacio', 'vacio', 0, 'vacio', 0);
-    usuario.id = 2;
-    this.usuarioService.getUser(usuario).subscribe((data: Usuario) => {
+    this.usuarioService.getUser(this.usuarioLogueado).subscribe((data: Usuario) => {
       this.usuarioLogueado = data;
       this.comprobarImgAlInicio();
       this.comprobarSubscripcionAlInicio();

@@ -14,6 +14,9 @@ export class BuscadorTituloComponent {
   nombre: string = '';
   recetas: Receta[] = [];
 
+  numeroTotal = 0;
+  comprobacionMostrar = 0;
+
   /* Paginacion */
   currentIndex = -1;
   page = 1;
@@ -26,9 +29,12 @@ export class BuscadorTituloComponent {
     this.cargarRecetas();
   }
 
-  private cargarRecetas() {
-    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
+  public cargarRecetas() {
+    this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+      this.recetas = dataRecetas[0];
+      this.numeroTotal = dataRecetas[1];
+
     })
   }
 
@@ -36,30 +42,40 @@ export class BuscadorTituloComponent {
   public obtenerTituloReceta() {
     this.nombre = (<HTMLInputElement>document.getElementById('nombreReceta')).value;
 
+    this.page = 1;
+    this.numeroTotal = 0;
+
     if (this.nombre == '') {
       alert('El campo a buscar esta en blanco');
-      this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-        this.recetas = data;
-        this.nombreRecetaBuscar = "Todos los resultados";
+      this.nombreRecetaBuscar = "Todos los resultados";
+      this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+        this.recetas = dataRecetas[0];
+        this.numeroTotal = dataRecetas[1];
+        
       })
+
     }
     else {
-      this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => {
-        this.recetas = data;
-        if (this.recetas.length == 0) {
+
+      this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+        this.recetas = dataRecetas[0];
+        this.numeroTotal = dataRecetas[1];
+        this.comprobacionMostrar = dataRecetas[2];
+
+        if (this.comprobacionMostrar==0) {
           alert('No hay recetas que mostrar para ' + this.nombre);
-          this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-            this.recetas = data;
-            this.nombreRecetaBuscar = "Todos los resultados";
-          })
-        } else {
+          this.nombreRecetaBuscar = "Todos los resultados";
+          this.nombre="";
+        }
+        else {
           this.nombreRecetaBuscar = "Resultados para: " + this.nombre;
         }
       })
     }
     (<HTMLInputElement>document.getElementById('nombreReceta')).value = '';
   }
-
 
 
 
@@ -75,6 +91,9 @@ export class BuscadorTituloComponent {
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
 
     this.page = event;
+
+    this.cargarRecetas();
+
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);
   }

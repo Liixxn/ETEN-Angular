@@ -11,6 +11,8 @@ import { RecetaService } from 'src/app/services/receta.service';
 export class BuscadorCategoriaComponent {
   recetas: Receta[] = [];
 
+
+
   constructor(private recetaService: RecetaService, private route: Router) {
   }
 

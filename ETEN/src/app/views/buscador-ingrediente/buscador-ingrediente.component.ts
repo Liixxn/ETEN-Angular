@@ -15,6 +15,8 @@ export class BuscadorIngredienteComponent {
   recetasEncontrados: Receta[] = [];
   listaIdsRecetas: number[] = [];
 
+  numeroTotal = 0;
+  comprobacionMostrar = 0;
 
   /* Paginacion */
   currentIndex = -1;
@@ -33,23 +35,35 @@ export class BuscadorIngredienteComponent {
   }
 
   private cargarRecetas() {
-    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data: any[]) => {
+      this.recetas = data[0];
+      this.numeroTotal = data[1];
+      this.comprobacionMostrar = data[2];
     })
   }
 
 
   public buscarRecetasPorIngrediente() {
 
-    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Receta[]) => {
-      this.recetasEncontrados = data;
+    this.page = 1;
+    this.numeroTotal = 0;
+    this.comprobacionMostrar = 0;
 
-      if (this.recetasEncontrados.length > 0) {
-        alert("Se han encontrado " + this.recetasEncontrados.length + " recetas con los ingredientes seleccionados.")
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data:any[]) => {
+      this.recetasEncontrados = data[0];
+      this.numeroTotal = data[1];
+      this.comprobacionMostrar = data[2];
+
+      if (this.comprobacionMostrar != 0) {
+        alert("Se han encontrado " + this.numeroTotal + " recetas con los ingredientes seleccionados.")
         this.recetas = this.recetasEncontrados;
       }
       else {
         alert("No se han encontrado recetas con los ingredientes seleccionados.")
+        this.page = 1;
+        this.numeroTotal = 0;
+        this.comprobacionMostrar = 0;
+        this.ingredientes = [];
         this.cargarRecetas();
       }
     });
@@ -87,6 +101,9 @@ export class BuscadorIngredienteComponent {
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
 
     this.page = event;
+
+    this.cargarRecetas();
+
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);
   }

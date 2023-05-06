@@ -12,6 +12,11 @@ import { RecetaService } from 'src/app/services/receta.service';
 export class BuscadorCategoriaComponent {
   recetas: Receta[] = [];
 
+
+  numeroTotal = 0;
+  comprobacionMostrar = 0;
+  categoria = 0;
+
   /* Paginacion */
   currentIndex = -1;
   page = 1;
@@ -26,8 +31,9 @@ export class BuscadorCategoriaComponent {
   }
 
   private cargarRecetas() {
-    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
+    this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+      this.recetas = data[0];
+      this.numeroTotal = data[1];
     })
   }
 
@@ -47,64 +53,80 @@ export class BuscadorCategoriaComponent {
 
     switch (categoria) {
       case 'arroz': {
-        this.recetaService.ObtenerRecetasPorCategoria(1).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 1;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("arroz");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'bebidas': {
-        this.recetaService.ObtenerRecetasPorCategoria(2).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 2;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("bebidas");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'carne': {
-        this.recetaService.ObtenerRecetasPorCategoria(3).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 3;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("carne");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'dulce': {
-        this.recetaService.ObtenerRecetasPorCategoria(4).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 4;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("dulce");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'pasta': {
-        this.recetaService.ObtenerRecetasPorCategoria(5).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 5;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("bebidas");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'pescado': {
-        this.recetaService.ObtenerRecetasPorCategoria(6).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 6;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("pescado");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'variado': {
-        this.recetaService.ObtenerRecetasPorCategoria(7).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 7;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("variado");
           miBoton!.classList.add("button_selected");
         })
         break;
       }
       case 'vegetal': {
-        this.recetaService.ObtenerRecetasPorCategoria(8).subscribe((data: Receta[]) => {
-          this.recetas = data;
+        this.categoria = 8;
+        this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
+          this.recetas = data[0];
+          this.numeroTotal = data[1];
           const miBoton = document.getElementById("vegetal");
           miBoton!.classList.add("button_selected");
         })
@@ -117,6 +139,9 @@ export class BuscadorCategoriaComponent {
 
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
     this.page = event;
+
+    this.cargarRecetas();
+
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);
   }

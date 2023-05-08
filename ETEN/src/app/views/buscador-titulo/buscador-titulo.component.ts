@@ -14,6 +14,14 @@ export class BuscadorTituloComponent {
   nombre: string = '';
   recetas: Receta[] = [];
 
+  numeroTotal = 0;
+  comprobacionMostrar = 0;
+
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
+
 
   constructor(private recetaService: RecetaService, private route: Router) { }
 
@@ -21,9 +29,12 @@ export class BuscadorTituloComponent {
     this.cargarRecetas();
   }
 
-  private cargarRecetas() {
-    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
+  public cargarRecetas() {
+    this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+      this.recetas = dataRecetas[0];
+      this.numeroTotal = dataRecetas[1];
+
     })
   }
 
@@ -31,23 +42,60 @@ export class BuscadorTituloComponent {
   public obtenerTituloReceta() {
     this.nombre = (<HTMLInputElement>document.getElementById('nombreReceta')).value;
 
-    this.recetaService.ObtenerRecetasPorTitulo(this.nombre).subscribe((data: Receta[]) => {
-      this.recetas = data;
-    })
+    this.page = 1;
+    this.numeroTotal = 0;
 
     if (this.nombre == '') {
-      this.nombreRecetaBuscar = 'No hay recetas que mostrar';
+      alert('El campo a buscar esta en blanco');
+      this.nombreRecetaBuscar = "Todos los resultados";
+      this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+        this.recetas = dataRecetas[0];
+        this.numeroTotal = dataRecetas[1];
+        
+      })
+
     }
     else {
-      this.nombreRecetaBuscar = "Resultados para: " + this.nombre;
+
+      this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
+
+        this.recetas = dataRecetas[0];
+        this.numeroTotal = dataRecetas[1];
+        this.comprobacionMostrar = dataRecetas[2];
+
+        if (this.comprobacionMostrar==0) {
+          alert('No hay recetas que mostrar para ' + this.nombre);
+          this.nombreRecetaBuscar = "Todos los resultados";
+          this.nombre="";
+        }
+        else {
+          this.nombreRecetaBuscar = "Resultados para: " + this.nombre;
+        }
+      })
     }
+    (<HTMLInputElement>document.getElementById('nombreReceta')).value = '';
   }
+
+
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {
     alert('Receta Cargada ' + recetaSeleccionada.titulo)
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
-    this.route.navigate(['/info-receta',recetaSeleccionada.id]);
+    this.route.navigate(['/info-receta', recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;
+  }
+
+  public handlePageChange(event: number) {
+
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+
+    this.page = event;
+
+    this.cargarRecetas();
+
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
   }
 
 }

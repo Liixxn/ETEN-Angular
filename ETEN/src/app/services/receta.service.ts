@@ -9,6 +9,10 @@ export class RecetaService {
   recetaSeleccionada: any;
   constructor(private httpClient: HttpClient) { }
 
+  public BuscarRecetasBuscadorTitulo(pagina: number, titulo: string) {
+    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", {"pagina":pagina, "titulo":titulo});
+  }
+
   public ObtenerTodasRecetas() {
     return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetas", null);
   }
@@ -25,7 +29,7 @@ export class RecetaService {
     return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorId", {"ids":listaIdRecetas});
   }
   public ObtenerRecetasPorTitulo(titulo: string) {
-    return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta/" + titulo);
+    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta", {"titulo": titulo});
 
   }
 }

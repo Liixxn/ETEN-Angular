@@ -9,6 +9,7 @@ export class RecetaService {
   recetaSeleccionada: any;
   constructor(private httpClient: HttpClient) { }
 
+  //puede ser get
   public ObtenerTodasRecetas() {
     return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetas", null);
   }
@@ -36,6 +37,7 @@ export class RecetaService {
     return this.httpClient.post<string>("http://localhost:8000/api/recetas/EliminarRecetaFavoritos", { id_user, id_receta });
   }
 
+  // es get
   public ObtenerIdRecetasFavoritas(id_user: number) {
     return this.httpClient.post<number[]>("http://localhost:8000/api/recetas/ObtenerIdRecetasFavoritas", { id_user });
   }

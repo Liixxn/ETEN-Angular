@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
 import { Usuario } from '../models/usuario';
@@ -7,12 +8,21 @@ import { Usuario } from '../models/usuario';
 })
 export class AutenticacionService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   public guardarToken(token: string) {
     localStorage.setItem('token', token)
   }
+  public getToken() {
+    return localStorage.getItem('token');
+  }
 
+  public verificarToken() {
+    let token = this.getToken();
+    return this.httpClient.post<string>("http://localhost:8000/api/usuarios/verificacionConToken", token);
+  }
+
+  //pruebas
   public obtenerToken() {
 
     const token = localStorage.getItem('token');

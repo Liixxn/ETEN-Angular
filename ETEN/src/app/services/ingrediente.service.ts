@@ -15,6 +15,8 @@ export class IngredienteService {
 
   }
 
+
+  //puede ser get
   public obtenerIngredientes(receta:Receta) {
     return this.httpClient.post<Ingrediente[]>("http://localhost:8000/api/receta/ingredientes", receta);
   }

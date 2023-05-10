@@ -9,6 +9,7 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //puede ser get
   public getAllUsuarios() {
     return this.httpClient.post<Usuario[]>("http://localhost:8000/api/usuarios/obtenerUsuarios", null);
   }

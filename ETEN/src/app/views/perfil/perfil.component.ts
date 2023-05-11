@@ -29,14 +29,14 @@ export class PerfilComponent {
   constructor(private route: Router, private autenticacionService: AutenticacionService, private usuarioService: UsuarioService, private recetaService: RecetaService) { }
 
   ngOnInit() {
-    this.usuarioLogueado = this.autenticacionService.obtenerToken();
+    this.usuarioLogueado = this.autenticacionService.obtenerUsuarioDelToken();
     this.cargarUsuario();
 
 
   }
 
   public cargarUsuario() {
-    this.usuarioService.getUser(this.usuarioLogueado).subscribe((data: Usuario) => {
+    this.usuarioService.getUser().subscribe((data: Usuario) => {
       this.usuarioLogueado = data;
       this.comprobarImgAlInicio();
       this.comprobarSubscripcionAlInicio();
@@ -103,7 +103,7 @@ export class PerfilComponent {
     let passwordNueva = document.getElementById("form_password_nueva") as HTMLInputElement;
     //comprobamos si la contraseña actual es correcta
     this.usuarioService.comprobarContrasena(this.usuarioLogueado.id!, passwordActual.value).subscribe((data: string) => {
-      alert(data + ' data')
+      //alert(data + ' data')
       if (data == this.usuarioLogueado.password) {
 
         //passwordNueva = sha1(passwordNueva.value);
@@ -118,7 +118,7 @@ export class PerfilComponent {
         usuarioNuevo.id = this.usuarioLogueado.id;
 
         this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: Usuario) => {
-          alert(data.nombre)
+          //alert(data.nombre)
           this.cargarUsuario();
         })
 
@@ -171,6 +171,7 @@ export class PerfilComponent {
 
 
   public cerrarSesion() {
+    this.autenticacionService.eliminarToken();
     alert('Se ha cerrado sesion')
     this.route.navigate(['eten']);
   }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { AppComponent } from 'src/app/app.component';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
   expresionEmail: RegExp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 
-  constructor(private usuarioService: UsuarioService,private autenticacionService: AutenticacionService, private appComponent: AppComponent) {
+  constructor(private usuarioService: UsuarioService,private autenticacionService: AutenticacionService, private route: Router) {
   }
 
   ngOnInit() {
@@ -32,6 +32,7 @@ export class LoginComponent {
       //alert(data.access_token);
       this.autenticacionService.guardarToken(data.access_token);
       alert('Se ha iniciado sesión correctamente.')
+      this.route.navigate(['perfil']);
 
       /*if (data.nombre == "Usuario no encontrado") {
         alert("El usuario no existe.");

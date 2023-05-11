@@ -8,12 +8,12 @@ import { AutenticacionService } from './autenticacion.service';
 })
 export class AuthInterceptorService implements HttpInterceptor {
 
-  constructor(private autentication: AutenticacionService) { }
+  constructor(private autenticacionService: AutenticacionService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    const token: string = sessionStorage.getItem('token')!;
-
+    const token: string = this.autenticacionService.getToken()!;
+    
     let request = req;
 
     if (token) {
@@ -22,7 +22,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         setHeaders: {
           //Autorizaciòn de tipo Bearer + token
           //El tipo de autorizaciòn depende del back
-          authorization: `Bearer ${ this.autentication.getToken() }`
+          authorization: `Bearer ${this.autenticacionService.getToken()}`
           //authorization: 'Bearer ${ this.autentication.getToken() }'
         }
       });

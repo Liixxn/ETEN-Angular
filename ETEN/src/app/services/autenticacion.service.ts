@@ -13,6 +13,11 @@ export class AutenticacionService {
   public guardarToken(token: string) {
     localStorage.setItem('token', token)
   }
+
+  public eliminarToken() {
+    localStorage.removeItem('token');
+  }
+  
   public getToken() {
     return localStorage.getItem('token');
   }
@@ -23,9 +28,9 @@ export class AutenticacionService {
   }
 
   //pruebas
-  public obtenerToken() {
+  public obtenerUsuarioDelToken() {
 
-    const token = localStorage.getItem('token');
+    const token = this.getToken();
     const decodedToken = jwt_decode(token!) as any;
     const usuario = decodedToken.usuario;
     //alert(usuario.nombre);

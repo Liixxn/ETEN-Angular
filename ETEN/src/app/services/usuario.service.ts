@@ -23,8 +23,8 @@ export class UsuarioService {
     return this.httpClient.post<any>("http://localhost:8000/api/usuarios/login", usuario);
   }
 
-  public getUser(usuario: Usuario) {
-    return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/ObtenerUnUsuario", usuario);
+  public getUser() {
+    return this.httpClient.get<Usuario>("http://localhost:8000/api/usuarios/ObtenerUnUsuario");
   }
 
   public modificarUsuario(usuario: Usuario) {

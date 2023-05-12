@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { RecetaService } from 'src/app/services/receta.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-buscador-ingrediente',
@@ -27,7 +28,7 @@ export class BuscadorIngredienteComponent {
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
   recetas: Receta[] = [];
 
-  constructor(private recetaService: RecetaService, private ingredienteService: IngredienteService) {
+  constructor(private recetaService: RecetaService, private ingredienteService: IngredienteService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -35,11 +36,17 @@ export class BuscadorIngredienteComponent {
   }
 
   private cargarRecetas() {
+    this.spinner.show();
+
+
     this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data: any[]) => {
       this.recetas = data[0];
       this.numeroTotal = data[1];
       this.comprobacionMostrar = data[2];
     })
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
 
@@ -64,6 +71,7 @@ export class BuscadorIngredienteComponent {
         this.numeroTotal = 0;
         this.comprobacionMostrar = 0;
         this.ingredientes = [];
+        this.ingredientesTarjetas = [];
         this.cargarRecetas();
       }
     });

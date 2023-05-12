@@ -4,6 +4,8 @@ import {FormsModule} from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import {HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule} from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,7 +39,7 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     BuscadorCategoriaComponent,
     BuscadorIngredienteComponent,
     BuscadorTituloComponent,
-    OfertasComponent
+    OfertasComponent,
 
   ],
   imports: [
@@ -48,7 +50,9 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     FormsModule,
     NgChartsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -26,6 +26,5 @@ export class RecetaService {
   }
   public ObtenerRecetasPorTitulo(titulo: string) {
     return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta/" + titulo);
-
   }
 }

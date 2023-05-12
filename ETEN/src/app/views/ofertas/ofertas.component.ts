@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Oferta } from "src/app/models/oferta";
+import { OfertaService } from "src/app/services/oferta.service";
+import { Router } from '@angular/router';
 
 interface Product {
   imagenOferta: string;
@@ -13,6 +16,7 @@ interface Product {
   templateUrl: './ofertas.component.html',
   styleUrls: ['./ofertas.component.scss'],
 })
+
 export class OfertasComponent implements OnInit {
   products: Product[] = [];
   paginatedProducts: Product[] = [];
@@ -24,19 +28,28 @@ export class OfertasComponent implements OnInit {
   selectedcategoria: string = '';
   filteredProducts: Product[] = [];
 
-  constructor() {
+  constructor(private ofertaService: OfertaService, private route: Router) { 
     this.totalPages = 0;
   }
 
-  ngOnInit(): void {
-    this.products = this.generateProducts();
-    this.filterProducts();
+  ngOnInit(): void{
+    //this.cargarOfertas();
+    
+    this.cargarOfertas();
     this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
     //this.setPage(this.page);
     this.handlePageChange(this.page)
     this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
+    
+    
   }
 
+  private cargarOfertas() {
+    this.ofertaService.obtenerTodasOfertas().subscribe((data: Oferta[]) => {
+      this.products = data;
+    })
+  }
+  
   //se queda aqui
   selectcategoria(categoria: string): void {
     this.selectedcategoria = categoria;
@@ -105,8 +118,5 @@ export class OfertasComponent implements OnInit {
     this.page = page;
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);
-    const startIndex = (this.page - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedProducts = this.filteredProducts.slice(startIndex, endIndex);
   }
 }

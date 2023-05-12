@@ -16,9 +16,4 @@ export class OfertaService {
   public obtenerTodasOfertas() {
     return this.httpClient.post<Oferta[]>("http://localhost:8000/api/recetas/ObtenerTodasOfertas", null);
   }
-
-  public obtenerOfertasTrending(listaVisitas: number[])
-  {
-    return this.httpClient.get<Oferta[]>("http://localhost:8000/api/recetas/ObtenerOfertasTrending", {"visitas":listaVisitas});
-  }
 }

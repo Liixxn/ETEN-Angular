@@ -37,6 +37,10 @@ export class RecetaService {
     return this.httpClient.post<string>("http://localhost:8000/api/recetas/EliminarRecetaFavoritos", { id_user, id_receta });
   }
 
+  public VerificarRecetaFavorita(id_receta: number) {
+    return this.httpClient.get<boolean>("http://localhost:8000/api/recetas/VerificarRecetaFavorita/" + id_receta);
+  }
+
   // es get
   public ObtenerIdRecetasFavoritas(id_user: number) {
     return this.httpClient.post<number[]>("http://localhost:8000/api/recetas/ObtenerIdRecetasFavoritas", { id_user });

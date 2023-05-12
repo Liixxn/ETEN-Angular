@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Ingrediente } from 'src/app/models/ingrediente';
 import { Receta } from 'src/app/models/receta';
 import { Usuario } from 'src/app/models/usuario';
+import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { RecetaService } from 'src/app/services/receta.service';
 
@@ -17,31 +18,49 @@ export class InfoRecetaComponent {
   //id_receta: number = 0;
   private sub: any;
 
+  public usuarioLogueado: Usuario = new Usuario('vacio', 'vacio', 'vacio', 0, 'vacio', 0);
+
   public pasosReceta = []
   public todosIngredientes: Ingrediente[] = [];
   public recetaSeleccionada: Receta = new Receta('vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 'vacio', 0, 0, 0);
 
   public recetaGuardada: boolean = false;
 
-  constructor(private recetaService: RecetaService, private ingredienteService: IngredienteService, private activatedRoute: ActivatedRoute) { }
+  constructor(private recetaService: RecetaService, private autenticacionService: AutenticacionService, private ingredienteService: IngredienteService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     //this.recetaSeleccionada = this.recetaService.recetaSeleccionada;
-    this.cargarReceta();
+    this.cargarInformacion();
 
+
+  }
+
+  public cargarInformacion() {
+    this.cargarReceta();
+    this.cargarUsuario();
+  }
+
+
+  public comprobarRecetaFavorita() {
+    this.recetaService.VerificarRecetaFavorita(this.recetaSeleccionada.id!).subscribe((data: boolean) => {
+      this.recetaGuardada = data;
+    })
+
+  }
+
+  public cargarUsuario() {
+    this.usuarioLogueado = this.autenticacionService.obtenerUsuarioDelToken();
   }
 
   public modificarRecetaGuardada() {
     this.recetaGuardada = !this.recetaGuardada;
-    //Hay que ver como recogemos el user
-    let id_user = 2;
 
     if (this.recetaGuardada) {
-      this.recetaService.GuardarRecetaFavoritos(id_user, this.recetaSeleccionada.id!).subscribe((data: string) => {
+      this.recetaService.GuardarRecetaFavoritos(this.usuarioLogueado.id!, this.recetaSeleccionada.id!).subscribe((data: string) => {
         alert(data);
       })
     } else {
-      this.recetaService.EliminarRecetaFavoritos(id_user, this.recetaSeleccionada.id!).subscribe((data: string) => {
+      this.recetaService.EliminarRecetaFavoritos(this.usuarioLogueado.id!, this.recetaSeleccionada.id!).subscribe((data: string) => {
         alert(data);
       })
     }
@@ -57,6 +76,7 @@ export class InfoRecetaComponent {
         this.recetaSeleccionada = data;
         this.comprobarDificultadNula();
         this.limpiarDescripcion();
+        this.comprobarRecetaFavorita();
         this.ingredienteService.obtenerIngredientes(this.recetaSeleccionada).subscribe((data: Ingrediente[]) => {
           this.todosIngredientes = data;
         })

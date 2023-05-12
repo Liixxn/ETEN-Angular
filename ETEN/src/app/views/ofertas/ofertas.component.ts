@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 interface Product {
   imagenOferta: string;
   nombreOferta: string;
+  precioActual: number;
   precioAnterior: number;
   categoria: string;
 }
@@ -19,7 +20,7 @@ export class OfertasComponent implements OnInit {
   page: number = 1;
   totalPages: number;
   pages: number[] = [];
-  categories: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
+  categorias: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
   selectedcategoria: string = '';
   filteredProducts: Product[] = [];
 
@@ -49,11 +50,12 @@ export class OfertasComponent implements OnInit {
   generateProducts(): Product[] {
     const products: Product[] = [];
     for (let i = 1; i <= 120; i++) {
-      const categoria = this.categories[Math.floor(Math.random() * this.categories.length)];
+      const categoria = this.categorias[Math.floor(Math.random() * this.categorias.length)];
       const product: Product = {
         imagenOferta: `https://via.placeholder.com/300x300?text=Product+${i}`,
         nombreOferta: `Producto ${i}`,
         precioAnterior: +(Math.random() * (10 - 1) + 1).toFixed(2),
+        precioActual: +(Math.random() * (10 - 1) + 1).toFixed(2),
         categoria: categoria
       };
       products.push(product);

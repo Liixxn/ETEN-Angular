@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NgxSpinnerModule} from "ngx-spinner";
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +41,7 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     BuscadorCategoriaComponent,
     BuscadorIngredienteComponent,
     BuscadorTituloComponent,
-    OfertasComponent
+    OfertasComponent,
 
   ],
   imports: [
@@ -50,7 +52,9 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     FormsModule,
     NgChartsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

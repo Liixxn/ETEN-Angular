@@ -2,6 +2,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { IngredienteService } from 'src/app/services/ingrediente.service';
 import { RecetaService } from 'src/app/services/receta.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-buscador-ingrediente',
@@ -15,6 +16,8 @@ export class BuscadorIngredienteComponent {
   recetasEncontrados: Receta[] = [];
   listaIdsRecetas: number[] = [];
 
+  numeroTotal = 0;
+  comprobacionMostrar = 0;
 
   /* Paginacion */
   currentIndex = -1;
@@ -25,7 +28,7 @@ export class BuscadorIngredienteComponent {
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
   recetas: Receta[] = [];
 
-  constructor(private recetaService: RecetaService, private ingredienteService: IngredienteService) {
+  constructor(private recetaService: RecetaService, private ingredienteService: IngredienteService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -33,21 +36,42 @@ export class BuscadorIngredienteComponent {
   }
 
   private cargarRecetas() {
-    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
+    this.spinner.show();
+
+
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data: any[]) => {
+      this.recetas = data[0];
+      this.numeroTotal = data[1];
+      this.comprobacionMostrar = data[2];
     })
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
 
   public buscarRecetasPorIngrediente() {
 
-    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes).subscribe((data:Receta[]) => {
-      this.recetasEncontrados = data;
+    this.page = 1;
+    this.numeroTotal = 0;
+    this.comprobacionMostrar = 0;
 
-      if (this.recetasEncontrados.length > 0) {
+    this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data:any[]) => {
+      this.recetasEncontrados = data[0];
+      this.numeroTotal = data[1];
+      this.comprobacionMostrar = data[2];
+
+      if (this.comprobacionMostrar != 0) {
+        alert("Se han encontrado " + this.numeroTotal + " recetas con los ingredientes seleccionados.")
         this.recetas = this.recetasEncontrados;
       }
       else {
+        alert("No se han encontrado recetas con los ingredientes seleccionados.")
+        this.page = 1;
+        this.numeroTotal = 0;
+        this.comprobacionMostrar = 0;
+        this.ingredientes = [];
+        this.ingredientesTarjetas = [];
         this.cargarRecetas();
       }
     });
@@ -85,6 +109,9 @@ export class BuscadorIngredienteComponent {
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
 
     this.page = event;
+
+    this.cargarRecetas();
+
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);
   }

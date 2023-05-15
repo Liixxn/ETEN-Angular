@@ -1,25 +1,30 @@
-<section id="buscador-bar" >
+<section id="buscador-bar">
   <div class="top-bar">
     <div class="buttons-container">
-      <button class="button" (click)="buscarPorCategoria('carne')">Carne</button>
-      <button class="button" (click)="buscarPorCategoria('pescado')">Pescado</button>
-      <button class="button" (click)="buscarPorCategoria('arroz')">Arroces</button>
-      <button class="button" (click)="buscarPorCategoria('vegetal')">Vegetal</button>
-      <button class="button" (click)="buscarPorCategoria('pasta')">Pasta</button>
-      <button class="button" (click)="buscarPorCategoria('dulce')">Dulce</button>
-      <button class="button" (click)="buscarPorCategoria('bebidas')">Bebidas</button>
-      <button class="button" (click)="buscarPorCategoria('variado')">Variado</button>
+      <button id="carne" class="button" (click)="buscarPorCategoria('carne')">Carne</button>
+      <button id="pescado" class="button" (click)="buscarPorCategoria('pescado')">Pescado</button>
+      <button id="arroz" class="button" (click)="buscarPorCategoria('arroz')">Arroces</button>
+      <button id="vegetal" class="button" (click)="buscarPorCategoria('vegetal')">Vegetal</button>
+      <button id="pasta" class="button" (click)="buscarPorCategoria('pasta')">Pasta</button>
+      <button id="dulce" class="button" (click)="buscarPorCategoria('dulce')">Dulce</button>
+      <button id="bebidas" class="button" (click)="buscarPorCategoria('bebidas')">Bebidas</button>
+      <button id="variado" class="button" (click)="buscarPorCategoria('variado')">Variado</button>
     </div>
   </div>
-
+  <ngx-spinner type="ball-scale-multiple"><img src="assets/tail-spin.svg" width="100%" height="100%"/></ngx-spinner>
   <div class="recetas">
-    <div class="scroll-content">
-      <div *ngFor="let receta of recetas" class="col-md-4">
+    <div class="scroll-content" id="contenedor-scroll">
+      <div *ngFor="let receta of recetas | paginate : {
+    itemsPerPage: 12,
+    currentPage: page,
+    totalItems: numeroTotal
+           }; let i = index" [class.active]="i == currentIndex" class="col-md-4">
         <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
             <a (click)="abrirInfoReceta(receta)">
-              <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>
+              <h5 class="card-title stretched-link">{{ receta.titulo }}</h5>
+            </a>
           </div>
         </div>
       </div>
@@ -27,6 +32,12 @@
   </div>
 
 </section>
+
+<div class="paginacion">
+  <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
+
 
 <footer class="bg-dark text-center text-white">
   <!-- Grid container -->
@@ -40,8 +51,7 @@
       <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
         <i class="fab fa-instagram"></i></a>
 
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i class="fab fa-google"></i></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></a>
     </section>
 
   </div>

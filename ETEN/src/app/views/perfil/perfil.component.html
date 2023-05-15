@@ -54,9 +54,11 @@
       <form id="formularioPerfilUser" class="formulario">
 
         <button *ngIf="(!btnSubscripcionSeleccionada)" (click)="subscripcion()"
-          class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-4" type="submit">Subscribirse</button>
+          class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-4" type="submit"
+          [disabled]="btnSubscripcionForm">Subscribirse</button>
         <button *ngIf="(btnSubscripcionSeleccionada)" (click)="subscripcion()"
-          class="btn btn-secondary btn-block eliminar_subscripcion mt-2 mb-4" type="submit">Eliminar
+          class="btn btn-secondary btn-block eliminar_subscripcion mt-2 mb-4" type="submit"
+          [disabled]="btnSubscripcionForm">Eliminar
           Subscripcion</button>
 
         <p>Nombre de usuario</p>

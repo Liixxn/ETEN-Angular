@@ -22,6 +22,7 @@ export class PerfilComponent {
 
   public btnModificarDatosSeleccionado: boolean = false;
   public btnSubscripcionSeleccionada: boolean = false;
+  public btnSubscripcionForm: boolean = true;
 
 
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
@@ -147,6 +148,7 @@ export class PerfilComponent {
     }
     this.btnModificarDatosSeleccionado = !this.btnModificarDatosSeleccionado;
     this.hacerInputEditableyNoEditable();
+    this.cargarUsuario();
   }
 
   public lanzarToast(mensaje: string) {
@@ -167,6 +169,8 @@ export class PerfilComponent {
     email.value = this.usuarioLogueado.email;
     nombre.readOnly = !nombre.readOnly;
     email.readOnly = !email.readOnly;
+    //para el btn de la subscripcion
+    this.btnSubscripcionForm = !this.btnSubscripcionForm;
   }
 
 

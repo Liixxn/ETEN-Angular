@@ -33,10 +33,18 @@ export class SignUpComponent {
         alert("El email introducido ya se encuentra en uso.");
       } else {
         alert("Se ha registrado correctamente");
+        this.ponerCamposVacios();
+
       }
     })
   }
-
+  public ponerCamposVacios() {
+    (<HTMLInputElement>document.getElementById('registro_nombre')).value = "";
+    (<HTMLInputElement>document.getElementById('registro_email')).value = "";
+    (<HTMLInputElement>document.getElementById('registro_confirme_email')).value = "";
+    (<HTMLInputElement>document.getElementById('registro_password')).value = "";
+    (<HTMLInputElement>document.getElementById('registro_confirme_password')).value = "";
+  }
 
   // funcion que recoge la informacion del registro, comprueba que no haya campos vacios y que los emails y
   // contraseñas coincidan y que el formato del email sea correcto para poder registrarse

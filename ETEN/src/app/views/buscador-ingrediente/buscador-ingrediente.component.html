@@ -31,7 +31,7 @@
         <div class="card">
           <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
           <div class="card-body">
-            <a href="{{receta.img}}" target="_blank">
+            <a (click)="abrirInfoReceta(receta)">
               <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>
           </div>
         </div>

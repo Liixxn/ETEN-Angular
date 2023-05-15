@@ -100,7 +100,7 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
-          const miBoton = document.getElementById("bebidas");
+          const miBoton = document.getElementById("pasta");
           miBoton!.classList.add("button_selected");
         })
         break;

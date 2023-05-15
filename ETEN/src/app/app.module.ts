@@ -23,6 +23,7 @@ import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
 import { OfertasComponent } from './views/ofertas/ofertas.component';
+import { FooterComponent } from './views/footer/footer.component';
 
 
 
@@ -42,6 +43,7 @@ import { OfertasComponent } from './views/ofertas/ofertas.component';
     BuscadorIngredienteComponent,
     BuscadorTituloComponent,
     OfertasComponent,
+    FooterComponent,
 
   ],
   imports: [

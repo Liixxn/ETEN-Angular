@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-buscador-categoria',
   templateUrl: './buscador-categoria.component.html',
@@ -21,7 +22,7 @@ export class BuscadorCategoriaComponent {
   page = 1;
   count = 0;
 
-  constructor(private recetaService: RecetaService, private route: Router) {
+  constructor(private recetaService: RecetaService, private route: Router, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -29,10 +30,14 @@ export class BuscadorCategoriaComponent {
   }
 
   private cargarRecetas() {
+    this.spinner.show();
     this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
       this.recetas = data[0];
       this.numeroTotal = data[1];
     })
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 1000);
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-buscador-titulo',
@@ -23,19 +24,23 @@ export class BuscadorTituloComponent {
   count = 0;
 
 
-  constructor(private recetaService: RecetaService, private route: Router) { }
+  constructor(private recetaService: RecetaService, private route: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.cargarRecetas();
   }
 
   public cargarRecetas() {
+    this.spinner.show();
     this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
 
       this.recetas = dataRecetas[0];
       this.numeroTotal = dataRecetas[1];
 
     })
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 2500);
   }
 
   // obtiene el valor del buscador y lo guarda en la variable nombreRecetaBuscar para mostrarla en el html

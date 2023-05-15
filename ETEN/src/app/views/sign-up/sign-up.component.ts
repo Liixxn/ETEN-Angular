@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
@@ -20,7 +21,7 @@ export class SignUpComponent {
   contraseniaConfirm: string = '';
 
 
-  constructor(private usuarioService: UsuarioService) {
+  constructor(private route: Router, private usuarioService: UsuarioService) {
 
   }
 
@@ -34,6 +35,7 @@ export class SignUpComponent {
       } else {
         alert("Se ha registrado correctamente");
         this.ponerCamposVacios();
+        this.route.navigate(['login']);
 
       }
     })

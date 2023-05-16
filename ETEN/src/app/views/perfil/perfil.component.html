@@ -10,7 +10,8 @@
           <button type="button" (click)="modificarDatos()" class="btn btn-primary align-self-end btn_ajustes"><i
               class="fas fa-wrench"></i></button>
           <div class="text-center position-relative">
-            <button type="button" (click)="seleccionarImagen()" class="btn btn-secondary btn_cambio_img">
+            <button type="button" (click)="seleccionarImagen()" class="btn btn-secondary btn_cambio_img"
+              [disabled]="btnCambioImg">
               <i class="far fa-image"></i>
             </button>
             <div class="img-container">
@@ -60,6 +61,7 @@
           class="btn btn-secondary btn-block eliminar_subscripcion mt-2 mb-4" type="submit"
           [disabled]="btnSubscripcionForm">Eliminar
           Subscripcion</button>
+
 
         <p>Nombre de usuario</p>
         <div class="form-outline mb-4">

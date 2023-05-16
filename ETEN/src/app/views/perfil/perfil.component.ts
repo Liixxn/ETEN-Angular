@@ -103,7 +103,8 @@ export class PerfilComponent {
     let passwordActual = document.getElementById("form_password_actual") as HTMLInputElement;
     let passwordNueva = document.getElementById("form_password_nueva") as HTMLInputElement;
     //comprobamos si la contraseña actual es correcta
-    this.usuarioService.comprobarContrasena(this.usuarioLogueado.id!, passwordActual.value).subscribe((data: string) => {
+
+    this.usuarioService.comprobarContrasena(passwordActual.value).subscribe((data: string) => {
       //alert(data + ' data')
       if (data == this.usuarioLogueado.password) {
 
@@ -118,8 +119,9 @@ export class PerfilComponent {
         let usuarioNuevo: Usuario = new Usuario(nombre.value, email.value, passwordNueva.value, subscription, this.imagenSeleccionada, 0);
         usuarioNuevo.id = this.usuarioLogueado.id;
 
-        this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: Usuario) => {
-          //alert(data.nombre)
+        this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: any) => {
+          
+          this.autenticacionService.guardarToken(data.access_token);
           this.cargarUsuario();
         })
 

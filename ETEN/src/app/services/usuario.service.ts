@@ -9,17 +9,12 @@ export class UsuarioService {
 
   constructor(private httpClient: HttpClient) { }
 
-  //puede ser get
-  public getAllUsuarios() {
-    return this.httpClient.post<Usuario[]>("http://localhost:8000/api/usuarios/obtenerUsuarios", null);
-  }
 
   public Registro(usuario: Usuario) {
     return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/Registro", usuario);
   }
 
-
-  public login (usuario:Usuario) {
+  public login(usuario: Usuario) {
     return this.httpClient.post<any>("http://localhost:8000/api/usuarios/login", usuario);
   }
 
@@ -28,11 +23,16 @@ export class UsuarioService {
   }
 
   public modificarUsuario(usuario: Usuario) {
-    return this.httpClient.put<Usuario>("http://localhost:8000/api/usuarios/ActualizarDatosUsuario", usuario);
+    return this.httpClient.put<any>("http://localhost:8000/api/usuarios/ActualizarDatosUsuario", usuario);
   }
 
-  public comprobarContrasena(id: number, password: string) {
-    return this.httpClient.post<string>("http://localhost:8000/api/usuarios/ComprobarContrasena", { id, password });
+  public comprobarContrasena(password: string) {
+    return this.httpClient.post<string>("http://localhost:8000/api/usuarios/ComprobarContrasena", {password});
   }
+
+  public getAllUsuarios() {
+    return this.httpClient.get<Usuario[]>("http://localhost:8000/api/usuarios/obtenerUsuarios");
+  }
+  
 
 }

@@ -13,12 +13,13 @@ import { BuscadorCategoriaComponent } from './views/buscador-categoria/buscador-
 import { BuscadorIngredienteComponent } from './views/buscador-ingrediente/buscador-ingrediente.component';
 import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo.component';
 import { OfertasComponent } from "./views/ofertas/ofertas.component";
+import { AdminGuard } from './guard/admin.guard';
+import { RegistradoGuard } from './guard/registrado.guard';
 
 
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
-  {path: 'eten', component:HomeComponent},
   {path: 'login', component:LoginComponent},
   {path: 'sign-up', component:SignUpComponent},
   {path: 'about-us', component:AboutUsComponent},
@@ -26,8 +27,8 @@ const routes: Routes = [
   {path: 'info-receta', component:InfoRecetaComponent},
   {path: 'info-receta/:id', component:InfoRecetaComponent},
   
-  {path: 'estadisticas', component: EstadisticasAdminComponent},
-  {path: 'perfil', component:PerfilComponent},
+  {path: 'estadisticas', component: EstadisticasAdminComponent, canActivate: [AdminGuard]},
+  {path: 'perfil', component:PerfilComponent, canActivate: [RegistradoGuard]},
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
   {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
   {path: 'buscador-titulo', component:BuscadorTituloComponent},

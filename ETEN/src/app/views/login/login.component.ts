@@ -3,6 +3,8 @@ import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ export class LoginComponent {
 
   emailUsuario: string = '';
   contraseniaUsuario: string = '';
+  
 
   expresionEmail: RegExp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
@@ -32,7 +35,13 @@ export class LoginComponent {
       //alert(data.access_token);
       this.autenticacionService.guardarToken(data.access_token);
       alert('Se ha iniciado sesión correctamente.')
-      this.route.navigate(['perfil']);
+
+      const appComponent = new AppComponent(this.autenticacionService);
+      appComponent.modificarAdmin();
+      
+      this.route.navigate(['perfil']).then(() => {
+        window.location.reload();
+      });
 
       /*if (data.nombre == "Usuario no encontrado") {
         alert("El usuario no existe.");

@@ -17,23 +17,23 @@ export class AutenticacionService {
   public eliminarToken() {
     localStorage.removeItem('token');
   }
-  
+
   public getToken() {
     return localStorage.getItem('token');
   }
 
+  /*
   public verificarToken() {
-    let token = this.getToken();
-    return this.httpClient.post<string>("http://localhost:8000/api/usuarios/verificacionConToken", token);
+    return this.httpClient.get<string>("http://localhost:8000/api/usuarios/verificacionToken");
   }
+*/
 
-  //pruebas
+  //quitar
   public obtenerUsuarioDelToken() {
 
     const token = this.getToken();
     const decodedToken = jwt_decode(token!) as any;
     const usuario = decodedToken.usuario;
-    //alert(usuario.nombre);
     return usuario;
   }
 }

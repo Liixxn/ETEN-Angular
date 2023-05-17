@@ -56,11 +56,11 @@ export class InfoRecetaComponent {
     this.recetaGuardada = !this.recetaGuardada;
 
     if (this.recetaGuardada) {
-      this.recetaService.GuardarRecetaFavoritos(this.usuarioLogueado.id!, this.recetaSeleccionada.id!).subscribe((data: string) => {
+      this.recetaService.GuardarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
         alert(data);
       })
     } else {
-      this.recetaService.EliminarRecetaFavoritos(this.usuarioLogueado.id!, this.recetaSeleccionada.id!).subscribe((data: string) => {
+      this.recetaService.EliminarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
         alert(data);
       })
     }

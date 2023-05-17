@@ -33,8 +33,6 @@ export class PerfilComponent {
   ngOnInit() {
     this.usuarioLogueado = this.autenticacionService.obtenerUsuarioDelToken();
     this.cargarUsuario();
-
-
   }
 
   public cargarUsuario() {
@@ -47,7 +45,7 @@ export class PerfilComponent {
   }
 
   public cargarRecetasFavoritas() {
-    this.recetaService.ObtenerIdRecetasFavoritas(this.usuarioLogueado.id!).subscribe((data: number[]) => {
+    this.recetaService.ObtenerIdRecetasFavoritas().subscribe((data: number[]) => {
       this.recetaService.ObtenerRecetasPorId(data).subscribe((data_recetas: Receta[]) => {
         this.recetas = data_recetas;
       })
@@ -121,7 +119,7 @@ export class PerfilComponent {
         usuarioNuevo.id = this.usuarioLogueado.id;
 
         this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: any) => {
-          
+
           this.autenticacionService.guardarToken(data.access_token);
           this.cargarUsuario();
         })
@@ -181,7 +179,7 @@ export class PerfilComponent {
   public cerrarSesion() {
     this.autenticacionService.eliminarToken();
     alert('Se ha cerrado sesion')
-    this.route.navigate(['eten']);
+    this.route.navigate(['/']);
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {

@@ -11,15 +11,12 @@ export class IngredienteService {
   constructor(private httpClient: HttpClient) { }
 
   public getRecetaPorIngrediente(ingrediente: string[], pagina: number) {
-    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/ObtenerRecetaIngrediente", {"ingredientes": ingrediente, "pagina": pagina});
+    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/ingredientes/ObtenerRecetaIngrediente", { "ingredientes": ingrediente, "pagina": pagina });
 
   }
 
-
-  //puede ser get
-  public obtenerIngredientes(receta:Receta) {
-    return this.httpClient.post<Ingrediente[]>("http://localhost:8000/api/receta/ingredientes", receta);
+  public obtenerIngredientes(id_receta: number) {
+    return this.httpClient.get<Ingrediente[]>("http://localhost:8000/api/recetas/ingredientes/ingredientesUnaReceta/" + id_receta);
   }
-
 
 }

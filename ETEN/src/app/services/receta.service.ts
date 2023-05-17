@@ -39,36 +39,12 @@ export class RecetaService {
     return this.httpClient.get<boolean>("http://localhost:8000/api/recetas/VerificarRecetaFavorita/" + id_receta);
   }
 
-
-//por aquiiiiiiiiiiiiiiiiiiiiiiiiiiii
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  public BuscarRecetasBuscadorTitulo(pagina: number, titulo: string) {
-    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
-  }
-  public ObtenerRecetasPorTitulo(titulo: string) {
-    return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta/" + titulo);
-    //return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/BuscarReceta", {"titulo": titulo});
-  }
-
-
-
   public ObtenerUnaRecetas(idReceta: number) {
     return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerUnaReceta/" + idReceta);
   }
 
+  public BuscarRecetasBuscadorTitulo(pagina: number, titulo: string) {
+    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
+  }
+  
 }

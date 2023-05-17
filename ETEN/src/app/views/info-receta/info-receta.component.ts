@@ -77,7 +77,7 @@ export class InfoRecetaComponent {
         this.comprobarDificultadNula();
         this.limpiarDescripcion();
         this.comprobarRecetaFavorita();
-        this.ingredienteService.obtenerIngredientes(this.recetaSeleccionada).subscribe((data: Ingrediente[]) => {
+        this.ingredienteService.obtenerIngredientes(this.recetaSeleccionada.id!).subscribe((data: Ingrediente[]) => {
           this.todosIngredientes = data;
         })
       })

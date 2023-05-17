@@ -3,13 +3,17 @@ import { Oferta } from "src/app/models/oferta";
 import { OfertaService } from "src/app/services/oferta.service";
 import { Router } from '@angular/router';
 
+/*
 interface Product {
+  idOferta: number;
   imagenOferta: string;
   nombreOferta: string;
   precioActual: number;
   precioAnterior: number;
   categoria: string;
+  urlOferta: string;
 }
+*/
 
 @Component({
   selector: 'app-ofertas',
@@ -18,40 +22,96 @@ interface Product {
 })
 
 export class OfertasComponent implements OnInit {
-  products: Product[] = [];
-  paginatedProducts: Product[] = [];
+  products: Oferta[] = [];
+  paginatedProducts: Oferta[] = [];
   itemsPerPage: number = 20;
   page: number = 1;
   totalPages: number;
   pages: number[] = [];
   categorias: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
   selectedcategoria: string = '';
-  filteredProducts: Product[] = [];
+  filteredProducts: Oferta[] = [];
+  ofertasFresco: Oferta[] = [];
+  ofertasDespensa: Oferta[] = [];
+  ofertasBebidas: Oferta[] = [];
+
+  tipoOferta = 0;
+  categoria = "";
+  numeroTotal = 0;
 
   constructor(private ofertaService: OfertaService, private route: Router) { 
     this.totalPages = 0;
   }
 
   ngOnInit(): void{
-    //this.cargarOfertas();
-    
-    this.cargarOfertas();
-    this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
-    //this.setPage(this.page);
-    this.handlePageChange(this.page)
-    this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
-    
-    
+    this.cargarOfertas(this.categoria); 
+    //this.setPage(this.page);  
+      
   }
-
-  private cargarOfertas() {
-    this.ofertaService.obtenerTodasOfertas().subscribe((data: Oferta[]) => {
-      this.products = data;
+//Sumar visita
+  public sumarVisita(Oferta: Oferta) {
+    this.ofertaService.sumarVisita(Oferta).subscribe((data: Oferta) => {
+      console.log(data);
     })
   }
+
+
+  public cargarOfertas(categoria: string) {
+
+    if (categoria == 'Productos Frescos') {
+
+
+    }
+    else if (categoria == 'Despensa') {
+
+    }
+    else if (categoria == 'Bebidas') {
+
+    }
+    else {
+      this.ofertaService.obtenerOfertasPorCategoria(0, this.page).subscribe((data: any[]) => {
+        this.products = data[0];
+        this.numeroTotal = data[1];
+        console.log(this.products);
+      })
+
+
+    
+  }
+}
+
+/*
+  public cargarOfertasCategoria(categoria: string){
+    this.selectedcategoria = categoria;
+    console.log(categoria);
+    console.log(this.selectedcategoria);
+
+    if (categoria == 'Productos Frescos') {
+      this.ofertaService.obtenerOfertasPorCategoria(1, this.page).subscribe((data: Oferta[]) => {
+        this.filteredProducts = data;
+      })
+    }
+    else if (categoria == 'Despensa') {
+      this.ofertaService.obtenerOfertasPorCategoria(2, this.page).subscribe((data: Oferta[]) => {
+        this.filteredProducts = data;
+      })
+    }
+    else if (categoria == 'Bebidas') {
+      this.ofertaService.obtenerOfertasPorCategoria(3, this.page).subscribe((data: Oferta[]) => {
+        this.filteredProducts = data;
+      })
+    }
+    this.filterProducts();
+    this.totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);    
+    this.handlePageChange(1);
+    this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  }
+  */
   
   //se queda aqui
+  /*
   selectcategoria(categoria: string): void {
+
     this.selectedcategoria = categoria;
     this.filterProducts();
     this.totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
@@ -59,7 +119,8 @@ export class OfertasComponent implements OnInit {
     //this.setPage(1)
     this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
-  
+  */
+  /*
   generateProducts(): Product[] {
     const products: Product[] = [];
     for (let i = 1; i <= 120; i++) {
@@ -69,18 +130,20 @@ export class OfertasComponent implements OnInit {
         nombreOferta: `Producto ${i}`,
         precioAnterior: +(Math.random() * (10 - 1) + 1).toFixed(2),
         precioActual: +(Math.random() * (10 - 1) + 1).toFixed(2),
-        categoria: categoria
+        categoria: categoria,
+        urlOferta : `https://via.placeholder.com/300x300?text=Product+${i}`
       };
       products.push(product);
     }
     return products;
   }
-
+*/
   filterProducts(): void {
     if (this.selectedcategoria === '') {
       this.filteredProducts = this.products;
     } else {
-      this.filteredProducts = this.products.filter(product => product.categoria === this.selectedcategoria);
+      console.log(this.categorias);
+      this.filteredProducts = this.products.filter(oferta => oferta.categoria === this.selectedcategoria);
     }
   }
 

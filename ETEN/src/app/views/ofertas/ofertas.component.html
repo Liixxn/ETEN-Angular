@@ -12,12 +12,12 @@
       <nav class="button-menu">
         <ul>
           <li>
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="selectcategoria(''); $event.preventDefault()">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="cargarOfertas(''); $event.preventDefault()">
               Todos los productos
             </a>
           </li>
           <li *ngFor = "let categoria of categorias">
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="selectcategoria(categoria); $event.preventDefault()">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="cargarOfertas(categoria); $event.preventDefault()">
               {{ categoria }}
             </a>
           </li>
@@ -29,14 +29,14 @@
           <div class="card" *ngFor="let product of products | paginate : {
             itemsPerPage: 20,
             currentPage: page,
-            totalItems: products.length
+            totalItems: numeroTotal
           }; let i = index"[class.active]=" i == currentIndex">
             <img [src]="product.imagenOferta" alt="Producto">
             <h3>{{ product.nombreOferta }}</h3>
-            <!--<p>{{ product.description }}</p>-->
-            <span class="precioAnterior"><del>{{ product.precioAnterior }}</del></span>
-            <span class="precioActual">{{ product.precioActual }}</span>
-            <a href="#" class="btn-primary">Ver</a>
+
+            <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
+            <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span> 
+            <a  [href]= "product.urlOferta"  class="btn-primary" target="_blank">Ver</a>
           </div>
         </div>
       </section>

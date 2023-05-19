@@ -96,6 +96,7 @@ body {
 .card {
   margin: 10px;
   height: 300px;
+  border-bottom: 5px solid $naranja-claro;
 
 }
 
@@ -111,7 +112,7 @@ body {
 
 
 .card:hover {
-  box-shadow: 2px 2px black;
+  transform: scale(1.05);
 }
 
 .tarjetas {
@@ -144,4 +145,6 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  padding-top: 20px;
+  background-color: white;
 }

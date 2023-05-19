@@ -36,11 +36,12 @@ export class BuscadorTituloComponent {
 
       this.recetas = dataRecetas[0];
       this.numeroTotal = dataRecetas[1];
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 2000);
+
 
     })
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2500);
   }
 
   // obtiene el valor del buscador y lo guarda en la variable nombreRecetaBuscar para mostrarla en el html
@@ -53,21 +54,28 @@ export class BuscadorTituloComponent {
     if (this.nombre == '') {
       alert('El campo a buscar esta en blanco');
       this.nombreRecetaBuscar = "Todos los resultados";
+      this.spinner.show();
       this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
 
         this.recetas = dataRecetas[0];
         this.numeroTotal = dataRecetas[1];
-        
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 2000);
+
       })
 
     }
     else {
-
+      this.spinner.show();
       this.recetaService.BuscarRecetasBuscadorTitulo(this.page, this.nombre).subscribe((dataRecetas: any[]) => {
 
         this.recetas = dataRecetas[0];
         this.numeroTotal = dataRecetas[1];
         this.comprobacionMostrar = dataRecetas[2];
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 2000);
 
         if (this.comprobacionMostrar==0) {
           alert('No hay recetas que mostrar para ' + this.nombre);
@@ -79,7 +87,6 @@ export class BuscadorTituloComponent {
         }
       })
     }
-    (<HTMLInputElement>document.getElementById('nombreReceta')).value = '';
   }
 
 

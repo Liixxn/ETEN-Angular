@@ -5,23 +5,9 @@ $naranja-intermedio: #EC6433;
 $naranja-claro: #F37A44;
 $azul-oscuro: #155386;
 $azul-claro: #0086AA;
-$color-crema: #E9DFCB;
+$color-crema: #f6ebd3;
 
 
-
-html {
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-  height: 100%;
-  background-color: $color-crema;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
 
 #buscador-bar {
   margin-top:100px;
@@ -101,6 +87,8 @@ body {
 .card {
   margin: 10px;
   height: 300px;
+  border-bottom: 5px solid $naranja-claro;
+
 
 }
 
@@ -116,11 +104,13 @@ body {
 
 
 .card:hover {
-  box-shadow: 2px 2px black;
+  transform: scale(1.05);
 }
 
 .paginacion {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  padding-top: 20px;
+  background-color: white;
 }

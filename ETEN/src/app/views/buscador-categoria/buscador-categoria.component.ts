@@ -1,6 +1,5 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
 import { NgxSpinnerService } from "ngx-spinner";
@@ -34,10 +33,13 @@ export class BuscadorCategoriaComponent {
     this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
       this.recetas = data[0];
       this.numeroTotal = data[1];
+
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 1000);
+
     })
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000);
+
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {

@@ -10,30 +10,32 @@ import { AutenticacionService } from './services/autenticacion.service';
 })
 export class AppComponent {
 
-  // navbarOpen = false;
-  esAdmin: boolean = false;
 
 
   constructor(private autenticacionService: AutenticacionService) { }
 
   ngOnInit() {
-    this.modificarAdmin();
+    //this.modificarAdmin();
   }
 
+  public esAdmin() {
+    return this.autenticacionService.isAdmin();
+  }
 
-  public modificarAdmin() {
-    //window.location.reload();
-    if (this.autenticacionService.getToken() != null) {
-      this.esAdmin = this.autenticacionService.obtenerUsuarioDelToken().es_administrador == 1 ? true : false;
+  public esUsuarioLogueado() {
+    return this.autenticacionService.isUsuarioLogueado();
+  }
+
+  public cerrarSesion() {
+    alert('Se ha cerrado sesion');
+    this.autenticacionService.eliminarToken();
+  }
+
+  public imgUser() {
+    if (this.autenticacionService.obtenerUsuarioDelToken().img != null) {
+      return this.autenticacionService.obtenerUsuarioDelToken().img;
     } else {
-      this.esAdmin = false;
+      return 'assets/imgs/user_white.png';
     }
   }
-
-
-  /*
-    toggleNavbar() {
-      this.navbarOpen = !this.navbarOpen;
-    }
-  */
 }

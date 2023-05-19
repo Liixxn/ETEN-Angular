@@ -177,9 +177,9 @@ export class PerfilComponent {
 
 
   public cerrarSesion() {
-    this.autenticacionService.eliminarToken();
     alert('Se ha cerrado sesion')
-    this.route.navigate(['/']);
+    this.autenticacionService.eliminarToken();
+
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {

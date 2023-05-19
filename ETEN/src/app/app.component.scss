@@ -109,3 +109,20 @@ body {
 .active {
   background-color: $logo-ETEN-naranja;
 }
+
+.ajustarImgUser{
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+}
+
+.ajustarImgUser img {
+  width: inherit;
+  height: inherit;
+  border-radius: 20px;
+  object-fit: fill;
+}
+
+.hand{
+  cursor: pointer;
+}

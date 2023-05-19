@@ -36,12 +36,8 @@ export class LoginComponent {
       this.autenticacionService.guardarToken(data.access_token);
       alert('Se ha iniciado sesión correctamente.')
 
-      const appComponent = new AppComponent(this.autenticacionService);
-      appComponent.modificarAdmin();
       
-      this.route.navigate(['perfil']).then(() => {
-        window.location.reload();
-      });
+      this.route.navigate(['perfil']);
 
       /*if (data.nombre == "Usuario no encontrado") {
         alert("El usuario no existe.");

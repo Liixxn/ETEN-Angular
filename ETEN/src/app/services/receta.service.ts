@@ -6,7 +6,7 @@ import { Receta } from '../models/receta';
   providedIn: 'root'
 })
 export class RecetaService {
-  recetaSeleccionada: any;
+
   constructor(private httpClient: HttpClient) { }
 
 

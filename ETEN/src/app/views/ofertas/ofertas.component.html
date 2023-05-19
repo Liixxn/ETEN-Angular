@@ -12,12 +12,12 @@
       <nav class="button-menu">
         <ul>
           <li>
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="cargarOfertas(''); $event.preventDefault()">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
               Todos los productos
             </a>
           </li>
-          <li *ngFor = "let categoria of categorias">
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="cargarOfertas(categoria); $event.preventDefault()">
+          <li *ngFor="let categoria of categorias">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
               {{ categoria }}
             </a>
           </li>
@@ -41,19 +41,6 @@
         </div>
       </section>
   
-      <!--
-      <div class="pagination">
-        <a href="javascript:void(0)" (click)="previousPage()" class="prev">&laquo;Anterior</a>
-        <ng-container *ngFor="let page of pages">
-          <a href="javascript:void(0)" *ngIf="page === currentPage; else otherPage" 
-            class="page active">{{ page }}</a>
-          <ng-template #otherPage>
-            <a href="javascript:void(0)" (click)="setPage(page)" class="page">{{ page }}</a>
-          </ng-template>
-        </ng-container>
-        <a href="javascript:void(0)" (click)="nextPage()" class="next">Siguiente&raquo;</a>
-      </div>
-      -->
 
       <div class="pagination">
         <pagination-controls

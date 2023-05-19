@@ -1,4 +1,5 @@
 export class Oferta {
+    id ?: number;
     nombreOferta: string;
     precioActual: number;
     precioAnterior: number;

@@ -12,42 +12,67 @@
       <nav class="button-menu">
         <ul>
           <li>
-            <a href="#" class="btn-primary" [class.active]="selectedCategory === ''" (click)="selectCategory(''); $event.preventDefault()">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
               Todos los productos
             </a>
           </li>
-          <li *ngFor = "let category of categories">
-            <a href="#" class="btn-primary" [class.active]="selectedCategory === category" (click)="selectCategory(category); $event.preventDefault()">
-              {{ category }}
+          <li *ngFor="let categoria of categorias">
+            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
+              {{ categoria }}
             </a>
           </li>
         </ul>
       </nav>
 
       <section class="featured">
-        <div class="grid">
-          <div class="card" *ngFor="let product of paginatedProducts">
-            <img [src]="product.image" alt="Producto">
-            <h3>{{ product.title }}</h3>
-            <p>{{ product.description }}</p>
-            <span class="price">{{ product.price }}</span>
-            <a href="#" class="btn-primary">Comprar</a>
+        <div class="grid" id="contenedor-scroll">
+          <div class="card" *ngFor="let product of products | paginate : {
+            itemsPerPage: 20,
+            currentPage: page,
+            totalItems: numeroTotal
+          }; let i = index"[class.active]=" i == currentIndex">
+            <img [src]="product.imagenOferta" alt="Producto">
+            <h3>{{ product.nombreOferta }}</h3>
+
+            <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
+            <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span>
+            <a  [href]= "product.urlOferta"  class="btn-primary" target="_blank">Ver</a>
           </div>
         </div>
       </section>
 
+
       <div class="pagination">
-        <a href="javascript:void(0)" (click)="previousPage()" class="prev">&laquo;Anterior</a>
-        <ng-container *ngFor="let page of pages">
-          <a href="javascript:void(0)" *ngIf="page === currentPage; else otherPage"
-            class="page active">{{ page }}</a>
-          <ng-template #otherPage>
-            <a href="javascript:void(0)" (click)="setPage(page)" class="page">{{ page }}</a>
-          </ng-template>
-        </ng-container>
-        <a href="javascript:void(0)" (click)="nextPage()" class="next">Siguiente&raquo;</a>
+        <pagination-controls
+          previousLabel="Anterior"
+          nextLabel="Siguiente"
+          (pageChange)="handlePageChange($event)"
+        ></pagination-controls>
       </div>
     </main>
 
-    <app-footer></app-footer>
+    <footer class="bg-dark text-center text-white">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+
+        <section class="mb-4">
+
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            <i class="fa-solid fa-envelope"></i></a>
+
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+            <i class="fab fa-instagram"></i></a>
+
+          <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-google"></i></a>
+        </section>
+
+      </div>
+
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="eten">Eten.com</a>
+      </div>
+
+    </footer>
   </body>

@@ -1,89 +1,115 @@
 import { Component, OnInit } from '@angular/core';
+import { Oferta } from "src/app/models/oferta";
+import { OfertaService } from "src/app/services/oferta.service";
+import { Router } from '@angular/router';
 
-interface Product {
-  image: string;
-  title: string;
-  description: string;
-  price: number;
-  category: string;
-}
 
 @Component({
   selector: 'app-ofertas',
   templateUrl: './ofertas.component.html',
   styleUrls: ['./ofertas.component.scss'],
 })
+
 export class OfertasComponent implements OnInit {
-  products: Product[] = [];
-  paginatedProducts: Product[] = [];
+  products: Oferta[] = [];
+  paginatedProducts: Oferta[] = [];
   itemsPerPage: number = 20;
-  currentPage: number = 1;
+  page: number = 1;
   totalPages: number;
   pages: number[] = [];
-  categories: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
-  selectedCategory: string = '';
-  filteredProducts: Product[] = [];
+  categorias: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
+  selectedcategoria: string = '';
+  filteredProducts: Oferta[] = [];
+  ofertasFresco: Oferta[] = [];
+  ofertasDespensa: Oferta[] = [];
+  ofertasBebidas: Oferta[] = [];
 
-  constructor() {
+  tipoOferta = 0;
+  categoria = "";
+  numeroTotal = 0;
+
+  constructor(private ofertaService: OfertaService, private route: Router) { 
     this.totalPages = 0;
   }
 
-  ngOnInit(): void {
-    this.products = this.generateProducts();
-    this.filterProducts();
-    this.totalPages = Math.ceil(this.products.length / this.itemsPerPage);
-    this.setPage(this.currentPage);
-    this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  ngOnInit(): void{
+    this.cargarTodasOfertas(this.categoria); 
+    //this.setPage(this.page);  
+      
   }
 
-  selectCategory(category: string): void {
-    this.selectedCategory = category;
-    this.filterProducts();
-    this.totalPages = Math.ceil(this.filteredProducts.length / this.itemsPerPage);
-    this.setPage(1); 
-    this.pages = Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  public sumarVisita(Oferta: Oferta) {
+    this.ofertaService.sumarVisita(Oferta).subscribe((data: Oferta) => {
+      console.log(data);
+    })
   }
-  
-  generateProducts(): Product[] {
-    const products: Product[] = [];
-    for (let i = 1; i <= 120; i++) {
-      const category = this.categories[Math.floor(Math.random() * this.categories.length)];
-      const product: Product = {
-        image: `https://via.placeholder.com/300x300?text=Product+${i}`,
-        title: `Producto ${i}`,
-        description: `Descripción del producto ${i}.`,
-        price: +(Math.random() * (10 - 1) + 1).toFixed(2),
-        category: category
-      };
-      products.push(product);
+
+
+  public cargarTodasOfertas(categoria: string) {
+
+    this.categoria = categoria;
+
+    if (categoria == 'Productos Frescos') {
+      this.ofertaService.obtenerOfertasPorCategoria(1, this.page).subscribe((data: any[]) => {
+        this.products = data[0];
+        this.numeroTotal = data[1];
+        console.log(this.products);
+        this.page = 1;
+        
+      })
+
     }
-    return products;
+    else if (categoria == 'Despensa') {
+      this.ofertaService.obtenerOfertasPorCategoria(2, this.page).subscribe((data: any[]) => {
+        this.products = data[0];
+        this.numeroTotal = data[1];
+        console.log(this.products);
+        this.page = 1;
+      })
+    }
+    else if (categoria == 'Bebidas') {
+      this.ofertaService.obtenerOfertasPorCategoria(3, this.page).subscribe((data: any[]) => {
+        this.products = data[0];
+        this.numeroTotal = data[1];
+        console.log(this.products);
+        this.page = 1;
+     
+      })
+    }
+    else {
+      this.ofertaService.obtenerOfertasPorCategoria(0, this.page).subscribe((data: any[]) => {
+        this.products = data[0];
+        this.numeroTotal = data[1];
+        console.log(this.products.length);
+        this.page = 1;
+      
+      })
+    
   }
+}
 
   filterProducts(): void {
-    if (this.selectedCategory === '') {
+    if (this.selectedcategoria == '') {
       this.filteredProducts = this.products;
     } else {
-      this.filteredProducts = this.products.filter(product => product.category === this.selectedCategory);
+      console.log(this.categorias);
+      this.filteredProducts = this.products.filter(oferta => oferta.categoria === this.selectedcategoria);
     }
   }
 
-  setPage(page: number): void {
-    this.currentPage = page;
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedProducts = this.filteredProducts.slice(startIndex, endIndex); // Usa los productos filtrados
-  }
 
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.setPage(this.currentPage - 1);
-    }
-  }
+  //Paginacion
+  
 
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.setPage(this.currentPage + 1);
-    }
+  currentIndex = -1;
+  
+  public handlePageChange(page: number) {
+    this.page = page;
+
+    this.cargarTodasOfertas(this.categoria);
+    
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
   }
 }

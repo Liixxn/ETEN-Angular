@@ -46,5 +46,5 @@ export class RecetaService {
   public BuscarRecetasBuscadorTitulo(pagina: number, titulo: string) {
     return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
   }
-  
+
 }

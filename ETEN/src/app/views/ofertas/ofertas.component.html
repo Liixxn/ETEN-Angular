@@ -12,12 +12,12 @@
       <nav class="menu-categoria">
         <ul>
           <li>
-            <a href="#" class="boton-categoria" [class.active]="selectedcategoria === ''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
+            <a href="#" class="boton-categoria" [class.active]="selectedcategoria===''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
               Todos los productos
             </a>
           </li>
           <li *ngFor="let categoria of categorias">
-            <a href="#" class="boton-categoria" [class.active]="selectedcategoria === categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
+            <a href="#" class="boton-categoria" [class.active]="selectedcategoria===categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
               {{ categoria }}
             </a>
           </li>

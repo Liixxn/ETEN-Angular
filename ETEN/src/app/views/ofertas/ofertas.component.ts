@@ -92,24 +92,24 @@ export class OfertasComponent implements OnInit {
   public cargarTodasOfertas(categoria: string): void {
     this.categoria = categoria;
   
-    let categoryId: number;
+    let id_categoria: number;
   
     switch (categoria) {
       case 'Productos Frescos':
-        categoryId = 1;
+        id_categoria = 1;
         break;
       case 'Despensa':
-        categoryId = 2;
+        id_categoria = 2;
         break;
       case 'Bebidas':
-        categoryId = 3;
+        id_categoria = 3;
         break;
       default:
-        categoryId = 0;
+        id_categoria = 0;
         break;
     }
   
-    this.ofertaService.obtenerOfertasPorCategoria(categoryId, this.page).subscribe((data: any[]) => {
+    this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
       console.log(this.products);
@@ -123,7 +123,7 @@ export class OfertasComponent implements OnInit {
       this.filteredProducts = this.products;
     } else {
       console.log(this.categorias);
-      this.filteredProducts = this.products.filter(oferta => oferta.categoria === this.selectedcategoria);
+      this.filteredProducts = this.products.filter(oferta => oferta.categoria.includes(this.selectedcategoria));
     }
   }
 

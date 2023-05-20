@@ -147,19 +147,26 @@ p {
     }
 
     p {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.1rem;
       font-size: 1rem;
       color: #ffffff;
+    }
+
+    del{
+      color: grey;
+    }
+
+    .precios {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: auto;
+      margin-bottom: 1rem;
     }
     
     .precioAnterior {
       font-size: 1.5rem;
       font-weight: bold;
-
-      color: grey;
-    }
-
-    del{
+      display: inline-block;
       color: grey;
     }
   
@@ -167,6 +174,7 @@ p {
       font-size: 1.5rem;
       font-weight: bold;
       margin-bottom: 1rem;
+      display: inline-block;
       color: #ffffff;
     }
 

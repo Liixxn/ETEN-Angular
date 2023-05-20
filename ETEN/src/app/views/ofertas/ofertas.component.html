@@ -33,9 +33,10 @@
           }; let i = index"[class.active]=" i == currentIndex">
             <img [src]="product.imagenOferta" alt="Producto">
             <h3>{{ product.nombreOferta }}</h3>
-
-            <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
-            <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span>           
+            <div class="precios">             
+              <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
+              <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span>  
+            </div>          
             <a  [href]= "product.urlOferta" (click)="sumarVisita(product)" class="btn-primary" target="_blank">Ver</a>
           </div>
         </div>

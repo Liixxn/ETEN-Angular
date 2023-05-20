@@ -9,15 +9,15 @@
     </header>
 
     <main>
-      <nav class="button-menu">
+      <nav class="menu-categoria">
         <ul>
           <li>
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === ''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
+            <a href="#" class="boton-categoria" [class.active]="selectedcategoria === ''" (click)="cargarTodasOfertas(''); $event.preventDefault()">
               Todos los productos
             </a>
           </li>
           <li *ngFor="let categoria of categorias">
-            <a href="#" class="btn-primary" [class.active]="selectedcategoria === categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
+            <a href="#" class="boton-categoria" [class.active]="selectedcategoria === categoria" (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
               {{ categoria }}
             </a>
           </li>
@@ -37,7 +37,7 @@
               <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
               <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span>  
             </div>          
-            <a  [href]= "product.urlOferta" (click)="sumarVisita(product)" class="btn-primary" target="_blank">Ver</a>
+            <a  [href]= "product.urlOferta" (click)="sumarVisita(product)" class="boton-precio" target="_blank">Ver</a>
           </div>
         </div>
       </section>

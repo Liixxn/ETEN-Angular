@@ -45,6 +45,7 @@ export class OfertasComponent implements OnInit {
   }
 
 
+  /*
   public cargarTodasOfertas(categoria: string) {
 
     this.categoria = categoria;
@@ -54,7 +55,7 @@ export class OfertasComponent implements OnInit {
         this.products = data[0];
         this.numeroTotal = data[1];
         console.log(this.products);
-        this.page = 1;
+        //this.page = 1;
         
       })
 
@@ -64,7 +65,7 @@ export class OfertasComponent implements OnInit {
         this.products = data[0];
         this.numeroTotal = data[1];
         console.log(this.products);
-        this.page = 1;
+        //this.page = 1;
       })
     }
     else if (categoria == 'Bebidas') {
@@ -72,7 +73,7 @@ export class OfertasComponent implements OnInit {
         this.products = data[0];
         this.numeroTotal = data[1];
         console.log(this.products);
-        this.page = 1;
+        //this.page = 1;
      
       })
     }
@@ -81,12 +82,41 @@ export class OfertasComponent implements OnInit {
         this.products = data[0];
         this.numeroTotal = data[1];
         console.log(this.products.length);
-        this.page = 1;
+        //this.page = 1;
       
       })
     
   }
-}
+  }*/
+
+  public cargarTodasOfertas(categoria: string): void {
+    this.categoria = categoria;
+  
+    let categoryId: number;
+  
+    switch (categoria) {
+      case 'Productos Frescos':
+        categoryId = 1;
+        break;
+      case 'Despensa':
+        categoryId = 2;
+        break;
+      case 'Bebidas':
+        categoryId = 3;
+        break;
+      default:
+        categoryId = 0;
+        break;
+    }
+  
+    this.ofertaService.obtenerOfertasPorCategoria(categoryId, this.page).subscribe((data: any[]) => {
+      this.products = data[0];
+      this.numeroTotal = data[1];
+      console.log(this.products);
+  
+      this.filterProducts();
+    });
+  }  
 
   filterProducts(): void {
     if (this.selectedcategoria == '') {

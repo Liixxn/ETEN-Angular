@@ -34,7 +34,7 @@ export class OfertasComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarTodasOfertas(this.categoria);
-    //this.setPage(this.page);  
+    //this.setPage(this.page);
 
   }
 
@@ -54,7 +54,7 @@ export class OfertasComponent implements OnInit {
         this.numeroTotal = data[1];
         console.log(this.products);
         //this.page = 1;
-        
+
       })
 
     }
@@ -72,7 +72,7 @@ export class OfertasComponent implements OnInit {
         this.numeroTotal = data[1];
         console.log(this.products);
         //this.page = 1;
-     
+
       })
     }
     else {
@@ -81,33 +81,32 @@ export class OfertasComponent implements OnInit {
         this.numeroTotal = data[1];
         console.log(this.products.length);
         //this.page = 1;
-      
+
       })
-    
+
   }
   }*/
 
   public cargarTodasOfertas(categoria: string): void {
     this.categoria = categoria;
-
-    let categoryId: number;
+    let id_categoria: number;
 
     switch (categoria) {
       case 'Productos Frescos':
-        categoryId = 1;
+        id_categoria = 1;
         break;
       case 'Despensa':
-        categoryId = 2;
+        id_categoria = 2;
         break;
       case 'Bebidas':
-        categoryId = 3;
+        id_categoria = 3;
         break;
       default:
-        categoryId = 0;
+        id_categoria = 0;
         break;
     }
 
-    this.ofertaService.obtenerOfertasPorCategoria(categoryId, this.page).subscribe((data: any[]) => {
+    this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
       console.log(this.products);
@@ -121,7 +120,7 @@ export class OfertasComponent implements OnInit {
       this.filteredProducts = this.products;
     } else {
       console.log(this.categorias);
-      this.filteredProducts = this.products.filter(oferta => oferta.categoria === this.selectedcategoria);
+      this.filteredProducts = this.products.filter(oferta => oferta.categoria.includes(this.selectedcategoria));
     }
   }
 

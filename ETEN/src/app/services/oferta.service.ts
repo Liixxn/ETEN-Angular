@@ -16,8 +16,8 @@ export class OfertaService {
   public obtenerTodasOfertas() {
     return this.httpClient.get<Oferta[]>("http://localhost:8000/api/ofertas/ObtenerTodasOfertas");
   }
-  
-  public sumarVisita(Oferta: Oferta) {  
-    return this.httpClient.post<Oferta>("http://localhost:8000/api/ofertas/SumarVisita", null);
+
+  public sumarVisita(id_oferta: number) {
+    return this.httpClient.get("http://localhost:8000/api/ofertas/SumarVisitas/" + id_oferta);
   }
 }

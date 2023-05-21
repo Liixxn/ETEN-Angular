@@ -37,7 +37,7 @@
               <span class="precioAnterior"><del>{{ product.precioAnterior.toFixed(2) }}</del></span>
               <span class="precioActual">{{ product.precioActual.toFixed(2) }}</span>  
             </div>          
-            <a  [href]= "product.urlOferta" (click)="sumarVisita(product)" class="boton-precio" target="_blank">Ver</a>
+            <a  [href]= "product.urlOferta" (click)="sumarVisita(product.id!)" class="boton-precio" target="_blank">Ver</a>
           </div>
         </div>
       </section>

@@ -28,20 +28,18 @@ export class OfertasComponent implements OnInit {
   categoria = "";
   numeroTotal = 0;
 
-  constructor(private ofertaService: OfertaService, private route: Router) { 
+  constructor(private ofertaService: OfertaService, private route: Router) {
     this.totalPages = 0;
   }
 
-  ngOnInit(): void{
-    this.cargarTodasOfertas(this.categoria); 
+  ngOnInit(): void {
+    this.cargarTodasOfertas(this.categoria);
     //this.setPage(this.page);  
-      
+
   }
 
-  public sumarVisita(Oferta: Oferta) {
-    this.ofertaService.sumarVisita(Oferta).subscribe((data: Oferta) => {
-      console.log(data);
-    })
+  public sumarVisita(id_oferta: number) {
+    this.ofertaService.sumarVisita(id_oferta).subscribe();
   }
 
 
@@ -91,9 +89,9 @@ export class OfertasComponent implements OnInit {
 
   public cargarTodasOfertas(categoria: string): void {
     this.categoria = categoria;
-  
+
     let categoryId: number;
-  
+
     switch (categoria) {
       case 'Productos Frescos':
         categoryId = 1;
@@ -108,15 +106,15 @@ export class OfertasComponent implements OnInit {
         categoryId = 0;
         break;
     }
-  
+
     this.ofertaService.obtenerOfertasPorCategoria(categoryId, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
       console.log(this.products);
-  
+
       this.filterProducts();
     });
-  }  
+  }
 
   filterProducts(): void {
     if (this.selectedcategoria == '') {
@@ -129,15 +127,15 @@ export class OfertasComponent implements OnInit {
 
 
   //Paginacion
-  
+
 
   currentIndex = -1;
-  
+
   public handlePageChange(page: number) {
     this.page = page;
 
     this.cargarTodasOfertas(this.categoria);
-    
+
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
     window.scrollTo(0, 0);
     contenedor.scrollTo(0, 0);

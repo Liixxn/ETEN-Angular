@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
   {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
   {path: 'buscador-titulo', component:BuscadorTituloComponent},
-  {path: 'ofertas', component:OfertasComponent}];
+  {path: 'ofertas', component:OfertasComponent, canActivate: [RegistradoGuard]}];
 
 
 @NgModule({

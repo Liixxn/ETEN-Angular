@@ -33,31 +33,19 @@ export class LoginComponent {
     let usuario: Usuario = new Usuario('vacio', email, contrasenia, 0, '', 0);
     this.usuarioService.login(usuario).subscribe((data: any) => {
       //alert(data.access_token);
-      this.autenticacionService.guardarToken(data.access_token);
-      alert('Se ha iniciado sesión correctamente.')
-      setTimeout(() => {
-        this.refrescarToken();
-      }, 40000);
 
-
-      this.route.navigate(['perfil']);
-
-      /*if (data.nombre == "Usuario no encontrado") {
-        alert("El usuario no existe.");
+      if (data == 'no encontrado') {
+        alert('El usuario no existe.');
+      } else if (data == 'incorrecto') {
+        alert('Error al iniciar sesión');
+      } else {
+        this.autenticacionService.guardarToken(data.access_token);
+        alert('Se ha iniciado sesión correctamente.')
+        setTimeout(() => {
+          this.refrescarToken();
+        }, 40000);
+        this.route.navigate(['perfil']);
       }
-      else if (data.nombre == "Contrasenia incorrecta") {
-        alert("Error al inicar sesión.");
-      }
-      else {
-        alert("Se ha iniciado sesión correctamente.");
-        if (data.es_administrador) {
-          alert('admin')
-          this.appComponent.modificarAdmin(true);
-        } else {
-          alert('no admin')
-          this.appComponent.modificarAdmin(false);
-        }
-      }*/
     })
   }
 

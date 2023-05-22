@@ -3,13 +3,13 @@
     <ul>
       <li>
         <a href="#" class="boton-categoria" [class.active]="selectedcategoria===''"
-           (click)="cargarTodasOfertas(''); $event.preventDefault()">
+          (click)="cargarTodasOfertas(''); $event.preventDefault()">
           Todos los productos
         </a>
       </li>
       <li *ngFor="let categoria of categorias">
         <a href="#" class="boton-categoria" [class.active]="selectedcategoria===categoria"
-           (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
+          (click)="cargarTodasOfertas(categoria); $event.preventDefault()">
           {{ categoria }}
         </a>
       </li>
@@ -26,7 +26,7 @@
             currentPage: page,
             totalItems: numeroTotal
           }; let i = index" [class.active]=" i == currentIndex">
-      <div class="card" >
+      <div class="card">
         <img [src]="product.imagenOferta" alt="Producto">
         <h3>{{ product.nombreOferta }}</h3>
         <div class="precios">
@@ -40,36 +40,11 @@
 </section>
 
 <div class="pagination">
-  <pagination-controls
-    previousLabel="Anterior"
-    nextLabel="Siguiente"
-    (pageChange)="handlePageChange($event)"
-  ></pagination-controls>
+  <pagination-controls previousLabel="Anterior" nextLabel="Siguiente"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
 </div>
 
 
 
-<footer class="bg-dark text-center text-white">
-  <!-- Grid container -->
-  <div class="container p-4 pb-0">
 
-    <section class="mb-4">
-
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <i class="fa-solid fa-envelope"></i></a>
-
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-        <i class="fab fa-instagram"></i></a>
-
-      <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-      ><i class="fab fa-google"></i></a>
-    </section>
-
-  </div>
-
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    © 2023 Copyright:
-    <a class="text-white" href="eten">Eten.com</a>
-  </div>
-
-</footer>
+<app-footer></app-footer>

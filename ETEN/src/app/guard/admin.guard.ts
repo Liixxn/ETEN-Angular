@@ -24,7 +24,7 @@ export class AdminGuard implements CanActivate {
         return false;
       }
     } else {
-      alert("No has iniciado sesion");
+      alert("No tienes permiso para acceder a esta página.");
       this.route.navigate(['/login']);
       return false;
     }

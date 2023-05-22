@@ -1,245 +1,162 @@
 $primary-color: #F05A21;
 $secondary-color: #ffffff;
 $tertiary-color: #555555;
-$font-size: 16px;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+.seccionNavegacion {
+  margin-top: 100px;
 }
 
-html {
-  font-size: $font-size;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  color: $tertiary-color;
-}
-
-header {
-  background-color: $primary-color;
-  padding: 1rem;
-  text-align: center;
-  color: $secondary-color;
-}
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.button-menu {
-  ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 5rem 1rem;
-
-    li {
-      margin: 1rem;
-      padding: 2rem;
-
-      .btn-primary {
-        background-color: #F05A21;
-        color: black;
-        padding: 1rem 0.75rem;
-        border-radius: 1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-        transition: all 0.3s ease;
-        min-width: 100px;
-        max-width: 200px;
-
-        &:hover {
-          background-color: black;
-          color: #F05A21;
-        }
-
-        &.active {
-          background-color: black;
-          color: #F05A21;
-        }
-
-        @media screen and (max-width: 480px) {
-          font-size: 0.75rem;
-          padding: 1rem 0.5rem;
-          min-width: 80px;
-          max-width: 150px;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 294px) {
-  .button-menu li .btn-primary {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    min-width: 80px;
-    max-width: 120px;
-  }
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-p {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.btn-primary {
-  background-color: #F05A21;
-  color: black;
-  padding: 0.5rem 2rem;
-  border-radius: 2rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: black;
-    color: #F05A21;
-  }
-}
-
-
-.featured {
-  padding: 1rem 0;
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 1rem;
-  }
-
-  .card {
-    border: 3px groove #F05A21;
-    background-color: black;
-    padding: 1rem;
-    text-align: center;
-
-    img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      align-items: center;
-      color: #ffffff;
-      font-weight: bold;
-    }
-
-    p {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      color: #ffffff;
-    }
-    
-    .precioAnterior {
-      font-size: 1.5rem;
-      font-weight: bold;
-
-      color: grey;
-    }
-
-    del{
-      color: grey;
-    }
-  
-    .precioActual {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      color: #ffffff;
-    }
-
-    .btn-primary {
-      background-color: #F05A21;
-      color: black;
-      padding: 0.5rem 1rem;
-      border-radius: 1rem;
-      text-transform: uppercase;
-      font-weight: bold;
-      transition: all 0.3s ease;
-      
-      position: absolute;
-      bottom: 5px;
-      margin-right: auto;
-      margin-left: auto;
-      left: 10px;
-      right: 10px;
-
-      &:hover {
-        background-color: #ffffff;
-        color: #F05A21;
-      }
-    }
-  }
-}
-
-.pagination ::ng-deep {
+.menu-categoria {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
-  padding: 5rem 2rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 5rem 1rem;
 
-  .previousLabel,
-  .nextLabel,
-  .page {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    background-color: #F05A21;
-    color: black;
-    border-radius: 1rem;
-    font-weight: bold;
-    text-decoration: none;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    list-style: none;
+  }
+
+  li {
+    flex: 1;
+    display: flex;
     text-align: center;
+    align-items: stretch;
+  }
+
+  .boton-categoria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem;
+    background-color: $primary-color;
+    color: black;
+    padding: 1rem 0.75rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
     transition: all 0.3s ease;
+    font-weight: bold;
+    border: none;
+    flex: 1;
 
     &:hover {
       background-color: black;
-      color: #F05A21;
+      color: $primary-color;
     }
 
     &.active {
       background-color: black;
-      color: #F05A21;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    flex-direction: column;
-
-    .prev,
-    .next {
-      margin-top: 0.5rem;
+      color: $primary-color;
     }
   }
 }
 
-footer {
+.featured {
+  height: 100%;
+}
+
+.contendor-scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 20px;
+}
+
+.col-md-4 {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+
+.card {
+  width: 100%;
+  border: 3px groove #F05A21;
   background-color: black;
   padding: 1rem;
   text-align: center;
-  color: $secondary-color;
+  margin: 1rem;
+
+  img {
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    align-items: center;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: 1.1rem;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+
+  del{
+    color: #F05A21;
+  }
+
+  .precios {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+
+  .precioAnterior {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+    color: grey;
+  }
+
+  .precioActual {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+    color: #ffffff;
+  }
+
+  .boton-precio {
+    background-color: #F05A21;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+
+    position: absolute;
+    bottom: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    left: 10px;
+    right: 10px;
+
+    &:hover {
+      background-color: #ffffff;
+      color: #F05A21;
+    }
+  }
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

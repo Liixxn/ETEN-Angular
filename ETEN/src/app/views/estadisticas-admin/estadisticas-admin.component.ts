@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
 import {UsuarioService} from "../../services/usuario.service";
 import {Usuario} from "../../models/usuario";
+import {RecetaService} from "../../services/receta.service";
+import { Receta } from 'src/app/models/receta';
 //import { Color } from 'chart.js/dist/types/color';
 //import 'chartjs-plugin-datalabels';
 
@@ -17,17 +19,41 @@ import {Usuario} from "../../models/usuario";
 })
 export class EstadisticasAdminComponent {
 
-  constructor(private usuarioService: UsuarioService) { }
+  subscripcionActiva: number = 0;
+  usuarioActivo: boolean = false;
+  opcionSeleccionada: any = '';
+  
+  
+
+  constructor(private usuarioService: UsuarioService, private recetaService: RecetaService) { }
   todosUsuarios:Usuario[] = [];
+  usuariosFiltrados:Usuario[] = [];
+  recetas: Receta[] = [];
+  recetasFiltradas: Receta[] = [];
 
   ngOnInit() {
     this.cargarUsuarios();
+    this.cargarRecetas();
   }
 
   public cargarUsuarios() {
     this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
       this.todosUsuarios = data
+      this.usuariosFiltrados = data
+      
     });
+
+  }
+
+  public cargarRecetas() {
+    this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
+      this.recetas = data
+      this.recetasFiltradas = data
+    console.log(this.recetas);
+    });
+  
+
+    
   }
 
   /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
@@ -47,8 +73,11 @@ export class EstadisticasAdminComponent {
   opcionEmailUserSeleccionada: boolean = true;
 
   filtrarPorNombreReceta() {
+    console.log(this.recetas);
     if (this.opcionNombreRecetaSeleccionada) {
-      this.todosNombresRecetas = this.todosNombresRecetas.filter(item => item.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
+      //this.todosNombresRecetas = this.todosNombresRecetas.filter(item => item.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
+      this.recetasFiltradas = this.recetas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
+      
       //this.opcionSeleccionada = false;
     }
   }
@@ -56,6 +85,8 @@ export class EstadisticasAdminComponent {
   filtrarPorNombreUser() {
     if (this.opcionNombreUserSeleccionada) {
       this.todosNombresUsers = this.todosNombresUsers.filter(item => item.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+      this.emailUserSeleccionado = "";
       //this.opcionSeleccionada = false;
     }
   }
@@ -63,6 +94,8 @@ export class EstadisticasAdminComponent {
   filtrarPorEmailUser() {
     if (this.opcionEmailUserSeleccionada) {
       this.todosEmailsUsers = this.todosEmailsUsers.filter(item => item.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.email.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
+      this.nombreUserSeleccionado = "";
       //this.opcionSeleccionada = false;
     }
   }
@@ -171,4 +204,59 @@ export class EstadisticasAdminComponent {
   public doughnutChartHovered(e: any): void {
     console.log(e);
   }
+
+  public BuscarInfo() {
+    //console.log(this.subscripcionActiva);
+    //console.log(this.todosUsuarios);
+    //console.log(this.nombreUserSeleccionado);
+    //this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre === this.nombreUserSeleccionado);
+    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+    
+    //console.log(usuariosFiltrados)
+    
+  }
+
+  public onClickSubscripcion() {
+    console.log(this.todosUsuarios);
+
+    if(this.subscripcionActiva){
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 1);
+    }
+    else{
+      console.log("entra");
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 0);
+    }
+  }
+
+  public buscarRecetaSeleccionada() {
+    this.recetasFiltradas = this.recetas
+
+    if (this.opcionSeleccionada != 9) {
+      this.recetasFiltradas = this.recetasFiltradas.filter(i => i.categoria.toLowerCase().includes(this.opcionSeleccionada.toLowerCase()));
+    }
+   if (this.nombreRecetaSeleccionado !="") {
+      this.recetasFiltradas = this.recetasFiltradas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
+    //console.log(this.opcionSeleccionada);
+
+   
+
+   } 
+
+  }
+
+  
+
+
+  /*public onClickUserActivo() {
+    if(this.usuarioActivo){
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at === null);
+    }
+    else{
+      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at !== null);
+    }
+  }*/
+
+
+  
 }
+

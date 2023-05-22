@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Oferta } from "src/app/models/oferta";
 import { OfertaService } from "src/app/services/oferta.service";
 import { Router } from '@angular/router';
+import { NgxSpinnerService} from "ngx-spinner";
 
 
 @Component({
@@ -12,29 +13,18 @@ import { Router } from '@angular/router';
 
 export class OfertasComponent implements OnInit {
   products: Oferta[] = [];
-  paginatedProducts: Oferta[] = [];
-  itemsPerPage: number = 20;
   page: number = 1;
-  totalPages: number;
-  pages: number[] = [];
+  currentIndex = -1;
   categorias: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
   selectedcategoria: string = '';
-  filteredProducts: Oferta[] = [];
-  ofertasFresco: Oferta[] = [];
-  ofertasDespensa: Oferta[] = [];
-  ofertasBebidas: Oferta[] = [];
 
-  tipoOferta = 0;
   categoria = "";
   numeroTotal = 0;
 
-  constructor(private ofertaService: OfertaService, private route: Router) {
-    this.totalPages = 0;
-  }
+  constructor(private ofertaService: OfertaService, private route: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
     this.cargarTodasOfertas(this.categoria);
-    //this.setPage(this.page);
 
   }
 
@@ -43,53 +33,15 @@ export class OfertasComponent implements OnInit {
   }
 
 
-  /*
-  public cargarTodasOfertas(categoria: string) {
-
-    this.categoria = categoria;
-
-    if (categoria == 'Productos Frescos') {
-      this.ofertaService.obtenerOfertasPorCategoria(1, this.page).subscribe((data: any[]) => {
-        this.products = data[0];
-        this.numeroTotal = data[1];
-        console.log(this.products);
-        //this.page = 1;
-
-      })
-
-    }
-    else if (categoria == 'Despensa') {
-      this.ofertaService.obtenerOfertasPorCategoria(2, this.page).subscribe((data: any[]) => {
-        this.products = data[0];
-        this.numeroTotal = data[1];
-        console.log(this.products);
-        //this.page = 1;
-      })
-    }
-    else if (categoria == 'Bebidas') {
-      this.ofertaService.obtenerOfertasPorCategoria(3, this.page).subscribe((data: any[]) => {
-        this.products = data[0];
-        this.numeroTotal = data[1];
-        console.log(this.products);
-        //this.page = 1;
-
-      })
-    }
-    else {
-      this.ofertaService.obtenerOfertasPorCategoria(0, this.page).subscribe((data: any[]) => {
-        this.products = data[0];
-        this.numeroTotal = data[1];
-        console.log(this.products.length);
-        //this.page = 1;
-
-      })
-
-  }
-  }*/
-
   public cargarTodasOfertas(categoria: string): void {
+
+    if (this.categoria != categoria) {
+      this.page = 1;
+    }
+
     this.categoria = categoria;
     let id_categoria: number;
+
 
     switch (categoria) {
       case 'Productos Frescos':
@@ -105,30 +57,19 @@ export class OfertasComponent implements OnInit {
         id_categoria = 0;
         break;
     }
-
+    this.spinner.show();
     this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
       console.log(this.products);
 
-      this.filterProducts();
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 1000);
+
     });
   }
 
-  filterProducts(): void {
-    if (this.selectedcategoria == '') {
-      this.filteredProducts = this.products;
-    } else {
-      console.log(this.categorias);
-      this.filteredProducts = this.products.filter(oferta => oferta.categoria.includes(this.selectedcategoria));
-    }
-  }
-
-
-  //Paginacion
-
-
-  currentIndex = -1;
 
   public handlePageChange(page: number) {
     this.page = page;

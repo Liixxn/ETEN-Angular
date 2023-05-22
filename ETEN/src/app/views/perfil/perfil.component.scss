@@ -1,3 +1,11 @@
+
+$logo-ETEN-naranja: #F05A21;
+$naranja-intermedio: #EC6433;
+$naranja-claro: #F37A44;
+$azul-oscuro: #155386;
+$azul-claro: #0086AA;
+$color-crema: #E9DFCB;
+
 .container {
     margin-top: 105px;
     //border: 2px solid red;
@@ -265,7 +273,7 @@
 /* LISTA DE FAVORITOS*/
 
 #seccion-favoritas {
-  margin-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 #seccion-favoritas h3 {
@@ -353,10 +361,41 @@
 }
 
 
+.paginacion {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.buscador-recetasFavoritas {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-tituloFavorita {
+  width: 100%;
+}
+
+.search-tituloFavorita {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+}
 
 
-
-
-
-
-
+.btnObtenerRecetasFavoritas {
+  margin-top: 20px;
+  background-color: $logo-ETEN-naranja;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}

@@ -47,4 +47,7 @@ export class RecetaService {
     return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
   }
 
+  public ObtenerRecetaBuscarEntreFavoritas(recetasFavoritas: number[], titulo: string) {
+    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
+
 }

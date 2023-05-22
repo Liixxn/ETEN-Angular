@@ -121,13 +121,23 @@
 
 <section id="seccion-favoritas">
   <h3>Tus recetas favoritas</h3>
+  <div class="buscador-recetasFavoritas">
+  <form>
+    <input id="nombreReceta" class="search-tituloFavorita" type="text" placeholder="Título de la receta"
+           [(ngModel)]="nombreRecetaFavorita">
+  </form>
+  <form>
+    <button class="btnObtenerRecetasFavoritas" (click)="obtenerRecetaFavorita()" type="submit">Buscar</button>
+  </form>
+  </div>
   <div class="div-contenido-recetas">
     <div class="scroll-contenido">
 
-
-
-
-      <div *ngFor="let receta of recetas" class="card">
+      <div *ngFor="let receta of recetas | paginate : {
+           itemsPerPage: 12,
+           currentPage: page,
+           totalItems: recetas.length
+           }; let i = index" [class.active]="i == currentIndex" class="card">
         <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
         <div class="card-body">
           <a (click)="abrirInfoReceta(receta)">
@@ -136,12 +146,14 @@
         </div>
       </div>
 
-
-
-
-
     </div>
-
+    <div class="paginacion">
+      <pagination-controls
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+        (pageChange)="handlePageChange($event)"
+      ></pagination-controls>
+    </div>
   </div>
 </section>
 

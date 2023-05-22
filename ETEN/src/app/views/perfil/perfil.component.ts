@@ -16,7 +16,15 @@ export class PerfilComponent {
   toastMessage = 'This is a toast'; // mensaje toast
   showsToast = false;
 
+  nombreRecetaFavorita: string = "";
+  numeroTotal = 0;
+
   recetas: Receta[] = [];
+
+  /* Paginacion */
+  currentIndex = -1;
+  page = 1;
+  count = 0;
 
   public usuarioLogueado: Usuario = new Usuario('nombre', 'email', 'pass', 0, 'img', 0);
 
@@ -190,4 +198,38 @@ export class PerfilComponent {
   }
 
 
+  public obtenerRecetaFavorita() {
+
+    let tituloReceta = (<HTMLInputElement>document.getElementById("nombreReceta")).value;
+    tituloReceta = tituloReceta.trim();
+    if (tituloReceta == "" ) {
+      alert("Introduzca el titulo de la receta a buscar");
+      this.cargarRecetasFavoritas();
+    }
+    else {
+      this.recetaService.ObtenerIdRecetasFavoritas(this.usuarioLogueado.id!).subscribe((listaIds: number[]) => {
+        this.recetaService.ObtenerRecetaBuscarEntreFavoritas(listaIds, tituloReceta).subscribe((data: Receta[]) => {
+          this.recetas = data;
+
+
+          if (this.recetas.length == 0) {
+            alert("No se ha encontrado ninguna receta con ese nombre");
+            this.cargarRecetasFavoritas();
+          }
+        })
+      })
+      }
+
+  }
+
+
+  public handlePageChange(event: number) {
+
+    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
+
+    this.page = event;
+
+    window.scrollTo(0, 0);
+    contenedor.scrollTo(0, 0);
+  }
 }

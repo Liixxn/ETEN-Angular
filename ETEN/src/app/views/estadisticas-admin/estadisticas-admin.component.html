@@ -93,6 +93,8 @@
 
                 </div>
                 <!--FIN GRAFICAS Y ESTADISTICAS-->
+
+                
                 <!--TABLA DE USERS-->
                 <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel"
                     aria-labelledby="nav-users-tab">
@@ -100,7 +102,7 @@
 
                         <!--Buscar por Nombre-->
                         <div class="col-sm-3 my-1">
-                            <input placeholder="Buscar por Nombre de Usuario" [(ngModel)]="nombreUserSeleccionado"
+                            <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario" [(ngModel)]="nombreUserSeleccionado"
                                 (keyup)="filtrarPorNombreUser()" (change)="onClickNombreUser()" class="form-control"
                                 list="listaNombresUser" />
                             <datalist id="listaNombresUser">
@@ -119,20 +121,20 @@
                         <!--CheckBox Subscripcion-->
                         <div class="col-auto my-1">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkbox_subscripcion">
+                                <input type="checkbox" class="form-check-input" id="checkbox_subscripcion" [(ngModel)]="subscripcionActiva" (change)="onClickSubscripcion()">
                                 <label class="form-check-label" for="checkbox">Subscripción</label>
                             </div>
                         </div>
                         <!--CheckBox User Activo-->
                         <div class="col-auto my-1">
                             <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkbox_usuario_activo">
+                                <input type="checkbox" class="form-check-input" id="checkbox_usuario_activo" [(ngModel)]="usuarioActivo" >
                                 <label class="form-check-label" for="checkbox">Usuario Activo</label>
                             </div>
                         </div>
                         <!--Boton Buscar-->
                         <div class="col-auto my-1">
-                            <button type="button" class="btn btn-primary">Buscar</button>
+                            <button (click)="BuscarInfo()" type="button" class="btn btn-primary">Buscar</button>
                         </div>
                     </div>
 
@@ -148,7 +150,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let usuario of todosUsuarios">
+                            <tr *ngFor="let usuario of usuariosFiltrados">
                                 <td>{{usuario.id}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.email}}</td>
@@ -158,11 +160,9 @@
                             </tr>
                         </tbody>
                     </table>
-
-
-
-
                 </div>
+
+
                 <!--FIN TABLA DE USERS-->
                 <!--TABLA DE RECETAS-->
                 <div class="tab-pane hacer_scroll fade" id="nav-recetas" role="tabpanel"
@@ -174,7 +174,7 @@
 
                             <!--Buscar por Nombre-->
                             <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
-                                (keyup)="filtrarPorNombreReceta()" (change)="onClickNombreReceta()" class="form-control"
+                                (keyup)="buscarRecetaSeleccionada()" (change)="onClickNombreReceta()" class="form-control"
                                 list="listaNombresReceta" />
                             <datalist id="listaNombresReceta">
                                 <option *ngFor="let nombre of todosNombresRecetas" [value]="nombre"></option>
@@ -182,16 +182,17 @@
                         </div>
                         <!--Buscar por Categoria-->
                         <div class="col-sm-3 my-1">
-                            <select class="form-select">
+                            <select class="form-select" (change)= "buscarRecetaSeleccionada()" [(ngModel)]="opcionSeleccionada"> 
                                 <option value="" disabled selected hidden>Selecciona una opción</option>
-                                <option value="opcion1">Arroz</option>
-                                <option value="opcion2">Bbeida</option>
-                                <option value="opcion3">Carne</option>
-                                <option value="opcion4">Dulce</option>
-                                <option value="opcion5">Pasta</option>
-                                <option value="opcion6">Pescado</option>
-                                <option value="opcion7">Variado</option>
-                                <option value="opcion8">Vegetales</option>
+                                <option value="1">Arroz</option>
+                                <option value="2">Bebida</option>
+                                <option value="3">Carne</option>
+                                <option value="4">Dulce</option>
+                                <option value="5">Pasta</option>
+                                <option value="6">Pescado</option>
+                                <option value="7">Variado</option>
+                                <option value="8">Vegetales</option>
+                                <option value="9">Todos</option>
                             </select>
                         </div>
                         <!--CheckBox Receta Activa-->
@@ -203,376 +204,26 @@
                         </div>
                         <!--Boton Buscar-->
                         <div class="col-auto my-1">
-                            <button type="button" class="btn btn-primary">Buscar</button>
+                            <button type="button" class="btn btn-primary" (click)="buscarRecetaSeleccionada">Buscar</button>
                         </div>
                     </div>
 
                     <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
                         <thead>
+                        
                             <tr>
-                                <th>Imagen</th>
+                                <th>ID</th>
                                 <th>Nombre Receta</th>
-                                <th>Categoria</th>
-                                <th>Numero de Comentarios</th>
+                                <th>Categoría</th>
                                 <th>Activo</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>img</td>
-                                <td>Receta de Redondo de ternera, receta de la abuela</td>
-                                <td>Carne</td>
-                                <td>245</td>
+                        <tbody >
+                            <tr *ngFor="let receta of recetasFiltradas">
+                                <td>{{receta.id}}</td>
+                                <td>{{receta.titulo}}</td>
+                                <td>{{receta.categoria}}</td>
+                                
                                 <td>
                                     <!--CheckBox Receta Activa-->
                                     <div class="col-auto my-1">

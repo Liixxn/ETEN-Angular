@@ -37,7 +37,6 @@ export class InfoRecetaComponent {
 
   public cargarInformacion() {
     this.cargarReceta();
-    this.cargarUsuario();
   }
 
 
@@ -50,22 +49,29 @@ export class InfoRecetaComponent {
 
   public cargarUsuario() {
     this.usuarioLogueado = this.autenticacionService.obtenerUsuarioDelToken();
+    if (this.usuarioLogueado != null) {
+      this.comprobarRecetaFavorita();
+    } else {
+      this.recetaGuardada = false;
+    }
   }
 
   public modificarRecetaGuardada() {
-    this.recetaGuardada = !this.recetaGuardada;
 
-    if (this.recetaGuardada) {
-      this.recetaService.GuardarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
-        alert(data);
-      })
+    if (this.usuarioLogueado != null) {
+      this.recetaGuardada = !this.recetaGuardada;
+      if (this.recetaGuardada) {
+        this.recetaService.GuardarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
+          alert(data);
+        })
+      } else {
+        this.recetaService.EliminarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
+          alert(data);
+        })
+      }
     } else {
-      this.recetaService.EliminarRecetaFavoritos(this.recetaSeleccionada.id!).subscribe((data: string) => {
-        alert(data);
-      })
+      alert('Si desea guardar las recetas necesitas iniciar sesión.');
     }
-
-
   }
 
 
@@ -76,7 +82,7 @@ export class InfoRecetaComponent {
         this.recetaSeleccionada = data;
         this.comprobarDificultadNula();
         this.limpiarDescripcion();
-        this.comprobarRecetaFavorita();
+        this.cargarUsuario();
         this.ingredienteService.obtenerIngredientes(this.recetaSeleccionada.id!).subscribe((data: Ingrediente[]) => {
           this.todosIngredientes = data;
         })

@@ -207,7 +207,7 @@ export class PerfilComponent {
       this.cargarRecetasFavoritas();
     }
     else {
-      this.recetaService.ObtenerIdRecetasFavoritas(this.usuarioLogueado.id!).subscribe((listaIds: number[]) => {
+      this.recetaService.ObtenerIdRecetasFavoritas().subscribe((listaIds: number[]) => {
         this.recetaService.ObtenerRecetaBuscarEntreFavoritas(listaIds, tituloReceta).subscribe((data: Receta[]) => {
           this.recetas = data;
 

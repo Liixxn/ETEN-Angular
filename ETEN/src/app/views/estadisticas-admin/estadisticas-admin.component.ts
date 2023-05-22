@@ -5,9 +5,9 @@ import { Component } from '@angular/core';
 
 //import { ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { ChartDataset, ChartOptions, ChartType, ChartData } from 'chart.js';
-import {UsuarioService} from "../../services/usuario.service";
-import {Usuario} from "../../models/usuario";
-import {RecetaService} from "../../services/receta.service";
+import { UsuarioService } from "../../services/usuario.service";
+import { Usuario } from "../../models/usuario";
+import { RecetaService } from "../../services/receta.service";
 import { Receta } from 'src/app/models/receta';
 //import { Color } from 'chart.js/dist/types/color';
 //import 'chartjs-plugin-datalabels';
@@ -22,12 +22,12 @@ export class EstadisticasAdminComponent {
   subscripcionActiva: number = 0;
   usuarioActivo: boolean = false;
   opcionSeleccionada: any = '';
-  
-  
+
+
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService) { }
-  todosUsuarios:Usuario[] = [];
-  usuariosFiltrados:Usuario[] = [];
+  todosUsuarios: Usuario[] = [];
+  usuariosFiltrados: Usuario[] = [];
   recetas: Receta[] = [];
   recetasFiltradas: Receta[] = [];
 
@@ -38,22 +38,22 @@ export class EstadisticasAdminComponent {
 
   public cargarUsuarios() {
     this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
-      this.todosUsuarios = data
-      this.usuariosFiltrados = data
-      
+      this.todosUsuarios = data;
+      this.usuariosFiltrados = data;
+
     });
 
   }
 
   public cargarRecetas() {
     this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data
-      this.recetasFiltradas = data
-    console.log(this.recetas);
+      this.recetas = data;
+      this.recetasFiltradas = data;
+      console.log(this.recetas);
     });
-  
 
-    
+
+
   }
 
   /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
@@ -77,7 +77,7 @@ export class EstadisticasAdminComponent {
     if (this.opcionNombreRecetaSeleccionada) {
       //this.todosNombresRecetas = this.todosNombresRecetas.filter(item => item.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
       this.recetasFiltradas = this.recetas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
-      
+
       //this.opcionSeleccionada = false;
     }
   }
@@ -211,18 +211,18 @@ export class EstadisticasAdminComponent {
     //console.log(this.nombreUserSeleccionado);
     //this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre === this.nombreUserSeleccionado);
     this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
-    
+
     //console.log(usuariosFiltrados)
-    
+
   }
 
   public onClickSubscripcion() {
     console.log(this.todosUsuarios);
 
-    if(this.subscripcionActiva){
+    if (this.subscripcionActiva) {
       this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 1);
     }
-    else{
+    else {
       console.log("entra");
       this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 0);
     }
@@ -234,17 +234,17 @@ export class EstadisticasAdminComponent {
     if (this.opcionSeleccionada != 9) {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.categoria.toLowerCase().includes(this.opcionSeleccionada.toLowerCase()));
     }
-   if (this.nombreRecetaSeleccionado !="") {
+    if (this.nombreRecetaSeleccionado != "") {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
-    //console.log(this.opcionSeleccionada);
+      //console.log(this.opcionSeleccionada);
 
-   
 
-   } 
+
+    }
 
   }
 
-  
+
 
 
   /*public onClickUserActivo() {
@@ -257,6 +257,6 @@ export class EstadisticasAdminComponent {
   }*/
 
 
-  
+
 }
 

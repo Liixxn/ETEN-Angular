@@ -49,5 +49,5 @@ export class RecetaService {
 
   public ObtenerRecetaBuscarEntreFavoritas(recetasFavoritas: number[], titulo: string) {
     return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
-
+  }
 }

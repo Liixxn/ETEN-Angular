@@ -18,6 +18,10 @@ export class UsuarioService {
     return this.httpClient.post<any>("http://localhost:8000/api/usuarios/login", usuario);
   }
 
+  public refreshToken() {
+    return this.httpClient.get<any>("http://localhost:8000/api/usuarios/refresh");
+  }
+
   public getUser() {
     return this.httpClient.get<Usuario>("http://localhost:8000/api/usuarios/ObtenerUnUsuario");
   }

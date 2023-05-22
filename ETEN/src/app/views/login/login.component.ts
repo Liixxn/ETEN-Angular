@@ -15,12 +15,12 @@ export class LoginComponent {
 
   emailUsuario: string = '';
   contraseniaUsuario: string = '';
-  
+
 
   expresionEmail: RegExp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
 
 
-  constructor(private usuarioService: UsuarioService,private autenticacionService: AutenticacionService, private route: Router) {
+  constructor(private usuarioService: UsuarioService, private autenticacionService: AutenticacionService, private route: Router) {
   }
 
   ngOnInit() {
@@ -35,8 +35,11 @@ export class LoginComponent {
       //alert(data.access_token);
       this.autenticacionService.guardarToken(data.access_token);
       alert('Se ha iniciado sesión correctamente.')
+      setTimeout(() => {
+        this.refrescarToken();
+      }, 40000);
 
-      
+
       this.route.navigate(['perfil']);
 
       /*if (data.nombre == "Usuario no encontrado") {
@@ -56,6 +59,17 @@ export class LoginComponent {
         }
       }*/
     })
+  }
+
+  public refrescarToken() {
+    this.usuarioService.refreshToken().subscribe((data: any) => {
+      this.autenticacionService.guardarToken(data.access_token);
+      console.log('Se ha refrescado el token. ' + data.access_token);
+      setTimeout(() => {
+        this.refrescarToken();
+      }, 40000);
+    });
+
   }
 
 

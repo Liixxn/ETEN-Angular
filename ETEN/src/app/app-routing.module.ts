@@ -15,6 +15,7 @@ import { BuscadorTituloComponent } from './views/buscador-titulo/buscador-titulo
 import { OfertasComponent } from "./views/ofertas/ofertas.component";
 import { AdminGuard } from './guard/admin.guard';
 import { RegistradoGuard } from './guard/registrado.guard';
+import { SubscripcionGuard } from './guard/subscripcion.guard';
 
 
 
@@ -32,7 +33,7 @@ const routes: Routes = [
   {path: 'buscador-categoria', component:BuscadorCategoriaComponent},
   {path: 'buscador-ingrediente', component:BuscadorIngredienteComponent},
   {path: 'buscador-titulo', component:BuscadorTituloComponent},
-  {path: 'ofertas', component:OfertasComponent, canActivate: [RegistradoGuard]}];
+  {path: 'ofertas', component:OfertasComponent, canActivate: [SubscripcionGuard]}];
 
 
 @NgModule({

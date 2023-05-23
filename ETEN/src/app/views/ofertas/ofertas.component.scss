@@ -160,3 +160,13 @@ $tertiary-color: #555555;
   justify-content: center;
   margin-top: 20px;
 }
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background: $primary-color;
+}
+
+.pagination ::ng-deep .ngx-pagination .ng-star-inserted {
+  border-radius: 50%;
+}
+
+

@@ -5,7 +5,6 @@ import { AutenticacionService } from './services/autenticacion.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UsuarioService } from './services/usuario.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,20 +20,18 @@ export class AppComponent {
 
     this.comprobarToken();
 
-    this.router.events
+    this.route.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
       window.scrollTo(0, 0);
-    //this.modificarAdmin();
   });
-    
+
   }
 
   public comprobarToken() {
     if (this.autenticacionService.getToken() != null) {
       if (this.autenticacionService.comprobarToken()) {
         this.usuarioService.refreshToken().subscribe((data: any) => {
-          alert('Token valido');
           this.autenticacionService.eliminarToken();
           this.autenticacionService.guardarToken(data.access_token);
           //console.log('Se ha refrescado el token. ' + data.access_token);

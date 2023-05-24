@@ -108,6 +108,16 @@ $color-crema: #E9DFCB;
   background-color: white;
 }
 
+.paginacion ::ng-deep .ngx-pagination .current {
+  background: $logo-ETEN-naranja;
+}
+
+.paginacion ::ng-deep .ngx-pagination .ng-star-inserted {
+  border-radius: 50%;
+}
+
+
+
 
 @media (max-width: 768px) {
   .top-bar .buttons-container button {

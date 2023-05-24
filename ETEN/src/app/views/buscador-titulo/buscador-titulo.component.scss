@@ -114,3 +114,11 @@ $color-crema: #f6ebd3;
   padding-top: 20px;
   background-color: white;
 }
+
+.paginacion ::ng-deep .ngx-pagination .current {
+  background: $logo-ETEN-naranja;
+}
+
+.paginacion ::ng-deep .ngx-pagination .ng-star-inserted {
+  border-radius: 50%;
+}

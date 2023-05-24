@@ -286,6 +286,14 @@ $color-crema: #E9DFCB;
   margin-top: 20px;
 }
 
+.paginacion ::ng-deep .ngx-pagination .current {
+  background: $logo-ETEN-naranja;
+}
+
+.paginacion ::ng-deep .ngx-pagination .ng-star-inserted {
+  border-radius: 50%;
+}
+
 .buscador-recetasFavoritas {
   display: flex;
   flex-direction: column;

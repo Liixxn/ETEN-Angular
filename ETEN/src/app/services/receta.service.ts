@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Receta } from '../models/receta';
+import { environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -12,42 +13,42 @@ export class RecetaService {
 
   //para el admin en las estadisticas
   public ObtenerTodasRecetas() {
-    return this.httpClient.get<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetas");
+    return this.httpClient.get<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetas");
   }
 
   public ObtenerIdRecetasFavoritas() {
-    return this.httpClient.get<number[]>("http://localhost:8000/api/recetas/ObtenerIdRecetasFavoritas");
+    return this.httpClient.get<number[]>(environment.apiUrl + "recetas/ObtenerIdRecetasFavoritas");
   }
 
   public ObtenerRecetasPorId(listaIdRecetas: number[]) {
-    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorId", { "ids": listaIdRecetas });
+    return this.httpClient.post<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetasPorId", { "ids": listaIdRecetas });
   }
 
   public ObtenerRecetasPorCategoria(num_categoria: number, pagina: number) {
-    return this.httpClient.get<any[]>("http://localhost:8000/api/recetas/ObtenerRecetasPorCategoria/" + num_categoria + "/" + pagina);
+    return this.httpClient.get<any[]>(environment.apiUrl + "recetas/ObtenerRecetasPorCategoria/" + num_categoria + "/" + pagina);
   }
 
   public GuardarRecetaFavoritos(id_receta: number) {
-    return this.httpClient.get<string>("http://localhost:8000/api/recetas/GuardarRecetaFavoritos/" + id_receta);
+    return this.httpClient.get<string>(environment.apiUrl + "recetas/GuardarRecetaFavoritos/" + id_receta);
   }
 
   public EliminarRecetaFavoritos(id_receta: number) {
-    return this.httpClient.get<string>("http://localhost:8000/api/recetas/EliminarRecetaFavoritos/" + id_receta);
+    return this.httpClient.get<string>(environment.apiUrl + "recetas/EliminarRecetaFavoritos/" + id_receta);
   }
 
   public VerificarRecetaFavorita(id_receta: number) {
-    return this.httpClient.get<boolean>("http://localhost:8000/api/recetas/VerificarRecetaFavorita/" + id_receta);
+    return this.httpClient.get<boolean>(environment.apiUrl + "recetas/VerificarRecetaFavorita/" + id_receta);
   }
 
   public ObtenerUnaRecetas(idReceta: number) {
-    return this.httpClient.get<Receta>("http://localhost:8000/api/recetas/ObtenerUnaReceta/" + idReceta);
+    return this.httpClient.get<Receta>(environment.apiUrl + "recetas/ObtenerUnaReceta/" + idReceta);
   }
 
   public BuscarRecetasBuscadorTitulo(pagina: number, titulo: string) {
-    return this.httpClient.post<any[]>("http://localhost:8000/api/recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
+    return this.httpClient.post<any[]>(environment.apiUrl + "recetas/BuscarReceta", { "pagina": pagina, "titulo": titulo });
   }
 
   public ObtenerRecetaBuscarEntreFavoritas(recetasFavoritas: number[], titulo: string) {
-    return this.httpClient.post<Receta[]>("http://localhost:8000/api/recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
+    return this.httpClient.post<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
   }
 }

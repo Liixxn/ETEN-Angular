@@ -61,7 +61,6 @@ export class OfertasComponent implements OnInit {
     this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
-      console.log(this.products);
 
       setTimeout(() => {
         this.spinner.hide();
@@ -76,8 +75,6 @@ export class OfertasComponent implements OnInit {
 
     this.cargarTodasOfertas(this.categoria);
 
-    let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
     window.scrollTo(0, 0);
-    contenedor.scrollTo(0, 0);
   }
 }

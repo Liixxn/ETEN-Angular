@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,32 +12,32 @@ export class UsuarioService {
 
 
   public Registro(usuario: Usuario) {
-    return this.httpClient.post<Usuario>("http://localhost:8000/api/usuarios/Registro", usuario);
+    return this.httpClient.post<Usuario>(environment.apiUrl + "usuarios/Registro", usuario);
   }
 
   public login(usuario: Usuario) {
-    return this.httpClient.post<any>("http://localhost:8000/api/usuarios/login", usuario);
+    return this.httpClient.post<any>(environment.apiUrl + "usuarios/login", usuario);
   }
 
   public refreshToken() {
-    return this.httpClient.get<any>("http://localhost:8000/api/usuarios/refresh");
+    return this.httpClient.get<any>(environment.apiUrl +"usuarios/refresh");
   }
 
   public getUser() {
-    return this.httpClient.get<Usuario>("http://localhost:8000/api/usuarios/ObtenerUnUsuario");
+    return this.httpClient.get<Usuario>(environment.apiUrl +"usuarios/ObtenerUnUsuario");
   }
 
   public modificarUsuario(usuario: Usuario) {
-    return this.httpClient.put<any>("http://localhost:8000/api/usuarios/ActualizarDatosUsuario", usuario);
+    return this.httpClient.put<any>(environment.apiUrl +"usuarios/ActualizarDatosUsuario", usuario);
   }
 
   public comprobarContrasena(password: string) {
-    return this.httpClient.post<string>("http://localhost:8000/api/usuarios/ComprobarContrasena", {password});
+    return this.httpClient.post<string>(environment.apiUrl +"usuarios/ComprobarContrasena", {password});
   }
 
   public getAllUsuarios() {
-    return this.httpClient.get<Usuario[]>("http://localhost:8000/api/usuarios/obtenerUsuarios");
+    return this.httpClient.get<Usuario[]>(environment.apiUrl +"usuarios/obtenerUsuarios");
   }
-  
+
 
 }

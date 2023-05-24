@@ -43,7 +43,7 @@ export class LoginComponent {
         alert('Se ha iniciado sesión correctamente.')
         setTimeout(() => {
           this.refrescarToken();
-        }, 40000);
+        }, 3000000);
         this.route.navigate(['perfil']);
       }
     })
@@ -52,10 +52,10 @@ export class LoginComponent {
   public refrescarToken() {
     this.usuarioService.refreshToken().subscribe((data: any) => {
       this.autenticacionService.guardarToken(data.access_token);
-      console.log('Se ha refrescado el token. ' + data.access_token);
+      //console.log('Se ha refrescado el token. ' + data.access_token);
       setTimeout(() => {
         this.refrescarToken();
-      }, 40000);
+      }, 3000000);
     });
 
   }

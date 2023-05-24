@@ -120,88 +120,6 @@ $color-crema: #E9DFCB;
 }
 
 
-/*
-@media(max-width:576px){
-    .perfil-usuario-portada h1 {
-        font-size: 1.5rem;
-    }
-    .perfil-usuario-portada .d-flex {
-        flex-wrap: wrap;
-    }
-    .perfil-usuario-portada .text-center button {
-        margin-top: 1rem;
-    }
-}
-*/
-
-
-/*
-//Btn de modificar cosas en perfil
-.boton-portada {
-    position: absolute;
-    top: 4%;
-    right: 2%;
-    border: 0;
-    border-radius: 50%;
-    padding: 12px 16px;
-    background-color: rgba(210, 111, 5, 0.93);
-    cursor: pointer;
-}
-
-
-//Ajuste foto perfil
-.perfil-usuario-avatar {
-
-    display: flex;
-    max-width: 230px;
-    max-height: 230px;
-    border: 7px solid #FFFFFF;
-    background-color: #DFE5F2;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-}
-
-.perfil-usuario-avatar img {
-    width: 100%;
-    position: relative;
-    border-radius: 50%;
-}
-
-//Btn cambio foto perfil
-.boton-avatar {
-    position: absolute;
-    left: 4%;
-    top: 4%;
-    border: 0;
-    background-color: #fff;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-//Nombre User
-.titulo-usuario {
-    position: relative;
-    color: #fbf8f8;
-    font-size: 50px;
-    font-weight: bold;
-
-}
-*/
-/*
-@media (max-width: 630px) {
-    .perfil-usuario-avatar {
-        //display: flex;
-        width: 130px;
-        height: 130px;
-    }
-}
-*/
-
-
-
 /* FORMULARIO */
 
 .gradient-custom-2 {
@@ -284,7 +202,7 @@ $color-crema: #E9DFCB;
 }
 
 .div-contenido-recetas {
-    height: 100vh;
+    height: 100%;
     overflow-y: scroll;
     border-radius: 5px;
     box-shadow: 0 0 12px rgb(0, 0, 0);
@@ -293,6 +211,7 @@ $color-crema: #E9DFCB;
 
 .scroll-contenido {
     display: flex;
+    height: 100vh;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;

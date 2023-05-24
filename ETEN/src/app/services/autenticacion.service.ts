@@ -18,7 +18,6 @@ export class AutenticacionService {
   public eliminarToken() {
     if (this.getToken() != null) {
       localStorage.removeItem('token');
-      this.route.navigate(['/']);
     }
 
   }
@@ -44,6 +43,20 @@ export class AutenticacionService {
   }
 */
 
+
+  public comprobarToken() {
+    const token = this.getToken();
+    const decodedToken = jwt_decode(token!) as any;
+    const expirationTime = decodedToken.exp * 1000; // Multiplica por 1000 para convertirlo a milisegundos
+    const currentTime = Date.now();
+    const timeRemaining = expirationTime - currentTime;
+    if (timeRemaining > 0) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
 
   public obtenerUsuarioDelToken() {
     let usuario = null;

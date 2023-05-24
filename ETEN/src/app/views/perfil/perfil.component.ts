@@ -187,6 +187,7 @@ export class PerfilComponent {
   public cerrarSesion() {
     alert('Se ha cerrado sesion')
     this.autenticacionService.eliminarToken();
+    this.route.navigate(['/']);
 
   }
 

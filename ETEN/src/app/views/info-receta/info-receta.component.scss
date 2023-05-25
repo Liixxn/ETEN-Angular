@@ -22,14 +22,25 @@ $color-crema: #E9DFCB;
 
 }
 
-.fondo_img img {
-    max-width: 1000px;
-    width: 90vw;
-    height: auto;
+.imagen-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#image-receta {
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 18px 12px 25px black;
+    height: 100%;
+    object-fit: cover;
 }
 
 .iconos-container {
     display: flex;
+    //margin-top: 20px;
     margin-left: auto;
     padding-right: 5%;
     padding-bottom: 2%;
@@ -58,11 +69,6 @@ $color-crema: #E9DFCB;
     //padding: 15px;
     border-radius: 20px;
     background-color: #b4b4b4;
-}
-
-.fondo_img img {
-    border-radius: 20px;
-    box-shadow: 18px 12px 25px black;
 }
 
 @media (max-width: 701px) {

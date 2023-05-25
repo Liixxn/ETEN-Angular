@@ -15,7 +15,6 @@ export class Usuario {
     this.subscripcion = subscripcion;
     this.img = img;
     this.es_administrador = es_administrador;
-
   }
 
 

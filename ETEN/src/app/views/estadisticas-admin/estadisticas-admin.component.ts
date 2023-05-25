@@ -27,6 +27,8 @@ export class EstadisticasAdminComponent {
   subscripcionActiva: number = 0;
   usuarioActivo: boolean = false;
   opcionSeleccionada: any = '';
+  opcionesActivas: any = '';
+  opcionesDeSusb: number = 2;
 
   labelsReceta = ["Arroz", "Bebidas", "Carnes", "Dulces", "Pastas", "Pescado", "Variados", "Vegetales"];
   numRecetasTotal: number = 0;
@@ -259,7 +261,7 @@ export class EstadisticasAdminComponent {
   filtrarPorNombreUser() {
     if (this.opcionNombreUserSeleccionada) {
       this.todosNombresUsers = this.todosNombresUsers.filter(item => item.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+      
       this.emailUserSeleccionado = "";
       //this.opcionSeleccionada = false;
     }
@@ -268,7 +270,6 @@ export class EstadisticasAdminComponent {
   filtrarPorEmailUser() {
     if (this.opcionEmailUserSeleccionada) {
       this.todosEmailsUsers = this.todosEmailsUsers.filter(item => item.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.email.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
       this.nombreUserSeleccionado = "";
       //this.opcionSeleccionada = false;
     }
@@ -302,6 +303,7 @@ export class EstadisticasAdminComponent {
 
   }
 
+  /*
   public onClickSubscripcion() {
     console.log(this.todosUsuarios);
 
@@ -313,6 +315,7 @@ export class EstadisticasAdminComponent {
       this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 0);
     }
   }
+  */
 
   public buscarRecetaSeleccionada() {
     this.recetasFiltradas = this.recetas
@@ -323,14 +326,33 @@ export class EstadisticasAdminComponent {
     if (this.nombreRecetaSeleccionado != "") {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
       //console.log(this.opcionSeleccionada);
-
-
-
     }
+
+    if (this.opcionesActivas != 2) {
+      this.recetasFiltradas = this.recetasFiltradas.filter(i=> i.activo==(this.opcionesActivas));
+
+      
+    }
+    console.log(this.opcionesActivas);
 
   }
 
+  public filtrar(){
+    this.usuariosFiltrados = this.todosUsuarios;
+    if (this.nombreUserSeleccionado != "") {
+      this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+    }
 
+    if (this.emailUserSeleccionado != "") {
+      this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.email.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
+  }
+
+    if (this.opcionesDeSusb != 2){
+      this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.subscripcion == this.opcionesDeSusb);
+    }
+    console.log(this.opcionesDeSusb);
+}
+}
 
 
   /*public onClickUserActivo() {
@@ -344,5 +366,5 @@ export class EstadisticasAdminComponent {
 
 
 
-}
+  
 

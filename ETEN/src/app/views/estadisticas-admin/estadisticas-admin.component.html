@@ -75,7 +75,7 @@
                         <!--Buscar por Nombre-->
                         <div class="col-sm-3 my-1">
                             <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario" [(ngModel)]="nombreUserSeleccionado"
-                                (keyup)="filtrarPorNombreUser()" (change)="onClickNombreUser()" class="form-control"
+                                (keyup)="filtrarPorNombreUser(); filtrar()" (change)="onClickNombreUser()" class="form-control"
                                 list="listaNombresUser" />
                             <datalist id="listaNombresUser">
                                 <option *ngFor="let nombre of todosNombresUsers" [value]="nombre"></option>
@@ -84,7 +84,7 @@
                         <!--Buscar por email-->
                         <div class="col-sm-3 my-1">
                             <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
-                                (keyup)="filtrarPorEmailUser()" (change)="onClickEmailUser()" class="form-control"
+                                (keyup)="filtrarPorEmailUser(); filtrar()" (change)="onClickEmailUser()" class="form-control"
                                 list="listaEmailUser" />
                             <datalist id="listaEmailUser">
                                 <option *ngFor="let nombre of todosEmailsUsers" [value]="nombre"></option>
@@ -92,10 +92,12 @@
                         </div>
                         <!--CheckBox Subscripcion-->
                         <div class="col-auto my-1">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkbox_subscripcion" [(ngModel)]="subscripcionActiva" (change)="onClickSubscripcion()">
-                                <label class="form-check-label" for="checkbox">Subscripción</label>
-                            </div>
+                            <select class="form-select" [(ngModel)]="opcionesDeSusb" (change)= "filtrar()">
+                                <option value="" disabled selected hidden>Selecciona una opción</option>
+                                <option value="1">Subscritos</option>
+                                <option value="0">No subscritos</option>
+                                <option value="2">Todos</option>
+                            </select>
                         </div>
                         <!--CheckBox User Activo-->
                         <div class="col-auto my-1">
@@ -169,10 +171,12 @@
                         </div>
                         <!--CheckBox Receta Activa-->
                         <div class="col-auto my-1">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
-                                <label class="form-check-label" for="checkbox">Receta Activa</label>
-                            </div>
+                            <select class="form-select" [(ngModel)]="opcionesActivas" (change)= "buscarRecetaSeleccionada()">
+                                <option value="" disabled selected hidden>Selecciona una opción</option>
+                                <option value="1">Activos</option>
+                                <option value="0">No activos</option>
+                                <option value="2">Todos</option>
+                            </select>
                         </div>
                         <!--Boton Buscar-->
                         <div class="col-auto my-1">
@@ -200,7 +204,7 @@
                                     <!--CheckBox Receta Activa-->
                                     <div class="col-auto my-1">
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="checkbox_receta_activa">
+                                            <input type="checkbox" [(ngModel)]="receta.activo" class="form-check-input" id="checkbox_receta_activa">
                                         </div>
                                     </div>
                                 </td>

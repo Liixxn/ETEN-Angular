@@ -18,7 +18,7 @@ export class SubscripcionGuard implements CanActivate {
         return true;
       } else {
         alert("Subscribete para poder acceder a las Ofertas");
-        this.route.navigate(['/']);
+        this.route.navigate(['/perfil']);
         return false;
       }
     } else {

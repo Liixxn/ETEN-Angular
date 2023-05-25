@@ -75,14 +75,20 @@
         </div>
 
         <div *ngIf="(btnModificarDatosSeleccionado)">
-          <p>Contraseña Actual</p>
-          <div class="form-outline mb-4">
-            <input type="password" id="form_password_actual" class="form-control" placeholder="password actual" />
-          </div>
           <p>Contraseña Nueva</p>
           <div class="form-outline mb-4">
             <input type="password" id="form_password_nueva" class="form-control" placeholder="password nueva" />
           </div>
+          <p>Confirmar Contraseña Nueva</p>
+          <div class="form-outline mb-4">
+            <input type="password" id="form_password_nueva_confirmar" class="form-control" placeholder="confirmar password nueva" />
+          </div>
+          <p>Contraseña Actual</p>
+          <div class="form-outline mb-4">
+            <input type="password" id="form_password_actual" class="form-control" placeholder="password actual" />
+          </div>
+          
+         
 
           <button class="btn btn-secondary btn-block fa-lg mb-2" (click)="cancelarCambios()" type="button">Cancelar
             Cambios</button>

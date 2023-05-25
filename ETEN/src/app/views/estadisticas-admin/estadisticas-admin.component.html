@@ -23,65 +23,37 @@
                 <div class="tab-pane tab-pane-graficas fade show active" id="nav-graficas" role="tabpanel"
                     aria-labelledby="nav-graficas-tab">
 
-
-
-                    <!--
-                <div class="chart-wrapper">
-                    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
-                        [legend]="lineChartLegend" [plugins]="lineChartPlugins"></canvas>
-                    <button class="btn btn-outline-primary" (click)="shuffleData()">Shuffle</button>
-                </div>
-                -->
-                    <!--
-                <div class="row">
-                    <div class="col">
-                      <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
-                              [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
-                              (chartHover)="doughnutChartHovered($event)"></canvas>
-                    </div>
-                    <div class="col">
-                      <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
-                              [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
-                              (chartHover)="doughnutChartHovered($event)"></canvas>
-                    </div>
-                    <div class="col">
-                      <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions"
-                              [type]="doughnutChartType" [legend]="true" (chartClick)="doughnutChartClicked($event)"
-                              (chartHover)="doughnutChartHovered($event)"></canvas>
-                    </div>
-                  </div>
- -->
-
+                    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
                     <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-between">
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Recetas por Categoria</h3>
                             <div class="">
-                                <canvas class="img-fluid" baseChart [data]="doughnutChartData"
-                                    [options]="doughnutChartOptions" [type]="doughnutChartType" [legend]="true"
-                                    (chartClick)="doughnutChartClicked($event)"
-                                    (chartHover)="doughnutChartHovered($event)">
-                                </canvas>
+                              <div id="chartRecetas">
+                                <apx-chart [series]="chartOptionsRecetas.series" [chart]="chartOptionsRecetas.chart" [labels]="chartOptionsRecetas.labels" [responsive]="chartOptionsRecetas.responsive"
+                                [legend]="chartOptionsRecetas.legend" [colors]="chartOptionsRecetas.colors">
+                                </apx-chart>
+                              </div>
                             </div>
                         </div>
 
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Grafica de Users</h3>
                             <div class="">
-                                <canvas class="img-fluid" baseChart [data]="doughnutChartData2"
-                                    [options]="doughnutChartOptions" [type]="doughnutChartType" [legend]="true"
-                                    (chartClick)="doughnutChartClicked($event)"
-                                    (chartHover)="doughnutChartHovered($event)">
-                                </canvas>
+                              <div id="chartUsuarios">
+                                <apx-chart [series]="chartOptionsUsuarios.series" [chart]="chartOptionsUsuarios.chart" [labels]="chartOptionsUsuarios.labels" [responsive]="chartOptionsUsuarios.responsive"
+                                           [legend]="chartOptionsUsuarios.legend" [colors]="chartOptionsUsuarios.colors">
+                                </apx-chart>
+                              </div>
                             </div>
                         </div>
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Grafica de Ofertas</h3>
                             <div class="">
-                                <canvas class="img-fluid" baseChart [data]="doughnutChartData"
-                                    [options]="doughnutChartOptions" [type]="doughnutChartType" [legend]="true"
-                                    (chartClick)="doughnutChartClicked($event)"
-                                    (chartHover)="doughnutChartHovered($event)">
-                                </canvas>
+                              <div id="chartOfertas">
+                                <apx-chart [series]="chartOptionsOfertas.series" [chart]="chartOptionsOfertas.chart" [labels]="chartOptionsOfertas.labels" [responsive]="chartOptionsOfertas.responsive"
+                                           [legend]="chartOptionsOfertas.legend" [colors]="chartOptionsOfertas.colors">
+                                </apx-chart>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -94,7 +66,7 @@
                 </div>
                 <!--FIN GRAFICAS Y ESTADISTICAS-->
 
-                
+
                 <!--TABLA DE USERS-->
                 <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel"
                     aria-labelledby="nav-users-tab">
@@ -182,7 +154,7 @@
                         </div>
                         <!--Buscar por Categoria-->
                         <div class="col-sm-3 my-1">
-                            <select class="form-select" (change)= "buscarRecetaSeleccionada()" [(ngModel)]="opcionSeleccionada"> 
+                            <select class="form-select" (change)= "buscarRecetaSeleccionada()" [(ngModel)]="opcionSeleccionada">
                                 <option value="" disabled selected hidden>Selecciona una opción</option>
                                 <option value="1">Arroz</option>
                                 <option value="2">Bebida</option>
@@ -210,7 +182,7 @@
 
                     <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
                         <thead>
-                        
+
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre Receta</th>
@@ -223,7 +195,7 @@
                                 <td>{{receta.id}}</td>
                                 <td>{{receta.titulo}}</td>
                                 <td>{{receta.categoria}}</td>
-                                
+
                                 <td>
                                     <!--CheckBox Receta Activa-->
                                     <div class="col-auto my-1">

@@ -39,5 +39,9 @@ export class UsuarioService {
     return this.httpClient.get<Usuario[]>(environment.apiUrl +"usuarios/obtenerUsuarios");
   }
 
+  public ObtenerTiposUsuarios() {
+    return this.httpClient.get<any[]>(environment.apiUrl +"usuarios/obtenerTiposUsuarios");
+  }
+
 
 }

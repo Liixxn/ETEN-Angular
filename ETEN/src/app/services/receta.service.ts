@@ -16,6 +16,10 @@ export class RecetaService {
     return this.httpClient.get<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetas");
   }
 
+  public ObtenerNumRecetasPorCategoria() {
+    return this.httpClient.get<any[]>(environment.apiUrl + "recetas/ObtenerNumRecetasPorCategoria");
+  }
+
   public ObtenerIdRecetasFavoritas() {
     return this.httpClient.get<number[]>(environment.apiUrl + "recetas/ObtenerIdRecetasFavoritas");
   }

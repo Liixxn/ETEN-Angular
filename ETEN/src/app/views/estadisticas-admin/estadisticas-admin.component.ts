@@ -132,7 +132,7 @@ export class EstadisticasAdminComponent {
           width: 400,
           type: "pie",
         },
-        labels: this.labelsReceta,
+        labels: this.labelsUsuarios,
         legend: {
           position: "top"
         },

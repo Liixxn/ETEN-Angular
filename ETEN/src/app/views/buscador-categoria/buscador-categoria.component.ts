@@ -20,6 +20,7 @@ export class BuscadorCategoriaComponent {
   currentIndex = -1;
   page = 1;
   count = 0;
+  numRecetas = 0;
 
   constructor(private recetaService: RecetaService, private route: Router, private spinner: NgxSpinnerService) {
   }
@@ -33,6 +34,7 @@ export class BuscadorCategoriaComponent {
     this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
       this.recetas = data[0];
       this.numeroTotal = data[1];
+      this.numRecetas = data[2];
 
       setTimeout(() => {
         this.spinner.hide();
@@ -56,14 +58,20 @@ export class BuscadorCategoriaComponent {
 
     this.page = 1;
 
+    this.spinner.show();
+
     switch (categoria) {
       case 'arroz': {
         this.categoria = 1;
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("arroz");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -72,8 +80,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("bebidas");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -82,8 +94,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("carne");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -92,8 +108,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("dulce");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -102,8 +122,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("pasta");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -112,8 +136,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("pescado");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -122,8 +150,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("variado");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }
@@ -132,8 +164,12 @@ export class BuscadorCategoriaComponent {
         this.recetaService.ObtenerRecetasPorCategoria(this.categoria, this.page).subscribe((data: any[]) => {
           this.recetas = data[0];
           this.numeroTotal = data[1];
+          this.numRecetas = data[2];
           const miBoton = document.getElementById("vegetal");
           miBoton!.classList.add("button_selected");
+
+          this.spinner.hide();
+
         })
         break;
       }

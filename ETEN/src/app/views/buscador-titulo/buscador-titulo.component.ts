@@ -22,6 +22,7 @@ export class BuscadorTituloComponent {
   currentIndex = -1;
   page = 1;
   count = 0;
+  numRecetas = 0;
 
 
   constructor(private recetaService: RecetaService, private route: Router, private spinner: NgxSpinnerService) { }
@@ -36,6 +37,8 @@ export class BuscadorTituloComponent {
 
       this.recetas = dataRecetas[0];
       this.numeroTotal = dataRecetas[1];
+      this.numRecetas = dataRecetas[2];
+
       setTimeout(() => {
         this.spinner.hide();
       }, 2000);
@@ -59,6 +62,8 @@ export class BuscadorTituloComponent {
 
         this.recetas = dataRecetas[0];
         this.numeroTotal = dataRecetas[1];
+        this.numRecetas = dataRecetas[2];
+
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
@@ -73,6 +78,8 @@ export class BuscadorTituloComponent {
         this.recetas = dataRecetas[0];
         this.numeroTotal = dataRecetas[1];
         this.comprobacionMostrar = dataRecetas[2];
+        this.numRecetas = dataRecetas[2];
+
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);

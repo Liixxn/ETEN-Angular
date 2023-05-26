@@ -22,7 +22,7 @@
 <section class="featured">
   <div class="contendor-scroll">
     <div class="col-md-4" *ngFor="let product of products | paginate : {
-            itemsPerPage: 20,
+            itemsPerPage: numOfertas,
             currentPage: page,
             totalItems: numeroTotal
           }; let i = index" [class.active]=" i == currentIndex">

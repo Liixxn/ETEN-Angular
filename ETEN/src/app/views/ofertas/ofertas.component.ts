@@ -20,10 +20,12 @@ export class OfertasComponent implements OnInit {
 
   categoria = "";
   numeroTotal = 0;
+  numOfertas = 0;
 
   constructor(private ofertaService: OfertaService, private route: Router, private spinner: NgxSpinnerService) {}
 
   ngOnInit(): void {
+    this.numOfertas = 20;
     this.cargarTodasOfertas(this.categoria);
 
   }

@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { NgxSpinnerService} from "ngx-spinner";
-import { ApexNonAxisChartSeries, ApexResponsive, ApexChart } from "ng-apexcharts";
+import {Component} from '@angular/core';
+import {NgxSpinnerService} from "ngx-spinner";
+import {ApexNonAxisChartSeries, ApexResponsive, ApexChart} from "ng-apexcharts";
 
-import { UsuarioService } from "../../services/usuario.service";
-import { Usuario } from "../../models/usuario";
-import { RecetaService } from "../../services/receta.service";
-import { Receta } from 'src/app/models/receta';
-import { OfertaService } from 'src/app/services/oferta.service';
-import { Oferta } from 'src/app/models/oferta';
+import {UsuarioService} from "../../services/usuario.service";
+import {Usuario} from "../../models/usuario";
+import {RecetaService} from "../../services/receta.service";
+import {Receta} from 'src/app/models/receta';
+import {OfertaService} from 'src/app/services/oferta.service';
+import {Oferta} from 'src/app/models/oferta';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -46,9 +46,9 @@ export class EstadisticasAdminComponent {
   numUsuariosRegistrados: number = 0;
   numUsuariosSubscritos: number = 0;
 
-  labelsOfertas:any = [];
-  listaVisitasOfertas:any = [];
-  listaOfertasTop:any = [];
+  labelsOfertas: any = [];
+  listaVisitasOfertas: any = [];
+  listaOfertasTop: any = [];
 
   //la declaracion Partial<ChartOptions> puede ser un objeto que contenga algunas pero no todas las propiedades de ChartOptions
   public chartOptionsUsuarios: Partial<ChartOptions> | any;
@@ -57,7 +57,8 @@ export class EstadisticasAdminComponent {
 
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService, private ofertaService: OfertaService,
-              private spinner: NgxSpinnerService) {}
+              private spinner: NgxSpinnerService) {
+  }
 
   todosUsuarios: Usuario[] = [];
   usuariosFiltrados: Usuario[] = [];
@@ -65,10 +66,10 @@ export class EstadisticasAdminComponent {
   recetasFiltradas: Receta[] = [];
 
   ngOnInit() {
-    this.cargarGraficaRecetas();
-    this.cargarGraficasUsuarios();
-    this.cargarTopOfertas();
-    this.cargarUsuarios();
+    //this.cargarGraficaRecetas();
+    //this.cargarGraficasUsuarios();
+    //this.cargarTopOfertas();
+    //this.cargarUsuarios();
     //this.cargarRecetas();
   }
 
@@ -110,7 +111,7 @@ export class EstadisticasAdminComponent {
             },
           }
         ],
-        colors:["#F1F1D2", "#0057BA", "#980634", "#F880CE", "#E4DC42", "#0AD6E9", "#9747DD", "#00B84A"],
+        colors: ["#F1F1D2", "#0057BA", "#980634", "#F880CE", "#E4DC42", "#0AD6E9", "#9747DD", "#00B84A"],
       };
 
       setTimeout(() => {
@@ -153,7 +154,7 @@ export class EstadisticasAdminComponent {
             },
           }
         ],
-        colors:["#F05A21", "#b44593", "#b44593", "#b44593", "#b44593"],
+        colors: ["#F05A21", "#b44593", "#b44593", "#b44593", "#b44593"],
       };
 
       setTimeout(() => {
@@ -200,7 +201,7 @@ export class EstadisticasAdminComponent {
             },
           }
         ],
-        colors:["#EF476F", "#FFD166", "#06D6A0", "#118AB2", "#073B4C"],
+        colors: ["#EF476F", "#FFD166", "#06D6A0", "#118AB2", "#073B4C"],
       };
       setTimeout(() => {
         this.spinner.hide();
@@ -208,8 +209,6 @@ export class EstadisticasAdminComponent {
 
     });
   }
-
-
 
 
   public cargarUsuarios() {
@@ -227,7 +226,6 @@ export class EstadisticasAdminComponent {
       this.recetasFiltradas = data;
       console.log(this.recetas);
     });
-
 
 
   }
@@ -261,7 +259,7 @@ export class EstadisticasAdminComponent {
   filtrarPorNombreUser() {
     if (this.opcionNombreUserSeleccionada) {
       this.todosNombresUsers = this.todosNombresUsers.filter(item => item.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
-      
+
       this.emailUserSeleccionado = "";
       //this.opcionSeleccionada = false;
     }
@@ -289,7 +287,6 @@ export class EstadisticasAdminComponent {
     this.opcionEmailUserSeleccionada = false;
     this.todosEmailsUsers = this.data3;
   }
-
 
 
   public BuscarInfo() {
@@ -329,15 +326,15 @@ export class EstadisticasAdminComponent {
     }
 
     if (this.opcionesActivas != 2) {
-      this.recetasFiltradas = this.recetasFiltradas.filter(i=> i.activo==(this.opcionesActivas));
+      this.recetasFiltradas = this.recetasFiltradas.filter(i => i.activo == (this.opcionesActivas));
 
-      
+
     }
     console.log(this.opcionesActivas);
 
   }
 
-  public filtrar(){
+  public filtrar() {
     this.usuariosFiltrados = this.todosUsuarios;
     if (this.nombreUserSeleccionado != "") {
       this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
@@ -345,26 +342,61 @@ export class EstadisticasAdminComponent {
 
     if (this.emailUserSeleccionado != "") {
       this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.email.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
-  }
+    }
 
-    if (this.opcionesDeSusb != 2){
+    if (this.opcionesDeSusb != 2) {
       this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.subscripcion == this.opcionesDeSusb);
     }
     console.log(this.opcionesDeSusb);
-}
-}
+  }
 
+  public obtenerNumElementos(tipo: number) {
 
-  /*public onClickUserActivo() {
-    if(this.usuarioActivo){
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at === null);
+    let numElementosPagina = "";
+
+    if (tipo == 0) {
+      numElementosPagina = (<HTMLInputElement>document.getElementById("numRecetasPorPagina")).value;
     }
-    else{
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at !== null);
+    else {
+      numElementosPagina = (<HTMLInputElement>document.getElementById("numOfertasPorPagina")).value;
     }
-  }*/
+
+    let numero: number = +numElementosPagina;
+    if (numElementosPagina != "") {
+      if (Number.isInteger(numero)) {
+        this.recetaService.cambiarNumRecetasPorPagina(numero, tipo).subscribe((data: any) => {
+          if (data.num_recetasPagina == numero) {
+            alert("Se ha cambiado el número de elementos por página");
+          }
+          else {
+            alert("No se ha podido cambiar el número de elementos por página");
+          }
+        });
+      }
+      else {
+        alert("Introduce un formato válido.");
+      }
+    }
+    else {
+      alert("Introduce un número de elementos por página");
+    }
+
+  }
+
+
+}
+
+
+/*public onClickUserActivo() {
+  if(this.usuarioActivo){
+    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at === null);
+  }
+  else{
+    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at !== null);
+  }
+}*/
 
 
 
-  
+
 

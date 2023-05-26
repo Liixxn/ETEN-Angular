@@ -16,6 +16,9 @@
                     <a class="nav-item nav-link" id="nav-recetas-tab" data-toggle="tab" href="#nav-recetas" role="tab"
                         aria-controls="nav-recetas" aria-selected="false"><span><img src="assets/imgs/libro_recetas.png"
                                 width="60" height="60"></span></a>
+                  <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab"
+                     aria-controls="nav-config" aria-selected="false"><span><img src="assets/imgs/configuraciones.png"
+                                                                                  width="60" height="60"></span></a>
                 </div>
             </nav>
             <!--GRAFICAS Y ESTADISTICAS-->
@@ -221,7 +224,39 @@
 
                 </div>
                 <!--FIN TABLA DE RECETAS-->
+
+
+
+              <div class="tab-pane tab-pane-config fade show active" id="nav-config" role="tabpanel">
+                <div class="contenedor-configuracion">
+                  <div class="contenedor-cambioNumRecetasBuscador">
+                    <h3>Cambiar el número de recetas por página (Buscadores)</h3>
+                    <div class="contenedor-inputBuscador">
+                      <input id="numRecetasPorPagina" class="cambiarNumPaginas" type="text" placeholder="Número de recetas">
+                    </div>
+                    <div class="contenedor-btnCambiar">
+                      <button class="btnCambiarNum" (click)="obtenerNumElementos(0)" type="submit">Cambiar</button>
+                    </div>
+                  </div>
+
+                  <div class="contenedor-cambioNumOfertasBuscador">
+                    <h3>Cambiar el número de ofertas por página</h3>
+                    <div class="contenedor-inputBuscador">
+                      <input id="numOfertasPorPagina" class="cambiarNumPaginas" type="text" placeholder="Número de ofertas">
+                    </div>
+                    <div class="contenedor-btnCambiar">
+                      <button class="btnCambiarNum" (click)="obtenerNumElementos(1)" type="submit">Cambiar</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
             </div>
+
+
+
 
 
 

@@ -15,7 +15,7 @@
   <div class="recetas">
     <div class="scroll-content" id="contenedor-scroll">
       <div *ngFor="let receta of recetas | paginate : {
-    itemsPerPage: 12,
+    itemsPerPage: numRecetas,
     currentPage: page,
     totalItems: numeroTotal
            }; let i = index" [class.active]="i == currentIndex" class="col-md-4">

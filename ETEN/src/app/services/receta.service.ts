@@ -20,6 +20,10 @@ export class RecetaService {
     return this.httpClient.get<any[]>(environment.apiUrl + "recetas/ObtenerNumRecetasPorCategoria");
   }
 
+  public cambiarNumRecetasPorPagina(numRecetasPorPagina: number, tipo: number) {
+    return this.httpClient.post<any>(environment.apiUrl + "recetas/CambiarNumeroRecetasPagina", {"numReceta": numRecetasPorPagina, "tipoCambio": tipo});
+  }
+
   public ObtenerIdRecetasFavoritas() {
     return this.httpClient.get<number[]>(environment.apiUrl + "recetas/ObtenerIdRecetasFavoritas");
   }

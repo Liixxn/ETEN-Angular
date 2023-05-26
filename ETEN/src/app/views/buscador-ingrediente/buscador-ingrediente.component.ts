@@ -24,6 +24,7 @@ export class BuscadorIngredienteComponent {
   currentIndex = -1;
   page = 1;
   count = 0;
+  numRecetas = 0;
 
   @ViewChild('nombreReceta', { static: true }) inputNombreReceta!: ElementRef<HTMLInputElement>;
   @ViewChild('contenedorTarjetas', { static: true}) contenedorTarjetas!: ElementRef<HTMLElement>;
@@ -44,6 +45,7 @@ export class BuscadorIngredienteComponent {
       this.recetas = data[0];
       this.numeroTotal = data[1];
       this.comprobacionMostrar = data[2];
+      this.numRecetas = data[3];
 
       setTimeout(() => {
         this.spinner.hide();
@@ -64,13 +66,14 @@ export class BuscadorIngredienteComponent {
   public buscarRecetasPorIngrediente() {
 
     this.page = 1;
-    this.numeroTotal = 0;
+
     this.comprobacionMostrar = 0;
     this.spinner.show();
     this.ingredienteService.getRecetaPorIngrediente(this.ingredientes, this.page).subscribe((data:any[]) => {
       this.recetasEncontrados = data[0];
       this.numeroTotal = data[1];
       this.comprobacionMostrar = data[2];
+      this.numRecetas = data[3];
 
       setTimeout(() => {
         this.spinner.hide();
@@ -83,7 +86,6 @@ export class BuscadorIngredienteComponent {
       else {
         alert("No se han encontrado recetas con los ingredientes seleccionados.")
         this.page = 1;
-        this.numeroTotal = 0;
         this.comprobacionMostrar = 0;
         this.ingredientes = [];
         this.ingredientesTarjetas = [];

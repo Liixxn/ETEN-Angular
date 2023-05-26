@@ -72,11 +72,20 @@ h1 {
 }
 .flechaAbajo{
   position: absolute;
-  top: 70%;
-  left: 48%;
+  top: 64%;
+  left: 47%;
+  font-size: 80px;
   transform: translate(-50%, -50%);
   animation: moveDown 0.7s infinite alternate;
   cursor:pointer;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-shadow:
+    8px 8px $logo-ETEN-naranja,
+    20px 20px black;
+  
+  
 }
 
 @keyframes moveDown {

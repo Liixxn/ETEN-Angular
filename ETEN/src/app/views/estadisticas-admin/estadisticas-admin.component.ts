@@ -76,15 +76,14 @@ export class EstadisticasAdminComponent {
   public cargarGraficaRecetas() {
     this.spinner.show();
     this.recetaService.ObtenerNumRecetasPorCategoria().subscribe((data: any[]) => {
-      this.numRecetasTotal = data[0];
-      this.numArroz = data[1];
-      this.numBebida = data[2];
-      this.numCarne = data[3];
-      this.numDulce = data[4];
-      this.numPasta = data[5];
-      this.numPescado = data[6];
-      this.numVariado = data[7];
-      this.numVegetal = data[8];
+      this.numArroz = data[0];
+      this.numBebida = data[1];
+      this.numCarne = data[2];
+      this.numDulce = data[3];
+      this.numPasta = data[4];
+      this.numPescado = data[5];
+      this.numVariado = data[6];
+      this.numVegetal = data[7];
 
       this.chartOptionsRecetas = {
         series: [this.numArroz, this.numBebida, this.numCarne, this.numDulce, this.numPasta, this.numPescado, this.numVariado, this.numVegetal],

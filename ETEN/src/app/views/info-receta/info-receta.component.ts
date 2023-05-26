@@ -30,15 +30,10 @@ export class InfoRecetaComponent {
 
   ngOnInit() {
     //this.recetaSeleccionada = this.recetaService.recetaSeleccionada;
-    this.cargarInformacion();
-
-
-  }
-
-  public cargarInformacion() {
     this.cargarReceta();
-  }
 
+
+  }
 
   public comprobarRecetaFavorita() {
     this.recetaService.VerificarRecetaFavorita(this.recetaSeleccionada.id!).subscribe((data: boolean) => {
@@ -89,6 +84,7 @@ export class InfoRecetaComponent {
       })
     });
   }
+
 
   public comprobarDificultadNula() {
     if (this.recetaSeleccionada.dificultad == 'nan') {

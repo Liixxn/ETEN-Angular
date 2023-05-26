@@ -44,6 +44,7 @@ export class BuscadorTituloComponent {
     })
   }
 
+
   // obtiene el valor del buscador y lo guarda en la variable nombreRecetaBuscar para mostrarla en el html
   public obtenerTituloReceta() {
     this.nombre = (<HTMLInputElement>document.getElementById('nombreReceta')).value;
@@ -77,10 +78,10 @@ export class BuscadorTituloComponent {
           this.spinner.hide();
         }, 2000);
 
-        if (this.comprobacionMostrar==0) {
+        if (this.comprobacionMostrar == 0) {
           alert('No hay recetas que mostrar para ' + this.nombre);
           this.nombreRecetaBuscar = "Todos los resultados";
-          this.nombre="";
+          this.nombre = "";
         }
         else {
           this.nombreRecetaBuscar = "Resultados para: " + this.nombre;

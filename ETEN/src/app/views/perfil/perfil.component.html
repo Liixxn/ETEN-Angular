@@ -56,11 +56,11 @@
 
         <button *ngIf="(!btnSubscripcionSeleccionada)" (click)="subscripcion()"
           class="btn btn-primary btn-block gradient-custom-2 mt-2 mb-4" type="submit"
-          [disabled]="btnSubscripcionForm">Subscribirse</button>
+          [disabled]="btnSubscripcionForm">Suscribirse</button>
         <button *ngIf="(btnSubscripcionSeleccionada)" (click)="subscripcion()"
           class="btn btn-secondary btn-block eliminar_subscripcion mt-2 mb-4" type="submit"
           [disabled]="btnSubscripcionForm">Eliminar
-          Subscripcion</button>
+          Suscripción</button>
 
 
         <p>Nombre de usuario</p>
@@ -68,7 +68,7 @@
           <input type="text" id="form_nombre_user" class="form-control" placeholder="nombre"
             value="{{usuarioLogueado.nombre}}" readonly>
         </div>
-        <p>Correo electronico</p>
+        <p>Correo electrónico</p>
         <div class="form-outline mb-4">
           <input type="email" id="form_email" class="form-control" placeholder="email" value="{{usuarioLogueado.email}}"
             readonly />
@@ -104,7 +104,7 @@
     <!--button-->
     <a class="close-btn" (click)="cerrarToast()">
       <small>
-        Dismiss
+        Cerrar
       </small>
     </a>
   </div>

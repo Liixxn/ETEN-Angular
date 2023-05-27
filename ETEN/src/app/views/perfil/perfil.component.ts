@@ -107,39 +107,50 @@ export class PerfilComponent {
 
     let nombre = document.getElementById("form_nombre_user") as HTMLInputElement;
     let email = document.getElementById("form_email") as HTMLInputElement;
-    let passwordActual = document.getElementById("form_password_actual") as HTMLInputElement;
     let passwordNueva = document.getElementById("form_password_nueva") as HTMLInputElement;
-    //comprobamos si la contraseña actual es correcta
+    let passwordNuevaConfirmar = document.getElementById("form_password_nueva_confirmar") as HTMLInputElement;
+    let passwordActual = document.getElementById("form_password_actual") as HTMLInputElement;
 
-    this.usuarioService.comprobarContrasena(passwordActual.value).subscribe((data: string) => {
-      //alert(data + ' data')
-      if (data == this.usuarioLogueado.password) {
 
-        //passwordNueva = sha1(passwordNueva.value);
-        let subscription = 0;
-        if (this.btnSubscripcionSeleccionada) {
-          subscription = 1;
+    if (passwordNueva.value == passwordNuevaConfirmar.value) {
+      //comprobamos si la contraseña actual es correcta
+      this.usuarioService.comprobarContrasena(passwordActual.value).subscribe((data: string) => {
+        //alert(data + ' data')
+        if (data == this.usuarioLogueado.password) {
+
+          //passwordNueva = sha1(passwordNueva.value);
+          let subscription = 0;
+          if (this.btnSubscripcionSeleccionada) {
+            subscription = 1;
+          } else {
+            subscription = 0;
+          }
+
+          let usuarioNuevo: Usuario;
+          //si el campo de nueva contraseña esta vacio cojemos la contraseña actual para la modificacion del user
+          if (passwordNueva.value == '' || passwordNuevaConfirmar.value == '') {
+            usuarioNuevo = new Usuario(nombre.value, email.value, passwordActual.value, subscription, this.imagenSeleccionada, 0);
+          } else {
+            usuarioNuevo = new Usuario(nombre.value, email.value, passwordNueva.value, subscription, this.imagenSeleccionada, 0);
+          }
+          usuarioNuevo.id = this.usuarioLogueado.id;
+
+          this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: any) => {
+
+            this.autenticacionService.guardarToken(data.access_token);
+            this.cargarUsuario();
+          })
+
+          this.modificarDatos();
+          this.lanzarToast('Se han GUARDADO los cambios');
+
         } else {
-          subscription = 0;
+          alert('La contraseña actual no es correcta')
         }
-        //alert('guardar cambios (por hacer) ' + nombre.value)
-        let usuarioNuevo: Usuario = new Usuario(nombre.value, email.value, passwordNueva.value, subscription, this.imagenSeleccionada, 0);
-        usuarioNuevo.id = this.usuarioLogueado.id;
-
-        this.usuarioService.modificarUsuario(usuarioNuevo).subscribe((data: any) => {
-
-          this.autenticacionService.guardarToken(data.access_token);
-          this.cargarUsuario();
-        })
-
-        this.modificarDatos();
-        this.lanzarToast('Se han GUARDADO los cambios');
-
-      } else {
-        alert('La contraseña actual no es correcta')
-      }
-    })
-
+      })
+    } else {
+      alert('Las contraseñas nuevas no coinciden')
+    }
 
   }
 
@@ -203,7 +214,7 @@ export class PerfilComponent {
 
     let tituloReceta = (<HTMLInputElement>document.getElementById("nombreReceta")).value;
     tituloReceta = tituloReceta.trim();
-    if (tituloReceta == "" ) {
+    if (tituloReceta == "") {
       alert("Introduzca el titulo de la receta a buscar");
       this.cargarRecetasFavoritas();
     }
@@ -219,7 +230,7 @@ export class PerfilComponent {
           }
         })
       })
-      }
+    }
 
   }
 

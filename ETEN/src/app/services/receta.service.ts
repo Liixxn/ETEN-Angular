@@ -62,4 +62,8 @@ export class RecetaService {
   public ObtenerRecetaBuscarEntreFavoritas(recetasFavoritas: number[], titulo: string) {
     return this.httpClient.post<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
   }
+
+  public CambiarEstadoReceta(listaRecetas: number[]) {
+    return this.httpClient.post<string>(environment.apiUrl + "recetas/GuardarCambiosReceta", {"listaRecetas": listaRecetas});
+  }
 }

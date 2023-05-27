@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NgxSpinnerService} from "ngx-spinner";
-import {ApexNonAxisChartSeries, ApexResponsive, ApexChart} from "ng-apexcharts";
+import { Component } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
+import { ApexNonAxisChartSeries, ApexResponsive, ApexChart } from "ng-apexcharts";
 
 import {UsuarioService} from 'src/app/services/usuario.service';
 import {Usuario} from "../../models/usuario";
@@ -16,7 +16,6 @@ export type ChartOptions = {
   responsive: ApexResponsive[];
   labels: any;
 };
-
 
 @Component({
   selector: 'app-estadisticas-admin',
@@ -65,7 +64,7 @@ export class EstadisticasAdminComponent {
 
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService, private ofertaService: OfertaService,
-              private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService) {
   }
 
 
@@ -91,16 +90,17 @@ export class EstadisticasAdminComponent {
   nombresFiltrados: string[] = [];
   emailFiltrados: string[] = [];
 
+  cambiosPendientesRecetasActivas: number[] = [];
+
   // Paginacion
   p: number = 1;
 
 
   ngOnInit() {
-
     this.cargarGraficaRecetas();
     this.cargarGraficasUsuarios();
     this.cargarTopOfertas();
-    //this.cargarUsuarios();
+    this.cargarUsuarios();
     this.cargarRecetas();
   }
 
@@ -370,9 +370,29 @@ export class EstadisticasAdminComponent {
 
   }
 
+  public cambPendientes(receta: Receta) {
+    if (this.cambiosPendientesRecetasActivas.includes(receta.id!)) {
+      const index = this.cambiosPendientesRecetasActivas.indexOf(receta.id!);
+      if (index !== -1) {
+        this.cambiosPendientesRecetasActivas.splice(index, 1);
+      }
+    } else {
+      this.cambiosPendientesRecetasActivas.push(receta.id!);
+    };
+  }
 
+  public guardarCambios() {
+    this.recetaService.CambiarEstadoReceta(this.cambiosPendientesRecetasActivas).subscribe((data: string) => {
+      if (data == "actualizado") {
+        alert("Recetas modificadas correctamente");
+      }else if(data == "fatall"){
+        alert("No se ha podido modificar las recetas");
+      }else {
+        alert("Se produjo un error al modificar las recetas");
+      }
+    });
+
+    //Se limpia el array de cambios pendientes
+    this.cambiosPendientesRecetasActivas = [];
+  }
 }
-
-
-
-

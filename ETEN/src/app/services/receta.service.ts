@@ -60,7 +60,7 @@ export class RecetaService {
     return this.httpClient.post<Receta[]>(environment.apiUrl + "recetas/ObtenerRecetaFavoritaUsuario", {"recetasFavoritas": recetasFavoritas, "titulo": titulo });
   }
 
-  public CambiarEstadoReceta(id_receta: number, activo: number) {
-    return this.httpClient.post<any>(environment.apiUrl + "recetas/CambiarEstadoReceta", {"id_receta": id_receta, "activo": activo });
+  public CambiarEstadoReceta(listaRecetas: number[]) {
+    return this.httpClient.post<any>(environment.apiUrl + "recetas/CambiarEstadoReceta", {"listaRecetas": listaRecetas});
   }
 }

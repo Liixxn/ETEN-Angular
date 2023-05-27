@@ -16,11 +16,6 @@ export type ChartOptions = {
   labels: any;
 };
 
-interface RecetaActivo {
-  id: number;
-  activo: boolean;
-}
-
 @Component({
   selector: 'app-estadisticas-admin',
   templateUrl: './estadisticas-admin.component.html',
@@ -69,7 +64,7 @@ export class EstadisticasAdminComponent {
   recetas: Receta[] = [];
   recetasFiltradas: Receta[] = [];
 
-  cambiosPendientes: RecetaActivo[] = [];
+  cambiosPendientes: any[] = [];
 
   ngOnInit() {
     this.cargarGraficaRecetas();
@@ -388,38 +383,30 @@ export class EstadisticasAdminComponent {
 
   }
 
-  cambPendientes(receta: Receta){
-    const cambioEx = this.cambiosPendientes.find(cambio => cambio === receta.id);
-
-    if (receta.activo !== receta.activoOriginal) {
-      //Si el checkbox ha cambiado de su estado original se añade al array
-      if (!cambioEx) {
-        this.cambiosPendientes.push({ id: receta.id, activo: receta.activo});
-      }
-      else{
-        cambioEx.activo = receta.activo;
+  cambPendientes(receta: Receta){ 
+    if (this.cambiosPendientes.includes(receta.id!)) {
+      const index = this.cambiosPendientes.indexOf(receta.id!);
+      if (index !== -1) {
+        this.cambiosPendientes.splice(index, 1);
       }
     } else {
-      if (cambioEx) {
-        this.cambiosPendientes = this.cambiosPendientes.filter(cambio => cambio !== receta.id);
-      }
-    
+      this.cambiosPendientes.push(receta.id!);    
     };
   }
 
   guardarCambios(){
-    for (const receta of this.cambiosPendientes) {
-      this.recetaService.CambiarEstadoReceta(receta.id, receta.activo).subscribe((data: any) => {
-        if (data.resultado == "OK") {
-          alert("Se ha cambiado el estado de la receta");
-        }
-        else {
-          alert("No se ha podido cambiar el estado de la receta");
-        }
-        });
+    //const listaRecetas = this.cambiosPendientes.map(receta => receta.id!);
+    this.recetaService.CambiarEstadoReceta(this.cambiosPendientes).subscribe((data: any) => {
+      if (data.resultado == "OK") {
+        alert("Se ha cambiado el estado de la receta");
       }
-      //Se limpia el array de cambios pendientes
-      this.cambiosPendientes = [];
+      else {
+        alert("No se ha podido cambiar el estado de la receta");
+      }
+    });
+    
+    //Se limpia el array de cambios pendientes
+    this.cambiosPendientes = [];
     }
   }
 

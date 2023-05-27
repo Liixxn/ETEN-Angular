@@ -70,6 +70,32 @@ h1 {
     8px 8px $logo-ETEN-naranja,
     20px 20px black;
 }
+.flechaAbajo{
+  position: absolute;
+  top: 64%;
+  left: 47%;
+  font-size: 80px;
+  transform: translate(-50%, -50%);
+  animation: moveDown 0.7s infinite alternate;
+  cursor:pointer;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: white;
+  text-shadow:
+    8px 8px $logo-ETEN-naranja,
+    20px 20px black;
+  
+  
+}
+
+@keyframes moveDown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
 
 
 /* SECCION PRESENTACION */

@@ -1,13 +1,13 @@
-import {Component} from '@angular/core';
-import {NgxSpinnerService} from "ngx-spinner";
-import {ApexNonAxisChartSeries, ApexResponsive, ApexChart} from "ng-apexcharts";
+import { Component } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
+import { ApexNonAxisChartSeries, ApexResponsive, ApexChart } from "ng-apexcharts";
 
-import {UsuarioService} from "../../services/usuario.service";
-import {Usuario} from "../../models/usuario";
-import {RecetaService} from "../../services/receta.service";
-import {Receta} from 'src/app/models/receta';
-import {OfertaService} from 'src/app/services/oferta.service';
-import {Oferta} from 'src/app/models/oferta';
+import { UsuarioService } from "../../services/usuario.service";
+import { Usuario } from "../../models/usuario";
+import { RecetaService } from "../../services/receta.service";
+import { Receta } from 'src/app/models/receta';
+import { OfertaService } from 'src/app/services/oferta.service';
+import { Oferta } from 'src/app/models/oferta';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -56,15 +56,15 @@ export class EstadisticasAdminComponent {
 
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService, private ofertaService: OfertaService,
-              private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService) {
   }
 
-  todosUsuarios: Usuario[] = [];
-  usuariosFiltrados: Usuario[] = [];
-  recetas: Receta[] = [];
-  recetasFiltradas: Receta[] = [];
+  public todosUsuarios: Usuario[] = [];
+  public usuariosFiltrados: Usuario[] = [];
+  public recetas: Receta[] = [];
+  public recetasFiltradas: Receta[] = [];
 
-  cambiosPendientes: any[] = [];
+  public cambiosPendientesRecetasActivas: number[] = [];
 
   ngOnInit() {
     this.cargarGraficaRecetas();
@@ -383,44 +383,35 @@ export class EstadisticasAdminComponent {
 
   }
 
-  cambPendientes(receta: Receta){ 
-    if (this.cambiosPendientes.includes(receta.id!)) {
-      const index = this.cambiosPendientes.indexOf(receta.id!);
+  public cambPendientes(receta: Receta) {
+    if (this.cambiosPendientesRecetasActivas.includes(receta.id!)) {
+      const index = this.cambiosPendientesRecetasActivas.indexOf(receta.id!);
       if (index !== -1) {
-        this.cambiosPendientes.splice(index, 1);
+        this.cambiosPendientesRecetasActivas.splice(index, 1);
       }
     } else {
-      this.cambiosPendientes.push(receta.id!);    
+      this.cambiosPendientesRecetasActivas.push(receta.id!);
     };
   }
 
-  guardarCambios(){
-    //const listaRecetas = this.cambiosPendientes.map(receta => receta.id!);
-    this.recetaService.CambiarEstadoReceta(this.cambiosPendientes).subscribe((data: any) => {
-      if (data.resultado == "OK") {
-        alert("Se ha cambiado el estado de la receta");
-      }
-      else {
-        alert("No se ha podido cambiar el estado de la receta");
+  public guardarCambios() {
+    this.recetaService.CambiarEstadoReceta(this.cambiosPendientesRecetasActivas).subscribe((data: string) => {
+      if (data == "actualizado") {
+        alert("Recetas modificadas correctamente");
+      }else if(data == "fatall"){
+        alert("No se ha podido modificar las recetas");
+      }else {
+        alert("Se produjo un error al modificar las recetas");
       }
     });
-    
+
     //Se limpia el array de cambios pendientes
-    this.cambiosPendientes = [];
-    }
+    this.cambiosPendientesRecetasActivas = [];
   }
+}
 
 
 
-
-/*public onClickUserActivo() {
-  if(this.usuarioActivo){
-    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at === null);
-  }
-  else{
-    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at !== null);
-  }
-}*/
 
 
 

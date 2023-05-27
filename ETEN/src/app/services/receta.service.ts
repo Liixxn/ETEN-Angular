@@ -61,6 +61,6 @@ export class RecetaService {
   }
 
   public CambiarEstadoReceta(listaRecetas: number[]) {
-    return this.httpClient.post<any>(environment.apiUrl + "recetas/CambiarEstadoReceta", {"listaRecetas": listaRecetas});
+    return this.httpClient.post<string>(environment.apiUrl + "recetas/GuardarCambiosReceta", {"listaRecetas": listaRecetas});
   }
 }

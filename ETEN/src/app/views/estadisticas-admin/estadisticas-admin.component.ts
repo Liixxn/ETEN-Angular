@@ -16,6 +16,10 @@ export type ChartOptions = {
   labels: any;
 };
 
+interface RecetaActivo {
+  id: number;
+  activo: boolean;
+}
 
 @Component({
   selector: 'app-estadisticas-admin',
@@ -65,12 +69,14 @@ export class EstadisticasAdminComponent {
   recetas: Receta[] = [];
   recetasFiltradas: Receta[] = [];
 
+  cambiosPendientes: RecetaActivo[] = [];
+
   ngOnInit() {
-    //this.cargarGraficaRecetas();
-    //this.cargarGraficasUsuarios();
-    //this.cargarTopOfertas();
-    //this.cargarUsuarios();
-    //this.cargarRecetas();
+    this.cargarGraficaRecetas();
+    this.cargarGraficasUsuarios();
+    this.cargarTopOfertas();
+    this.cargarUsuarios();
+    this.cargarRecetas();
   }
 
   public cargarGraficaRecetas() {
@@ -382,8 +388,42 @@ export class EstadisticasAdminComponent {
 
   }
 
+  cambPendientes(receta: Receta){
+    const cambioEx = this.cambiosPendientes.find(cambio => cambio === receta.id);
 
-}
+    if (receta.activo !== receta.activoOriginal) {
+      //Si el checkbox ha cambiado de su estado original se añade al array
+      if (!cambioEx) {
+        this.cambiosPendientes.push({ id: receta.id, activo: receta.activo});
+      }
+      else{
+        cambioEx.activo = receta.activo;
+      }
+    } else {
+      if (cambioEx) {
+        this.cambiosPendientes = this.cambiosPendientes.filter(cambio => cambio !== receta.id);
+      }
+    
+    };
+  }
+
+  guardarCambios(){
+    for (const receta of this.cambiosPendientes) {
+      this.recetaService.CambiarEstadoReceta(receta.id, receta.activo).subscribe((data: any) => {
+        if (data.resultado == "OK") {
+          alert("Se ha cambiado el estado de la receta");
+        }
+        else {
+          alert("No se ha podido cambiar el estado de la receta");
+        }
+        });
+      }
+      //Se limpia el array de cambios pendientes
+      this.cambiosPendientes = [];
+    }
+  }
+
+
 
 
 /*public onClickUserActivo() {

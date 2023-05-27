@@ -43,5 +43,9 @@ export class UsuarioService {
     return this.httpClient.get<any[]>(environment.apiUrl +"usuarios/obtenerTiposUsuarios");
   }
 
+  public obtenerVistasOfertasUsuarios (){
+    return this.httpClient.get<any[]>(environment.apiUrl +"usuarios/obtenerVistasOfertasUsuario");
+  }
+
 
 }

@@ -26,8 +26,8 @@ export class EstadisticasAdminComponent {
 
   subscripcionActiva: number = 0;
   usuarioActivo: boolean = false;
-  opcionSeleccionada: any = '';
-  opcionesActivas: any = '';
+  opcionSeleccionada: string = "10";
+  opcionesActivas: number = 3;
   opcionesDeSusb: number = 2;
 
   labelsReceta = ["Arroz", "Bebidas", "Carnes", "Dulces", "Pastas", "Pescado", "Variados", "Vegetales"];
@@ -55,22 +55,24 @@ export class EstadisticasAdminComponent {
   public chartOptionsRecetas: Partial<ChartOptions> | any;
   public chartOptionsOfertas: Partial<ChartOptions> | any;
 
+ p : number = 1;
+
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService, private ofertaService: OfertaService,
               private spinner: NgxSpinnerService) {
   }
 
-  todosUsuarios: Usuario[] = [];
-  usuariosFiltrados: Usuario[] = [];
+  todosUsuarios: any[] = [];
+  usuariosFiltrados: any[] = [];
   recetas: Receta[] = [];
   recetasFiltradas: Receta[] = [];
 
   ngOnInit() {
-    //this.cargarGraficaRecetas();
-    //this.cargarGraficasUsuarios();
-    //this.cargarTopOfertas();
-    //this.cargarUsuarios();
-    //this.cargarRecetas();
+    this.cargarGraficaRecetas();
+    this.cargarGraficasUsuarios();
+    this.cargarTopOfertas();
+    this.cargarRecetas();
+    this.ofertasVisitas();
   }
 
   public cargarGraficaRecetas() {
@@ -221,13 +223,24 @@ export class EstadisticasAdminComponent {
 
   public cargarRecetas() {
     this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      this.recetas = data;
-      this.recetasFiltradas = data;
+      
+      this.recetas = data//.slice(0, 1000);
+      this.recetasFiltradas = data//.slice(0, 1000);
+
+
       console.log(this.recetas);
     });
 
-
   }
+
+  public ofertasVisitas() {
+    this.usuarioService.obtenerVistasOfertasUsuarios().subscribe((data: any[]) => {
+      this.todosUsuarios = data;
+      this.usuariosFiltrados = data;
+      console.log(data);
+    });
+  }
+  
 
   /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
   data = ['opcion 1', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba'];
@@ -314,22 +327,29 @@ export class EstadisticasAdminComponent {
   */
 
   public buscarRecetaSeleccionada() {
+    this.p =1;
     this.recetasFiltradas = this.recetas
+    console.log(this.opcionSeleccionada);
+    console.log(this.nombreRecetaSeleccionado);
+    console.log(this.opcionesActivas);
+    
 
-    if (this.opcionSeleccionada != 9) {
+    if (this.opcionSeleccionada != "9" && this.opcionSeleccionada != "10" ) {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.categoria.toLowerCase().includes(this.opcionSeleccionada.toLowerCase()));
     }
+    console.log(this.recetasFiltradas);
+
     if (this.nombreRecetaSeleccionado != "") {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
       //console.log(this.opcionSeleccionada);
     }
+    console.log(this.recetasFiltradas);
 
-    if (this.opcionesActivas != 2) {
-      this.recetasFiltradas = this.recetasFiltradas.filter(i => i.activo == (this.opcionesActivas));
-
-
+    if (this.opcionesActivas != 2 && this.opcionesActivas != 3) {
+      this.recetasFiltradas = this.recetasFiltradas.filter(i=> i.activo==this.opcionesActivas);
     }
-    console.log(this.opcionesActivas);
+    console.log(this.recetasFiltradas);
+    
 
   }
 

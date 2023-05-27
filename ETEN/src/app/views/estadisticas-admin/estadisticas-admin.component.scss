@@ -85,7 +85,7 @@ $color-crema: #E9DFCB;
     background-color: white;
     box-shadow: 2px 2px 2px 2px $logo-ETEN-naranja;
 
-    height: 600px;
+    height: 750px;
 
 }
 
@@ -108,6 +108,8 @@ $color-crema: #E9DFCB;
 .hacer_scroll {
     overflow: auto;
 }
+
+
 
 
 
@@ -167,6 +169,18 @@ $color-crema: #E9DFCB;
   align-items: center;
 }
 
+.paginacion {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    
+  }
+  
+  .paginacion ::ng-deep .ngx-pagination .current {
+    background: rgb(21, 125, 228);
+    
+  }
 
 .contenedor-cambioNumRecetasBuscador, .contenedor-cambioNumOfertasBuscador {
   margin-top: 5%;
@@ -299,3 +313,5 @@ $color-crema: #E9DFCB;
         z-index: 1;
     }
 }
+
+

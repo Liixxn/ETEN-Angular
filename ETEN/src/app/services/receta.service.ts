@@ -7,6 +7,9 @@ import { environment} from "../../environments/environment";
   providedIn: 'root'
 })
 export class RecetaService {
+  obtenerVisitasOfertas() {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private httpClient: HttpClient) { }
 

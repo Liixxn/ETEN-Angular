@@ -10,19 +10,21 @@
                     <a class="nav-item nav-link active" id="nav-graficas-tab" data-toggle="tab" href="#nav-graficas"
                         role="tab" aria-controls="nav-graficas" aria-selected="true"><span><img
                                 src="assets/imgs/grafico.png" width="60" height="60"></span></a>
-                    <a class="nav-item nav-link" id="nav-users-tab" data-toggle="tab" href="#nav-users"
-                        role="tab" aria-controls="nav-users" aria-selected="false"><span><img
-                                src="assets/imgs/user.png" width="60" height="60"></span></a>
+                    <a class="nav-item nav-link" id="nav-users-tab" data-toggle="tab" href="#nav-users" role="tab"
+                        aria-controls="nav-users" aria-selected="false"><span><img src="assets/imgs/user.png" width="60"
+                                height="60"></span></a>
                     <a class="nav-item nav-link" id="nav-recetas-tab" data-toggle="tab" href="#nav-recetas" role="tab"
                         aria-controls="nav-recetas" aria-selected="false"><span><img src="assets/imgs/libro_recetas.png"
                                 width="60" height="60"></span></a>
-                  <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab"
-                     aria-controls="nav-config" aria-selected="false"><span><img src="assets/imgs/configuraciones.png"
-                                                                                  width="60" height="60"></span></a>
+                    <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab"
+                        aria-controls="nav-config" aria-selected="false"><span><img
+                                src="assets/imgs/configuraciones.png" width="60" height="60"></span></a>
                 </div>
             </nav>
             <!--GRAFICAS Y ESTADISTICAS-->
+
             <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
                 <div class="tab-pane tab-pane-graficas fade show active" id="nav-graficas" role="tabpanel"
                     aria-labelledby="nav-graficas-tab">
 
@@ -31,55 +33,56 @@
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Recetas por Categoria</h3>
                             <div class="">
-                              <div id="chartRecetas">
-                                <apx-chart [series]="chartOptionsRecetas.series" [chart]="chartOptionsRecetas.chart" [labels]="chartOptionsRecetas.labels" [responsive]="chartOptionsRecetas.responsive"
-                                [legend]="chartOptionsRecetas.legend" [colors]="chartOptionsRecetas.colors">
-                                </apx-chart>
-                              </div>
+                                <div id="chartRecetas">
+                                    <apx-chart [series]="chartOptionsRecetas.series" [chart]="chartOptionsRecetas.chart"
+                                        [labels]="chartOptionsRecetas.labels"
+                                        [responsive]="chartOptionsRecetas.responsive"
+                                        [legend]="chartOptionsRecetas.legend" [colors]="chartOptionsRecetas.colors">
+                                    </apx-chart>
+                                </div>
                             </div>
                         </div>
 
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Grafica de Users</h3>
                             <div class="">
-                              <div id="chartUsuarios">
-                                <apx-chart [series]="chartOptionsUsuarios.series" [chart]="chartOptionsUsuarios.chart" [labels]="chartOptionsUsuarios.labels" [responsive]="chartOptionsUsuarios.responsive"
-                                           [legend]="chartOptionsUsuarios.legend" [colors]="chartOptionsUsuarios.colors">
-                                </apx-chart>
-                              </div>
+                                <div id="chartUsuarios">
+                                    <apx-chart [series]="chartOptionsUsuarios.series"
+                                        [chart]="chartOptionsUsuarios.chart" [labels]="chartOptionsUsuarios.labels"
+                                        [responsive]="chartOptionsUsuarios.responsive"
+                                        [legend]="chartOptionsUsuarios.legend" [colors]="chartOptionsUsuarios.colors">
+                                    </apx-chart>
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex flex-column separacion_graficas">
                             <h3 style="text-align: center;">Grafica de Ofertas</h3>
                             <div class="">
-                              <div id="chartOfertas">
-                                <apx-chart [series]="chartOptionsOfertas.series" [chart]="chartOptionsOfertas.chart" [labels]="chartOptionsOfertas.labels" [responsive]="chartOptionsOfertas.responsive"
-                                           [legend]="chartOptionsOfertas.legend" [colors]="chartOptionsOfertas.colors">
-                                </apx-chart>
-                              </div>
+                                <div id="chartOfertas">
+                                    <apx-chart [series]="chartOptionsOfertas.series" [chart]="chartOptionsOfertas.chart"
+                                        [labels]="chartOptionsOfertas.labels"
+                                        [responsive]="chartOptionsOfertas.responsive"
+                                        [legend]="chartOptionsOfertas.legend" [colors]="chartOptionsOfertas.colors">
+                                    </apx-chart>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                 </div>
+
+
                 <!--FIN GRAFICAS Y ESTADISTICAS-->
 
 
                 <!--TABLA DE USERS-->
-                <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel"
-                    aria-labelledby="nav-users-tab">
+                <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
                     <div class="form-row align-items-center justify-content-between buscador_div">
 
                         <!--Buscar por Nombre-->
                         <div class="col-sm-3 my-1">
-                            <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario" [(ngModel)]="nombreUserSeleccionado"
-                                (keyup)="filtrarPorNombreUser(); filtrar()" (change)="onClickNombreUser()" class="form-control"
-                                list="listaNombresUser" />
+                            <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario"
+                                [(ngModel)]="nombreUserSeleccionado" (keyup)="filtrarPorNombreUser(); filtrar()"
+                                (change)="onClickNombreUser()" class="form-control" list="listaNombresUser" />
                             <datalist id="listaNombresUser">
                                 <option *ngFor="let nombre of todosNombresUsers" [value]="nombre"></option>
                             </datalist>
@@ -87,32 +90,22 @@
                         <!--Buscar por email-->
                         <div class="col-sm-3 my-1">
                             <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
-                                (keyup)="filtrarPorEmailUser(); filtrar()" (change)="onClickEmailUser()" class="form-control"
-                                list="listaEmailUser" />
+                                (keyup)="filtrarPorEmailUser(); filtrar()" (change)="onClickEmailUser()"
+                                class="form-control" list="listaEmailUser" />
                             <datalist id="listaEmailUser">
                                 <option *ngFor="let nombre of todosEmailsUsers" [value]="nombre"></option>
                             </datalist>
                         </div>
                         <!--CheckBox Subscripcion-->
                         <div class="col-auto my-1">
-                            <select class="form-select" [(ngModel)]="opcionesDeSusb" (change)= "filtrar()">
+                            <select class="form-select" [(ngModel)]="opcionesDeSusb" (change)="filtrar()">
                                 <option value="" disabled selected hidden>Selecciona una opción</option>
                                 <option value="1">Subscritos</option>
                                 <option value="0">No subscritos</option>
                                 <option value="2">Todos</option>
                             </select>
                         </div>
-                        <!--CheckBox User Activo-->
-                        <div class="col-auto my-1">
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="checkbox_usuario_activo" [(ngModel)]="usuarioActivo" >
-                                <label class="form-check-label" for="checkbox">Usuario Activo</label>
-                            </div>
-                        </div>
-                        <!--Boton Buscar-->
-                        <div class="col-auto my-1">
-                            <button (click)="BuscarInfo()" type="button" class="btn btn-primary">Buscar</button>
-                        </div>
+
                     </div>
 
                     <table class="table table-striped ajustar_tabla_users">
@@ -123,7 +116,7 @@
                                 <th>Email</th>
                                 <th>Nº recetas en favorito</th>
                                 <th>Subscrito</th>
-                                <th>Activo</th>
+                                <th>Ofertas vistas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,9 +124,9 @@
                                 <td>{{usuario.id}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.email}}</td>
-                                <td>16</td>
+                                <td>{{usuario.total_recetas_favoritas}}</td>
                                 <td>{{usuario.subscripcion}}</td>
-                                <td>Si</td>
+                                <td>{{usuario.total_visitas}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -151,16 +144,17 @@
 
                             <!--Buscar por Nombre-->
                             <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
-                                (keyup)="buscarRecetaSeleccionada()" (change)="onClickNombreReceta()" class="form-control"
-                                list="listaNombresReceta" />
+                                (keyup)="buscarRecetaSeleccionada()" (change)="onClickNombreReceta()"
+                                class="form-control" list="listaNombresReceta" />
                             <datalist id="listaNombresReceta">
                                 <option *ngFor="let nombre of todosNombresRecetas" [value]="nombre"></option>
                             </datalist>
                         </div>
                         <!--Buscar por Categoria-->
                         <div class="col-sm-3 my-1">
-                            <select class="form-select" (change)= "buscarRecetaSeleccionada()" [(ngModel)]="opcionSeleccionada">
-                                <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <select class="form-select" (change)="buscarRecetaSeleccionada()"
+                                [(ngModel)]="opcionSeleccionada">
+                                <option value="10" disabled selected hidden>Selecciona una opción</option>
                                 <option value="1">Arroz</option>
                                 <option value="2">Bebida</option>
                                 <option value="3">Carne</option>
@@ -174,17 +168,16 @@
                         </div>
                         <!--CheckBox Receta Activa-->
                         <div class="col-auto my-1">
-                            <select class="form-select" [(ngModel)]="opcionesActivas" (change)= "buscarRecetaSeleccionada()">
-                                <option value="" disabled selected hidden>Selecciona una opción</option>
-                                <option value="1">Activos</option>
-                                <option value="0">No activos</option>
-                                <option value="2">Todos</option>
+                            <select class="form-select" [(ngModel)]="opcionesActivas"
+                                (change)="buscarRecetaSeleccionada()">
+                                <option value=3 disabled selected hidden>Selecciona una opción</option>
+                                <option value=1>Activos</option>
+                                <option value=0>No activos</option>
+                                <option value=2>Todos</option>
                             </select>
                         </div>
-                        <!--Boton Buscar-->
-                        <div class="col-auto my-1">
-                            <button type="button" class="btn btn-primary" (click)="buscarRecetaSeleccionada">Buscar</button>
-                        </div>
+
+
                     </div>
 
                     <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
@@ -197,8 +190,8 @@
                                 <th>Activo</th>
                             </tr>
                         </thead>
-                        <tbody >
-                            <tr *ngFor="let receta of recetasFiltradas">
+                        <tbody>
+                            <tr *ngFor="let receta of recetasFiltradas | paginate: {itemsPerPage:30, currentPage:p}">
                                 <td>{{receta.id}}</td>
                                 <td>{{receta.titulo}}</td>
                                 <td>{{receta.categoria}}</td>
@@ -207,7 +200,8 @@
                                     <!--CheckBox Receta Activa-->
                                     <div class="col-auto my-1">
                                         <div class="form-check">
-                                            <input type="checkbox" [(ngModel)]="receta.activo" class="form-check-input" id="checkbox_receta_activa">
+                                            <input type="checkbox" [(ngModel)]="receta.activo" class="form-check-input"
+                                                id="checkbox_receta_activa">
                                         </div>
                                     </div>
                                 </td>
@@ -217,40 +211,52 @@
                     </table>
                     <div class="footer_boton">
                         <button type="button" class="btn btn-primary">Guardar Cambios</button>
+
+                        <div class="paginacion">
+                            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior"
+                                nextLabel="Siguiente"></pagination-controls>
+                        </div>
                     </div>
 
 
 
 
                 </div>
+                <!---->
+
+
                 <!--FIN TABLA DE RECETAS-->
 
 
 
-              <div class="tab-pane tab-pane-config fade show active" id="nav-config" role="tabpanel">
-                <div class="contenedor-configuracion">
-                  <div class="contenedor-cambioNumRecetasBuscador">
-                    <h3>Cambiar el número de recetas por página (Buscadores)</h3>
-                    <div class="contenedor-inputBuscador">
-                      <input id="numRecetasPorPagina" class="cambiarNumPaginas" type="text" placeholder="Número de recetas">
-                    </div>
-                    <div class="contenedor-btnCambiar">
-                      <button class="btnCambiarNum" (click)="obtenerNumElementos(0)" type="submit">Cambiar</button>
-                    </div>
-                  </div>
+                <div class="tab-pane tab-pane-config fade show active" id="nav-config" role="tabpanel">
+                    <div class="contenedor-configuracion">
+                        <div class="contenedor-cambioNumRecetasBuscador">
+                            <h3>Cambiar el número de recetas por página (Buscadores)</h3>
+                            <div class="contenedor-inputBuscador">
+                                <input id="numRecetasPorPagina" class="cambiarNumPaginas" type="text"
+                                    placeholder="Número de recetas">
+                            </div>
+                            <div class="contenedor-btnCambiar">
+                                <button class="btnCambiarNum" (click)="obtenerNumElementos(0)"
+                                    type="submit">Cambiar</button>
+                            </div>
+                        </div>
 
-                  <div class="contenedor-cambioNumOfertasBuscador">
-                    <h3>Cambiar el número de ofertas por página</h3>
-                    <div class="contenedor-inputBuscador">
-                      <input id="numOfertasPorPagina" class="cambiarNumPaginas" type="text" placeholder="Número de ofertas">
-                    </div>
-                    <div class="contenedor-btnCambiar">
-                      <button class="btnCambiarNum" (click)="obtenerNumElementos(1)" type="submit">Cambiar</button>
-                    </div>
-                  </div>
+                        <div class="contenedor-cambioNumOfertasBuscador">
+                            <h3>Cambiar el número de ofertas por página</h3>
+                            <div class="contenedor-inputBuscador">
+                                <input id="numOfertasPorPagina" class="cambiarNumPaginas" type="text"
+                                    placeholder="Número de ofertas">
+                            </div>
+                            <div class="contenedor-btnCambiar">
+                                <button class="btnCambiarNum" (click)="obtenerNumElementos(1)"
+                                    type="submit">Cambiar</button>
+                            </div>
+                        </div>
 
+                    </div>
                 </div>
-              </div>
 
 
             </div>
@@ -261,9 +267,6 @@
 
 
         </div>
-
-
-
 
     </section>
 </body>

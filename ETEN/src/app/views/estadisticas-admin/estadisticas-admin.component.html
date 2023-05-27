@@ -81,20 +81,14 @@
                         <!--Buscar por Nombre-->
                         <div class="col-sm-3 my-1">
                             <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario"
-                                [(ngModel)]="nombreUserSeleccionado" (keyup)="filtrarPorNombreUser(); filtrar()"
-                                (change)="onClickNombreUser()" class="form-control" list="listaNombresUser" />
-                            <datalist id="listaNombresUser">
-                                <option *ngFor="let nombre of todosNombresUsers" [value]="nombre"></option>
-                            </datalist>
+                                   [(ngModel)]="nombreUserSeleccionado" (keyup)="filtrarPorNombreUser(); filtrar()"
+                                 class="form-control" list="listaNombresUser" />
                         </div>
                         <!--Buscar por email-->
                         <div class="col-sm-3 my-1">
                             <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
-                                (keyup)="filtrarPorEmailUser(); filtrar()" (change)="onClickEmailUser()"
+                                (keyup)="filtrarPorEmailUser(); filtrar()"
                                 class="form-control" list="listaEmailUser" />
-                            <datalist id="listaEmailUser">
-                                <option *ngFor="let nombre of todosEmailsUsers" [value]="nombre"></option>
-                            </datalist>
                         </div>
                         <!--CheckBox Subscripcion-->
                         <div class="col-auto my-1">
@@ -124,9 +118,9 @@
                                 <td>{{usuario.id}}</td>
                                 <td>{{usuario.nombre}}</td>
                                 <td>{{usuario.email}}</td>
-                                <td>{{usuario.total_recetas_favoritas}}</td>
+                                <td>{{recetasFavoritasPorUsuario[usuario.id]}}</td>
                                 <td>{{usuario.subscripcion}}</td>
-                                <td>{{usuario.total_visitas}}</td>
+                                <td>{{ofertasVisualizadasPorUsuario[usuario.id]}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -144,11 +138,8 @@
 
                             <!--Buscar por Nombre-->
                             <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
-                                (keyup)="buscarRecetaSeleccionada()" (change)="onClickNombreReceta()"
+                                (keyup)="buscarRecetaSeleccionada()"
                                 class="form-control" list="listaNombresReceta" />
-                            <datalist id="listaNombresReceta">
-                                <option *ngFor="let nombre of todosNombresRecetas" [value]="nombre"></option>
-                            </datalist>
                         </div>
                         <!--Buscar por Categoria-->
                         <div class="col-sm-3 my-1">
@@ -229,7 +220,7 @@
 
 
 
-                <div class="tab-pane tab-pane-config fade show active" id="nav-config" role="tabpanel">
+                <div class="tab-pane tab-pane-config fade" id="nav-config" role="tabpanel">
                     <div class="contenedor-configuracion">
                         <div class="contenedor-cambioNumRecetasBuscador">
                             <h3>Cambiar el número de recetas por página (Buscadores)</h3>

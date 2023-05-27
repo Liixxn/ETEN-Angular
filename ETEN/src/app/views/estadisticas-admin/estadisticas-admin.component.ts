@@ -2,12 +2,13 @@ import {Component} from '@angular/core';
 import {NgxSpinnerService} from "ngx-spinner";
 import {ApexNonAxisChartSeries, ApexResponsive, ApexChart} from "ng-apexcharts";
 
-import {UsuarioService} from "../../services/usuario.service";
+import {UsuarioService} from 'src/app/services/usuario.service';
 import {Usuario} from "../../models/usuario";
 import {RecetaService} from "../../services/receta.service";
 import {Receta} from 'src/app/models/receta';
 import {OfertaService} from 'src/app/services/oferta.service';
 import {Oferta} from 'src/app/models/oferta';
+
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -24,11 +25,11 @@ export type ChartOptions = {
 })
 export class EstadisticasAdminComponent {
 
-  subscripcionActiva: number = 0;
-  usuarioActivo: boolean = false;
-  opcionSeleccionada: string = "10";
-  opcionesActivas: number = 3;
-  opcionesDeSusb: number = 2;
+  /*
+|--------------------------------------------------------------------------
+| INICIO Variables graficas
+|---------------------------------------------------------------------------
+*/
 
   labelsReceta = ["Arroz", "Bebidas", "Carnes", "Dulces", "Pastas", "Pescado", "Variados", "Vegetales"];
   numRecetasTotal: number = 0;
@@ -55,24 +56,52 @@ export class EstadisticasAdminComponent {
   public chartOptionsRecetas: Partial<ChartOptions> | any;
   public chartOptionsOfertas: Partial<ChartOptions> | any;
 
- p : number = 1;
+
+  /*
+|--------------------------------------------------------------------------
+| FIN Variables graficas
+|---------------------------------------------------------------------------
+*/
 
 
   constructor(private usuarioService: UsuarioService, private recetaService: RecetaService, private ofertaService: OfertaService,
               private spinner: NgxSpinnerService) {
   }
 
+
+  subscripcionActiva: number = 0;
+  usuarioActivo: boolean = false;
+  opcionSeleccionada: string = "10";
+  opcionesActivas: number = 3;
+  opcionesDeSusb: number = 2;
+
   todosUsuarios: any[] = [];
   usuariosFiltrados: any[] = [];
   recetas: Receta[] = [];
   recetasFiltradas: Receta[] = [];
 
+  listaIdsUsuarios: any[] = [];
+  recetasFavoritasPorUsuario: any[] = [];
+  ofertasVisualizadasPorUsuario: any[] = [];
+
+  emailUserSeleccionado: string = '';
+  nombreUserSeleccionado: string = '';
+  nombreRecetaSeleccionado: string = '';
+
+  nombresFiltrados: string[] = [];
+  emailFiltrados: string[] = [];
+
+  // Paginacion
+  p: number = 1;
+
+
   ngOnInit() {
+
     this.cargarGraficaRecetas();
     this.cargarGraficasUsuarios();
     this.cargarTopOfertas();
+    //this.cargarUsuarios();
     this.cargarRecetas();
-    this.ofertasVisitas();
   }
 
   public cargarGraficaRecetas() {
@@ -213,143 +242,86 @@ export class EstadisticasAdminComponent {
 
 
   public cargarUsuarios() {
-    this.usuarioService.getAllUsuarios().subscribe((data: Usuario[]) => {
-      this.todosUsuarios = data;
-      this.usuariosFiltrados = data;
+    this.usuarioService.getAllUsuarios().subscribe((data: any[]) => {
+      this.todosUsuarios = data[0];
+      this.usuariosFiltrados = data[0];
 
+      this.ofertasVisualizadasPorUsuario = data[1];
+      this.recetasFavoritasPorUsuario = data[2];
+
+      for (let i = 0; i < this.usuariosFiltrados.length; i++) {
+        this.listaIdsUsuarios.push(i);
+      }
     });
 
   }
 
   public cargarRecetas() {
     this.recetaService.ObtenerTodasRecetas().subscribe((data: Receta[]) => {
-      
-      this.recetas = data//.slice(0, 1000);
-      this.recetasFiltradas = data//.slice(0, 1000);
 
+      this.recetas = data;
+      this.recetasFiltradas = data;
 
-      console.log(this.recetas);
     });
 
   }
 
-  public ofertasVisitas() {
-    this.usuarioService.obtenerVistasOfertasUsuarios().subscribe((data: any[]) => {
-      this.todosUsuarios = data;
-      this.usuariosFiltrados = data;
-      console.log(data);
-    });
-  }
-  
-
-  /* ---------- AYUDA PARA ESCRIBIR EN LOS CAMPOS DE TEXTO PARA BUSCAR ---------- */
-  data = ['opcion 1', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba', 'prueba'];
-  todosNombresRecetas = this.data;
-  nombreRecetaSeleccionado: string = '';
-  opcionNombreRecetaSeleccionada: boolean = true;
-
-  data2 = ['aaa', 'Banana', 'banammmmmmm', 'optico', 'prueba', 'prueba', 'prueba', 'prueba'];
-  todosNombresUsers = this.data2;
-  nombreUserSeleccionado: string = '';
-  opcionNombreUserSeleccionada: boolean = true;
-
-  data3 = ['aaa@gmail.com', 'prueba_3@gmail.com', 'prueba_2@gmail.com', 'prueba_1@gmail.com', 'prueba_1@gmail.com', 'xxxx@gmail.com', 'aaaccccc@gmail.com', 'aaabbbbbb@gmail.com'];
-  todosEmailsUsers = this.data3;
-  emailUserSeleccionado: string = '';
-  opcionEmailUserSeleccionada: boolean = true;
 
   filtrarPorNombreReceta() {
-    console.log(this.recetas);
-    if (this.opcionNombreRecetaSeleccionada) {
-      //this.todosNombresRecetas = this.todosNombresRecetas.filter(item => item.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
-      this.recetasFiltradas = this.recetas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
 
-      //this.opcionSeleccionada = false;
-    }
+    this.recetasFiltradas = this.recetas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
+
+
   }
 
   filtrarPorNombreUser() {
-    if (this.opcionNombreUserSeleccionada) {
-      this.todosNombresUsers = this.todosNombresUsers.filter(item => item.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
 
-      this.emailUserSeleccionado = "";
-      //this.opcionSeleccionada = false;
+
+    for (let i = 0; i < this.usuariosFiltrados.length; i++) {
+      this.nombresFiltrados.push(this.usuariosFiltrados[i].nombre);
     }
+
+
+    this.nombresFiltrados = this.nombresFiltrados.filter(item => item.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
+
+
   }
 
   filtrarPorEmailUser() {
-    if (this.opcionEmailUserSeleccionada) {
-      this.todosEmailsUsers = this.todosEmailsUsers.filter(item => item.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
-      this.nombreUserSeleccionado = "";
-      //this.opcionSeleccionada = false;
+
+
+    for (let i = 0; i < this.usuariosFiltrados.length; i++) {
+      this.emailFiltrados.push(this.usuariosFiltrados[i].email);
     }
-  }
-
-  onClickNombreReceta() {
-    this.opcionNombreRecetaSeleccionada = false;
-    this.todosNombresRecetas = this.data;
-  }
-
-  onClickNombreUser() {
-    this.opcionNombreUserSeleccionada = false;
-    this.todosNombresUsers = this.data2;
-  }
-
-  onClickEmailUser() {
-    this.opcionEmailUserSeleccionada = false;
-    this.todosEmailsUsers = this.data3;
-  }
 
 
-  public BuscarInfo() {
-    //console.log(this.subscripcionActiva);
-    //console.log(this.todosUsuarios);
-    //console.log(this.nombreUserSeleccionado);
-    //this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre === this.nombreUserSeleccionado);
-    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.nombre.toLowerCase().includes(this.nombreUserSeleccionado.toLowerCase()));
-
-    //console.log(usuariosFiltrados)
+    this.emailFiltrados = this.emailFiltrados.filter(item => item.toLowerCase().includes(this.emailUserSeleccionado.toLowerCase()));
 
   }
 
-  /*
-  public onClickSubscripcion() {
-    console.log(this.todosUsuarios);
-
-    if (this.subscripcionActiva) {
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 1);
-    }
-    else {
-      console.log("entra");
-      this.usuariosFiltrados = this.todosUsuarios.filter(i => i.subscripcion === 0);
-    }
-  }
-  */
 
   public buscarRecetaSeleccionada() {
-    this.p =1;
+    this.p = 1;
     this.recetasFiltradas = this.recetas
     console.log(this.opcionSeleccionada);
     console.log(this.nombreRecetaSeleccionado);
     console.log(this.opcionesActivas);
-    
 
-    if (this.opcionSeleccionada != "9" && this.opcionSeleccionada != "10" ) {
+
+    if (this.opcionSeleccionada != "9" && this.opcionSeleccionada != "10") {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.categoria.toLowerCase().includes(this.opcionSeleccionada.toLowerCase()));
     }
     console.log(this.recetasFiltradas);
 
     if (this.nombreRecetaSeleccionado != "") {
       this.recetasFiltradas = this.recetasFiltradas.filter(i => i.titulo.toLowerCase().includes(this.nombreRecetaSeleccionado.toLowerCase()));
-      //console.log(this.opcionSeleccionada);
     }
     console.log(this.recetasFiltradas);
 
     if (this.opcionesActivas != 2 && this.opcionesActivas != 3) {
-      this.recetasFiltradas = this.recetasFiltradas.filter(i=> i.activo==this.opcionesActivas);
+      this.recetasFiltradas = this.recetasFiltradas.filter(i => i.activo == this.opcionesActivas);
     }
-    console.log(this.recetasFiltradas);
-    
+
 
   }
 
@@ -366,8 +338,8 @@ export class EstadisticasAdminComponent {
     if (this.opcionesDeSusb != 2) {
       this.usuariosFiltrados = this.usuariosFiltrados.filter(i => i.subscripcion == this.opcionesDeSusb);
     }
-    console.log(this.opcionesDeSusb);
   }
+
 
   public obtenerNumElementos(tipo: number) {
 
@@ -375,8 +347,7 @@ export class EstadisticasAdminComponent {
 
     if (tipo == 0) {
       numElementosPagina = (<HTMLInputElement>document.getElementById("numRecetasPorPagina")).value;
-    }
-    else {
+    } else {
       numElementosPagina = (<HTMLInputElement>document.getElementById("numOfertasPorPagina")).value;
     }
 
@@ -386,17 +357,14 @@ export class EstadisticasAdminComponent {
         this.recetaService.cambiarNumRecetasPorPagina(numero, tipo).subscribe((data: any) => {
           if (data.num_recetasPagina == numero) {
             alert("Se ha cambiado el número de elementos por página");
-          }
-          else {
+          } else {
             alert("No se ha podido cambiar el número de elementos por página");
           }
         });
-      }
-      else {
+      } else {
         alert("Introduce un formato válido.");
       }
-    }
-    else {
+    } else {
       alert("Introduce un número de elementos por página");
     }
 
@@ -404,17 +372,6 @@ export class EstadisticasAdminComponent {
 
 
 }
-
-
-/*public onClickUserActivo() {
-  if(this.usuarioActivo){
-    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at === null);
-  }
-  else{
-    this.usuariosFiltrados = this.todosUsuarios.filter(i => i.deleted_at !== null);
-  }
-}*/
-
 
 
 

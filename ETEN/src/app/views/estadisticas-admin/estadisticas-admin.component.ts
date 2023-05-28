@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
 import { ApexNonAxisChartSeries, ApexResponsive, ApexChart } from "ng-apexcharts";
 
-import {UsuarioService} from 'src/app/services/usuario.service';
-import {Usuario} from "../../models/usuario";
-import {RecetaService} from "../../services/receta.service";
-import {Receta} from 'src/app/models/receta';
-import {OfertaService} from 'src/app/services/oferta.service';
-import {Oferta} from 'src/app/models/oferta';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Usuario } from "../../models/usuario";
+import { RecetaService } from "../../services/receta.service";
+import { Receta } from 'src/app/models/receta';
+import { OfertaService } from 'src/app/services/oferta.service';
+import { Oferta } from 'src/app/models/oferta';
 
 
 export type ChartOptions = {
@@ -100,8 +100,8 @@ export class EstadisticasAdminComponent {
     this.cargarGraficaRecetas();
     this.cargarGraficasUsuarios();
     this.cargarTopOfertas();
-    //this.cargarUsuarios();
-    //this.cargarRecetas();
+    this.cargarUsuarios();
+    this.cargarRecetas();
   }
 
   public cargarGraficaRecetas() {
@@ -255,6 +255,16 @@ export class EstadisticasAdminComponent {
       this.ofertasVisualizadasPorUsuario = data[1];
       this.recetasFavoritasPorUsuario = data[2];
 
+      //quitamos campos en blanco y los sustituimos por 0
+      this.todosUsuarios.forEach(us => {
+        if (this.ofertasVisualizadasPorUsuario[us.id] == undefined) {
+          this.ofertasVisualizadasPorUsuario[us.id] = 0;
+        }
+        if (this.recetasFavoritasPorUsuario[us.id] == undefined) {
+          this.recetasFavoritasPorUsuario[us.id] = 0;
+        }
+      });
+
       for (let i = 0; i < this.usuariosFiltrados.length; i++) {
         this.listaIdsUsuarios.push(i);
       }
@@ -267,6 +277,35 @@ export class EstadisticasAdminComponent {
 
       this.recetas = data;
       this.recetasFiltradas = data;
+
+      this.recetas.forEach(re => {
+        switch (re.categoria) {
+          case "1":
+            re.categoria = "Arroz";
+            break;
+          case "2":
+            re.categoria = "Bebida";
+            break;
+          case "3":
+            re.categoria = "Carne";
+            break;
+          case "4":
+            re.categoria = "Dulce";
+            break;
+          case "5":
+            re.categoria = "Pasta";
+            break;
+          case "6":
+            re.categoria = "Pescado";
+            break;
+          case "7":
+            re.categoria = "Variado";
+            break;
+          case "8":
+            re.categoria = "Vegetales";
+            break;
+        }
+      });
 
     });
 
@@ -391,9 +430,9 @@ export class EstadisticasAdminComponent {
     this.recetaService.CambiarEstadoReceta(this.cambiosPendientesRecetasActivas).subscribe((data: string) => {
       if (data == "actualizado") {
         alert("Recetas modificadas correctamente");
-      }else if(data == "fatall"){
+      } else if (data == "fatall") {
         alert("No se ha podido modificar las recetas");
-      }else {
+      } else {
         alert("Se produjo un error al modificar las recetas");
       }
     });

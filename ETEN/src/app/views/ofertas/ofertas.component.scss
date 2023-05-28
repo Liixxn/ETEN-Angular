@@ -15,19 +15,12 @@ $tertiary-color: #555555;
   margin: 0;
   padding: 5rem 1rem;
 
-  ul {
+  .buttons-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
     list-style: none;
-  }
-
-  li {
-    flex: 1;
-    display: flex;
-    text-align: center;
-    align-items: stretch;
   }
 
   .boton-categoria {
@@ -37,7 +30,7 @@ $tertiary-color: #555555;
     text-align: center;
     margin: 1rem;
     background-color: $primary-color;
-    color: black;
+    color: white;
     padding: 1rem 0.75rem;
     border-radius: 1rem;
     text-decoration: none;
@@ -46,6 +39,7 @@ $tertiary-color: #555555;
     font-weight: bold;
     border: none;
     flex: 1;
+    cursor: pointer;
 
     &:hover {
       background-color: black;
@@ -57,6 +51,12 @@ $tertiary-color: #555555;
       color: $primary-color;
     }
   }
+}
+
+.buttons-container button.button_selected {
+  background-color: black;
+  color: $primary-color;
+  cursor: pointer;
 }
 
 .featured {
@@ -99,13 +99,14 @@ $tertiary-color: #555555;
     color: #ffffff;
     font-weight: bold;
   }
+
   p {
     margin-bottom: 1.1rem;
     font-size: 1rem;
     color: #ffffff;
   }
 
-  del{
+  del {
     color: #F05A21;
   }
 
@@ -168,5 +169,3 @@ $tertiary-color: #555555;
 .pagination ::ng-deep .ngx-pagination .ng-star-inserted {
   border-radius: 50%;
 }
-
-

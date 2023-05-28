@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Oferta } from "src/app/models/oferta";
 import { OfertaService } from "src/app/services/oferta.service";
 import { Router } from '@angular/router';
-import { NgxSpinnerService} from "ngx-spinner";
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -15,14 +15,13 @@ export class OfertasComponent implements OnInit {
   products: Oferta[] = [];
   page: number = 1;
   currentIndex = -1;
-  categorias: string[] = ['Productos Frescos', 'Despensa', 'Bebidas'];
-  selectedcategoria: string = '';
 
-  categoria = "";
+
+  categoria = "Todos los productos";
   numeroTotal = 0;
   numOfertas = 0;
 
-  constructor(private ofertaService: OfertaService, private route: Router, private spinner: NgxSpinnerService) {}
+  constructor(private ofertaService: OfertaService, private route: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.numOfertas = 20;
@@ -35,29 +34,43 @@ export class OfertasComponent implements OnInit {
   }
 
 
-  public cargarTodasOfertas(categoria: string): void {
+  public cargarTodasOfertas(categoria: string) {
 
-    if (this.categoria != categoria) {
-      this.page = 1;
-    }
+
+    const todosBotones = document.querySelectorAll(".boton-categoria");
+    todosBotones.forEach(boton => boton.classList.remove("button_selected"));
+    
+    this.page = 1;
 
     this.categoria = categoria;
     let id_categoria: number;
 
 
     switch (categoria) {
-      case 'Productos Frescos':
+      case 'Productos Frescos': {
         id_categoria = 1;
+        const miBoton = document.getElementById("Productos Frescos");
+        miBoton!.classList.add("button_selected");
         break;
-      case 'Despensa':
+      }
+      case 'Despensa': {
         id_categoria = 2;
+        const miBoton = document.getElementById("Despensa");
+        miBoton!.classList.add("button_selected");
         break;
-      case 'Bebidas':
+      }
+      case 'Bebidas': {
         id_categoria = 3;
+        const miBoton = document.getElementById("Bebidas");
+        miBoton!.classList.add("button_selected");
         break;
-      default:
+      }
+      default: {
         id_categoria = 0;
+        const miBoton = document.getElementById("Todos los productos");
+        miBoton!.classList.add("button_selected");
         break;
+      }
     }
     this.spinner.show();
     this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {

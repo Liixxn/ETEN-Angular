@@ -24,7 +24,6 @@ export class OfertasComponent implements OnInit {
   constructor(private ofertaService: OfertaService, private route: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
-    this.numOfertas = 20;
     this.cargarTodasOfertas(this.categoria);
 
   }
@@ -79,6 +78,7 @@ export class OfertasComponent implements OnInit {
     this.ofertaService.obtenerOfertasPorCategoria(id_categoria, this.page).subscribe((data: any[]) => {
       this.products = data[0];
       this.numeroTotal = data[1];
+      this.numOfertas = data[2];
 
       setTimeout(() => {
         this.spinner.hide();

@@ -5,6 +5,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { RecetaService } from 'src/app/services/receta.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { NgxSpinnerService} from "ngx-spinner";
 
 @Component({
   selector: 'app-perfil',
@@ -36,7 +37,8 @@ export class PerfilComponent {
 
   public imagenSeleccionada: string = 'https://cdn-icons-png.flaticon.com/512/747/747376.png';
 
-  constructor(private route: Router, private autenticacionService: AutenticacionService, private usuarioService: UsuarioService, private recetaService: RecetaService) { }
+  constructor(private route: Router, private autenticacionService: AutenticacionService, private usuarioService: UsuarioService, private recetaService: RecetaService,
+              private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.usuarioLogueado = this.autenticacionService.obtenerUsuarioDelToken();
@@ -53,10 +55,18 @@ export class PerfilComponent {
   }
 
   public cargarRecetasFavoritas() {
+
+    this.spinner.show();
+
     this.recetaService.ObtenerIdRecetasFavoritas().subscribe((data: number[]) => {
       this.recetaService.ObtenerRecetasPorId(data).subscribe((data_recetas: Receta[]) => {
         this.recetas = data_recetas;
-      })
+
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 2000);
+
+      });
     })
   }
 
@@ -115,7 +125,6 @@ export class PerfilComponent {
     if (passwordNueva.value == passwordNuevaConfirmar.value) {
       //comprobamos si la contraseña actual es correcta
       this.usuarioService.comprobarContrasena(passwordActual.value).subscribe((data: string) => {
-        //alert(data + ' data')
         if (data == this.usuarioLogueado.password) {
 
           //passwordNueva = sha1(passwordNueva.value);
@@ -156,7 +165,6 @@ export class PerfilComponent {
 
 
   public cancelarCambios() {
-    alert('Se han cancelado los cambios')
     this.modificarDatos();
     this.lanzarToast('Se han CANCELADO los cambios');
   }
@@ -196,14 +204,13 @@ export class PerfilComponent {
 
 
   public cerrarSesion() {
-    alert('Se ha cerrado sesion')
+    alert('Se ha cerrado sesión')
     this.autenticacionService.eliminarToken();
     this.route.navigate(['/']);
 
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {
-    alert('Receta Cargada ' + recetaSeleccionada.titulo)
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
     this.route.navigate(['/info-receta', recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;

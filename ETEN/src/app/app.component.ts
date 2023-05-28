@@ -40,7 +40,7 @@ export class AppComponent {
           }, 3000000);
         });
       } else {
-        alert('Debe iniciar sesion');
+        alert('Debe iniciar sesión');
         if (this.autenticacionService.getToken() != null) {
           this.autenticacionService.eliminarToken();
         }
@@ -69,7 +69,7 @@ export class AppComponent {
   }
 
   public cerrarSesion() {
-    alert('Se ha cerrado sesion');
+    alert('Se ha cerrado sesión');
     this.autenticacionService.eliminarToken();
     this.route.navigate(['/']);
   }

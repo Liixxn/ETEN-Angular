@@ -19,7 +19,7 @@ export class OfertaService {
   }
 
   public sumarVisita(id_oferta: number) {
-    return this.httpClient.get(environment.apiUrl + "5ofertas/SumarVisitas/" + id_oferta);
+    return this.httpClient.get(environment.apiUrl + "ofertas/SumarVisitas/" + id_oferta);
   }
 
   public ObtenerTopOfertas() {

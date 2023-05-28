@@ -45,7 +45,6 @@ export class BuscadorCategoriaComponent {
   }
 
   public abrirInfoReceta(recetaSeleccionada: Receta) {
-    alert('Receta Cargada ' + recetaSeleccionada.titulo)
     //this.infoRecetaComponent.recetaSeleccionada = recetaSeleccionada;
     this.route.navigate(['/info-receta', recetaSeleccionada.id]);
     //this.recetaService.recetaSeleccionada = recetaSeleccionada;

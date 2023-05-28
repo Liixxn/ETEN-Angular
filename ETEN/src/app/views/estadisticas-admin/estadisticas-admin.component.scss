@@ -174,16 +174,16 @@ $color-crema: #E9DFCB;
     justify-content: center;
     margin-top: 10px;
     padding-top: 10px;
-    
+
   }
-  
+
   .paginacion ::ng-deep .ngx-pagination .current {
     background: rgb(21, 125, 228);
-    
+
   }
 
 .contenedor-cambioNumRecetasBuscador, .contenedor-cambioNumOfertasBuscador {
-  margin-top: 5%;
+  padding-top: 10%;
   display: flex;
   flex-direction: column;
   justify-content: center;

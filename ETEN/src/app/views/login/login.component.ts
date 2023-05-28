@@ -3,8 +3,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { AutenticacionService } from 'src/app/services/autenticacion.service';
 import { Router } from '@angular/router';
-import { AppComponent } from 'src/app/app.component';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',

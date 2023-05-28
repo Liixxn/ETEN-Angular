@@ -3,11 +3,9 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { ApexNonAxisChartSeries, ApexResponsive, ApexChart } from "ng-apexcharts";
 
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { Usuario } from "../../models/usuario";
 import { RecetaService } from "../../services/receta.service";
 import { Receta } from 'src/app/models/receta';
 import { OfertaService } from 'src/app/services/oferta.service';
-import { Oferta } from 'src/app/models/oferta';
 
 
 export type ChartOptions = {

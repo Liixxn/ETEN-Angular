@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Receta } from 'src/app/models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
 import { NgxSpinnerService } from "ngx-spinner";
+
 @Component({
   selector: 'app-buscador-categoria',
   templateUrl: './buscador-categoria.component.html',

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AutenticacionService } from '../services/autenticacion.service';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +18,10 @@ export class AdminGuard implements CanActivate {
       if (this.autenticacionService.obtenerUsuarioDelToken().es_administrador == 1) {
         return true;
       } else {
-        this.autenticacionService.eliminarToken();
-        this.route.navigate(['/login']);
+        alert("No tienes permiso para acceder a esta página..");
+        //al refrescar el token cuando se actualiza la pagina esto no se puede hacer.
+        //this.autenticacionService.eliminarToken();  
+        this.route.navigate(['/']);
         return false;
       }
     } else {

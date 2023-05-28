@@ -1,7 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
-import { Usuario } from '../models/usuario';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -9,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class AutenticacionService {
 
-  constructor(private route: Router) { }
+  constructor() { }
 
   public guardarToken(token: string) {
     localStorage.setItem('token', token)

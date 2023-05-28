@@ -39,8 +39,11 @@ export class OfertasComponent implements OnInit {
 
     const todosBotones = document.querySelectorAll(".boton-categoria");
     todosBotones.forEach(boton => boton.classList.remove("button_selected"));
-    
-    this.page = 1;
+
+
+    if (this.categoria != categoria) {
+      this.page = 1;
+    }
 
     this.categoria = categoria;
     let id_categoria: number;

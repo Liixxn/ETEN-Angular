@@ -1,6 +1,7 @@
 /* IMPORTE DE FONTS */
 @import url('https://fonts.cdnfonts.com/css/borsok');
 @import url('https://fonts.cdnfonts.com/css/pacifico');
+@import url('https://fonts.googleapis.com/css?family=Reem Kufi');
 
 
 /* VARIABLES */
@@ -11,30 +12,6 @@ $naranja-claro: #F37A44;
 $azul-oscuro: #155386;
 $azul-claro: #0086AA;
 $color-crema: #E9DFCB;
-
-
-
-
-
-
-/**********************************************/
-
-html {
-  background-color: $color-crema;
-  margin: 0;
-  padding: 0;
-  scroll-behavior: smooth;
-
-}
-
-
-
-body {
-  margin: 0;
-  padding: 0;
-}
-
-
 
 
 /**********************************************/
@@ -61,6 +38,7 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'Pacifico', cursive;
   font-size: 120px;
   letter-spacing: 0.1em;
   -webkit-text-fill-color: transparent;
@@ -84,8 +62,8 @@ h1 {
   text-shadow:
     8px 8px $logo-ETEN-naranja,
     20px 20px black;
-  
-  
+
+
 }
 
 @keyframes moveDown {
@@ -129,21 +107,7 @@ h1 {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* SECCION FUNCIONALIDADES */
-
-
-
-
 
 #tabs {
   background-image: url('https://images.pexels.com/photos/3850838/pexels-photo-3850838.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
@@ -199,23 +163,12 @@ h1 {
 
 .tab-pane {
   margin: 5% 10%;
+  border-radius: 10px;
   background-color: white;
   padding: 20px;
   box-shadow: 2px 2px 2px 2px $logo-ETEN-naranja;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -229,7 +182,7 @@ h1 {
   background-size: cover;
 }
 
-.main {
+.main-contenedor {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -239,7 +192,6 @@ h1 {
   padding: 30px 10px;
   width: 100%;
 }
-
 
 
 .cards {
@@ -273,12 +225,10 @@ h1 {
   height: inherit;
 }
 
+.card_text h2{
+  font-family: 'Borsok', sans-serif;
 
-.card_content {
-  width: 100%;
-  height: auto;
 }
-
 
 .flip-box {
   display: flex;
@@ -311,11 +261,6 @@ h1 {
 
 
   }
-}
-
-.card_content h2 {
-  font-family: 'Borsok', sans-serif;
-
 }
 
 
@@ -377,17 +322,6 @@ h1 {
 }
 
 
-.justify-content-center {
-  -ms-flex-pack: center !important;
-  justify-content: center !important;
-}
-
-.justify-content-center {
-  -webkit-box-pack: center !important;
-  -ms-flex-pack: center !important;
-  justify-content: center !important;
-}
-
 .social-bar {
   display: flex;
   border-radius: 10px;
@@ -398,9 +332,7 @@ h1 {
 
   flex-direction: column;
   align-items: center;
-  //justify-content: center;
   justify-content: space-between;
-  //vertical-align: middle;
 }
 
 
@@ -424,110 +356,6 @@ h1 {
   height: inherit;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* FOOTER */
-
-.footer {
-  margin-top: 100px;
-}
-
-
-
-
-.container-footer {
-  height: 350px;
-  background-image: url('/assets/imgs/footer-ETEN.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  display: flex;
-}
-
-.partes-footer {
-  border: 2px solid red;
-}
-
-#footer-principal {
-  width: 100%;
-}
-
-#plato1-footer,
-#plato2-footer {
-
-  width: 200px;
-  height: inherit !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -628,7 +456,7 @@ h1 {
   .slider-nav-item img {
     width: 50%;
     height: 50%;
-  }  
+  }
 
   .flip-box {
     -ms-transform-style: preserve-3d;
@@ -637,7 +465,6 @@ h1 {
     perspective: 1000px;
     -webkit-perspective: 1000px;
     box-shadow: 3px 3px black;
-    margin: 0;
 
     margin-top: 10%;
     margin-bottom: 10%;
@@ -648,6 +475,6 @@ h1 {
 
 @media (max-width: 400px){
   .inner {
-    display: contents; 
+    display: contents;
   }
 }

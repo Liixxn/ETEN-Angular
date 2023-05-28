@@ -1,260 +1,261 @@
-<body>
 
 
-    <section id="tabs">
+<section id="tabs">
 
 
-        <div class="col-xs-12 ">
-            <nav>
-                <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-graficas-tab" data-toggle="tab" href="#nav-graficas"
-                        role="tab" aria-controls="nav-graficas" aria-selected="true"><span><img
-                                src="assets/imgs/grafico.png" width="60" height="60"></span></a>
-                    <a class="nav-item nav-link" id="nav-users-tab" data-toggle="tab" href="#nav-users" role="tab"
-                        aria-controls="nav-users" aria-selected="false"><span><img src="assets/imgs/user.png" width="60"
-                                height="60"></span></a>
-                    <a class="nav-item nav-link" id="nav-recetas-tab" data-toggle="tab" href="#nav-recetas" role="tab"
-                        aria-controls="nav-recetas" aria-selected="false"><span><img src="assets/imgs/libro_recetas.png"
-                                width="60" height="60"></span></a>
-                    <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab"
-                        aria-controls="nav-config" aria-selected="false"><span><img
-                                src="assets/imgs/configuraciones.png" width="60" height="60"></span></a>
-                </div>
-            </nav>
-            <!--GRAFICAS Y ESTADISTICAS-->
+  <div class="col-xs-12 ">
+    <nav>
+      <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-graficas-tab" data-toggle="tab" href="#nav-graficas"
+           role="tab" aria-controls="nav-graficas" aria-selected="true"><span><img
+          src="assets/imgs/grafico.png" width="60" height="60"></span></a>
+        <a class="nav-item nav-link" id="nav-users-tab" data-toggle="tab" href="#nav-users" role="tab"
+           aria-controls="nav-users" aria-selected="false"><span><img src="assets/imgs/user.png" width="60"
+                                                                      height="60"></span></a>
+        <a class="nav-item nav-link" id="nav-recetas-tab" data-toggle="tab" href="#nav-recetas" role="tab"
+           aria-controls="nav-recetas" aria-selected="false"><span><img src="assets/imgs/libro_recetas.png"
+                                                                        width="60" height="60"></span></a>
+        <a class="nav-item nav-link" id="nav-config-tab" data-toggle="tab" href="#nav-config" role="tab"
+           aria-controls="nav-config" aria-selected="false"><span><img
+          src="assets/imgs/configuraciones.png" width="60" height="60"></span></a>
+      </div>
+    </nav>
+    <!--GRAFICAS Y ESTADISTICAS-->
 
-            <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+    <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 
-                <div class="tab-pane tab-pane-graficas fade show active" id="nav-graficas" role="tabpanel"
-                    aria-labelledby="nav-graficas-tab">
+      <div class="tab-pane tab-pane-graficas fade show active" id="nav-graficas" role="tabpanel"
+           aria-labelledby="nav-graficas-tab">
+        <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+        <div class="contenedor-graficas" id="graficasTodas">
+          <div class="separacion_graficas">
+            <div class="contenedor-tituloGrafica">
+              <h3 style="text-align: center;">Recetas por Categoría</h3>
+            </div>
+            <div class="contenedor-imgGrafica">
+              <div id="chartRecetas">
+                <apx-chart class="graficas-chart" [series]="chartOptionsRecetas.series" [chart]="chartOptionsRecetas.chart"
+                           [labels]="chartOptionsRecetas.labels"
+                           [responsive]="chartOptionsRecetas.responsive"
+                           [legend]="chartOptionsRecetas.legend" [colors]="chartOptionsRecetas.colors">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
 
-                    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-                    <div class="d-flex flex-wrap flex-column flex-sm-row justify-content-center align-items-between">
-                        <div class="d-flex flex-column separacion_graficas">
-                            <h3 style="text-align: center;">Recetas por Categoría</h3>
-                            <div class="">
-                                <div id="chartRecetas">
-                                    <apx-chart [series]="chartOptionsRecetas.series" [chart]="chartOptionsRecetas.chart"
-                                        [labels]="chartOptionsRecetas.labels"
-                                        [responsive]="chartOptionsRecetas.responsive"
-                                        [legend]="chartOptionsRecetas.legend" [colors]="chartOptionsRecetas.colors">
-                                    </apx-chart>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-column separacion_graficas">
-                            <h3 style="text-align: center;">Gráfica de Usuarios</h3>
-                            <div class="">
-                                <div id="chartUsuarios">
-                                    <apx-chart [series]="chartOptionsUsuarios.series"
-                                        [chart]="chartOptionsUsuarios.chart" [labels]="chartOptionsUsuarios.labels"
-                                        [responsive]="chartOptionsUsuarios.responsive"
-                                        [legend]="chartOptionsUsuarios.legend" [colors]="chartOptionsUsuarios.colors">
-                                    </apx-chart>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column separacion_graficas">
-                            <h3 style="text-align: center;">Gráfica de Ofertas</h3>
-                            <div class="">
-                                <div id="chartOfertas">
-                                    <apx-chart [series]="chartOptionsOfertas.series" [chart]="chartOptionsOfertas.chart"
-                                        [labels]="chartOptionsOfertas.labels"
-                                        [responsive]="chartOptionsOfertas.responsive"
-                                        [legend]="chartOptionsOfertas.legend" [colors]="chartOptionsOfertas.colors">
-                                    </apx-chart>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!--FIN GRAFICAS Y ESTADISTICAS-->
-
-
-                <!--TABLA DE USERS-->
-                <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
-                    <div class="form-row align-items-center justify-content-between buscador_div">
-
-                        <!--Buscar por Nombre-->
-                        <div class="col-sm-3 my-1">
-                            <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario"
-                                   [(ngModel)]="nombreUserSeleccionado" (keyup)="filtrarPorNombreUser(); filtrar()"
-                                 class="form-control" list="listaNombresUser" />
-                        </div>
-                        <!--Buscar por email-->
-                        <div class="col-sm-3 my-1">
-                            <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
-                                (keyup)="filtrarPorEmailUser(); filtrar()"
-                                class="form-control" list="listaEmailUser" />
-                        </div>
-                        <!--CheckBox Subscripcion-->
-                        <div class="col-auto my-1">
-                            <select class="form-select" [(ngModel)]="opcionesDeSusb" (change)="filtrar()">
-                                <option value="" disabled selected hidden>Selecciona una opción</option>
-                                <option value="1">Subscritos</option>
-                                <option value="0">No subscritos</option>
-                                <option value="2">Todos</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <table class="table table-striped ajustar_tabla_users">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre Usuario</th>
-                                <th>Email</th>
-                                <th>Nº recetas en favorito</th>
-                                <th>Subscrito</th>
-                                <th>Ofertas vistas</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let usuario of usuariosFiltrados">
-                                <td>{{usuario.id}}</td>
-                                <td>{{usuario.nombre}}</td>
-                                <td>{{usuario.email}}</td>
-                                <td>{{recetasFavoritasPorUsuario[usuario.id]}}</td>
-                                <td>{{usuario.subscripcion}}</td>
-                                <td>{{ofertasVisualizadasPorUsuario[usuario.id]}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-                <!--FIN TABLA DE USERS-->
-                <!--TABLA DE RECETAS-->
-                <div class="tab-pane hacer_scroll fade" id="nav-recetas" role="tabpanel"
-                    aria-labelledby="nav-recetas-tab">
-
-
-                    <div class="form-row align-items-center justify-content-between buscador_div">
-                        <div class="col-sm-3 my-1">
-
-                            <!--Buscar por Nombre-->
-                            <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
-                                (keyup)="buscarRecetaSeleccionada()"
-                                class="form-control" list="listaNombresReceta" />
-                        </div>
-                        <!--Buscar por Categoria-->
-                        <div class="col-sm-3 my-1">
-                            <select class="form-select" (change)="buscarRecetaSeleccionada()"
-                                [(ngModel)]="opcionSeleccionada">
-                                <option value="10" disabled selected hidden>Selecciona una opción</option>
-                                <option value="1">Arroz</option>
-                                <option value="2">Bebida</option>
-                                <option value="3">Carne</option>
-                                <option value="4">Dulce</option>
-                                <option value="5">Pasta</option>
-                                <option value="6">Pescado</option>
-                                <option value="7">Variado</option>
-                                <option value="8">Vegetales</option>
-                                <option value="9">Todos</option>
-                            </select>
-                        </div>
-                        <!--CheckBox Receta Activa-->
-                        <div class="col-auto my-1">
-                            <select class="form-select" [(ngModel)]="opcionesActivas"
-                                (change)="buscarRecetaSeleccionada()">
-                                <option value=3 disabled selected hidden>Selecciona una opción</option>
-                                <option value=1>Activos</option>
-                                <option value=0>No activos</option>
-                                <option value=2>Todos</option>
-                            </select>
-                        </div>
-
-
-                    </div>
-
-                    <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
-                        <thead>
-
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre Receta</th>
-                                <th>Categoría</th>
-                                <th>Activo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let receta of recetasFiltradas | paginate: {itemsPerPage:30, currentPage:p}">
-                                <td>{{receta.id}}</td>
-                                <td>{{receta.titulo}}</td>
-                                <td>{{receta.categoria}}</td>
-
-                                <td>
-                                    <!--CheckBox Receta Activa-->
-                                    <div class="col-auto my-1">
-                                        <div class="form-check">
-                                            <input type="checkbox" [(ngModel)]="receta.activo" class="form-check-input" id="checkbox_receta_activa"
-                                            (change)="cambPendientes(receta)">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                    <div class="footer_boton">
-                        <button (click)="guardarCambios()" type="button" class="btn btn-primary">Guardar Cambios</button>
-                    </div>
-
-
-
-
-                </div>
-                <!---->
-
-
-                <!--FIN TABLA DE RECETAS-->
-
-
-
-                <div class="tab-pane tab-pane-config fade" id="nav-config" role="tabpanel">
-                    <div class="contenedor-configuracion">
-                        <div class="contenedor-cambioNumRecetasBuscador">
-                            <h3>Cambiar el número de recetas por página (Buscadores)</h3>
-                            <div class="contenedor-inputBuscador">
-                                <input id="numRecetasPorPagina" class="cambiarNumPaginas" type="text"
-                                    placeholder="Número de recetas">
-                            </div>
-                            <div class="contenedor-btnCambiar">
-                                <button class="btnCambiarNum" (click)="obtenerNumElementos(0)"
-                                    type="submit">Cambiar</button>
-                            </div>
-                        </div>
-
-                        <div class="contenedor-cambioNumOfertasBuscador">
-                            <h3>Cambiar el número de ofertas por página</h3>
-                            <div class="contenedor-inputBuscador">
-                                <input id="numOfertasPorPagina" class="cambiarNumPaginas" type="text"
-                                    placeholder="Número de ofertas">
-                            </div>
-                            <div class="contenedor-btnCambiar">
-                                <button class="btnCambiarNum" (click)="obtenerNumElementos(1)"
-                                    type="submit">Cambiar</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
+          <div class="separacion_graficas">
+            <div class="contenedor-tituloGrafica">
+              <h3 style="text-align: center;">Gráfica de Usuarios</h3>
+            </div>
+            <div class="contenedor-imgGrafica">
+              <div id="chartUsuarios">
+                <apx-chart class="graficas-chart" [series]="chartOptionsUsuarios.series"
+                           [chart]="chartOptionsUsuarios.chart" [labels]="chartOptionsUsuarios.labels"
+                           [responsive]="chartOptionsUsuarios.responsive"
+                           [legend]="chartOptionsUsuarios.legend" [colors]="chartOptionsUsuarios.colors">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+          <div class="separacion_graficas">
+            <div class="contenedor-tituloGrafica">
+              <h3 style="text-align: center;">Gráfica de Ofertas</h3>
             </div>
 
+            <div class="contenedor-imgGrafica">
+              <div id="chartOfertas">
+                <apx-chart class="graficas-chart" [series]="chartOptionsOfertas.series" [chart]="chartOptionsOfertas.chart"
+                           [labels]="chartOptionsOfertas.labels"
+                           [responsive]="chartOptionsOfertas.responsive"
+                           [legend]="chartOptionsOfertas.legend" [colors]="chartOptionsOfertas.colors">
+                </apx-chart>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <!--FIN GRAFICAS Y ESTADISTICAS-->
 
+
+      <!--TABLA DE USERS-->
+      <div class="tab-pane hacer_scroll fade" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
+        <div class="form-row align-items-center justify-content-between buscador_div">
+
+          <!--Buscar por Nombre-->
+          <div class="col-sm-3 my-1">
+            <input type="text" id="BuscarNombre" placeholder="Buscar por Nombre de Usuario"
+                   [(ngModel)]="nombreUserSeleccionado" (keyup)="filtrarPorNombreUser(); filtrar()"
+                   class="form-control" list="listaNombresUser"/>
+          </div>
+          <!--Buscar por email-->
+          <div class="col-sm-3 my-1">
+            <input placeholder="Buscar por Email de Usuario" [(ngModel)]="emailUserSeleccionado"
+                   (keyup)="filtrarPorEmailUser(); filtrar()"
+                   class="form-control" list="listaEmailUser"/>
+          </div>
+          <!--CheckBox Subscripcion-->
+          <div class="col-auto my-1">
+            <select class="form-select" [(ngModel)]="opcionesDeSusb" (change)="filtrar()">
+              <option value="" disabled selected hidden>Selecciona una opción</option>
+              <option value="1">Subscritos</option>
+              <option value="0">No subscritos</option>
+              <option value="2">Todos</option>
+            </select>
+          </div>
+
+        </div>
+
+        <table class="table table-striped ajustar_tabla_users">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre Usuario</th>
+            <th>Email</th>
+            <th>Nº recetas en favorito</th>
+            <th>Subscrito</th>
+            <th>Ofertas vistas</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let usuario of usuariosFiltrados">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{recetasFavoritasPorUsuario[usuario.id]}}</td>
+            <td>{{usuario.subscripcion}}</td>
+            <td>{{ofertasVisualizadasPorUsuario[usuario.id]}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <!--FIN TABLA DE USERS-->
+      <!--TABLA DE RECETAS-->
+      <div class="tab-pane hacer_scroll fade" id="nav-recetas" role="tabpanel"
+           aria-labelledby="nav-recetas-tab">
+
+
+        <div class="form-row align-items-center justify-content-between buscador_div">
+          <div class="col-sm-3 my-1">
+
+            <!--Buscar por Nombre-->
+            <input placeholder="Buscar por Nombre de Receta" [(ngModel)]="nombreRecetaSeleccionado"
+                   (keyup)="buscarRecetaSeleccionada()"
+                   class="form-control" list="listaNombresReceta"/>
+          </div>
+          <!--Buscar por Categoria-->
+          <div class="col-sm-3 my-1">
+            <select class="form-select" (change)="buscarRecetaSeleccionada()"
+                    [(ngModel)]="opcionSeleccionada">
+              <option value="10" disabled selected hidden>Selecciona una opción</option>
+              <option value="1">Arroz</option>
+              <option value="2">Bebida</option>
+              <option value="3">Carne</option>
+              <option value="4">Dulce</option>
+              <option value="5">Pasta</option>
+              <option value="6">Pescado</option>
+              <option value="7">Variado</option>
+              <option value="8">Vegetales</option>
+              <option value="9">Todos</option>
+            </select>
+          </div>
+          <!--CheckBox Receta Activa-->
+          <div class="col-auto my-1">
+            <select class="form-select" [(ngModel)]="opcionesActivas"
+                    (change)="buscarRecetaSeleccionada()">
+              <option value=3 disabled selected hidden>Selecciona una opción</option>
+              <option value=1>Activos</option>
+              <option value=0>No activos</option>
+              <option value=2>Todos</option>
+            </select>
+          </div>
 
 
         </div>
 
-    </section>
-</body>
+        <table class="table table-striped hacer_scroll ajustar_tabla_recetas">
+          <thead>
+
+          <tr>
+            <th>ID</th>
+            <th>Nombre Receta</th>
+            <th>Categoría</th>
+            <th>Activo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let receta of recetasFiltradas | paginate: {itemsPerPage:30, currentPage:p}">
+            <td>{{receta.id}}</td>
+            <td>{{receta.titulo}}</td>
+            <td>{{receta.categoria}}</td>
+
+            <td>
+              <!--CheckBox Receta Activa-->
+              <div class="col-auto my-1">
+                <div class="form-check">
+                  <input type="checkbox" [(ngModel)]="receta.activo" class="form-check-input"
+                         id="checkbox_receta_activa"
+                         (change)="cambPendientes(receta)">
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="footer_boton">
+          <button (click)="guardarCambios()" type="button" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+
+
+      </div>
+      <!---->
+
+
+      <!--FIN TABLA DE RECETAS-->
+
+
+      <div class="tab-pane tab-pane-config fade" id="nav-config" role="tabpanel">
+        <div class="contenedor-configuracion">
+          <div class="contenedor-cambioNumRecetasBuscador">
+            <h3>Cambiar el número de recetas por página (Buscadores)</h3>
+            <div class="contenedor-inputBuscador">
+              <input id="numRecetasPorPagina" class="cambiarNumPaginas" type="text"
+                     placeholder="Número de recetas">
+            </div>
+            <div class="contenedor-btnCambiar">
+              <button class="btnCambiarNum" (click)="obtenerNumElementos(0)"
+                      type="submit">Cambiar
+              </button>
+            </div>
+          </div>
+
+          <div class="contenedor-cambioNumOfertasBuscador">
+            <h3>Cambiar el número de ofertas por página</h3>
+            <div class="contenedor-inputBuscador">
+              <input id="numOfertasPorPagina" class="cambiarNumPaginas" type="text"
+                     placeholder="Número de ofertas">
+            </div>
+            <div class="contenedor-btnCambiar">
+              <button class="btnCambiarNum" (click)="obtenerNumElementos(1)"
+                      type="submit">Cambiar
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
 
 <app-footer></app-footer>

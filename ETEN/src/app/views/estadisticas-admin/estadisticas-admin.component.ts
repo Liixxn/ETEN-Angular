@@ -100,8 +100,8 @@ export class EstadisticasAdminComponent {
     this.cargarGraficaRecetas();
     this.cargarGraficasUsuarios();
     this.cargarTopOfertas();
-    this.cargarUsuarios();
-    this.cargarRecetas();
+    //this.cargarUsuarios();
+    //this.cargarRecetas();
   }
 
   public cargarGraficaRecetas() {
@@ -119,23 +119,25 @@ export class EstadisticasAdminComponent {
       this.chartOptionsRecetas = {
         series: [this.numArroz, this.numBebida, this.numCarne, this.numDulce, this.numPasta, this.numPescado, this.numVariado, this.numVegetal],
         chart: {
-          width: 400,
+          width: "50%",
           type: "pie",
         },
         labels: this.labelsReceta,
         legend: {
-          position: "top"
+          position: "top",
+          width: "100%"
         },
         responsive: [
           {
-            breakpoint: 500,
+            breakpoint: 550,
             options: {
               chart: {
-                width: 250
+                width: "100%",
+                height: "100%"
               },
               legend: {
-                position: "top",
-                width: 100,
+                position: "bottom",
+                width: "100%",
                 fontSize: "10px"
               },
             },
@@ -162,23 +164,25 @@ export class EstadisticasAdminComponent {
       this.chartOptionsUsuarios = {
         series: [this.numUsuariosRegistrados, this.numUsuariosSubscritos],
         chart: {
-          width: 400,
+          width: "50%",
           type: "pie",
         },
         labels: this.labelsUsuarios,
         legend: {
-          position: "top"
+          position: "top",
+          width: "100%"
         },
         responsive: [
           {
-            breakpoint: 500,
+            breakpoint: 550,
             options: {
               chart: {
-                width: 250
+                width: "100%",
+                height: "100%"
               },
               legend: {
-                position: "top",
-                width: 100,
+                position: "bottom",
+                width: "100%",
                 fontSize: "10px"
               },
             },
@@ -209,23 +213,25 @@ export class EstadisticasAdminComponent {
       this.chartOptionsOfertas = {
         series: [this.listaVisitasOfertas[0], this.listaVisitasOfertas[1], this.listaVisitasOfertas[2], this.listaVisitasOfertas[3], this.listaVisitasOfertas[4]],
         chart: {
-          width: 400,
+          width: "50%",
           type: "pie",
         },
         labels: this.labelsOfertas,
         legend: {
-          position: "top"
+          position: "top",
+          width: "100%",
         },
         responsive: [
           {
-            breakpoint: 500,
+            breakpoint: 550,
             options: {
               chart: {
-                width: 250
+                width: "100%",
+                height: "100%"
               },
               legend: {
-                position: "top",
-                width: 100,
+                position: "bottom",
+                width: "100%",
                 fontSize: "10px"
               },
             },

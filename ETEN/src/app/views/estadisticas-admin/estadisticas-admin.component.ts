@@ -117,7 +117,7 @@ export class EstadisticasAdminComponent {
       this.chartOptionsRecetas = {
         series: [this.numArroz, this.numBebida, this.numCarne, this.numDulce, this.numPasta, this.numPescado, this.numVariado, this.numVegetal],
         chart: {
-          width: "50%",
+          width: "100%",
           type: "pie",
         },
         labels: this.labelsReceta,
@@ -162,7 +162,7 @@ export class EstadisticasAdminComponent {
       this.chartOptionsUsuarios = {
         series: [this.numUsuariosRegistrados, this.numUsuariosSubscritos],
         chart: {
-          width: "50%",
+          width: "100%",
           type: "pie",
         },
         labels: this.labelsUsuarios,
@@ -211,7 +211,7 @@ export class EstadisticasAdminComponent {
       this.chartOptionsOfertas = {
         series: [this.listaVisitasOfertas[0], this.listaVisitasOfertas[1], this.listaVisitasOfertas[2], this.listaVisitasOfertas[3], this.listaVisitasOfertas[4]],
         chart: {
-          width: "50%",
+          width: "100%",
           type: "pie",
         },
         labels: this.labelsOfertas,

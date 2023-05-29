@@ -78,8 +78,8 @@ export class BuscadorTituloComponent {
 
         this.recetas = dataRecetas[0];
         this.numeroTotal = dataRecetas[1];
-        this.comprobacionMostrar = dataRecetas[2];
         this.numRecetas = dataRecetas[2];
+        this.comprobacionMostrar = dataRecetas[3];
 
         setTimeout(() => {
           this.spinner.hide();

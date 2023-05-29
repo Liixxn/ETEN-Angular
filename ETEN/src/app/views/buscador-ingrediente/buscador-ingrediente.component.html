@@ -29,7 +29,9 @@
     totalItems: numeroTotal
            }; let i = index" [class.active]="i == currentIndex">
         <div class="card">
-          <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
+          <div class="contenedor-img">
+            <img class="card-img-top" src="{{receta.img}}" alt="{{ receta.titulo }}">
+          </div>
           <div class="card-body">
             <a (click)="abrirInfoReceta(receta)">
               <h5 class="card-title stretched-link">{{ receta.titulo }}</h5></a>

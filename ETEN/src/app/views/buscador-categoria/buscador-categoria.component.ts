@@ -180,6 +180,7 @@ export class BuscadorCategoriaComponent {
 
     let contenedor = (<HTMLElement>document.getElementById("contenedor-scroll"));
     this.page = event;
+    console.log(this.page);
 
     this.cargarRecetas();
 
